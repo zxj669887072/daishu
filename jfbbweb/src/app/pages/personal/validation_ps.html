@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我的验证</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="head">
+  <div class="w1000">
+    	<div class="logo left"><img src="../../../images/logo2.png" /></div>
+        <div class="name left">
+        <h1>个人中心</h1>
+        <h2><a href="../../../商家中心/home_ps.html">我要开店</a></h2>
+        </div>
+        <ul class="menu left">
+        <li><a href="home.html">首页</a></li>
+        <li><a href="#">账户设置 <img src="../../../images/arrow_lower.png" width="10" height="5" /></a></li>
+        <li><a href="#">消息<div class="ico">1</div></a></li>
+        </ul>
+        <div class="shopping right f14"><a href="#">我的购物车<span class="ico">2</span></a></div>
+    </div>
+</div>
+<div class="webbox w1000">
+	<div class="leftbox">
+      <dl>
+        <dt><img src="../../../images/left_01.png"/>我的钱包</dt>
+        <dd><a href="wallet.html">我的钱包</a></dd>
+        </dl>
+      <dl>
+            <dt><img src="../../../images/left_02.png"/>我的店铺</dt>
+            <dd>
+                <a href="distribution_shop.html">我分销的店铺</a>
+                <a href="recruiting_merchants.html">我招募的商家</a>
+                <a href="distribution_goods.html">我分销的商品</a>
+      </dd>
+        </dl>
+        <dl>
+        <dt><img src="../../../images/left_03.png"/>我的订单</dt>
+        <dd><a href="shop_order.html">商铺订单</a>
+          <a href="platform_goods_orders.html">平台商城订单</a></dd>
+        </dl>
+        <dl>
+        <dt><img src="../../../images/left_04.png"/>评价管理</dt>
+        <dd><a href="evaluation_manage.html">评价管理</a></dd>
+        </dl>
+      <dl>
+        <dt><img src="../../../images/left_05.png"/>我的关注</dt>
+        <dd><a href="focus_shop.html">我关注的店铺</a>
+        <a href="focus_shop_goods2.html">我关注的商铺商品</a>
+        <a href="focus_shop_goods.html">我关注的商城商品</a></dd>
+        </dl>
+      <dl>
+        <dt><img src="../../../images/left_06.png"/>我的资料</dt>
+        <dd><a href="account.html">账户资料</a>
+            <a href="update_pwd.html">修改密码</a><a href="harvest_address.html">收货地址</a>
+            <a href="validation.html">我的验证</a></dd>
+        </dl>
+  </div>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">我的验证</li>
+      </ul>
+    </div>
+     <div class="box h610">
+       <div class="padding20">
+         <div class="left"><strong>暂无内容</strong></div>
+       </div>
+     </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  <li>粤ICP备xxxxx号 普宁市XX公司 Copyyight©2014-2020 xxxx版权所有</li>
+				  <li>公司地址：xxxxxxxxxxxxxx  电话：0755-726689</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../../../images/ljjfbb_35.jpg"  /><img src="../../../images/ljjfbb_37.jpg"  /></div>
+     </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>平台首页</title>
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+    <link href="../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+    <style>
+    .head {
+        padding-bottom: 20px;
+    }    
+    .head .rightbox a {
+        float: right;
+    }  
+    .index_banner {
+        cursor: pointer;
+    }    
+    .banner_menu ul li:hover {
+        background-color: #f37e01
+    }    
+    .el-carousel__indicators {
+        position: absolute;
+        list-style: none;
+        bottom: 0;
+        margin: auto;
+        padding: 0 10%;
+        z-index: 6;
+        width: 84%;
+        text-align: center;
+    }    
+    .el-carousel__indicator {
+        display: inline-block;
+        background-color: transparent;
+        width: 25%;
+        padding: 0;
+    }    
+    .el-carousel__button {
+        display: block;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0); 
+        border: none;
+        padding: 0;
+        height: 98px;
+    }    
+    #light {
+        height: 500px;position: relative;left: 0;bottom: 960px;
+    }    
+    .redbox {
+        position: relative;
+        width: 702px;
+        height: 500px;
+        background: url(../images/red.png) 0 0 no-repeat;
+        border: 1px solid transparent;
+        margin: 0 auto;
+    }    
+    .redmsg {
+        width: 150px;
+        height: 100px;
+        margin: 170px 0 0 273px;
+    }    
+    .redmsg p {
+        color: #ff5942;
+    }    
+    .redbox .btn {
+        float: left;
+        width: 160px;
+        height: 46px;
+        border-radius: 2px;
+        font-size: 22px;
+        text-align: center;
+        line-height: 38px;
+        color: #fff;
+        background-color: #ff7900
+    }    
+    .redbox .my {
+        background-color: #ff9c00;
+        margin-left: 28px
+    }
+    .white_content{display: none;}
+    .black_overlay{display: none;}
+     .white_content.active{display: block;}
+    .black_overlay.active{display: block;}
+     img[lazy=loading]{width:initial;height: initial;}
+     img[lazy=error]{width:initial;height: initial;}
+    .el-carousel__item{text-align: center;line-height: 450px;}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <lf-header></lf-header>
+        <div class="head">
+            <div class="w1000">
+                <div class="logo">
+                    <a href=" /app/pages/goods.html" target="_self" style=" text-decoration:underline"><img src="../images/logo.png" /></a>
+                </div>
+                <ul class="rightbox">
+                    <a href="http://www.lanshanjishi.com/app/pages/about/help-center.html#运营中心" target="_blank">运营中心招商</a><a href="http://www.lanshanjishi.com/app/pages/about/help-center.html#商家入驻" target="_blank">商家入驻</a>
+                </ul>
+                <lf-search>
+                    <lf-search>
+            </div>
+        </div>
+        <div class="index_banner" id="index_banner_con" style="overflow:hidden;">
+            <template>
+                <el-carousel height="450px" @change="changeBannerFun" id='bannerBox' >
+                    <el-carousel-item v-for="advert in advertList" :key = "advert.id">
+                        <img v-lazy="advert.picUrl" alt="" @click="goToAdverFun(advert.url)" height="450px" width="100%" class="bannerImg" :style="{marginLeft:left+'px'} ">
+                    </el-carousel-item>
+                </el-carousel>
+            </template>
+            <div class="banner_menu" id="banner">
+                <ul class="w1000">
+                    <li class="hover">
+                        <a href="/app/pages/about/sjrz.html" target="_blank" data-no="1"><img src="../images/index_01.png" /></a>
+                    </li>
+                    <li>
+                        <a href="/app/pages/about/yyzx-about.html" target="_blank" data-no="2"><img src="../images/index_02.png" /></a>
+                    </li>
+                    <li>
+                        <a href="/app/pages/about/about-jf.html" target="_blank" data-no="3"><img src="../images/index_03.png" /></a>
+                    </li>
+                    <li>
+                        <a href="/app/pages/about/ljfxs.html" target="_blank" data-no="4"><img src="../images/index_04.png" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="w1000 index_box">
+            <dl>
+                <dt>
+                    <a href="#" @click= "go('/app/pages/goods.html')"><img src="../images/index_01.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">积分购物</dd>
+                <dd class="c-7">积分（袋鼠币）可以用来购物；在袋鼠集市网上商城充话费、加油、充手机流量、或在加盟商户购买任何商品；满足会员衣、食、住、行需求。</dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="#" @click= "go('/app/pages/store/storelist.html')"><img src="../images/index_02.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">实体店</dd>
+                <dd class="w100c">您可以通过实体店（样品店）了解袋鼠集市加盟商户的网上商城；如果您有实体门店，袋鼠集市邀请您赶快来入驻吧！</dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="/app/pages/about/help-center.html#关于袋鼠集市" target="_self"><img src="../images/index_03.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">了解我们</dd>
+                <dd class="w100">袋鼠集市是中国成长最快、最受众瞩目的共享经济领域的新型电子商务平台之一，是集通用积分、O2O商城、消费返利、分销、会员于一体的“互联网+”服务提供商。</dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="/app/pages/about/help-center.html#了解积分" target="_self"><img src="../images/index_05.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">了解积分</dd>
+                <dd class="c-7">在袋鼠集市，您通过消费获得平台的积分赠送，1积分可兑换1个袋鼠币，而袋鼠币可抵1元消费，实现一次钱多次花，亦实现省钱的愿景。 </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="/app/pages/about/help-center.html#积分规则" target="_self"><img src="../images/index_04.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">积分规则</dd>
+                <dd class="w100c">会员消费获赠积分； 分销商推广赚积分； 会员参与商家营销活动获赠积分； 会员参与平台活动获赠积分； 袋鼠集市的积分是通用的。</dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="/app/pages/about/help-center.html#会员分享消费" target="_self"><img src="../images/index_06.jpg" width="91" height="91" /></a>
+                </dt>
+                <dd class="f24">了解分销</dd>
+                <dd class="w100">做袋鼠集市分销会员，自己购物省钱，将商品分享给好友，成交之后可赚取利润！ 邀请好友成为会员，好友再购物您还可以获得奖励。大家都得到实惠。 </dd>
+            </dl>
+        </div>
+        <div>
+            <div id="light" class="white_content" :class="{'active':willShow}"  v-if="willShow">
+                <div class="redbox" style="width:704px;">
+                    <div class="redmsg" style="color:#ff5942;">
+                        <p style="height:40px">&yen;<span style="font-size:40px;vertical-align: top;">{{redPackageInfo.money}}</span></p>
+                        <p style="margin-bottom:7px"><span style="font-size:20px;">{{Number(redPackageInfo.moneyLimit)/10}}</span>折</p>
+                        <p>有效期至<span>{{redPackageInfo.endTime}}</span></p>
+                    </div>
+                    <div style="margin:130px 0 0 177px;width:348px;height:46px;">
+                        <a href="pages/goods.html" class="use btn">立即使用</a>
+                        <a href="pages/personal/myRedPackets_ps.html" class="my btn">我的红包</a>                       
+                    </div>
+                    <img src="../images/close.png" alt="" style="position: absolute;top:0;right:50px;" @click="closeRedPackge">
+                </div>
+            </div>
+            <div id="fade" :class="{'active':willShow}"  class="black_overlay" v-if="willShow"></div>
+        </div>
+        <div style="background: #f1f2f6;">
+            <lf-footer></lf-footer>
+            <!-- <div class="qq"><img src="../images/qq_34.png" width="120" height="228" border="0" usemap="#Map" />
+                <map name="Map" id="Map">
+                    <area shape="rect" @click.prevent="onlineSale()" coords="13,175,108,207" href="#" />
+                    <area shape="rect" @click.prevent="closeService()" coords="103,0,121,17" href="#" />
+                </map>
+            </div> -->
+        </div>
+    </div>
+    <script src='//kefu.easemob.com/webim/easemob.js?tenantId=41169&hide=false&sat=false' async='async'></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

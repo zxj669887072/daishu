@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传例子</title>
+</head>
+<body>
+<div id="app" v-cloak>
+	<button @click="test">上传</button>
+	<!--<form id="imgform" enctype="multipart/form-data">
+    
+    </form>-->
+    <input id="fileId" name="fileId" type="file" @change="uploadImg" style="display: none;"/>
+</div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/test/fileupload.js"></script>
+</html>

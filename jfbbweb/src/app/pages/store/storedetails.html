@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>袋鼠集市</title>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+  <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+  <link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+   body{
+    text-align: left;
+  }
+  .search2{
+    float: right;
+    position: relative;
+  }
+  /* .search2 input[type=text]{
+    font: 13.3333px Arial;
+    margin-left: -8px;
+    height: 28px;
+  }
+  .search2 input[type=button]{
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    border-radius: 0;
+  } */
+  .details-content{
+    height: auto;
+  }
+  .details-pj{
+    width: 100%;
+    overflow: hidden;
+  }
+  .preview .follow i {
+    width: 14px;
+    height: 13px;
+    background-image: url("../../../images/__sprite.png");
+    background-position: -44px -40px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .preview .follow em{
+    font-style: initial;
+  }
+  body .content-nr .content-nm .content-fb .content-bj{
+    border-top: 0 none;
+    border-bottom: 0 none;
+  }
+  body .content-nr .content-nm .content-fb .content-span{
+    margin: 10px auto 12px auto;
+    color: #e4393c;
+    font-size: 12px;
+  }
+  body .content-nr .content-nm .content-fb{
+    width: 342px;
+  }
+  body   #top {
+    margin: initial;
+    width: initial;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    min-width: 1024px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 0px;
+  }
+  body .top{
+    background-color: #fff;
+    padding-bottom: 20px;
+  }
+  .el-card{
+    border:0 none;
+    box-shadow:initial;
+  }
+  .details-content .eval,
+  .el-card__body{
+    padding: 0;
+  }
+  body .content-nr .content-nm .content-in{
+    width:35%;
+  }
+  body .content-nr .content-nm .content-fb{
+    width:52%;
+  }
+  .content-in .import .zoom-content {
+    display: table;
+    width: 100%;
+  }
+  .content-in .import .zoom-content .minimg-content{
+    width: auto;
+    height: 348px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .jiage .left{
+    font-size: 12px;
+  }
+  .jiage01{
+    width: 50%;
+  }
+  .jiage01 .right {
+    width: auto;
+    float: none;
+    margin-left: 20px;
+  }
+  .jiage02 .right img{
+    width: 100%;
+  }
+  .date-num{
+    border-bottom: 0 none;
+  }
+  .content-button .btn-big{
+    border-radius: 0;
+    border-radius: 0;
+    width: 180px;
+    height: 50px;
+    line-height: 40px;
+  }
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active{
+    color: #fff;
+    background: #f37e01;
+  }
+  body .top .top-right .active-content .content-t{
+    border:0 none;
+  }
+  body .content-nr .content-nm .content-ft .zp{
+    margin-left: 10px;
+    display: inline-block;
+  }
+  body .top .top-right{
+    border:0 none;
+    width: 925px;
+  }
+  .el-tabs__header{
+    background: #f3f3f3;
+    border-bottom: 1px solid #f37e01;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-top:0 none;
+  }
+  .date-buy{
+    border: 1px solid #ff4400;
+  }
+  .el-tabs__nav-wrap{
+    margin-bottom: -2px;
+  }
+  .avatar{
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+  }
+  .avatar img{
+    width: 100%;
+    border-radius: 50%;
+  }
+  .product_left h1{
+    height: 43px;
+    line-height: 43px;
+  }
+  .date-num .num .detail-show{
+    margin-bottom: 0;
+  }
+  .date-num .num span:first-child{
+    margin-top: -5px;
+  }
+  body .content-nr .content-nm .content-ft .active{
+    border: 1px solid #f37e01;
+  }
+  body .content-nr .content-nm .content-ft .zp{
+    width: 54px;
+    height:54px;
+  }
+  body .top .top-right .active-content .neirong-img img{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+  }
+  body .content-nr .content-nm .content-in .import img{
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  .fooder ul[data-v-65324434] {width:300px !important;}
+</style>
+</head>
+<body style="background-color: #fff;">
+  <div id="app" v-cloak="">
+   <lf-header ref="header"></lf-header>    
+                  <div class="settled_top">
+                    <div class="w1000">
+                     <div class="logo">
+                      <a href="/app/pages/goods.html"><img src="../../../images/logo.png" /></a>
+                    </div>
+                    <lf-search><lf-search>                    
+                </div>
+              </div>
+              <div class="dangqian">
+                <div class="w1000">
+                 <div class="left c-9">
+                  当前位置：<a href="javascript:;">
+                  <a href="javascript:;" @click=goShopList(structureNo,structureName,"",storeinfo.categoryParentId) v-if="structureName">{{structureName}} > </a>
+                  <a href="javascript:;" @click=goShopList(childStructureNo,structureName,childStructureName,storeinfo.categoryParentId) v-if="childStructureName">{{childStructureName}} > </a>
+                  {{storeGoodName}}
+                </div>
+                <div class="right">
+                  <ul>
+                   <li v-bind:class="{hover:storeinfo.isSelfSupport==0}">袋鼠</li>
+                   <li v-bind:class="{hover:storeinfo.isSelfSupport==1}">自营</li>
+                 </ul>
+                 <span class="c-9">
+                    <a href="javascript:;" @click.prevent="goStoreShop">
+                      {{storeinfo.shopName}}
+                    </a>
+                  </span>
+                 <span class="c-9"><i class="fa fa-phone" style="margin:0 10px;"></i>{{storeinfo.servicePhone}}</span>
+               </div>
+             </div>
+           </div>
+           <div class="content-nr">
+            <el-card class="box-card" v-loading="load.load1" element-loading-text="拼命加载中">
+             <div class="content-nm" style="border-top:0 none;">
+              <div class="content-in" style="border:0 none;">
+               <div class="import" style="border: 1px solid #e5e5e5;width: 100%;height: 350px;">
+                <!--<img   :src="storeBigImg"  />-->
+                <lf-imgzoom :url="storeBigImg" :isshow="show"></lf-imgzoom>
+              </div>
+              <div class="content-ft">
+        <!--<div class="zp active">
+                                                <img src="../../../images/xiaotu.png" alt="">
+                                              </div>-->
+                                              <div class="zp" @click="mainImg(item,index)" v-for="(item,index) in storeinfo.mainBigUrlList" :class="[storelitImgClassIndex==index? 'active':'']">
+                                               <img :src="item" alt="" />
+                                             </div>
+                                           </div>
+                                         </div>
+                                         <div class="content-fb">
+                                           <div class="content-lasrt name f16">
+                                            <strong>{{storeinfo.goodsName}}</strong>
+                                          </div>
+                                          <!-- <div class="content-span"> -->
+                                          <div class="c-9" style="font-size: 12px;">
+                                           {{storeinfo.goodsBuyPoint}}
+                                         </div>
+                                         <div class="jiage">
+                                          <div class="jiage01">
+                                           <ul>
+                                            <li><span class="left c-9">价格</span><span class="right f24 org"><strong>&yen;{{storeinfo.price}}</strong></span></li>
+                                            <li><span class="left c-9">赠送积分</span><span class="right green"><strong>{{storeinfo.giveInter}}</strong></span></li>
+                                            <li><span class="left c-9">累计评价</span><span class="right org">{{evalList.totalCount}}</span></li>
+                                          </ul>
+                                        </div>
+                                        <div class="jiage02">
+                                         <div class="left">
+                                          <ul class="c-9">
+                                           <li> <span class="preview"> <a class="follow J-follow" @click="followStore(storeinfo.id)" href="#none" style="display: inline-block;"> <i class="sprite-follow-sku"></i> <em style="display: block;"><span v-if="isConcern==1">已</span>关注商品</em> </a> </span> </li>
+                                           <!--  <li>3600</li> -->
+                                         </ul>
+                                       </div>
+                                       <div class="right">
+                                        <img :src="storeinfo.qrCode" alt="" />
+                                      </div>
+                                    </div>
+                                  </div>
+       <!-- <div class="content-fw">
+                                            <span class="serve">运费</span>
+                                            <span class="">广东深圳 至 东莞 <i class="fa fa-angle-down"></i>    </span>
+                                            <span class="store-kd">快递： 0.00</span>
+                                          </div>-->
+       <!-- <div class="content-fw details-pj">
+                                            <span class="serve">累计评价 <font>{{evalList.totalCount}}</font></span>
+                                            <span class="splice">|</span>
+                                            <span class="deta-jf">送积分  <font>{{storeinfo.giveInter}}</font></span>
+                                            <span class="preview">
+                                                <a class="follow J-follow" @click="followStore(storeinfo.id)"  href="#none" >
+                                                    <i class="sprite-follow-sku"></i>
+                                                    <em><span v-if="isConcern==1">已</span>关注</em>
+                                                </a>
+                                            </span>
+
+                                          </div> -->
+                                          <div class="date-num" v-bind:class="{ 'date-buy':!storeqty.hasBuy }">
+                                            <div class="num" style="height: auto;">
+                                             规格
+                                             <!--<span class="detail-show detail-check"><div>足金 工费48</div></span>-->
+                                             <span class="detail-show" v-for="(item,index) in storeinfo.spec" @click="sureSpec(item)" :class="[item == storeinfospec?'detail-check':'']">
+                                              <div v-if="item.length&gt;0">
+                                               {{item}}
+                                             </div> </span>
+                                           </div>
+                                           <div class="num" v-if="storeinfo.weight&gt;0">
+                                             重量
+                                             <span @click="sureWeight(storeinfo.weight)">
+                                              <div>
+                                               {{storeinfo.weight}}kg
+                                             </div></span>
+                                           </div>
+                                           <div class="num">
+                                             <!----> 数量
+                                             <span class="detail-num" style="vertical-align: middle;"> <input style="border-radius: 0;font-size: 12px;" name="" :value="storeqty.num" @blur="blurNum()" v-model="storeqty.num" type="number" /> <a href="javaScript:void(0);" @click="addNum(1)" class="num-up"><i class="fa fa-angle-up"></i></a> <a href="javaScript:void(0);" @click="addNum(-1)" class="num-down"><i class="fa fa-angle-down"></i></a> </span>
+                                             <span class="store-kc"> 库存<font>{{storeinfo.qty}}</font> 件</span>
+                                           </div>
+                                         </div>
+                                         <!-- // v-if="storeinfo.goodsStatus==2" -->
+                                         <div class="content-button" v-if="storeinfo.goodsStatus==2">
+                                          <div class="content-jr">
+                                           <a class="btn btn-big" @click="buyShop(storeqty.num)" href="javaScript:void(0)" style="background-color: rgb(243, 126, 1);font-size:16px;"> 立即购买 </a>
+                                           <a class="btn-null bth-car btn-big" @click="addToCars(storeqty.num)" href="javaScript:void(0)" style="color: rgb(243, 126, 1);background-color: #fff;border: 1px solid;font-size:16px;"> <i class="fa fa-shopping-cart" style="    margin-right: 5px;"></i>加入购物车 </a>
+                                         </div>
+                                       </div>
+                                       <div style="margin-top: 30px;" v-else="">
+                                        <strong style="color:#999;">此商品已下架</strong>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </el-card>
+                              </div>
+                              <div class="top details-content">
+                               <div class="w1000">
+                                <div class="product_left">
+                                 <h1>为您推荐</h1>
+                                 <dl v-for="(item,index) in goodsList">
+                                  <dt>
+                                   <img :src="item.picUrl" alt="" @click="goodsTo(item)" :title="item.goodsName" />
+                                 </dt>
+                                 <dd>
+                                   <span class="goodsName" :title="item.goodsName">{{item.goodsName}}</span>
+                                   <span class="org">{{item.price}}</span>
+                                 </dd>
+                               </dl>
+     <!--    <div class="xne" v-for="(item,index) in goodsList">
+                     <img :src="item.picUrl" alt="" @click="goodsTo(item)" :title="item.goodsName">
+                     <div class="goodsName" :title="item.goodsName">{{item.goodsName}}</div>
+                     <div class="jfPrice"><font>{{item.jfPrice}}</font>积分</div>
+                   </div> -->
+                 </div>
+                 <div class="top-right">
+                   <template>
+                    <el-tabs type="card" v-model="activeName2">
+                     <el-tab-pane label="商品详情" name="store-car">
+                      <div class="active-content">
+                       <div class="content-t">
+          <!--     <div class="title">
+                                                                    <span class="bt">品牌名称：</span>
+                                                                    <span class="zt">{{storeinfo.brand}}</span>
+                                                                  </div>-->
+          <!-- <div class="ccs">产品参数：</div>
+                                                            <div class="neirong">
+                                                                    <el-row>
+                                                                      <el-col :span="8" v-for="item in storeinfo.spec"><div class="grid-content bg-purple">{{item}}</div></el-col>
+                                                                    </el-row>
+                                                                  </div>-->
+                                                                </div>
+                                                                <div class="neirong-img" v-html="storeinfo.description">
+                                                                  <!-- <img src="../../../images/zsdbq.png" alt="">-->
+                                                                </div>
+                                                              </div>
+                                                            </el-tab-pane>
+                                                            <el-tab-pane :label="'评价('+evalList.totalCount+')'" name="setails-msg">
+                                                              <el-card class="box-card" v-loading="load.loadeval" element-loading-text="加载中啦啦">
+                                                               <div class="eval">
+                                                                <div class="eval-select">
+                                                                 <div class="msg-ck">
+                                                                  <template>
+                                                                   <el-radio-group v-model="radio" @change="changeeva">
+                                                                    <el-radio class="radio" label="0">
+                                                                     全部
+                                                                   </el-radio>
+                                                                   <el-radio class="radio" label="1">
+                                                                     好评
+                                                                   </el-radio>
+                                                                   <el-radio class="radio" label="2">
+                                                                     中评
+                                                                   </el-radio>
+                                                                   <el-radio class="radio" label="3">
+                                                                     差评
+                                                                   </el-radio>
+                                                                 </el-radio-group>
+                                                               </template>
+                                                             </div>
+                                                           </div>
+                                                           <div class="shop-eval" v-for="(item,index) in evalList.list">
+                                                             <div class="eval-user">
+                                                              <span class="avatar" v-if="item.icon&amp;&amp;item.icon.length&gt;0"> <img :src="item.icon" /> </span>
+                                                              <span class="avatar" v-else=""> <img src="../../../images/ljwm.png" alt="" /> </span>
+                                                              <div class="user-name">
+                                                               {{item.nickName.slice(0,1)+&quot;***&quot;+ item.nickName.slice(item.nickName.length-1)}}
+                                                             </div>
+            <!--  <div class="star">
+                                                               <img src="../../../images/b_red_1.gif">
+                                                               <img src="../../../images/b_red_1.gif">
+                                                               <img src="../../../images/b_red_1.gif">
+                                                               <img src="../../../images/b_red_1.gif">
+                                                               <img src="../../../images/b_red_1.gif">
+                                                             </div> -->
+                                                           </div>
+                                                           <div class="eval-info">
+                                                            <div class="evaType">
+                                                             <span v-for="n in Number(item.evaType)"> <img src="../../../images/ic_13.png" alt="" /> </span>
+                                                             <span v-for="type in (5-Number(item.evaType))"> <img src="../../../images/ic_14.png" alt="" /> </span>
+                                                           </div>
+                                                           <div class="info">
+                                                            {{item.evaContent}}
+                                                          </div>
+                                                          <div class="eval-img">
+                                                           <ul>
+                                                            <!--评论的图片   现在没有图片-->
+                                                            <!-- <li><img class="" src="../../../images/management-idea.png"></li>-->
+                                                          </ul>
+                                                        </div>
+                                                        <div class="eval-time">
+                                                         <span>{{item.goodsName}}</span>
+                                                         <span>{{item.evalDate}}</span>
+                                                         <div class="float-right eval-use">
+              <!--  <span>有用</span>
+              <font>(0)</font>-->
+            </div>
+          </div>
+          <div class="eval-add">
+           <div class="add-content" v-if="item.replyContent.length>0">
+            <span>[商家回复]</span> {{item.replyContent}}
+          </div>
+          <div class="add-time">
+            <span>{{item.replyDate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <img src="../../../images/b_blue_1.gif">-->
+    <div class="store-page text-right">
+     <el-pagination :current-page="pager.curpage" layout="prev, pager, next" @current-change="handleCurrentChange" :total="pager.total" :page-size="pager.size">
+     </el-pagination>
+   </div>
+ </div>
+</el-card>
+</el-tab-pane>
+</el-tabs>
+</template>
+</div>
+</div>
+</div>
+   <!-- <div class="store-foot">
+            <el-row>
+              <el-col :span="3">
+                <img class="float-left" src="../../../images/store-foot3.png">
+            </el-col>
+            <el-col :span="5">
+                <div class="foot-tit">赚取积分方式多</div>
+                <div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div>
+            </el-col>
+            <el-col :span="3">
+                <img class="float-left" src="../../../images/store-foot2.png">
+            </el-col>
+            <el-col :span="5">
+                <div class="foot-tit">赚取积分方式多</div>
+                <div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div>
+            </el-col>
+            <el-col :span="3">
+                <img class="float-left" src="../../../images/store-foot1.png">
+            </el-col>
+            <el-col :span="5">
+                <div class="foot-tit">赚取积分方式多</div>
+                <div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div>
+            </el-col>
+        </el-row>
+
+      </div> -->
+      <lf-footer></lf-footer>
+    </div>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/pages/store/storedetails.js"></script>
+  </body>
+  </html>

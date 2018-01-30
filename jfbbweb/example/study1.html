@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.active{
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="test" data-name="li" data-id="1">test</div>
+		<div id="app">
+			<!--<div>{{title}}</div>
+			<div v-text="rawHtml"></div>
+			<div v-html="rawHtml"></div>
+			<div>{{count}}</div>
+			<br/>
+			<div :class="{ active: isActive }">isActive</div>
+			<div class="test" :class="[activeClass]">isActive2</div>
+			<br/>
+			<h1 v-if="ok">Yes</h1>
+			<h1 v-show="ok">Yes</h1>
+			
+			<template v-if="ok">
+			  <h1>Title</h1>
+			  <p>Paragraph 1</p>
+			  <p>Paragraph 2</p>
+			</template>-->
+			
+			<br/>
+			
+			<ul id="example-1">
+				<!--<li v-for="item in items" data-name="{{item.name}}"> 这是vue1.x写法-->
+			  <li v-for="(item, index)  in items" :data-name="item.name" @click="test2(item)" v-if="items.length > 0">
+			    {{ item.message }}{{item.name}}
+			    <input type="checkbox" id="jack" value="Jack" v-model="item.check">
+			  </li>
+			  <li v-if="items.length == 0">tips</li>
+			</ul>
+			
+			<br/>
+			<div id="example-1">
+			  <button v-on:click="add">增加 1</button>
+			  <!--<button v-on:click="" @mouseout=""></button>-->
+			  <p>这个按钮被点击了 {{ counter }} 次。</p>
+			</div>
+			<br/>
+			<input v-model="message" value="" :disabled="disflag">
+			<input :value="message">
+			<p>Message is: {{ message }}</p>
+			
+			<input type="checkbox" id="checkbox" v-model="checked">
+			<label for="checkbox">{{ checked }}</label>
+			
+			<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+			<label for="jack">Jack</label>
+			<input type="checkbox" id="john" value="John" v-model="checkedNames">
+			<label for="john">John</label>
+			<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+			<label for="mike">Mike</label>
+			<br>
+			<span>Checked names: {{ checkedNames }}</span>
+			
+			<my-component :message="items[0].check"></my-component>
+			
+			
+			<br/>
+			<label>多选</label>
+			<div>
+		      <input type='checkbox' class='input-checkbox' v-model='checkedA' v-on:click='checkedAll'>全选
+		      <template v-for='checkb in checkboxData'>
+		         <input type='checkbox' name='checkboxinput' class='input-checkbox' v-model='checkboxModel' :value='checkb.id'>{{checkb.value}}
+		      </template>
+		    </div>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		/*
+		 * 事件类型表：https://developer.mozilla.org/zh-CN/docs/Web/Events
+		 */
+		document.getElementById("test").addEventListener("click",function(){
+			var dataname = this.getAttribute("data-name");
+			console.log("dataname:"+dataname);
+			console.log("vm:"+JSON.stringify(vm.items));
+		});
+		var Child = {
+		  props: ['message'],
+		  template: '<div>{{message}}</div>'
+		}
+		// 创建根实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				title: "test index",
+				rawHtml: "<span>a</span>",
+				name:"li",
+				list:["1","2"],
+				isActive:true,
+				activeClass: 'active',
+				ok:true,
+				items: [
+			      {message: 'Foo' ,"name":"1",check:false},
+			      {message: 'Bar' ,"name":"2",check:true}
+			    ],
+			    counter:0,
+			    "message":"init",
+			    "checked":false,
+			    checkedNames:[],
+			    disflag:false,
+			    checkboxModel:[],
+			    checkboxData:[{
+			      id:'1',
+			      value:'苹果'
+			    },{
+			      id:'2',
+			      value:'荔枝'
+			    },{
+			      id:'3',
+			      value:'香蕉'
+			    },{
+			      id:'4',
+			      value:'火龙果'
+			    }],
+			    checkedA:false,
+			},
+			/**
+			 * 计算属性
+			 */
+			computed:{
+				count:function(){
+					var rs = this.list.length;
+					return rs;
+				}
+			},
+			methods: {
+				test2:function(obj){
+					console.log("test2:"+JSON.stringify(obj));
+				},
+				add:function(){
+					this.counter += 1;
+				},
+				checkedAll: function() {
+				    var _this = this;
+				    console.log(_this.checkboxModel);
+				    if (!this.checkedA) {//实现反选
+				    	console.log("1："+this.checkedA);
+				      _this.checkboxModel = [];
+				    }else{//实现全选
+				    	console.log("2");
+				      _this.checkboxModel = [];
+				      _this.checkboxData.forEach(function(item) {
+				      	console.log("add");
+				        _this.checkboxModel.push(item.id);
+				      });
+				    }
+				    console.log(_this.checkboxModel);
+			 	}
+			},
+
+			/*
+			 * 
+			 */
+			mounted: function() {
+				var self = this;
+				Vue.nextTick(function () {
+				  // DOM 更新了 $el
+				  var obj = {message: '3' ,"name":"3"};
+				  self.items.push(obj);
+				})
+				setTimeout(function(){
+					self.checked = true;
+				},1000);
+			},
+			components:{
+				"my-component":Child
+			}
+
+		});
+		
+		
+		/*
+		 * [
+		 * {id:"1",name:"",child:[
+		 * 	{id:"11",name:"",child:[]}
+		 * 	]}
+		 * ]
+		 */
+	</script>
+
+</html>

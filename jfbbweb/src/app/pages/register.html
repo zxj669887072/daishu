@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>注册</title>
+        <meta name="renderer" content="webkit">
+        <meta name="force-rendering" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/app.min.css" />
+        <style>
+            .el-carousel__item h3 {
+                color: #475669;
+                font-size: 18px;
+                opacity: 0.75;
+                line-height: 300px;
+                margin: 0;
+              }
+              
+              .el-carousel__item:nth-child(2n) {
+                background-color: #99a9bf;
+              }
+              
+              .el-carousel__item:nth-child(2n+1) {
+                background-color: #d3dce6;
+              }
+              .psdMsg{
+                  font-size: 12px;
+              }
+              .fooder{
+                  /* margin-top: 20px; */position: relative;
+              }
+              .fooder dl[data-v-65324434] {
+                text-align: left;width: 160px;padding-left: 0;margin-right: 0;height: auto;
+              }
+              .fooder dl[data-v-65324434] dd{
+                line-height: 24px;
+              }
+        </style>
+    </head>
+    <body>
+    	<!-- <div id="app"> -->
+        <div class="tms-page mallAct tmall-login w1190 page-market" id="app">
+        <div class="header-bg">
+            <div class="headerli">
+                <a herf="" title="">
+                    <a href="/app/index.html" target="_self" > <span class="login"><img src="../../images/logo.png" alt=""></span></a>
+                </a>
+            </div>
+        </div>
+        <div class="content">
+                <div class="content-lc" >
+                      <el-steps :space="455" :active="active">
+                      <el-step title="填写账号信息"  style="width:830px;" center></el-step>
+                      <el-step title="注册成功" style="width:80px;" center></el-step>
+                    </el-steps>
+                </div>
+                <div class="content-bq app" :class="fact">
+                        <div class="banners"  id='banners'>
+                           <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                              <el-form-item label="手机号码" prop="phone">
+                               <el-input v-model="ruleForm2.phone" ></el-input>
+                              </el-form-item>
+                              <el-form-item class="checkPass" label="短信验证码" prop="securityCode">
+                                <el-input type="text" class="sr" v-model="ruleForm2.securityCode" ></el-input>
+                                <div class="bh" >
+                                	<input type="text" readonly="readonly" class="index"  style="font-size: 14px;" v-model="item" :disabled="isDisabled" @click="sendSms()"/>
+                                </div>
+                              </el-form-item>
+                              <el-form-item label="请设置密码" prop="password" >
+                              	 <el-input type="password" v-model="ruleForm2.password" auto-complete="off" placeholder="为确保安全,建议数字加字母组合,6位数以上" class="psdMsg"></el-input>
+                                
+                              </el-form-item>
+                               <el-form-item label="请确认密码" prop="passwordConfirm" >
+                               	<el-input type="password" v-model="ruleForm2.passwordConfirm" auto-complete="off" placeholder="为确保安全,建议数字加字母组合,6位数以上" class="psdMsg"></el-input>
+                                
+                              </el-form-item>
+                               <el-form-item label="邀请注册" prop="invitation2Register" >
+                                <el-input type="text" v-model="ruleForm2.invitation2Register" auto-complete="off" placeholder="请输入会员手机号或店铺门牌号"></el-input>
+                                
+                              </el-form-item>
+                             
+                              <el-form-item prop="type">
+							    <el-checkbox-group v-model="ruleForm2.type">
+							      <span style="color:red;">*</span><el-checkbox label="我已看过并接受" name="type"></el-checkbox>
+							     <a href="/app/pages/about/user-protocol.html" target="_blank" style="color:#0000FF">《用户协议》</a>
+							    </el-checkbox-group>
+							  </el-form-item>
+                              <el-form-item>
+                                <el-button type="primary" @click="submitForm('ruleForm2')">立即注册</el-button>
+                              </el-form-item>
+                            </el-form>
+                        </div>
+                </div>
+                <!--<div class="content-bq" :class="flate">
+                        <div class="bq-check">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <div class="bq-span"  style="color:#333">
+                            恭喜您，注册成功！
+                        </div>
+                        <div class="bq-button">
+                            <a  style="color:#333" href="/app/login.html" target="_self" type="button">立即登陆</a>
+                        </div>
+                </div>-->
+        </div>
+       <lf-footer></lf-footer>
+        
+        </div>
+    <!-- </div> -->
+
+    </body>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/pages/register.js"></script>
+</html>

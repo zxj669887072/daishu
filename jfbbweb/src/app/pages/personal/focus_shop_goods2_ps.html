@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我关注的商品</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">我关注的商品</li>
+      </ul>
+    </div>
+     <div class="box">
+       <!-- <div class="tab_menu">
+       <div style="float:left; padding-left:20px; width:50%">所有商品 <span class="org"><strong>{{focusShopGoods.totalCount}}</strong></span> 件</div>
+      <div class="left"><span  class="txt2"><input ref="search" placeHolder="输入商品名进行搜索" name="" type="text" value="" /></span><span><input @click="search()" name="" type="button" value="搜索" class="btn2" /></span></div>
+    
+      </div> -->    
+             <div class="padding20">
+        <div class="f_bottom20">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                    <tr>
+                                  <td width="35%" bgcolor="#F1F2F6"><strong>商铺名称</strong></td>
+                                  <td width="40%" align="center" bgcolor="#F1F2F6"><strong>商品信息</strong></td>
+                                  <!-- <td width="36%" align="left" bgcolor="#F1F2F6">&nbsp;</td> -->
+                                  <td width="10%" align="center" bgcolor="#F1F2F6">价格</td>
+                                  <td width="15%" align="center" bgcolor="#F1F2F6">操作</td>
+                    </tr>
+                    <tr v-for="shop in focusShopGoods.list">
+                                  <td  align="center" ><a href="#" style="display: inline-block;" @click="getStoreView(shop.merchantId,shop.shopName)"><strong>{{shop.shopName}}</strong></a></td>
+                                  <td>                                              
+                                              <table width="100%" border="0" cellspacing="0">
+                                                    <tr>
+                                                          <td width="0%">
+                                                            <div style="float:left; margin-top:5px;width:80px; height:80px;">
+                                                              <a href="#" @click="goGoodsView(shop.goodsId)"><img style="width:80px;height:80px;" :src="shop.goodsUrl" /></a>
+                                                            </div>
+                                                            &nbsp;</td>
+                                                          <td width="70%" style="text-align: left;">
+                                                            <a href="#" style="display: inline-block;margin-left: 20px;" @click="goGoodsView(shop.goodsId)">{{shop.goodsName}}<br />
+                                                              <span class="c-9">{{shop.spec}}</span>
+                                                            <br/>
+                                                            
+                                                              </a>
+                                                          </td>
+                                                    </tr>
+                                            </table>
+                                  </td>                                  
+                                  <td align="center"><strong class="org">¥{{shop.price}}</strong></td>
+                                  <td align="center" class="blue"><a href="#" @click="deleteShop(shop.goodsId)" class="blue">取消关注</a></td>
+                    </tr>
+        </table>
+        <div class="store-page text-right  buspage" v-if="pager.total > 0">
+			<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+			</el-pagination>
+		</div>
+     </div>
+      </div>
+   </div>
+    </div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/focus_shop_goods2_ps.js"></script>
+</body>
+</html>

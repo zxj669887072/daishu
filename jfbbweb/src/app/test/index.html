@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.testDB{
+				width: 100%;
+				height: 200px;
+				background: #0190FE;
+			}
+		</style>
+	</head>
+	<body>
+		<!--vue挂载节点 -->
+		<div id="app">
+			<div>{{title}}</div>
+			<div v-text="rawHtml"></div>
+			<div v-html="rawHtml"></div>
+			<br />
+			<lf-imgzoom url="https://gd3.alicdn.com/imgextra/i3/2009187676/TB2HK0uXbRkpuFjSspmXXc.9XXa_!!2009187676.jpg_800x800.jpg"></lf-imgzoom>
+			<div class="testDB">
+				
+			</div>
+			<br />
+			<label>test table</label>
+			<table class="car-cnt" cellspacing="0" v-for="(item,index) in carList">
+				<tbody>
+					<tr class="shop-tit">
+						<th class="sp-info" colspan="5">
+							<input type="checkbox" class="shops-check" :value="item.merchantId">
+							<i class="fa  fa-bank"></i>{{item.merchantName}}
+						</th>
+					</tr>
+					<tr class="shop-infos" is="my-tr" v-for="(itsp,indexshop) in item.goodsList" v-bind:itsp="itsp">
+						<th class="sp-info">
+							<div class="tit"> {{itsp.goodsName}}</div>
+						</th>
+					</tr>
+					<tr class="shop-splic">
+						<td colspan="5">
+							<div class="line"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/test/index.js"></script>
+</html>

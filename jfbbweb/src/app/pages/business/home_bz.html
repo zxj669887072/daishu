@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>账户资料</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="rightbox">
+						<div class="box">
+							<div class="sumbox padding20">
+								<div class="left">
+									<dl>
+										<dt><a href="#" @click="chooseType('1')"><img src="../../../images/hom_01.png" /></a></dt>
+										<dd>全部订单<strong class="org"> {{allOrdersNum}}</strong></dd>
+									</dl>
+									<dl>
+										<dt><a href="#" @click="chooseType('3')"><img src="../../../images/hom_03.png" /></a></dt>
+										<dd>待发货<strong class="org"> {{noSendOutNum}}</strong></dd>
+									</dl>
+									<dl>
+										<dt><a href="#" @click="chooseType('8')"><img src="../../../images/hom_04.png" /></a></dt>
+										<dd>待回复<strong class="org"> {{noEvalNum}}</strong></dd>
+									</dl>
+								</div>
+								<ul class="right" style="width:350px;">
+									<li>现金余额 <img src="../../../images/ico_03.png" width="15" height="15" /></li>
+									<li><span class="f22 org" :title="cashBalance">{{Number(cashBalance).toFixed(2)}}</span>元
+										<a href="recharge_bz.html"><input type="submit" name="button" id="button" value="充值" class="btn" style="color:#ff4800;" /></a>
+										<input type="submit" name="button" @click="goWithdrawal('cash')" id="button" value="提现" class="btn blue" style="color:#087cd7" />
+									</li>
+								</ul>
+							</div>
+							<div class="padding20" style="padding-top:0px;">
+								<div class="f_bottom10" style="border-top:1px solid #ddd;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table3">
+										<tr>
+											<td width="45%" colspan="5"><strong>订单详情</strong></td>
+										</tr>
+									</table>
+								</div>
+								<div class="f_bottom10">
+									<template v-if="totalCount > 0">
+										<lf-list :list="orderlist" v-on:increment="fulshList"></lf-list>
+									</template>
+									<template v-else>
+										<tr>
+											<td colspan="5" align="center">
+												<table border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+														<td class="c-9 f14">暂无记录</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</template>
+									<template v-if="totalCount > 0">
+										<div class="page">
+											<el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+											</el-pagination>
+										</div>
+									</template>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<lf-footer></lf-footer>
+		</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/home_bz.js"></script>
+
+</html>

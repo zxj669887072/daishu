@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Element UI</title>
+		<link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.min.css" />
+		<style>
+			.el-carousel__item h3 {
+			    color: #475669;
+			    font-size: 18px;
+			    opacity: 0.75;
+			    line-height: 300px;
+			    margin: 0;
+			  }
+			   .bg-purple-dark {
+				    background: #99a9bf;
+				  }
+			  .el-carousel__item:nth-child(2n) {
+			    background-color: #99a9bf;
+			  }
+			  
+			  .el-carousel__item:nth-child(2n+1) {
+			    background-color: #d3dce6;
+			  }
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<el-card class="box-card">
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">按钮</span>
+			  	</div>
+			  	<el-button>默认按钮</el-button>
+				<el-button type="primary">主要按钮</el-button>
+				<el-button type="text" @click="testtip">文字按钮</el-button>
+			</el-card>
+			<el-card class="box-card">
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">loading</span>
+			  	</div>
+			  	<el-button
+				    type="primary"
+				    @click="openFullScreen"
+				    v-loading.fullscreen.lock="fullscreenLoading">
+				    显示整页加载，3 秒后消失
+				  </el-button>
+				  
+			</el-card>
+		 
+			<el-card class="box-card"
+				v-loading="loading2"
+				element-loading-text="拼命加载中"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">loading</span>
+			  	</div>
+			  	<div>loading 部分覆盖</div>
+			</el-card>
+			<br />
+			<br />
+			<el-card class="box-card">
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">走马灯</span>
+			  	</div>
+			  	<el-carousel height="150px">
+			      <el-carousel-item v-for="item in 4">
+			        <h3>{{ item }}</h3>
+			      </el-carousel-item>
+			    </el-carousel>
+			</el-card>
+			
+			<el-card class="box-card">
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">steps</span>
+			  	</div>
+			  	<el-steps :space="100" :active="1" finish-status="success">
+				  <el-step title="已完成"></el-step>
+				  <el-step title="进行中"></el-step>
+				  <el-step title="步骤 3"></el-step>
+				</el-steps>
+			</el-card>
+			<el-card class="box-card"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">steps</span>
+			  	</div>
+			  	<el-table
+			      :data="tableData"
+			      style="width: 100%">
+			      <el-table-column
+			        prop="date"
+			        label="日期"
+			        width="180">
+			      </el-table-column>
+			      <el-table-column
+			        prop="name"
+			        label="姓名"
+			        width="180">
+			      </el-table-column>
+			      <el-table-column
+			        prop="address"
+			        label="地址">
+			      </el-table-column>
+			    </el-table>
+			    <el-pagination
+			      layout="prev, pager, next"
+			      :total="1000" @size-change="sizechange" @current-change="currentchange">
+			    </el-pagination>
+			</el-card>
+			
+			
+			<el-card class="box-card"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">栅格布局</span>
+			  	</div>
+			  	<el-row :gutter="10">
+				  <el-col :xs="8" :sm="6" :md="4" :lg="3">1</el-col>
+				  <el-col :xs="4" :sm="6" :md="8" :lg="9">2</el-col>
+				  <el-col :xs="4" :sm="6" :md="8" :lg="9">3</el-col>
+				  <el-col :xs="8" :sm="6" :md="4" :lg="3">4</el-col>
+				</el-row>
+			</el-card>
+
+			<template>
+	          <el-radio class="radio" v-model="radio" label="1">全部</el-radio>
+	          <el-radio class="radio" v-model="radio" label="2">图片（115）</el-radio>
+	        </template>
+	        
+	        <el-card class="box-card"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">表单</span>
+			  	</div>
+			  	<el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+				  <el-form-item label="密码" prop="pass">
+				    <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+				  </el-form-item>
+				  <el-form-item label="确认密码" prop="checkPass">
+				    <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+				  </el-form-item>
+				  <el-form-item label="年龄" prop="age">
+				    <el-input v-model.number="ruleForm2.age"></el-input>
+				  </el-form-item>
+				  <el-form-item>
+				    <el-button type="primary" @click="submitForm2('ruleForm2')">验证码</el-button>
+				    <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+				    <el-button @click="resetForm('ruleForm2')">重置</el-button>
+				  </el-form-item>
+				</el-form>
+			</el-card>
+ 	        <el-card class="box-card"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">表单2</span>
+			  	</div>
+			  	<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+				  <el-form-item label="活动名称" prop="name">
+				    <el-input v-model="ruleForm.name"></el-input>
+				  </el-form-item>
+				  <el-form-item label="活动区域" prop="region">
+				    <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+				      <el-option label="区域一" value="shanghai"></el-option>
+				      <el-option label="区域二" value="beijing"></el-option>
+				    </el-select>
+				  </el-form-item>
+				  <el-form-item label="活动时间" required>
+				    <el-col :span="11">
+				      <el-form-item prop="date1">
+				        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+				      </el-form-item>
+				    </el-col>
+				    <el-col class="line" :span="2">-</el-col>
+				    <el-col :span="11">
+				      <el-form-item prop="date2">
+				        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
+				      </el-form-item>
+				    </el-col>
+				  </el-form-item>
+				  <el-form-item label="即时配送" prop="delivery">
+				    <el-switch on-text="" off-text="" v-model="ruleForm.delivery"></el-switch>
+				  </el-form-item>
+				  <el-form-item label="活动性质" prop="type">
+				    <el-checkbox-group v-model="ruleForm.type">
+				      <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
+				      <el-checkbox label="地推活动" name="type"></el-checkbox>
+				      <el-checkbox label="线下主题活动" name="type"></el-checkbox>
+				      <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+				    </el-checkbox-group>
+				  </el-form-item>
+				  <el-form-item label="特殊资源" prop="resource">
+				    <el-radio-group v-model="ruleForm.resource">
+				      <el-radio label="线上品牌商赞助"></el-radio>
+				      <el-radio label="线下场地免费"></el-radio>
+				    </el-radio-group>
+				  </el-form-item>
+				  <el-form-item label="活动形式" prop="desc">
+				    <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+				  </el-form-item>
+				  <el-form-item>
+				    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+				    <el-button @click="resetForm('ruleForm')">重置</el-button>
+				  </el-form-item>
+				</el-form>
+			</el-card>
+			
+			<el-card class="box-card"
+				>
+			  	<div slot="header" class="clearfix">
+			    	<span style="line-height: 36px;">级联</span>
+			    	<div class="block">
+					  <span class="demonstration">默认 click 触发子菜单</span>
+					  <el-cascader
+					    :options="options"
+					    v-model="selectedOptions"
+					    @change="handleChange">
+					  </el-cascader>
+					</div>
+					<div class="block">
+					  <span class="demonstration">hover 触发子菜单</span>
+					  <el-cascader
+					    expand-trigger="hover"
+					    :options="options"
+					    v-model="selectedOptions2"
+					    @change="handleChange">
+					  </el-cascader>
+					</div>
+			  	</div>
+			</el-card>
+			 <el-upload
+			  action="https://jsonplaceholder.typicode.com/posts/"
+			  list-type="picture-card"
+			  :on-preview="handlePictureCardPreview"
+			  :on-remove="handleRemove">
+			  <i class="el-icon-plus"></i>
+			</el-upload>
+			<el-dialog v-model="dialogVisible" size="tiny">
+			  <img width="100%" :src="dialogImageUrl" alt="">
+			</el-dialog>
+			<button @click="cte=1">1</button>
+			<button @click="cte=2">1</button>
+			<button @click="cte=3">1</button>
+			
+			<div v-if="cte==1">1</div>
+			<div v-if="cte==2">2</div>
+			<div v-if="cte==3">3</div>
+			
+			
+ 		</div>
+	</body>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/test/test1.js"></script>
+</html>

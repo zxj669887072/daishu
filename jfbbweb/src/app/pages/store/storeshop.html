@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>店铺中心</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+	<link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.weixin .tc_02{ display:none;width:150px; position:absolute; z-index:80; left:-30px; top:38px;border:1px solid #e5e5e5; padding:5px 5px 0px 5px; background:#FFF;-webkit-box-shadow: 1px 2px 4px rgba(0,0,0,.1);
+			text-align: center;
+		}
+		.content{
+			min-height: 353px;
+		}
+		.content:after{
+			display: table;
+			content: ' ';
+			clear: both;
+		}
+		.storeshop{
+			background-color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<lf-header></lf-header>
+		<div class="dianpu_header">
+			<div class="w1000 storeshop">
+				<div class="dianpu_logo" style="text-align: center;"><a href="/app/pages/goods.html"><img :src="storeInfo.logo" style="width: 72px;height: 72px;"></a></div>
+				<div class="left">
+					<dl>
+						<dt>
+							<div class="name"><span class="f16"><strong>{{storeInfo.shopName}}</strong></span><div class="imgbox"><img src="../../../images/dianpu_ico01.jpg"/>
+								<div class="ico"></div>
+								<div class="tc_01">
+									<ul>
+										<li class="f14">店铺信息</li>
+										<li class="c-9">门  牌 号：<strong class="org2">{{storeInfo.houseNumber}}</strong></li>
+										<li  class="c-9">客服电话：{{storeInfo.servePhone}}</li>
+										<li  class="c-9">营业时间：{{storeInfo.businessTime}}</li>
+										<li  class="c-9">店铺地址：<span class="right">{{storeInfo.address}}</span></li>
+									</ul>
+									<div class="m_top10">
+										<a href="javaScript:void(0)" @click="followStore" class="btn org">{{hasFollowStore ? '取消关注' : '关注店铺'}}</a>
+										<!--<a href="#"><img src="../../../images/dianpu_44.jpg" /> </a>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="f14"><span class="c-9"><strong>门牌号：</strong></span><span class="red">{{storeInfo.houseNumber}}</span></div>
+					</dt>
+					<dd>
+						<div class=" c-9">手机逛</div>
+						<div class="weixin"><img src="../../../images/dianpu_ico02.jpg" />
+							<div class="ico"></div>
+							<div class="tc_02" style="align-items: center;">
+								<img :src="storeInfo.qrCodeUrl" width="150" height="150"  />
+								<span style="position:relative;top:-18px;">扫一扫手机逛起来</span>
+							</div>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="search2" style="float:right">
+				<dl>
+					<dt><input name="" type="text" v-model="searchStr" class="text c-9" placeholder="请输入本店商品名" /></dt>
+					<dd><input name="" type="button" value="" checked="checked" class="btn" @click="doSearch"/></dl>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="w1000">
+			<!-- <div class="dianpu_qq"><img src="../../../images/dianpu_kefu.png" @click="onlineSale()" /></div> -->
+<!-- 				<div class="dianpu_nav">
+					<ul>
+						<li v-for="(structure,key) in structureList">
+							<a :id="'a-'+structure.id" :class="{hover:key == flag}" :href="'#c-'+structure.id" target="_self">{{structure.groupName}}</a>
+						</li>
+					</ul>
+				</div> -->
+			<div class="dianpu_banner">
+				<template>
+					<el-carousel  height="461px ">
+						<el-carousel-item v-for="advert in advertList">
+							<!-- <div class="box-img"> <img :src="advert.adPic" alt="" @click="go(advert.advertUrl)" border="0"/></div> -->
+							<div class="box-img"> <img style="cursor:pointer;" :src="advert.adPic" alt="" @click="goDetail(advert.goodsId)" border="0"/></div>
+						</el-carousel-item>
+					</el-carousel>
+				</template>
+			</div>
+			<template v-for="structure in structureList">
+				<div class="content" v-if=" structure.goodsList.length>0 ">
+					<div class="dianpu_bt" :id="'c-'+structure.id">
+						<div class="left f24">{{structure.groupName}}</div>
+						<div class="right">
+							<a href="javascript:void(0);" @click="goMore(structure.id, structure.groupName)" target="_blank">更多>></a>
+						</div>
+					</div>
+					<div class="dianpu_productbox">
+						<div class="dianpu_product" v-for="goods in structure.goodsList">
+							<dl>
+								<dt><a href="javascript:void(0);" @click="goDetail(goods.id)"><img class="img-show" :src="goods.picUrl" width="136" height="136"></a></dt>
+								<dd>
+									<div class="f14">
+										<a href="javascript:void(0);" @click="goDetail(goods.id)" :title=goods.goodsName>
+											<div style="overflow: hidden;height:40px;">{{goods.goodsName}}</div>												
+										</a>
+									</div>
+									<!--<div class="c-9">炫彩来袭</div>-->
+									<div class="org2">¥{{goods.price}}</div>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</template>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+		<script src='//kefu.easemob.com/webim/easemob.js?tenantId=41169&hide=false&sat=false' async='async'></script>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/store/storeshop.js"></script>
+	</body>
+</html>

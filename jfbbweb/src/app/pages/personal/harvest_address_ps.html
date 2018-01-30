@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的钱包</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+    <script>
+    <!--
+    /*鼠标移上去切换*/
+    function settab_connet(name, cursel, n) {
+        for (i = 1; i <= n; i++) {
+            var menu = document.getElementById(name + i);
+            var con = document.getElementById("con_" + name + "_" + i);
+            menu.className = i == cursel ? "hover" : "";
+            con.style.display = i == cursel ? "block" : "none";
+        }
+    }
+    //-->
+    </script>
+</head>
+<style type="text/css">
+.Password .right .bnt-org span {
+    line-height: 20px;
+    float: none;
+}
+
+.Password .right .el-checkbox span {
+    line-height: 20px;
+}
+
+.el-form-item__content .el-cascader .el-input__inner {
+    margin-bottom: 0px;
+}
+
+.c-9-input .el-form-item .el-form-item__content {
+    margin-left: 0px !important;
+}
+
+.div-span .el-form-item .el-form-item__content {
+    margin-left: 0px !important;
+}
+
+.el-form-item__content .el-cascader {
+    width: 60%;
+}
+
+.el-form-item__content .el-textarea {
+    width: 60%;
+}
+
+.el-form-item__content .el-textarea .el-textarea__inner {
+    height: 84px;
+}
+
+.Password .address li {
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.el-form-item__content .low {
+    width: 50%;
+}
+
+.el-form-item__content .low input {
+    margin-bottom: 0px;
+}
+
+.el-form-item__content .c-9 input {
+    margin-bottom: 0px;
+}
+
+.right {
+    text-align: left;
+}
+</style>
+
+<body>
+    <div id="app" v-cloak>
+        <lf-head></lf-head>
+        <div class="webbox w1000">
+            <lf-left></lf-left>
+            <div class="rightbox">
+                <div class="box">
+                    <ul class="switchbox">
+                        <li class="hover">收货地址</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="padding20" style="padding-bottom:0px;">
+                        <div class="hot">手机号码、电话号码选填一项，其余均必填项</div>
+                    </div>
+                    <div class="padding20">
+                        <ul class="switchbox">
+                            <li style="padding-left:0px; margin:0px;">新增收货地址</li>
+                        </ul>
+                    </div>
+                    <div class="Password">
+                        <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                            <ul class="address" :id="id">
+                                <li>
+                                    <el-form-item label="所在地址：" prop="addrs">
+                                        <el-cascader :options="cascaderOptions" v-model="selectedOptions" @change="handleChange" v-model="ruleForm2.addrs"></el-cascader>
+                                    </el-form-item>
+                                </li>
+                                <li>
+                                    <el-form-item label="详细地址：" prop="detailAddr">
+                                        <el-input type="textarea" placeholder="可以不用重复填写省市区，大于5个字，少于120个字" v-model="ruleForm2.detailAddr"></el-input>
+                                    </el-form-item>
+                                </li>
+                                <li>
+                                    <el-form-item label="收货人姓名：" prop="consigneeName">
+                                        <el-input class="low" v-model="ruleForm2.consigneeName"></el-input>
+                                    </el-form-item>
+                                </li>
+                                <li>
+                                    <el-form-item label="手机号码：" prop="mobilePhone">
+                                        <el-input class="low" placeholder="手机号码、电话号码至少填一项" v-model="ruleForm2.mobilePhone"></el-input>
+                                    </el-form-item>
+                                </li>
+                                <li>
+                                    <el-form-item label="电话号码：" prop="telephone">
+                                        <el-input class="low" placeholder="请输入电话号码" v-model="ruleForm2.telephone"></el-input>
+                                    </el-form-item>
+                                </li>
+                                <li>
+                                    <div class="left"></div>
+                                    <div class="right c-9-input div-span"><span>
+							 <el-form-item prop="defaultFlag">
+							    <el-checkbox-group v-model="ruleForm2.defaultFlag">
+							      		<el-checkbox label="保存为默认地址" name="defaultFlag" :checked="isDefault"></el-checkbox>
+							    </el-checkbox-group>
+							 </el-form-item>
+						</div>
+					</li>
+					<li>
+						<div class="left"></div>
+						<div class="right c-9-input div-span">
+							<span>
+								<el-form-item>
+			                             <el-button  class="bnt-org" type="primary"  @click="submitForm('ruleForm2')">确认保存</el-button>
+			                   </el-form-item>
+							</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </el-form>
+                    </div>
+                    <div class="padding20" style="padding-bottom:0px;">
+                        <div class="left"><strong>已经保存{{totalCount}}个收货地址，还可以添加{{totalCountOne}}个。</strong></div>
+                    </div>
+                    <div class="padding20">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class=" table">
+                            <tr>
+                                <td width="10%" bgcolor="#f2f2f2">收货人</td>
+                                <td width="25%" bgcolor="#f2f2f2">所在地区</td>
+                                <td width="25%" bgcolor="#f2f2f2">详细地址</td>
+                                <td width="15%" align="center" bgcolor="#f2f2f2">电话/手机</td>
+                                <td width="13%" align="center" bgcolor="#f2f2f2">操作</td>
+                                <td width="12%" align="center" bgcolor="#f2f2f2">&nbsp;</td>
+                            </tr>
+                            <tr v-for="lists in list">
+                                <td>{{lists.consigneeName}}</td>
+                                <td>{{lists.provinceName}}{{lists.cityName}}{{lists.districtName}}</td>
+                                <td>{{lists.detailAddr}}</td>
+                                <td align="center" v-if="lists.mobilePhone!==''">{{lists.mobilePhone}}</td>
+                                <td align="center" v-if="lists.telephone!==''">{{lists.telephone}}</td>
+                                <td align="center"><a @click="edtorAddress(lists.id)" class="blue">修改</a> | <a @click="removeAddress(lists.id)" class="blue">删除</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <lf-footer></lf-footer>
+    </div>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/pages/personal/harvest_address_ps.js"></script>
+</body>
+
+</html>

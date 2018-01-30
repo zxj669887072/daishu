@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>支付成功</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" /> 
+		<style>
+			.search2{
+	   			float: right;
+	   			margin-top: 34px;
+	   			position: relative;
+	   		}
+	   		.search2 input[type=text]{
+	   			font: 13.3333px Arial;
+	   			margin-left: -8px;
+	   			height: 28px;
+	   		}
+	   		.search2 input[type=button]{
+	   			position: absolute;
+	   			top: -1px;
+	   			right: -1px;
+	   			border-radius: 0;
+	   		}			
+			#tit-sure{
+				font-size: 16px;
+				position:relative ;
+				top: -15px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+	 	<div id="app" v-cloak>
+	 		<div class="bb_content">
+		 		<div class="bb-tit">
+		 			<a href=" /app/pages/goods.html" target="_self"  style=" text-decoration:underline"><img src="../../../images/logo.png"></a>
+		 			<span class="tit-sure" id="tit-sure">支付页</span>
+		 			<!-- <div class="search2 ">
+		 									<dl>
+		 										<dt><input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" /></dt>
+		 										<dd><input name="" type="button" value="" @click="doSearch()" class="btn" /></dl>
+		 									</dl>
+		 								</div> -->
+		 				<lf-search><lf-search>
+		 			<!-- <div class="sure-search">
+	 						<input type="text" name="" placeholder="请输入店铺或服务中心门牌号"> 
+		 				 <i class="fa fa-search"></i>   
+		 			</div> -->
+		 		</div>
+		 		<div class="config">
+		 			<div class="hint">
+		 				<i class="fa fa-check-circle"></i>
+		 				<div class="hint-hm fz_orange">
+		 						恭喜您，支付成功
+		 				</div>
+		 			</div> 
+		 			 <div class="text-align">
+		 			 <!--	<span class="btn info-org">订单付款码:
+		 			 		<font class="info-ids">84464154</font>
+		 			 	</span>-->
+		 			 </div>
+		 			 <div class="pay-info">
+		 			 		<div class="info-it text-align">
+		 			 			<!--<span class="pay-type">付款方式： <font class="">支付宝</font> </span>
+		 			 			<span class="pay-time">付款时间: <font class="">2017-8-5 12:50:63</font> </span>
+		 			 			<span class="pay-id">付款流水号： <font class="">16465467879761566567867</font> </span>-->
+		 			 		</div>
+		 			 		
+		 			 </div>
+
+		 		</div>
+		 	</div>
+	 	</div>
+	 	<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/shopping/buysuccess.js"></script>
+	</body>
+</html>

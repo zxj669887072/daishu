@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <title>帮助中心</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+       <link href="../../../css/app.min.css" rel="stylesheet" type="text/css" />
+       <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+       <link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+       <style>
+                    body{color:#333;}
+                    h4{margin: 10px 0;}
+                    .clearfix:after{content:'';display: block;clear:both;height: 0;}
+                    .clearfix{zoom:1;}
+                    .fooder dl{margin-right: 0;}
+                    .w1200{width:1200px;margin:0 auto;}
+                    .head{padding-bottom: 20px;}
+                    .head .rightbox a {float:right;}
+                    .index_box{padding-bottom: 70px;}
+                    .banner_menu ul li:hover {background-color: #f37e01}
+                    .search2{float:right;}
+                    /* .search2 dd .btn{position: relative;bottom:1px ;left:1px;} */
+                    .head .rightbox{float:left;width:270px;}
+                    .head .rightbox .shopRZ{background-color: #f37e01;color: #fff;}
+                    /* div{text-align: left;} */
+                    .main .titles{padding-left:15px;height: 74px;line-height: 73px;font-size: 14px; border-bottom: 1px solid #ddd;}
+                    .main .mainCon{height:initial;}
+                    .contentLeft{width:300px;/* height:900px; */padding:18px 15px 0;}
+                    .contentLeft  .conTop{height:53px;line-height: 53px;font-size: 18px;border-bottom: 1px solid #ddd;}
+                    .helpmsg{padding-top: 13px;cursor: pointer;}
+                    .el-tree .el-tree-node__content{height: 42px;line-height: 42px;}
+                    .el-tree .el-tree-node__label{font-size: 16px;}
+
+                    .main .contentRight{width:900px;/* height:900px; */padding:18px 15px 0;}
+                    .main .contentRight .msgTitle{height:53px;line-height: 53px;font-size: 18px;border-bottom: 1px solid #ddd;}
+                    .main .contentRight .msgContent{padding-top:17px;}
+                    .main .contentRight .msgContent p{line-height: 32px;font-size: 14px;color: #999;}
+                    .active{color:#f37e01;}
+       </style>
+</head>
+
+<body>
+<div id="app">
+       <lf-header></lf-header>
+             <div class="head">
+                   <div class="w1200 ">
+                          <div class="logo"><a href=" /app/index.html" target="_self"  style=" text-decoration:underline"><img src="../../../images/logo.png"  /></a></div>
+                          <ul class="rightbox">
+                                <a href="/app/pages/about/yyzx-about.html" target="_blank">运营中心招商</a><a href="/app/pages/about/sjrz.html" target="_blank" class="shopRZ">商家入驻</a>
+                         </ul>
+                         <lf-search><lf-search>
+                          <!-- <div class="search2">
+                                <dl>
+                                       <dt><input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" /></dt>
+                                       <dd><input name="" type="button" value="" @click="doSearch()" class="btn" /></dl>
+                                </dl>
+                          </div> -->
+                   </div>
+             </div>
+             <div class="main w1200" style="text-align: left;">
+                    <div class="titles" >
+                            首页 >> 袋鼠集市 >> 帮助中心
+                    </div>
+                    <div class="mainCon clearfix">
+                            <div class="contentLeft left">
+                                       <div class="conTop">
+                                                帮助中心
+                                       </div>
+                                       <div class="helpmsg">
+                                                  <el-tree id="helpMsg"  :data="helpMsg"  :props="defaultProps" ref="tree" node-key='id' accordion @node-click="handleNodeClick"  ></el-tree>
+                                      </div>
+                              </div>
+                              <div class="contentRight  right" style="background: #fff;">
+                                      <div class="message" v-if="introduce">
+                                              <div class="msgTitle">关于蓝山</div>
+                                              <div class="msgContent">
+                                                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;让实体商家没有难做的生意！</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;深圳蓝山集势网络科技有限公司（简称：蓝山集势）成立于2016年，是中国成长最快、最受瞩目的共享经济领域的新型电子商务平台之一，是集通用积分、分享消费、新零售商城于一体“互联网+”服务提供商。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;核心成员有实业家、互联网创业者与留学海归，成立至今已和众多知名商家和品牌建立战略合作关系，成为中国最佳的异业联盟、通用积分平台。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;蓝山集势总部位于深圳，将在全国每一个省设立分支机构，建立完善的全国线下+线上的消费积分、分享消费体系。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="management">
+                                              <div class="msgTitle">经营理念</div>
+                                              <div class="msgContent">
+                                                        <p>让实体商家没有难做的生意！<br>
+                                                        袋鼠集市于商家：更赚钱，帮助实体商家获得更多新客户、和巩固回头客；<br>
+                                                        袋鼠集市于顾客：更省钱，顾客通过消费获得积分、通过分享喜爱的商品获得奖励。</p>
+                                                        <div style="text-align: center;margin-top: 20px;"><img src="../../../images/abouts_02.jpg" alt="" ></div>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="recruit">
+                                              <div class="msgTitle">招贤纳士</div>
+                                              <div class="msgContent">
+                                                        <h4>web前端工程师</h4>
+                                                        <p>1. 有PC端和移动端web开发经验；<br>
+                                                              2. 负责页面从设计稿到静态页面的转换；<br>
+                                                              3. 运用HTML5、CSS3等前沿技术，快速页面重构；<br>
+                                                              4. 熟练使用html、css、javascript等前端技术；<br>
+                                                              5.熟练使用常用javascript库和框架(如jQuery、AngularJS、seajs、backbone等)；<br>
+                                                              6. 有使用vue.js或nodejs开发经验优先；<br>
+                                                              7. 对web前端性能优化及web常见漏洞有一定理解和相关实践优先；<br>
+                                                              8. 具备良好的沟通能力和团队协作精神。</p>
+                                                        <div style="text-align: center;margin-top: 20px;"><img src="../../../images/abouts_03.jpg" alt="" ></div>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="aboutMarket">
+                                              <div class="msgTitle">关于袋鼠集市</div>
+                                              <div class="msgContent">
+                                                        <h4 style="text-align: center;">关于袋鼠集市</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市是深圳蓝山集势网络科技有限公司推出的新零售平台，独创“分享消费+新零售商城+通用积分”的商业模式，切入零售升级时代风口的大机遇，积极响应国家“去产能、去库存、去杠杆、降成本、补短板”为重点的供给侧结构性改革，以助力企业及实体店实现转型升级，打造全新的零售模式，掀起更具价值的消费革命。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;对商家而言：更赚钱，是帮助实体商家获得更多新客户、和巩固回头客；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;对顾客而言：更省钱，通过消费获得积分赠送，通过分享商品获得利润。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市新零售平台使传统零售实体拥有了线上线下的多销售渠道，帮助同城商家与消费者之间建立了更便捷实惠的消费通道。平台赠送积分的形式让利于会员，积分可以兑换好礼或换成余额下次消费，会员并可参与分享经济，分享所爱，获得奖金，实现老客户积极推荐新客户，形成销售的裂变效应。袋鼠集市平台帮助实体商家“互联网+”，拥抱互联网转型升级，迅速扩大自身优势。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市不断开拓更多的企业和实体商家形成异业联盟，携手广大消费者共同打造一个共享经济领域的新零售生态体系，让实体商家没有难做的生意，让消费者购物更实惠、便捷！</p>
+                                                        <div style="text-align: center;margin-top: 20px;"><img src="../../../images/abouts_01.jpg" alt="" style="width:100%"></div>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;据统计，在2015年全年中国社会消费品零售总额30.1万亿元中，限额以上单位消费品零售额14.26万亿元，增长7.8%。其中线上销售4.142万亿，线下交易体量10.118万亿。“2016年双11”当天全网销售额最终为1770.4亿元。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市新零售平台一旦形成规模效应，将会在线下市场构筑核心优势的护城河，成为中国下一个千亿级平台。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="integral">
+                                              <div class="msgTitle">通用积分</div>
+                                              <div class="msgContent">
+                                                        <h4>什么是通用积分？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;通用积分（International General integral）简称IGI，是指众多合作商家使用同一种积分对会员进行奖励。会员在积分合作商家消费时能够将获得的积分奖励进行合并累计，积分积累起来，到一定额度时可以兑换礼品、抵扣消费金额。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;通用积分业务不是一个独立的产品，它是一种创新的业务模式，更是以异业联盟形式出现的产业价值链。通用积分业务市场容量与当地消费水平和经济增长潜力有着很强的相关性。</p>
+                                                        <h4 >通用积分的意义是什么？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;【袋鼠集市电商平台】使传统零售实体拥有了线上线下的多销售渠道，帮助同城商家与消费者之间建立了更便捷实惠的消费通道。商家以积分形式让利于会员，会员所获积分可以兑换好礼或换成余额下次消费，所有袋鼠集市电商平台的合作商家产生的积分都是通用的，形成跨行业、跨领域、跨区域通用积分。会员亦可以申请成为商家的分销商，通过推荐新会员购物获取佣金及积分，实现老客户积极推荐新客户，形成销售的裂变效应。通用积分平台帮助实体商家互联网+，拥抱互联网转型升级，迅速扩大自身优势，在同行业竞争中拥有优势。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="understandInt">
+                                              <div class="msgTitle">了解积分</div>
+                                              <div class="msgContent">
+                                                        <!-- <div style="text-align: center;"><img src="../../../images/understand_01.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/understand_02.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/understand_03.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/understand_04.jpg" alt="" ></div>
+                                                        <div style="text-align: center;width:100%;"><img src="../../../images/banner_understand.jpg" alt="" style="width:100%"></div> -->  <h4>什么是通用积分？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;通用积分（International General integral）简称IGI，是指众多合作商家使用同一种积分对会员进行奖励。会员在积分合作商家消费时能够将获得的积分奖励进行合并累计，积分积累起来，到一定额度时可以兑换礼品、抵扣消费金额。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;通用积分业务不是一个独立的产品，它是一种创新的业务模式，更是以异业联盟形式出现的产业价值链。通用积分业务市场容量与当地消费水平和经济增长潜力有着很强的相关性。</p>
+                                                        <h4 >通用积分的意义是什么？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;【袋鼠集市电商平台】使传统零售实体拥有了线上线下的多销售渠道，帮助同城商家与消费者之间建立了更便捷实惠的消费通道。商家以积分形式让利于会员，会员所获积分可以兑换好礼或换成余额下次消费，所有袋鼠集市电商平台的合作商家产生的积分都是通用的，形成跨行业、跨领域、跨区域通用积分。会员亦可以申请成为商家的分销商，通过推荐新会员购物获取佣金及积分，实现老客户积极推荐新客户，形成销售的裂变效应。通用积分平台帮助实体商家互联网+，拥抱互联网转型升级，迅速扩大自身优势，在同行业竞争中拥有优势。</p>
+                                                        <h4>如何获得积分？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;会员消费获赠积分；分销商推广赚积分；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;会员参与商家营销活动获赠积分；会员参与平台活动获赠积分。</p>
+                                                        <h4 >如何花积分？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;充话费、充加油卡、购买火车票、购买电影票等；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;在袋鼠集市平台积分商城兑换商品；下次消费直接抵扣现金。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="intRule">
+                                              <div class="msgTitle">积分规则</div>
+                                              <div class="msgContent">
+                                                        <!-- <div style="text-align: center;"><img src="../../../images/banner_how_01.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/banner_how_02.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/banner_how.jpg" alt=""  style="width:100%"></div> -->
+                                                        <h4>袋鼠集市积分规则</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;1、消费赠送积分为消费额的50%。其中消费者占积分赠送总数的80%，商家占积分赠送总数的20%。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;2、消费者满400积分、商家满100积分即可触发积分赠送。翌日袋鼠集市平台会以当日积分余额的1/1000开始赠送，送完为止；未达到赠送最低数时，该笔消费赠送积分将被累计，直到触发开始赠送的条件。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;3、1积分可兑换1袋鼠币，1袋鼠币等值为1元消费。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;4、消费者与商家凡是使用积分购物时，积分消费部分不再存在积分赠送。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;国家法定节假日（不含普通周末）停止积分发放，直到下个工作日恢复正常。</p>
+                                                        <h4 >举例1：</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;消费者A在袋鼠集市平台商家B商铺消费2000元，袋鼠集市平台送出1000积分。其中消费者A获得800积分，商家B获得200积分。该笔交易触发积分赠送机制，翌日起，A可获得800/1000=0.8积分，B可获得200/1000=0.2积分，第三日，A可获得(800-0.8)/1000=0.7992积分，B可获得(200-0.2)/1000=0.1998积分，以此类推。</p>
+                                                        <h4>举例2：</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;消费者C在袋鼠集市平台商家D商铺消费800元，袋鼠集市平台送出400积分。其中消费者C获得320积分，商家D获得80积分。该笔交易未触发积分赠送机制，消费者C还需要80积分来触发积分赠送，因此消费者C可在袋鼠集市平台任意商家消费满200元（获赠80积分），即可触发积分赠送。商家D则需要20积分来触发积分赠送，因此商家D需要售出满200元商品后方可触发积分赠送。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="distribution">
+                                              <div class="msgTitle">会员分享消费</div>
+                                              <div class="msgContent">
+                                                        <!-- <div style="text-align: center;"><img src="../../../images/banner_distributor.jpg" alt="" style="width:100%" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/distribution_01.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/distribution_02.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/distribution_03.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/distribution_04.jpg" alt="" ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/distribution_05.jpg" alt="" ></div> -->
+                                                        <h4>会员分享消费（您要购物或有创业梦想的人）</h4>
+                                                        <div style="text-align: center;"><img src="../../../images/share-01.png" alt="" ></div>
+                                                        <h4 >购物消费袋鼠集市赠送您积分</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;于消费者而言，通过消费获赠积分，1积分可消费价值1元商品。</p>
+                                                        <h4>如何获得积分</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;会员消费获赠积分；分销商推广赚积分；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;会员参与商家营销活动获赠积分；会员参与平台活动获赠积分。</p>
+                                                        <h4>积分的用途</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;充话费、充加油卡、购买火车票、购买电影票等；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;在袋鼠集市平台积分商城兑换商品；下次消费直接抵扣现金。</p>
+                                                        <h4>分享消费体系</h4>
+                                                        <div style="text-align: center;"><img src="../../../images/share-02.jpg" alt="" style="width:100%"></div>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每个消费者都可以代理袋鼠集市任何一家商户，或分享袋鼠集市网上商城的优质商品，您分享的商品成交后，您将获得利润。袋鼠集市为您提供零成本的开网店平台，每个人都可以利用袋鼠集市分享平台轻松创业——在移动互联网时代，越来越多的人通过朋友圈做微商，而袋鼠集市的分享平台为所有会员提供了创业，在袋鼠集市分享平台上，没有货源、资金、仓储、发货、售后等后顾之忧，低门槛代理任何一家或多家实体门店的商品，创业变得简单轻松。袋鼠集市一站式个人零售服务解决方案，开启了移动互联网时代电商发展的新模式。</p>
+                                                        <div style="text-align: center;"><img src="../../../images/share-03.png" alt="" ></div>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;平台保障正品、无须库存、客服统一售后、平台提供传播资料，您只需分享到朋友圈、平台提供统一培训。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;可以邀请朋友成为袋鼠集市分享者也可开启袋鼠店铺，您邀请的分享者的利润您也有一份哦。</p>
+                                                        <h4>袋鼠集市给分享会员的帮助</h4>
+                                                        <p><b style="color:#333;">一、优质，</b>袋鼠集市将拥有全球各国无数供应商，帮你挑选世界上备受广大客户认可的优质商品；</p>
+                                                        <p><b style="color:#333;">二、正品，</b>袋鼠集市直接从货源地供应商采购，多重监督机制，解决假货泛滥的痛点！</p>
+                                                        <p><b style="color:#333;">三、低价，</b>袋鼠集市直接从货源厂商采购，依靠知名品牌的全球影响力以及强大的议价能力，给你更好更便宜的商品。</p>
+                                                        <p><b style="color:#333;">四、速度，</b>袋鼠集市拥有强大供应链，店主销售的每件商品，都由平台代发货，顶级物流公司保障商品及时安全送达。</p>
+                                                        <p><b style="color:#333;">五、营销，</b>袋鼠集市有顶级的美工和文案团队，店主只用复制粘贴，一键转发分享，简单便捷！</p>
+                                                        <p><b style="color:#333;">六、客服，</b>袋鼠集市为店主提供专业客服，解决售后问题，不用店主操心。</p>
+                                                        <p><b style="color:#333;">七、后台，</b>袋鼠集市为店主打造个性化全功能运营后台，你不用记帐算帐，系统自动帮你锁定顾客，跟进，引导销售，你的财务情况、客户情况，查阅系统，一目了然。</p>
+                                                        <p><b style="color:#333;">八、培训，</b>袋鼠集市拥有完善的培训体系，在线数字化培训，多样培训活动，帮助各位袋鼠店主快速提升社交零售技能和电商运营能力，手把手教你成交订单！</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="settled">
+                                              <div class="msgTitle">商家入驻</div>
+                                              <div class="msgContent">
+                                                        <h4>企业/商家入驻（您是企业主或有实体门店）</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市给您的商铺带来更高的销售额！</p>
+                                                        <div style="text-align: center;"><img src="../../../images/merchantsSettled-01.png" alt="" ></div>
+                                                        <h4>1.入驻标准</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市新零售平台坚持品牌正品，拒绝一切假冒伪劣产品，全力打造让消费者满意的购物商城！</p>
+                                                        <p>（1）商家企业资质要求（资质齐全，所有证件均需在有效期内；可营业执照、税务登记证、组织机构代码“三证合一”，且在有效期内）</p>
+                                                        <div style="text-align: center;"><img src="../../../images/merchantsSettled-02.jpg" alt="" ></div>
+                                                        <p>（2）特殊产品资质审核</p>
+                                                        <p>特殊商品需商家提供以下资料：</p>
+                                                        <div style="text-align: center;"><img src="../../../images/merchantsSettled-03.jpg" alt="" ></div>
+                                                        <ul style="list-style-type:disc !important;">
+                                                          <li>1、代理商需要提供的授权资质：需要确保授权链条的完整，即申请入驻商家拿到的授权能够逐级逆推回品牌商；</li>
+                                                          <li>2、发票：所有入驻的企业必须给消费者提供正规普票，发票盖章的公司名称必须与袋鼠集市合作公司名称一致；</li>
+                                                          <li>3、请务必保证入驻前后提供的相关资质的真实有效性（一旦发现虚假资质，该公司将被视为非诚信商家，袋鼠集市将不再与之合作）；</li>
+                                                          <li>4、袋鼠集市新零售平台实行商家优胜劣汰机制（一旦发现报价虚高、发货不及时、售后服务不到位、产品不合格等商家，我们将即刻下架其商品，并终止与其合作关系）。</li>
+                                                        </ul>
+                                                        <h4>2.入驻申请</h4>
+                                                        <div style="text-align: center;"><img src="../../../images/merchantsSettled-04.jpg" alt="" ></div>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="user">
+                                              <div class="msgTitle">用户</div>
+                                              <div class="msgContent">
+                                                        <h4>袋鼠集市用户</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;现代经济社会，可以说任何行业都是服务行业，都是为消费者服务的。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;对于袋鼠集市的用户而言，在袋鼠集市购物更省钱，能够通过消费获得积分，通过分享商品获得利润。</p>
+                                                        <h4 >如何成为袋鼠集市用户？</h4>
+                                                        <p>第一步：请输入网址：http://www.kangaromall.com，进入袋鼠集市网上商城，点击左上角“免费注册”；</p>
+                                                        <div style="text-align: center;"><img src="../../../images/userRegistration1.jpg" alt=""  ></div>
+                                                        <p>第二步：按照系统提示，填写您的手机号码，点击按钮“发送验证码”，正确输入您收到的验证码；</p>
+                                                        <div style="text-align: center;"><img src="../../../images/userRegistration2.png" alt=""  ></div>
+                                                        <p>第三步：设置一个您易于记住的密码并再次输入以便确认，点击《袋鼠集市用户注册协议》并认真阅读，如您同意协议内容，请勾选“我已阅读并同意《袋鼠集市用户注册协议》”前的灰色小框，点击“立即注册”按钮，即可成功注册成为袋鼠集市网上商城会员。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="vip">
+                                              <div class="msgTitle">分销会员</div>
+                                              <div class="msgContent">
+                                                        <h4>分销会员</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;TIPS（小贴士）：共享经济，一般是指以获得一定报酬为主要目的，基于陌生人且存在物品使用权暂时转移的一种新的经济模式。其本质是整合线下的闲散物品、劳动力、教育医疗资源。有的也说共享经济是人们公平享有社会资源，各自以不同的方式付出和受益，共同获得经济红利。此种共享更多的是通过互联网作为媒介来实现的。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;共享经济牵扯到三大主体，即商品或服务的需求方、供给方和共享经济平台。共享经济平台作为连接供需双方的纽带，通过移动LBS应用、动态算法与定价、双方互评体系等一系列机制的建立，使得供给与需求方通过共享经济平台进行交易。共享经济现象却是在最近几年流行的，其主要特点是，包括一个由第三方创建的、以信息技术为基础的市场平台。这个第三方可以是商业机构、组织或者政府。个体借助这些平台，交换闲置物品，分享自己的知识、经验，或者向企业、某个创新项目筹集资金。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市的分销会员，其本质是利用袋鼠集市的平台，扮演了共享经济的信息提供者的角色。分销会员既是消费者，也是信息的提供者。因此分销会员既是袋鼠集市的最大受惠者，也同时能够通过共享信息来获取适当的回报。</p>
+                                                        <h4>成为分销会员需要满足什么条件？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;用户只需在袋鼠集市产生任意一笔消费，即成为分销会员。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="shop">
+                                              <div class="msgTitle">商户</div>
+                                              <div class="msgContent">
+                                                        <h4>袋鼠集市商户</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市让商户更赚钱，帮助实体商家获得更多新客户、巩固回头客。</p>
+                                                        <h4 >如何成为袋鼠集市商户？</h4>
+                                                        <p>一、提交资料<br>
+                                                          填写基本资料、营业资料、身份资料并上传相应的证件扫描件。</p>
+                                                        <div style="text-align: center;"><img src="../../../images/merchant1.png" alt=""  ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/merchant2.png" alt=""  ></div>
+                                                        <div style="text-align: center;"><img src="../../../images/merchant3.png" alt=""  ></div>
+                                                        <p>二、查看《袋鼠集市合作协议》后，同意协议条款并点击“同意协议并提交资料”按钮。</p>
+                                                        <div style="text-align: center;"><img src="../../../images/merchant4.png" alt=""  ></div>
+                                                        <p>三、等待运营中心回访并耐性等待审核。待所有资料审核无误后，即可为您开通网店。</p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="operate">
+                                              <div class="msgTitle">运营中心</div>
+                                              <div class="msgContent">
+                                                        <h4 style="text-align: center;">邀请您分享千亿的蛋糕，看看袋鼠集市为您具体带来了什么？</h4>
+                                                        <h4>&nbsp; </h4>
+                                                        <!--<h4>袋鼠集市运营中心</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市运营中心，是袋鼠集市总部在各省、市、县设立的集服务和管理于一体的加盟分支机构。袋鼠集市在各省设立省级运营中心，负责所辖区域内的日常运营服务工作。在各市、县设立多个A级运营中心，A级运营中心凭借自身区域优势，负责招商、运营服务等工作。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每个城市可以有多个运营中心；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;管辖区域内招商经理的招募与管理、培训招商经理、商户运营工作、向总部反馈市场信息、活动策划；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;利益：平台分配该省所有收入的13%-15%；初期额外补贴8%-10%，不超过23%</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;招募商户、商家日常运营辅导、发展交易额</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;运营中心需要的基本岗位：招商经理（招募商家）、运营经理（确保商家交易）、培训经理（招商培训、系统培训、商户培训）</p>
+                                                        <h4>运营中心的职责和义务</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市在各省设立省级运营中心。省级运营中心并非均设立在省会（点此查看各省级运营中心及其联系方式）。在各县市设立多个县市级运营中心。各级运营中心管辖区域内招商经理的招募与管理、培训招商经理、商户运营工作、向总部反馈市场信息、活动策划。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;运营中心有权在所辖区域内招募商户、商家日常运营辅导、发展交易额。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;运营中心需要的基本岗位：招商经理（招募商家）、运营经理（确保商家交易）、培训经理（招商培训、系统培训、商户培训）。</p>
+                                                        <h4>运营中心和袋鼠集市平台总部的关系</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;合作共赢关系。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市的服务理念，是将实体商家“互联网+”的愿望与消费者积分赠送利机制相结合。通过袋鼠集市，为实体商家提供的网上商城及后台管理的saas服务；利用消费者同属性、相关性的购物需求，给予消费者跨行业、跨商家的积分赠送与使用。袋鼠集市通过大数据分析，独创设计的积分赠送与分享消费机制，合理地解决了商家优惠与消费者实惠之间的利益平衡关系。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;各级运营中心服务的商家越多，得到的回报也越丰厚。</p>
+                                                        <h4>运营中心的考核</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每季度，袋鼠集市均会对各级运营中心的新增商家数量、平台服务费、广告费、代理费进行综合动态评估考核。对于连续两季度不达标的运营中心，袋鼠集市有权对其进行降级或取消代理资格。</p>-->
+
+                                                        <h4>成为运营中心合伙人（如果您是企业老板或有当地资源的人）</h4>
+                                                        <p>&nbsp; </p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;袋鼠集市运营中心分两级：省运营中心、区\县运营中心；</p>
+                                                        <h4>一、省运营中心介绍</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每个省只有一个省级运营中心，袋鼠集市省运营中心即为该省独家代理商。</p>
+                                                        <h4>省运营中心负责什么？</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;负责该省的区\县运营中心招商与管理；培训区\县运营中心的业务流程及系统功能使用；向总部反馈市场信息、活动策划；负责该省的全面运营工作。</p>
+                                                        <h4>成为省运营中心的收益</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;享有运营省份独家所有收入的一定比例分层；譬如平台服务费、广告费、县市运营中心加盟代理费等。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;在区\县运营中心的招募及商家开通过程中无疑是商业资源的接触和整合，一旦打通行业资源，将来的行业商业活动价值巨大。</p>
+                                                        <h4>成为运营中心的条件</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;a 在该省区拥有丰富的行业实体商家资源及人脉资源，能有能力利用当地市场；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;b 认同共享经济与新零售的模式发展带来大机遇；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;c 在当地有健全的团队配置，有合适的办公场地及基本的硬件设施；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;d 有广告营销、电商运营、渠道扩展经验的优先；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;e 有一定资金实力；</p>
+                                                        <h4>与袋鼠集市总部如何结算</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每月10号前结算一次；在起步阶段享受免加盟费，免押金，并享受袋鼠集市总部工作人员现场办公指导。</p>
+                                                        <h4>未来的发展前景</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每个省都有超过百亿的市场空间；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;行业市场前景巨大，您的公司也可以收入过亿。</p>
+                                                        <h4>如何申请成为省级运营中心合伙人</h4>
+                                                        <div style="text-align: center;"><img src="../../../images/operate_01.jpg" alt=""  style="width:100%"></div>
+                                                        <p>&nbsp; </p>
+                                                        <h4>二、区\县运营中心介绍</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每个区\县只有一个运营中心，袋鼠集市区\县运营中心既是该区域的唯一代理商。</p>
+                                                        <h4>区\县运营中心负责什么？</h4>
+                                                        <div style="text-align: center;"><img src="../../../images/operate_02.jpg" alt=""  style="width:100%"></div>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;负责该区\县商户招商与管理；培训商户对平台系统功能使用；商户运营工作、向省运营中心反馈市场信息、活动策划；对区\县区域的交易额负责。</p>
+                                                        <h4>成为区\县运营中心的收益</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;a 该区\县的独家分红</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;享有运营区\县区域内独家所有收一定比例的平台服务费、广告费等。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;b 开发商业及人脉资源</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;在开发企业和商家过程中的商业资源及人脉。</p>
+                                                        <h4>成为运营中心的条件</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;a 在该区\县区域内拥有丰富的行业实体商家资源及人脉资源，能有能力利用当地市场；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;b 认同互联网+行业的模式发展带来大机遇；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;c 在当地能组建其一支地推队伍；</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;d 有广告营销、电商运营、渠道扩展经验的优先；</p>
+                                                        <h4>与袋鼠集市总部如何结算</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;每月10号前结算一次；在起步阶段享受免加盟费，免押金，并享受袋鼠集市总部远程支持和统一培训。</p>
+                                                        <h4>未来的发展前景</h4>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;人口50万的城市年零售规模20亿以上；区县运营中心也大有可为。</p>
+                                                        <p>&nbsp; </p>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="opipion">
+                                              <div class="msgTitle">意见建议</div>
+                                              <div class="msgContent">
+                                                        <p>蓝山集市特开设意见建议邮箱：idea@lanshanjishi.com</p>
+                                                        <p>投诉邮箱：tousu@lanshanjishi.com</p>
+                                              </div>
+                                      </div>
+
+                                      <div class="message" v-if="contactUS">
+                                              <div class="msgTitle">联系我们</div>
+                                              <div class="msgContent">
+                                                        <p>深圳蓝山集势网络科技有限公司</p>
+                                                        <p>网址：<a href="http://www.lanshanjishi.com">www.lanshanjishi.com</a></p>
+                                                        <p>电话：0755-86961682</p>
+                                                        <p>电邮：services@lanshanjishi.com</p>
+                                                        <p>地址：深圳市南山区科技园高新南四道18号创维半导体设计大厦西座603</p>
+                                                        <div style="text-align: center;margin-top: 20px;"><img src="../../../images/abouts_03.jpg" alt="" ></div>
+                                              </div>
+                                      </div>
+                                      <div class="message" v-if="customer">
+                                              <div class="msgTitle">客服服务</div>
+                                              <div class="msgContent">
+                                                        <p>客服热线：4007888925    0755-88308939</p>
+                                                        <p>招商热线：4007888925</p>
+                                                        <p>微 信：15989363272</p>
+                                                        <div style="text-align: center;margin-top: 20px;"><img src="../../../images/abouts_05.jpg" alt="" ></div>
+                                              </div>
+                                      </div>
+                              </div>
+                    </div>
+             </div>
+      <lf-footer></lf-footer>
+      <div class="qq"><img src="../../../images/qq_34.png" width="120" height="228" border="0" usemap="#Map" />
+            <map name="Map" id="Map">
+                  <area shape="rect" @click="onlineSale()"  coords="13,175,108,207" href="#" />
+                  <area shape="rect" @click="closeService()" coords="103,0,121,17" href="#" />
+           </map>
+     </div>
+</div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/pages/about/help-center.js"></script>
+</html>

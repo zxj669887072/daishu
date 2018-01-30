@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>提现</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+
+				<lf-left></lf-left>
+				<div class="rightbox">
+				    <div class="box">
+				    <ul class="switchbox">
+				      <li id="one1" class="hover">金额提现</li>
+				    </ul>
+				    </div>
+							    	<div class="box">
+										<div class="Password">
+											<ul style="padding-bottom:20px">
+												<li>
+													<div class="left">提现金额：</div>
+													<div class="right"><span class="txt2"><input name="" type="text" v-model="amount" /></span><span style="margin-right:20px;">元</span><strong style="float:left">当前余额：</strong><strong class="org f16">{{cashBalance.toFixed(2)}}</strong>元</div>
+												</li>
+												<li>
+													<div class="right"><input name="确认提交" type="submit" value="申请提现" class="bnt-org" @click="doDrawal" /></div>
+												</li>
+												<li>
+											</ul>
+										</div>
+									</div>
+									<div class="box m_top20">
+										<ul class="switchbox">
+											<li><strong>提现记录</strong></li>
+										</ul>
+										<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+											<tr>
+												<td width="19%" align="center">申请时间</td>
+												<td width="15%" align="center">状态</td>
+												<td width="14%" align="center">金额</td>
+												<td width="22%" align="center">银行卡号</td>
+												<td width="13%" align="center">账户姓名</td>
+												<td width="17%" align="center">打款时间</td>
+											</tr>
+											<template v-if="totalCount > 0">
+												<tr v-for="cash in cashRecordList">
+													<td align="center">{{cash.createDate}}</td>
+													<td align="center"><strong>{{cash.applyStatusStr}}</strong></td>
+													<td align="center"><strong class="org">￥{{cash.amount}}</strong></td>
+													<td align="center">{{cash.account}}</td>
+													<td align="center">{{cash.accountName}}</td>
+													<td align="center">{{cash.remitDate}}</td>
+												</tr>
+											</template>
+											<template v-else>
+												<tr>
+													<td colspan="6" align="center">
+														<table border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+																<td class="c-9 f14">暂无记录</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</template>
+										</table>
+										<!-- <template v-if="totalCount > 0">
+											<div class="page">
+												<el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+												</el-pagination>
+											</div>
+										</template> -->
+										<div class="store-page text-right  buspage" v-if="totalCount>0">
+											<el-pagination  @current-change="handleCurrentChange" :current-page="currentPage" layout="prev, pager, next" :total="totalCount" :page-size="pageSize">
+											</el-pagination>
+										</div>
+									</div>
+				</div>
+			</div>
+
+			<lf-footer></lf-footer>
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/business/withdrawal_bz.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个体商户</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+</head>
+<body>
+<div id="app">
+	<div class="blank-header">
+		<div class="tenants-header">
+			<img src="../../../images/logo.png" />
+			<span>商家入驻</span>
+		</div>
+	</div>
+	
+	<div class="center-frame-apply">
+		<div class="apply-step-content">
+			<el-steps :space="100" :active="1"finish-status="success">
+			  <el-step title="申请账号"></el-step>
+			  <el-step title="提交资料"></el-step>
+			  <el-step title="商家缴费"></el-step>
+			  <el-step title="等待审核"></el-step>
+			  <el-step title="网店上线"></el-step>
+			</el-steps>
+		</div>
+		<div class="apply-blank-white">
+			<div class="header-choose-content">
+				<p>
+					<span class="titile">请选择商家性质：</span>
+					<span class="personal choose-generality">个人</span>
+					<span class="commercial choose-generality">个体商户</span> 
+				</p>
+			</div>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">申请账号</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">15115412547</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation-red left-content">推荐人</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input class="low" />
+					    <span class="char-formation">（填写推荐人的手机号码）</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation-red left-content">服务中心门牌号</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="low" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">店面名称</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="middle" />
+					<span class="char-formation">体验店</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">网店负责人姓名</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input class="low" />
+						<span class="char-formation">男</span>
+						<input type="radio" name="sex" checked="true" />
+						<span class="char-formation">女</span>
+						<input type="radio" name="sex" />
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">网站负责人电话</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="low" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">开店地址</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<select class="select-box">
+						<option>==选择省份==</option>
+					</select>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">街道</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="heigh" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">有无实体店</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input type="radio" name="store" />
+						<span class="char-formation">有实体店</span>
+						<input type="radio" name="store" class="radio-depart" />
+						<span class="char-formation">有仓储</span>
+						<input type="radio" name="store" class="radio-depart" />
+						<span class="char-formation">无实体店、无仓储</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">经营模式</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input type="radio" name="store" />
+						<span class="char-formation">销售行业</span>
+						<input type="radio" name="store" class="radio-depart" />
+						<span class="char-formation">服务行业</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top:35px;">
+					<span class="char-formation left-content">经营类型</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input type="checkbox" />
+						<span class="char-formation">服饰鞋包</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">美妆护理</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">珠宝饰品</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">数码家电</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">居家百货</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">视频保健</span><br/>
+						<input type="checkbox" />
+						<span class="char-formation">母婴玩具</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">家装家居</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">文化艺术运动</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">车类及配件</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">餐饮美食</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">休闲娱乐</span><br/>
+						<input type="checkbox" />
+						<span class="char-formation">生活服务</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">旅游出行</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">酒店住宿</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">，美容美发美甲</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">运动健身</span>
+						<input type="checkbox" class="radio-depart" />
+						<span class="char-formation">教育培训</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">商铺（实体店）名称</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="middle" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">个体经营者姓名</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="low" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">营业执照注册号</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="low" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">经营场所</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="low" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">执行有效期至</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<input class="low" />
+						<input type="checkbox" />
+						<span class="char-formation">长期</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">经营执照范围</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<input class="heigh" /></span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 95px;">
+					<span class="char-formation left-content">上传经营执照照片</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<el-upload class="avatar-uploader"
+						  action="//jsonplaceholder.typicode.com/posts/"
+						  :show-file-list="false"
+						  :on-success="handleAvatarScucess"
+						  :before-upload="beforeAvatarUpload">
+						  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+						  <span v-else class="">正面</span>
+						</el-upload><br/>
+						<span class="char-formation">(图片最大3M)</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 66px;">
+					<span class="char-formation left-content">身份证正面</span>
+				</span>
+				<span class="right">
+					<span style="position:relative;" class="char-formation-red right-content">
+						<el-upload
+						  class="upload-demo"
+						  action="//jsonplaceholder.typicode.com/posts/"
+						  :on-preview="handlePreview"
+						  :on-remove="handleRemove"
+						  :file-list="fileList2"
+						  list-type="picture">
+						  <el-button size="small" type="primary">上传并预览</el-button>
+						</el-upload><br/>
+						<img style="width:125px;height:85px;position:absolute;top:0px;" src="../../../images/upload1.png" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						<span class="char-formation">(图片最大3M)</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 66px;">
+					<span class="char-formation left-content">身份证背面</span>
+				</span>
+				<span class="right">
+					<span style="position:relative;" class="char-formation-red right-content">
+						<el-upload
+						  class="upload-demo"
+						  action="//jsonplaceholder.typicode.com/posts/"
+						  :on-preview="handlePreview"
+						  :on-remove="handleRemove"
+						  :file-list="fileList2"
+						  list-type="picture">
+						  <el-button size="small" type="primary">上传并预览</el-button>
+						</el-upload><br/>
+						<img style="width:125px;height:85px;position:absolute;top:0px;" src="../../../images/upload4.png" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload3.png" />
+						<span class="char-formation">(图片最大3M)</span>
+						<br/>
+						<span style="position:relative;top:16px;" class="char-formation-red">(必须和营业执照身份一致)</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span style="color:#fff;" class="char-formation left-content">xxx</span>
+				</span>
+				<span class="right">
+					<input type="checkbox"  />
+					<span style="font-size:12px;">我已看过</span>
+					<span style="font-size:12px;">《<span style="color:#4aa6e6;">积分宝宝商户合作协议</span>》</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span style="color:#fff;" class="char-formation left-content">xxx</span>
+				</span>
+				<span class="right">
+					<button class="sub-btn">同意谢意并提交资料</button>
+				</span>
+			</p>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="left">
+			<ul>
+				<li>关于我们</li>
+				<span></span>
+				<li>商家入驻</li>
+				<span></span>
+				<li>代理商合作</li>
+				<span></span>
+				<li>招商中心合作</li>
+				<span></span>
+				<li>帮助中心</li>
+			</ul>
+			<div class="copy-right">粤ICP备xxxxx号&nbsp;&nbsp;普宁市XX公司&nbsp;&nbsp;Copyyight@2014-2020&nbsp;&nbsp;xxxx版权所有</div>
+			<div style="padding-top:6px;" class="copy-right">公司地址：xxxxxxxxx&nbsp;&nbsp;电话：0755-726689</div>
+		</div>
+		<div class="right">
+			<div class="box first">
+				<div class="qr-code-content">
+					<img src="../../../images/qr_code.png" />
+				</div>
+				<div class="title-content">
+					<div style="margin-top:9px;">快捷入口</div>
+					<div class="ttriangle"></div>
+					<div class="ttriangle-two"></div>
+				</div>
+			</div>
+			<div class="box second">
+				<div class="qr-code-content">
+					<img src="../../../images/qr_code.png" />
+				</div>
+				<div class="title-content">
+					微信公众号
+					<div class="ttriangle"></div>
+					<div class="ttriangle-two"></div>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/information/applyForAccount.js"></script>
+</body>
+</html>   

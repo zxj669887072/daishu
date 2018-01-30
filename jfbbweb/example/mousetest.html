@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul, menu, dir {
+			    display: block;
+			    list-style-type: disc;
+			    -webkit-margin-before: 0;
+			    -webkit-margin-after: 0;
+			    -webkit-margin-start: 0px;
+			    -webkit-margin-end: 0px;
+			    -webkit-padding-start: 0;
+			}
+			.container{
+				width: 800px;
+				height: 500px;
+			}
+			.item-ul{
+				position: absolute;
+				left: 0;
+				width: 100px;
+			}
+			.detail{
+				position: absolute;
+				left: 100px;
+				width: 300px;
+				height: 500px;
+				background: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" class="container">
+			<div class="item-ul">
+				<ul>
+					<li v-for="i in 1" @mouseover="categoryLiOn()" @mouseout="categoryLiOff">{{i}}</li>
+				</ul>
+			</div>
+			<div class="detail" @mouseover="categoryLiOn()" v-show="categoryLiShow">
+				1
+			</div>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				//分类数据
+				categoryList: [],
+				//分类选择数据
+				chooseCategoryList: [],
+				//显示分类子界面标志
+				categoryLiShow: false,
+				//广告数据
+				advertList: [],
+				//分类详情列表，由分类数据中获取。
+				categoryDetalList: []
+			},
+			methods: {
+				categoryLiOn:function(category, event) {
+					console.log("categoryLiOn");
+//					if(category) {
+//						this.chooseCategoryList = category.childList;
+//					}
+					this.categoryLiShow = true;
+				},
+				categoryLiOff:function(event) {
+					console.log("categoryLiOff");
+					this.categoryLiShow = false;
+				}
+			}
+		});
+	</script>
+
+</html>

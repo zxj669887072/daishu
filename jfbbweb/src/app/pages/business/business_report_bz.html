@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>业务报表</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">经营分析</li>
+						</ul>
+						<ul class="checking">
+							<li style="width:36%; margin-right:0px;" class="checking_02">
+								<a href="javascript:;" @click="getReportList(1)">今天</a>
+								<a href="javascript:;" @click="getReportList(2)">近7天</a>
+								<a href="javascript:;" @click="getReportList(3)">近30天</a>
+							</li>
+							<li class="txt">
+								<el-date-picker
+							      v-model="data.start"
+							      type="daterange"
+							      placeholder="日期范围" >
+							    </el-date-picker>
+							</li>
+							<li style="width:3%"><input name="查询" type="submit" @click="getReportList('')" value="查询" class="bnt-org"></li>
+						</ul>
+						<!-- <div class="flow">
+							<div class="m_top10 flow_02">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr style="border-top:1px solid #ddd;">
+										<td width="100%" height="40">&nbsp;</td>
+									</tr>
+									<tr style="border-top:1px solid #ddd;">
+										<td height="40">&nbsp;</td>
+									</tr>
+								</table>
+								<img src="../../../images/jj.png" /> </div>
+						</div> -->
+						<div id="main" style="height: 300px;margin-top:50px;"></div>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+			<!-- <div>
+				<div id="light" class="white_content" style=" left:39%;">
+					<div class="Popupbox" style="width:460px;">
+						<div class="tb">
+							<div class="left">添加地图坐标</div>
+							<a class="right" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="../images/Prompt2_03.png" width="24" height="24" /></a>
+						</div>
+						<ul style="padding-top:20px; padding-bottom:20px;">
+							<table width="100%" border="0" cellspacing="5" class="table2">
+								<tr>
+									<td height="44" align="center"><img src="../../../images/map.png" width="406" height="275" /></td>
+								</tr>
+								<tr>
+									<td height="44" align="center"><input name="input4" type="submit" class="org_btn" value="确认设置" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" /> &nbsp;
+									</td>
+								</tr>
+							</table>
+							<div class="m_top20" style="text-align:center"></div>
+						</ul>
+					</div>
+				</div>
+				<div id="fade" class="black_overlay" style="display:none;"></div>
+			</div> -->
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/business/business_report_bz.js"></script>
+	</body>
+
+</html>

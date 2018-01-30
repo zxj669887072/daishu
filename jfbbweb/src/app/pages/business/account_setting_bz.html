@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>账号设置</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<!--<link href="../../../css/css.css" rel="stylesheet" type="text/css" />-->
+<style>
+	.el-form-item {
+	    margin-bottom: 0;
+	}
+	.el-form-item__content,.el-input{
+		height: 40px;
+	}
+	.el-form-item{
+		margin-bottom: 20px;
+	}
+	.Password li {
+	    margin-bottom: 0 !important;
+	    overflow: hidden;
+	}
+	body{
+	    background: #f1f2f6
+	}
+	.leftbox{
+		background: #f1f2f6
+	}
+	.Password span .bnt {
+	    background: #f5bb60;
+	    border: none;
+	    color: #fff;
+	    height: 40px;
+	    width: 120px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="app">
+		<lf-header></lf-header>
+		
+		<div class="webbox w1000">
+		  <lf-left url="account_setting_bz.html"></lf-left>
+		  <div class="rightbox">
+		    <div class="box h790">
+		      <ul class="switchbox">
+		        <li class="hover">账号设置</li>
+		      </ul>
+		      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+			      <div class="Password" >
+			        <ul>
+						<li>
+				            <div class="left" >旧密码：</div>
+				            <div class="right" ><span class="txt2">
+				              <el-form-item prop="oldpass">
+								    <el-input type="password" v-model="ruleForm.oldpass" auto-complete="off"></el-input>
+								</el-form-item>
+				              </span></div>
+				          </li>			        	
+			          <li>
+			            <div class="left" >设置新密码：</div>
+			            <div class="right" >
+			            	<span class="txt2">
+			              		<el-form-item prop="pass">
+								    <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
+								</el-form-item>
+			              	</span>
+			            </div>
+			          </li>
+			          <li>
+			            <div class="left" >再次确认新密码：</div>
+			            <div class="right" >
+			            	<span class="txt2">
+			              		<el-form-item prop="checkPass">
+								    <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
+								</el-form-item>
+			              	</span>
+			            </div>
+			          </li>
+			          <li>
+			            <div class="left" >手机号：</div>
+			            <div class="right" >
+			            	<span class="txt2">
+			              		<el-form-item prop="phone">
+								    <el-input type="text" v-model="ruleForm.phone" :disabled="true" auto-complete="off"></el-input>
+								</el-form-item>
+			              	</span><span>
+			              	<input type="button" @click="getyzm('ruleForm')" :value="yzmdesc" :disabled="yzmdis" class="bnt"/>
+			              	</span></div>
+			          </li>
+			          <li class="f_bottom10">
+			            <div class="left" >验证码：</div>
+			            <div class="right" >
+			            	<span class="txt2">
+			              		<el-form-item prop="yzm">
+								    <el-input type="text" v-model="ruleForm.yzm" auto-complete="off"></el-input>
+								</el-form-item>
+			            	</span>
+			            </div>
+			          </li>
+			          <li>
+			            <div class="right" >
+			              <input  type="button" value="确认保存" @click="submitForm('ruleForm')"   class="bnt-org"/>
+			            </div>
+			          </li>
+			          <li>
+			        </ul>
+			      </div>
+		      </el-form>
+		    </div>
+		  </div>
+		</div>
+		<lf-footer></lf-footer>
+	</div>
+</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/account_setting_bz.js"></script>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>账户资料</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<script>
+			<!--
+			/*鼠标移上去切换*/
+			function settab_connet(name, cursel, n) {
+				for(i = 1; i <= n; i++) {
+					var menu = document.getElementById(name + i);
+					var con = document.getElementById("con_" + name + "_" + i);
+					menu.className = i == cursel ? "hover" : "";
+					con.style.display = i == cursel ? "block" : "none";
+				}
+			}
+			//-->
+		</script>
+	</head>
+	<style type="text/css">
+		.right{
+			text-align: left;
+		}
+		.el-form .el-form-item__error{
+			position: static;
+		}
+		.Password ul {
+    			padding: 0 50px;    
+		}
+		.f_bottom10{
+			margin-bottom: 0;
+		}
+		body .Password .button-span span{
+			line-height: 0;
+		}
+		.el-form-item__content {
+    			line-height: 20px;
+    		}
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			<lf-head></lf-head>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box">
+						<ul class="switchbox">
+							<li class="hover">账户资料</li>
+						</ul>
+					</div>
+					<div class="box">
+						<div class="padding20">
+							<div class="hot">请完善好个人资料*为必填项</div>
+						</div>
+						<el-form id="uploadForm" enctype="multipart/form-data" v-show="true" :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+							<div class="Password  h610">
+								<ul>
+									<li style="margin-bottom:10px;">
+										<div class="left" style="line-height:115px;">头像:</div>
+										<div class="right">
+											<div class="txt" style="float:left; width:97px;">
+												<table border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td bgcolor="#F4F4F4"><img :src="src" width="95" height="95" style="float:left" /></td>
+													</tr>
+													<tr>
+														<td align="center" bgcolor="#eaeaea" style="height:24px; line-height:24px;">
+															<input value="编辑头像"  id="file" name="file" style="position: absolute;top: 1000px;"  enctype="multipart/form-data" type="file" style=""v-on:change="previewFile">
+															<a v-on:click="clickFace">编辑头像</a>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div style="float:right; width:45%">
+												<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td colspan="2"><strong>用户名：</strong></td>
+													</tr>
+													<tr>
+														<td width="9%"><img src="../../../images/ico_06.jpg" width="21" height="16" /></td>
+														<td width="91%"><span class="black">手机 </span>{{accounts.account}}</td>
+													</tr>
+													<tr>
+														<td><img src="../../../images/ico_09.jpg" width="21" height="16" /></td>
+														<td><span class="black">邮箱</span>
+															<span v-if="accounts.emailFlag == 1" class="c-7">未绑定</span>
+															<span v-if="accounts.emailFlag == 2" class="c-7">{{email}}</span> <span v-if="accounts.emailFlag == 1" class="blue"></span></td>
+													</tr>
+												</table>-->
+											</div>
+										</div>
+									</li>
+									<li style="margin-bottom:10px;">
+										<div class="left"><span class="org">*</span>昵称：</div>
+										<div class="right margin-left input-padding">
+											<span class="txt2">
+												<el-form-item prop="nickName" >
+													<el-input class="low" v-model="ruleForm2.nickName"></el-input>
+												</el-form-item>
+											</span>
+											<span style="width:100%; line-height:34px;">注：昵称不超过24个字符</span>
+										</div>
+									</li>
+									<li>
+										<div class="left"><span class="org">*</span> 真实姓名：</div>
+										<div class="right margin-left input-padding">
+											<span class="txt2">
+												<el-form-item prop="realName" >
+													<el-input class="low" v-model="ruleForm2.realName"></el-input>
+												</el-form-item>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="left">性别：</div>
+										<div class="right margin-left" >
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<el-form-item prop="sex">
+													    <el-radio-group v-model="ruleForm2.sex">
+													      <el-radio label="1">男</el-radio>
+													      <el-radio label="2">女</el-radio>
+													    </el-radio-group>
+													</el-form-item>
+												</tr>
+											</table>
+											<label for="radio"></label>
+										</div>
+									</li>
+									<li class="f_bottom10">
+										<div class="left">生日：</div>
+										<div class="right margin-left input-padding">
+											<el-form-item prop="birthday" format="yyyy-mm-dd">
+												<el-date-picker :clearable="false" :editable="false" type="date" placeholder="选择日期" v-model="ruleForm2.birthday" ></el-date-picker>
+											
+											</el-form-item>
+										</div>
+									</li>
+									<li class="f_bottom10">
+										<div class="left">QQ：</div>
+										<div class="right margin-left input-padding">
+											<span class="txt2">
+												<el-form-item prop="qq" >
+													<el-input class="low" v-model="ruleForm2.qq" ></el-input>
+												</el-form-item>
+											</span>
+										</div>
+									</li>
+									<li class="f_bottom10">
+										<div class="left">微信：</div>
+										<div class="right margin-left input-padding">
+											<span class="txt2">
+												<el-form-item prop="weChat" >
+													<el-input class="low" v-model="ruleForm2.weChat" ></el-input>
+												</el-form-item>
+											</span>
+										</div>
+									</li>
+									<li class="f_bottom10">
+										<div class="left">邮箱：</div>
+										<div class="right margin-left input-padding">
+											<span class="txt2">
+												<el-form-item prop="email" >
+													<el-input class="low" v-model="ruleForm2.email" ></el-input>
+												</el-form-item>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="left"></div>
+										<div class="right margin-left input-padding button-span">
+											<span>
+												<el-form-item>
+							                           <el-button class="bnt-org" type="primary" @click="submitForm('ruleForm2')">确认保存</el-button>
+							                   </el-form-item>
+											</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</el-form>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/personal/account_ps.js"></script>
+	</body>
+
+</html>

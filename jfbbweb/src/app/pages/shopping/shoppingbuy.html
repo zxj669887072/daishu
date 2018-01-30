@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>确认订单</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+  <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+  <link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    html,
+    body,
+    .bb_content .bb-tit,
+    .queren02,
+    .queren_bt {
+        background-color: #fff;
+    }
+
+    span.float-left {
+        display: inline-block;
+        height: 50px;
+        line-height: 43px;
+    }
+
+    body {
+        text-align: left;
+    }
+
+    .search2 {
+        float: right;
+        margin-top: 34px !important;
+        position: relative;
+    }
+
+    .el-cascader__label {
+        line-height: 40px;
+    }
+
+
+    #tit-sure {
+        font-size: 16px;
+        position: relative;
+        top: -15px;
+        left: 10px;
+    }
+
+    .bb_content .config {
+        border-top: 0 none;
+    }
+
+    .el-card {
+        border: 0 none;
+        box-shadow: initial;
+    }
+
+    .bb_content .car .buy-info .buy-type {
+        height: auto;
+    }
+
+    .bb_content .buy-address .addres-more {
+        padding: 10px 0 20px 0;
+        margin: 10px 20px 20px 20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .queren_list .li02 {
+        margin-top: 0;
+        height: 64px;
+        position: relative;
+    }
+
+    .queren_list .li02 span {
+        width: 100%;
+        float: left;
+        line-height: 22px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .address-info .op-btns {
+        display: inline-block;
+        float: right;
+        text-align: right;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 30px;
+        visibility: hidden;
+    }
+
+    .address-info.active .op-btns {
+        visibility: visible;
+    }
+
+    .address-info .op-btns a {
+        color: #005ea7;
+    }
+
+    .redpack .el-table {
+        border: 0 none;
+    }
+
+    .redpack .el-table::after {
+        content: '';
+        position: absolute;
+        background-color: transparent;
+        z-index: 1;
+    }
+
+    .address-info .op-btns a:hover {
+        color: #C81623;
+    }
+
+    .queren_list dl .txt {
+        height: 30px;
+        margin-top: 10px;
+    }
+
+    .queren_04 {
+        margin-top: 0;
+    }
+    /*收货地址弹框*/
+    /* .wrap-tel-phone .el-form-item{
+			display: inline-block;
+			width: 168px;
+		}
+		.wrap-tel-phone .el-form-item.phone1{
+			width:268px;
+		}
+		.wrap-tel-phone .el-form-item.phone2 .el-form-item__content,
+		.wrap-tel-phone .el-form-item.phone3 .el-form-item__content{
+			margin-left: 0 !important;
+		} */
+
+    .demo-ruleForm input[type=text] {
+        margin-bottom: 0;
+    }
+
+    .redpacket {
+        box-sizing: border-box;
+        position: relative;
+        width: 168px;
+        height: 78px;
+        border: 1px dashed #999;
+        padding: 12px 0 0 10px;
+        color: #999;
+        background-color: #fff;
+    }
+
+    .sure {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .redpacket .money {
+        width: 95px;
+    }
+
+    .redpacket .date {
+        font-size: 10px;
+        line-height: 10px;
+        margin-top: 10px;
+    }
+
+    .redpacket .countmoney {
+        font-size: 30px;
+        vertical-align: top;
+    }
+
+    .redpacket .discount {
+        font-size: 12px;
+        line-height: 18px
+    }
+
+    .redpacket .sale {
+        font-size: 20px;
+    }
+
+    .select {
+        background-color: #fa3f40;
+        color: #fff;
+        border: 1px solid #fa3f40;
+    }
+
+    .select p {
+        color: #fff;
+    }
+
+    .addres-more {
+        color: #087cd7;
+    }
+    </style>
+ </head>
+ <body>
+  <div id="app" v-cloak="">
+   <lf-header></lf-header>
+   <div class="bb_content">
+   <div class="w1000">
+    <div class="bb-tit">
+     <a href=" /app/pages/goods.html" target="_self" style=" text-decoration:underline"><img src="../../../images/logo.png" /></a>
+     <span class="tit-sure" id="tit-sure">确认订单信息</span>
+     <lf-search><lf-search>
+     <!-- <div class="search2 ">
+      <dl>
+       <dt>
+        <input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" />
+       </dt>
+       <dd>
+        <input name="" type="button" value="" @click="doSearch()" class="btn" />
+       </dd>
+      </dl>
+     </div> -->
+     <!-- <div class="sure-search">
+ 						<input type="text" name="" placeholder="请输入店铺或服务中心门牌号">
+	 				 <i class="fa fa-search"></i>
+	 				</div> -->
+    </div>
+    <div class="queren_bt f18">
+     填写并核对订单信息
+    </div>
+    <div class="dd_box2">
+     <div class="buy-address">
+      <div class="fukuan_bt">
+       <strong class="f16">收货人信息</strong>
+       <div class="right blue">
+        <a href="JavaScript:void(0)" @click="addReceiverAddress">新增收货地址</a>
+       </div>
+      </div>
+      <div class="info-cnt ">
+       <div class="address-info" v-for="(item,index) in addressinfo.list" v-if="index&lt;1" v-bind:class="{active: index==isOperate}" @mouseenter="isOperate=index" @mouseleave="isOperate='' ">
+        <span class="add-name" @click="choiceAddress(index)" :class="{'check':index==addressinfo.index || item.defaultFlag==1}">{{item.consigneeName}}</span>
+        <!--<span class="name">{{item.consigneeName}}</span>-->
+        <span class="s">{{item.provinceName}}</span>
+        <span class="city">{{item.cityName}}</span>
+        <span class="area">{{item.districtName}}</span>
+        <span class="adres">{{item.detailAddr}}</span>
+        <span class="phone">{{item.mobilePhone}}</span>
+        <span v-if="isGlobal && item.identityCard.length==0" style="color:red;">未完善身份证信息</span>
+        <el-tag v-if="item.defaultFlag==1">
+         默认
+        </el-tag>
+        <div class="op-btns">
+         <a v-if="item.defaultFlag!=1" href="#none" class="ftx-05 setdefault-consignee" @click="setDefaultReceiverAddress(item.id)">设为默认地址</a>
+         <a href="#none" class="ftx-05 edit-consignee" @click="editReceiverAddress(item.id)">编辑</a>
+         <a href="#none" v-if="item.defaultFlag!=1" class="ftx-05 del-consignee" @click="removeReceiverAddress(item.id)">删除</a>
+        </div>
+       </div>
+       <transition name="bounce">
+        <div v-if="!addressinfo.ishidden">
+         <div class="address-info" v-for="(item,index) in addressinfo.list" v-if="index&gt;0" v-bind:class="{active: index==isOperate}" @mouseenter="isOperate=index" @mouseleave="isOperate='' ">
+          <span class="add-name" @click="choiceAddress(index)" :class="{'check':index==addressinfo.index}">{{item.consigneeName}}</span>
+          <!--	<span class="name">{{item.consigneeName}}</span>-->
+          <span class="s">{{item.provinceName}}</span>
+          <span class="city">{{item.cityName}}</span>
+          <span class="area">{{item.districtName}}</span>
+          <span class="adres">{{item.detailAddr}}</span>
+          <span class="phone">{{item.mobilePhone}}</span>
+          <span v-if="isGlobal && item.identityCard.length==0 " style="color:red;">未完善身份证信息</span>
+          <el-tag v-if="item.defaultFlag==1">
+           默认
+          </el-tag>
+          <div class="op-btns">
+           <a v-if="item.defaultFlag!=1" href="#none" class="ftx-05 setdefault-consignee" @click="setDefaultReceiverAddress(item.id)">设为默认地址</a>
+           <a href="#none" @click="editReceiverAddress(item.id)" class="ftx-05 edit-consignee">编辑</a>
+           <a href="#none" v-if="item.defaultFlag!=1" class="ftx-05 del-consignee" @click="removeReceiverAddress(item.id)">删除</a>
+          </div>
+         </div>
+        </div>
+       </transition>
+      </div>
+      <div class="addres-more" @click="addressinfo.ishidden=!addressinfo.ishidden">
+       更多地址
+       <i class="fa " :class="{'fa-angle-double-down':addressinfo.ishidden,'fa-angle-double-up':!addressinfo.ishidden}"></i>
+      </div>
+     </div>
+     <div class="car">
+      <div class="config">
+       <div class="fukuan_bt">
+        <strong class="f16">商品清单</strong>
+       </div>
+       <div class="queren02">
+        <ul>
+         <li class="li01">商品信息</li>
+         <li class="li02">商品规格</li>
+         <li class="li03">单价（元）</li>
+         <li class="li04">数量</li>
+         <li class="li05">小计</li>
+        </ul>
+       </div>
+       <el-card class="box-card" v-if="item.goodsList&amp;&amp;item.goodsList.length&gt;0" v-loading="load" element-loading-text="加载中啦啦">
+        <div class="queren_bt2">
+         <ul>
+          <li> <i class="fa  fa-bank" style="margin-right: 10px;"></i> 店铺：{{item.merchantName}} </li>
+          <li> <i class="fa fa-phone" style="margin-right: 10px;"></i>联系电话：{{item.contactPhone}} </li>
+         </ul>
+        </div>
+        <div class="queren_list">
+         <ul v-for="goodsInfo in item.goodsList">
+          <li class="li01">
+           <div class="left">
+            <img :src="goodsInfo.picUrl" class="shop-img" />
+           </div>
+           <div class="right">
+            {{goodsInfo.goodsName}}
+           </div> </li>
+          <li class="li02"> <span>{{goodsInfo.spec}}</span> </li>
+          <li class="li03">￥ {{goodsInfo.price}}</li>
+          <li class="li04">{{goodsInfo.qty}}</li>
+          <li class="li05">￥{{goodsInfo.price*goodsInfo.qty}}</li>
+         </ul>
+         <dl>
+          给商家留言：
+          <input name="" type="text" class="txt c-9 buy-ly" v-model="orderCreate.remark" :value="orderCreate.remark" placeholder="建议填写意见和商家达成一致" />
+         </dl>
+        </div>
+        <div class="lit-cash">
+         <div class="cashs float-right">
+          <!-- <div class="cash-jf float-right">获得总积分： <font>{{item.totalInter}}</font>	 </div> -->
+         </div>
+         <div class="jf text-right">
+          <!--<span>可用积分{{item.integralBal-orderCreate.payInter}}</span>
+                                    <input v-if="item.integralBal>0" type="number" v-model="orderCreate.payInter" name="" :value="orderCreate.payInter" @change="changeJf" @keydown="changeJf"  /> -->
+         </div>
+         <div class="redpack" v-if="redpacket.list.length > 0">
+          <!-- <div class="fukuan_bt" style="cursor: pointer;" @click="redinfo.show=!redinfo.show"><strong class="f16">使用红包 <i class="fa " :class="{'fa-angle-double-down':redinfo.show,'fa-angle-double-up':!redinfo.show}"></i></strong></div> -->
+          <div class="fukuan_bt" style="cursor: pointer;" @click="show()">
+           <strong class="f16">使用红包 <i class="fa " :class="{'fa-angle-double-down':redinfo.show,'fa-angle-double-up':!redinfo.show}"></i></strong>
+          </div>
+          <ul v-if="redinfo.show" style="margin:24px 0 0 24px;">
+           <li style="float:left;margin-right:12px;" v-for="(item,index) in redpacket.list">
+            <div class="redpacket" :class="{'select':redinfo.choiceindex === index}" @click="choisered(index,item.moneyLimit)">
+             <div style="height:35px">
+              <p class="money left">￥<span class="countmoney">{{item.money}}</span></p>
+              <p class="discount left">红包券 <br /><span class="sale">{{(item.moneyLimit)*10}}</span>折</p>
+              <!-- <p class="discount left">红包券 <br /><span class="sale">8.5</span>折</p> -->
+             </div>
+             <p class="date">有效期至 {{(item.endTime).slice(0,10)}}</p>
+             <div class="sure" v-if="redinfo.choiceindex === index">
+              <img src="../../../images/sure.png" alt="" />
+             </div>
+            </div> </li>
+          </ul>
+          <!-- <transition nane="slide-fade">
+                                		<el-table v-if="redinfo.show" highlight-current-row @current-change="choisered" :data="redpacket.list" style="width: 100%">
+                                			<template v-if="status==0">
+                                				<el-table-column prop="actName" label="活动名称" width="180">
+                                				</el-table-column>
+                                				<el-table-column prop="money" label="金额">
+                                				</el-table-column>
+                                				<el-table-column prop="validity" label="有限期（天）">
+                                				</el-table-column>
+                                				<el-table-column prop="startTime" label="开始有效日期">
+                                				</el-table-column>
+                                				<el-table-column prop="endTime" label="结束有效日期">
+                                				</el-table-column>
+                                			</template>
+                                		</el-table>
+                                	</transition> -->
+         </div>
+        </div>
+       </el-card>
+       <!--  <div class="buy-info" v-if="item.goodsList&&item.goodsList.length>0">
+	                               	<div class="buy-cnt" style="overflow: hidden;">
+	                               		<div class="float-left buy-type">
+	                               			<div class="float-left ft">
+	                               				付款方式：
+	                               			</div>
+	                               			<div class="float-left type">
+	                                   <div class="row">
+	                               				 		 					<span>
+	                               				 		 						&lt;!&ndash;<font>￥{{item.cashBal}}</font>&ndash;&gt;
+	                               				 		 					</span>
+	                               				 		 					<span>
+	                               				 		 						<el-radio class="radio" v-model="orderCreate.payWay" label="0">现金支付 </el-radio>
+	                               				 		 					</span>
+	                               				 		 				</div>
+	                               				 		 				<div class="row">
+	                               				 		 					<span>
+	                               				 		 						<font>￥{{item.integralBal}}</font>
+	                               				 		 					</span>
+	                               				 		 					<span>
+	                               				 		 						<el-radio class="radio" v-model="orderCreate.payWay" label="1">在线支付 </el-radio>
+	                               				 		 					</span>
+	                               				 		 				</div>
+	                               				 		 			</div>
+	                               				 		 		</div>
+	                               				 		 		<div class="float-right buy-type">
+	                               				 		 			<div class="float-left type type-right">
+	                               				 		 				<div class="row">
+	                               				 		 					&nbsp;&nbsp;交易方式：
+	                               				 		 					<template>
+	                               				 		 						<el-radio class="radio" v-model="orderCreate.tradeWay" label="0">送货上门</el-radio>
+	                               				 		 						<el-radio class="radio" v-model="orderCreate.tradeWay" label="1">到店自提</el-radio>
+	                               				 		 					</template>
+	                               				 		 				</div>
+	                                   <div class="row">
+	                               				 		 						<span class="float-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快递:</span>
+	                               				 		 					<select v-model="orderCreate.templateId" @change="figureFee" style="    width: 160px;border: 1px solid #ccc !important;">
+	                               				 		 							<template  v-for="(ft,index) in freight.list">
+	                               				 		 								<option  :value="ft.templateId"> {{ft.companyName}}-
+	                               				 		 									<template v-if="ft.priceType==0">重量</template>
+	                               				 		 									<template v-else>件数</template>计费
+	                               				 		 								</option>
+	                               				 		 							</template>
+	                               				 		 						</select>
+	                               				 		 						<el-select :class="'float-left'" v-model="orderCreate.templateId" placeholder="请选择" @change="figureFee">
+	                               											    <el-option
+	                               											      v-for="item in freight.list"
+	                               											      :label="item.companyName"
+	                               											      :value="item.templateId">
+	                               											    </el-option>
+	                               											  </el-select>
+	                               				 		 						<span class="float-left" style="padding-left: 40px;"> 运费：{{orderCreate.freightFee}}</span>
+	                               				 		 					</div>
+	                               				 		 				</div>
+	                               				 		 			</div>
+	                               				 		 		</div>
+	                               				 		 	</div> -->
+      </div>
+      <!-- end  car -->
+     </div>
+     <div class="queren_04">
+      <ul>
+       <li>
+        <div class="left">
+         <span class="org">{{item.totalQty}}</span>件商品，总商品金额：
+        </div> <span class="right">&yen; {{item.totalPrice}}</span> </li>
+       <li>
+        <div class="left">
+         使用红包：
+        </div> <span class="right">- &yen; {{couponAmount}}</span> </li>
+       <!-- 暂时隐藏 -->
+       <li style="">
+        <div class="left">
+         运费：
+        </div> <span class="right">&yen; 0.00</span> </li>
+      </ul>
+     </div>
+    </div>
+    <div class="sure-info" style="background-color: #fff;overflow: hidden;" v-if="item.goodsList&amp;&amp;item.goodsList.length&gt;0">
+     <!-- <div class="text-right">
+				 			<span>您需支付： <font>￥{{item.totalPrice}}</font> </span>
+				 		</div>
+				 		<div class="sure-it text-right">
+				 			<span class="sure-back" @click="goCars('/app/pages/shopping/shoppingcart.html')"> <i class="fa   fa-mail-reply-all"></i> 返回购物车 </span>
+				 			<a href="javaScript:void(0);" @click="createOrde" style="line-height: 32px;" class="btn org text-center">下单并付款</a>
+				 		</div> -->
+     <div class="queren_05">
+      <ul>
+       <li>实付款： <strong class="org f24">￥{{Number((item.totalPrice - couponAmount).toFixed(2))}}</strong></li>
+       <li>寄送到： {{receivingAddress}}</li>
+       <li>收货人： {{userInfo}}</li>
+       <li v-if="isGlobal"><p style="color:#ff4400">由于海关清关需要，收货人请使用和身份证号对应的真实姓名</p></li>
+      </ul>
+     </div>
+     <div class="right queren_06">
+      <a href="javaScript:void(0);" @click="createOrde" style="line-height: 32px;border-radius: 0;font-weight: 300;width: 180px;" class="btn org_btn01 right text-center">立即支付</a>
+      <span class="sure-back blue f18" @click="goCars('/app/pages/shopping/shoppingcart.html')" style="cursor: pointer;"> <i class="fa   fa-mail-reply-all"></i> 返回购物车 </span>
+     </div>
+    </div>
+    </div>
+   </div>
+   <el-dialog title="填写收货地址信息" v-model="addressVisible" id="addressVisible">
+    <el-form :model="addressForm" :rules="addressRules" ref="addressForm" label-width="120px" class="demo-ruleForm">
+     <ul class="address" :id="id">
+      <el-form-item label="所在地址：" prop="addrs">
+       <el-cascader :options="cascaderOptions" v-model="addressForm.selectedOptions" @change="handleChange"></el-cascader>
+      </el-form-item>
+      <el-form-item label="详细地址：" prop="detailAddr">
+       <el-input type="textarea" placeholder="可以不用重复填写省市区，大于5个字，少于120个字" v-model="addressForm.detailAddr"></el-input>
+      </el-form-item>
+      <el-form-item label="收货人姓名：" prop="consigneeName">
+       <el-input placeholder="请输入收货人姓名" v-model="addressForm.consigneeName"></el-input>
+      </el-form-item>
+      <el-form-item label="身份证号码：" prop="idCard" v-if="isGlobal">
+       <el-input placeholder="请输入收货人身份证号码" v-model="addressForm.idCard"></el-input>
+       <p>因全球购商品涉及入境清关，根据海关规定，需要您完善当前收货人身份证信息。若信息不正确、不真实，会导致订单清关失败，无法发货。袋鼠集市全球购承诺严格保密您的个人信息。</p>
+      </el-form-item>
+      <el-form-item label="手机号码：" prop="mobilePhone">
+       <el-input placeholder="手机号码、电话号码至少填一项" v-model="addressForm.mobilePhone"></el-input>
+      </el-form-item>
+      <el-form-item class="phone1" label="电话号码：" prop="telPhone">
+       <el-input placeholder="手机号码、电话号码至少填一项" v-model="addressForm.telPhone"></el-input>
+      </el-form-item>
+      <el-form-item prop="defaultFlag">
+       <el-checkbox-group v-model="addressForm.defaultFlag">
+        <el-checkbox label="保存为默认地址" name="defaultFlag" :checked="isDefault"></el-checkbox>
+       </el-checkbox-group>
+      </el-form-item>
+      <el-form-item>
+       <el-button class="bnt-org" type="primary" @click="submitReceiverAddress('addressForm')">
+        确认保存
+       </el-button>
+       <el-button @click="addressVisible=false">
+        取消
+       </el-button>
+      </el-form-item>
+     </ul>
+    </el-form>
+   </el-dialog>
+  <lf-footer></lf-footer>
+  </div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/shopping/shoppingbuy.js"></script>
+ </body>
+</html>

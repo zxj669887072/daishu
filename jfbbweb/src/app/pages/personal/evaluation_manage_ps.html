@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>评价管理</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<style>
+  .replyContent{
+    color: #999;
+    margin-right: 3px;
+  }
+  .txt {border:none;}
+  .personal-time  input[type=text] {
+      padding: 0 15px;
+   } 
+</style>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	   <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box h610">
+    <ul class="switchbox">
+      <li id="one1" @click="storeEvalFun()" :class="{ 'hover': storeEval}">网上商城评价</li>
+      <li id="one2" @click="shopEvalFun()" :class="{ 'hover': shopEval}">加盟商户评价</li>
+      </ul>
+     <div id="con_one_1" v-show="storeEval" :class="{ 'hover': storeEval}">
+       <div class="tab_menu">
+      <div class="left personal-time"><span>按月份查询:</span>
+      <el-date-picker format="yyyy-MM"
+		    v-model="searchTimeOne"
+		    type="month"
+		    placeholder="选择月">
+		  </el-date-picker>
+      <span><input name="" @click="search()" type="button" value="查询" class="btn" /></span></div>
+      <ul>
+      <li id="three2" @mouseenter="othersEvalFun()" :class="{ 'hover': othersEval}">给他人的评价</li>
+      <li id="three1" @mouseenter="saleEvalFun()" :class="{ 'hover': saleEval}">来自卖家的评价</li>
+      </ul>
+      </div>
+      <div class="padding20" style="padding-top:0px;">
+        <div id="con_three_1" v-show="saleEval" :class="{ 'hover': saleEval}"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td width="15%" align="center">
+    <div class="txt"><span>星级评价</span>
+    <!-- <form id="form1" name="form1" method="post" action="">
+      <label for="select"></label>
+      <select ref="starOne" @change="starFun" name="select" class="txt" id="select">
+        <option value="">星级评价</option>
+        <option value="5">5星级</option>
+        <option value="4">4星级</option>
+        <option value="3">3星级</option>
+        <option value="2">2星级</option>
+        <option value="1">1星级</option>
+      </select>
+    </form> -->
+    </div></td>
+    <td width="32%" align="center"> <div class="txt"><span>评价</span>
+    <!-- <select ref="pingOne" @change="pingFun" name="select2" id="select2">
+      <option value="">评价</option>
+      <option value="5">好评</option>
+      <option value="4">中评</option>
+      <option value="2">差评</option>
+    </select> -->
+    </div></td>
+    <td width="20%" align="center">卖家</td>
+    <td width="26%" align="center">商品信息</td>
+    <td width="10%" align="center">操作</td>
+  </tr>
+  <tr v-show="!saleEvalIsNull" v-for="list in storeeValuateList">
+    <td height="44" align="left" >
+      <img src="../../../images/Star.jpg" width="13" height="13" v-for="n of list.evaTypes"/>
+    </td>
+    <td height="44" align="left">
+      <div class="m_top5"><span style="color:#999;margin-right: 3px;">[{{list.evalDate}}]</span>{{list.evaContent}}</div>
+      <div v-if="list.replyContent.length>0" class="m_top5"><span class="replyContent">[{{list.replyDate}}]回复：</span>{{list.replyContent}}</div>
+    </td>
+    <!-- -->
+    <td height="44" align="center"><a href="#" class="blue" @click="goMerchantView(list.merchantId,list.merchantName)"><strong>{{list.merchantName}}</strong></a></td>
+    <td height="44" align="left"><a href="#" class="blue" @click="goGoodsView(list.goodsId)">{{list.goodsName}}</a></td>
+    <td height="44" align="center"><a href="javascript:void(0);" @click="delAssessment(list.id)">删除</a></td>
+  </tr>
+  <tr v-show="saleEvalIsNull">
+    <td height="200" colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+		    <td class="c-9 f14">暂无来自卖家的评价</td>
+		  </tr>
+		</table>
+		</td>
+    </tr>
+  </table>
+  <div class="store-page text-right  buspage" v-if="pagerOne.total > 0">
+	<el-pagination  @current-change="handleCurrentChangeByOne" :current-page="pagerOne.curpage" layout="prev, pager, next" :total="pagerOne.total" :page-size="pagerOne.size">
+	</el-pagination>
+</div>
+  </div>
+
+
+ <div id="con_three_2" v-show="othersEval" :class="{ 'hover': othersEval}"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td width="15%" align="center">
+    <div class="txt"><span>星级评价</span>
+    <!-- <form id="form1" name="form1" method="post" action="">
+      <label for="select"></label>
+      <select ref="starTwo" @change="starFun" name="select" class="txt" id="select">
+        <option value="">星级评价</option>
+        <option value="5">5星级</option>
+        <option value="4">4星级</option>
+        <option value="3">3星级</option>
+        <option value="2">2星级</option>
+        <option value="1">1星级</option>
+      </select>
+    </form> -->
+    </div></td>
+    <td width="32%" align="center"> <div class="txt"><span>评价</span>
+    <!-- <select ref="pingTwo" @change="pingFun" name="select2" id="select2">
+      <option value="">评价</option>
+      <option value="5">好评</option>
+      <option value="4">中评</option>
+      <option value="2">差评</option>
+    </select> -->
+    </div></td>
+    <td width="20%" align="center">卖家</td>
+    <td width="26%" align="center">商品信息</td>
+    <td width="10%" align="center">操作</td>
+  </tr>
+  <tr v-show="!othersEvalIsNull" v-for="list in storeeValuateListByOthers">
+    <!-- <td height="44" align="left" v-for="n in list.evaType">
+      <img src="../../../images/Star.jpg" width="13" height="13" />
+    </td> -->
+    <td height="44" align="left" >
+      <img src="../../../images/Star.jpg" width="13" height="13" v-for="n of list.evaTypes"/>
+    </td>
+    <td height="44" align="left">
+    <!-- <strong class="f14 org">好评！</strong> -->
+      <div class="m_top5"><span style="color:#999;margin-right: 3px;">[{{list.evalDate}}]</span>{{list.evaContent}}</div>
+      <div v-if="list.replyContent.length>0" class="m_top5"><span class="replyContent">[{{list.replyDate}}]回复：</span>{{list.replyContent}}</div>
+    </td>
+    <td height="44" align="center"><a href="#" class="blue" @click="goMerchantView(list.merchantId,list.merchantName)"><strong>{{list.merchantName}}</strong></a></td>
+    <td height="44" align="left"><a href="#" class="blue" @click="goGoodsView(list.goodsId)">{{list.goodsName}}</a></td>
+    <td height="44" align="center"><a href="javascript:void(0);" @click="delAssessment(list.id)">删除</a></td>
+  </tr>
+  <tr v-show="othersEvalIsNull">
+    <td height="200" colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+		    <td class="c-9 f14">暂无给他人评价</td>
+		  </tr>
+		</table>
+		</td>
+    </tr>
+  </table>
+ <div class="store-page text-right  buspage" v-if="pagerTwo.total > 0">
+	<el-pagination  @current-change="handleCurrentChangeByTwo" :current-page="pagerTwo.curpage" layout="prev, pager, next" :total="pagerTwo.total" :page-size="pagerTwo.size">
+	</el-pagination>
+</div>
+ </div>
+
+
+      </div>
+
+       </div>
+        <div id="con_one_2" v-show="shopEval" :class="{ 'hover': shopEval}">
+        <div class="tab_menu">
+      <div class="left personal-time"><span>按月份查询:</span>
+      <el-date-picker format="yyyy-MM"
+		    v-model="searchTimeTwo"
+		    type="month"
+		    placeholder="选择月">
+		  </el-date-picker>
+      <span><input name="" @click="search()" type="button" value="查询" class="btn" /></span></div>
+
+      </div>
+        <div class="padding20" style="padding-top:0px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td width="15%" align="center">
+    <div class="txt"><span>星级评价</span>
+    <!-- <form id="form1" name="form1" method="post" action="">
+      <label for="select"></label>
+      <select ref="starThree" @change="starFun" name="select" class="txt" id="select">
+        <option value="">星级评价</option>
+        <option value="5">5星级</option>
+        <option value="4">4星级</option>
+        <option value="3">3星级</option>
+        <option value="2">2星级</option>
+        <option value="1">1星级</option>
+      </select>
+    </form> -->
+    </div></td>
+    <td width="32%" align="center"> <div class="txt"><span>评价</span>
+    <!-- <select ref="pingThree" @change="pingFun" name="select2" id="select2">
+      <option value="">评价</option>
+      <option value="5">好评</option>
+      <option value="4">中评</option>
+      <option value="2">差评</option>
+    </select> -->
+    </div></td>
+    <td width="20%" align="center">卖家</td>
+    <td width="26%" align="center">商品信息</td>
+    <td width="10%" align="center">操作</td>
+  </tr>
+  <tr v-show="!shopEvalIsNull" v-for="list in shopMallEValuate">
+    <!-- <td height="44" align="left" v-for="n in list.evaType">
+      <img src="../../../images/Star.jpg" width="13" height="13" />
+    </td> -->
+    <td height="44" align="left" >
+      <img src="../../../images/Star.jpg" width="13" height="13" v-for="n of list.evaTypes"/>
+    </td>
+    <td height="44" align="left">
+    <!-- <strong class="f14 org">好评！</strong> -->
+      <div class="m_top5"><span style="color:#999;margin-right: 3px;">[{{list.evalDate}}]</span>{{list.evaContent}}</div>
+      <div v-if="list.replyContent.length>0" class="m_top5"><span class="replyContent">[{{list.replyDate}}]回复：</span>{{list.replyContent}}</div>
+    </td>
+    <td height="44" align="center"><a href="#" class="blue" @click="goMerchantView(list.merchantId,list.merchantName)"><strong>{{list.merchantName}}</strong></a></td>
+    <td height="44" align="left"><a href="#" class="blue" @click="goGoodsView(list.goodsId)">{{list.goodsName}}</a></td>
+    <td height="44" align="center"><a href="javascript:void(0);" @click="delAssessment(list.id)">删除</a></td>
+  </tr>
+  <tr v-show="shopEvalIsNull">
+    <td height="200" colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+		    <td class="c-9 f14">暂无网上商城评价</td>
+		  </tr>
+		</table>
+		</td>
+    </tr>
+       </table>
+        <div class="store-page text-
+        	right  buspage" v-if="pagerThree.total > 0">
+			<el-pagination  @current-change="handleCurrentChangeByThree" :current-page="pagerThree.curpage" layout="prev, pager, next" :total="pagerThree.total" :page-size="pagerThree.size">
+			</el-pagination>
+		</div>
+      </div>
+
+
+
+
+        </div>
+     </div>
+     </div>
+</div>
+  <lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/evaluation_manage_ps.js"></script>
+</body>
+</html>

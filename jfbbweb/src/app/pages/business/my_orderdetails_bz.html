@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的订单</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<style>
+			body:{text-align:justify;}
+			p{color:#333;}
+			.m_top20{margin-bottom: 20px;}		
+			.msg{background:#fff;margin-bottom: 20px;padding:0 0 20px 45px;}
+			.msg h5{text-align: left;line-height: 40px;color:#333;}
+			.msg table{margin-left: 20px;text-align: left;box-sizing: border-box;}
+			.msg table td{border:1px solid #ddd;font: normal 14px/40px '微软雅黑';line-height: 30px;padding-left: 20px;}
+			.msg table .tip{color:#ef8f28; }
+		</style>
+		<body>
+			<div id="app" v-cloak>
+				<lf-header></lf-header>
+				<div class="webbox w1000">
+					<lf-left></lf-left>
+					<div class="rightbox">
+						<div class="box">
+							<ul class="switchbox">
+								<li class="hover">订单详情</li>
+							</ul>
+						</div>
+						<div class="box" style="margin-top:36px;padding-left: 24px;font: bold  '微软雅黑';">
+							<ul class="switchbox">
+								<li class="" style="font:bold;">订单状态：{{orderStatusStr}}</li>
+							</ul>
+						</div>
+						<!-- <dl style="    text-align: justify;padding-left:45px;font: normal 14px/40px '微软雅黑';">
+							<dt>	商家信息：
+								<dd style="line-height:32px;padding-left: 28px;"><span >店铺名称：{{orderInfo.shopName}}</span></dd>
+								<dd style="line-height:32px;padding-left: 28px;"><span >客服电话：{{orderInfo.servicePhone}}</span></dd>
+								<dd style="line-height:32px;padding-left: 28px;"><span >商家地址：{{orderInfo.merchantAddress}}</span></dd>
+							</dt>
+						</dl> -->
+						<div class="box m_top20">				
+							<div id="con_one_1" class="hover">
+								<div style="width:100%; float:left; padding:20px; padding-bottom:10;">
+									<div class="f_bottom10" style="border-top:1px solid #ddd;">
+										<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table3">
+											<tr>
+												<td width="60%"><strong>商品名称</strong></td>
+												<td width="14%" align="center"><strong>单价(元)</strong></td>
+												<td width="12%" align="center"><strong>数量</strong></td>
+												<td width="14%" align="center"><strong>小计(元)</strong></td>
+																															
+											</tr>
+										</table>
+									</div>
+									<div style="margin-bottom:10px; width:100%; float:left">
+										<table  v-loading="loading" width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">											
+											<tr v-for="order in orderDtlList">
+												<td width="60%" height="30">
+													<table width="100%" border="0" cellspacing="0">
+														<tr>
+															<td width="21%">
+																<div style="border:1px solid #ddd; float:left; margin-top:5px;width:80px; height:80px;">
+																	<a href="#" @click="goGoodsView(order.goodsId,orderInfo.payWay)"><img style="width: 80px;height: 80px;" :src="order.picUrl" /></a>
+																</div>
+																&nbsp;</td>
+															<td width="79%" valign="center">
+																<a href="#" @click="goGoodsView(order.goodsId,orderInfo.payWay)">{{order.goodsName}}</a>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td width="14%" align="center">{{order.price}}</td>
+												<td width="12%" align="center" >{{order.qty}}</td>
+												<td width="14%" align="center" >{{Number(order.price)*order.qty}}</td>
+											</tr>  
+										</table> 
+										
+									</div>
+								</div>								
+							<!-- <div class="page padding20" v-if="pager.total > 0">
+									<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+									</el-pagination>
+							</div> -->
+							</div>
+							<!-- <div class="goodmsg">
+								<p><span class="goodleft">订单总价：{{orderInfo.totalAmount}}元</span><span class="right">买家实付：<span style="color:#f33401;font-size: 20px !important;">{{orderInfo.payAmount}}</span>元</span></p> <br>
+								<p style="line-height:50px;"><span class="goodleft">用户积分：{{orderInfo.payInter}}积分</span><span class="right">商家积分：<span style="color:#349f0e;font-size:20px;">{{orderInfo.merchantInter}}</span>积分</span></p>
+							</div> -->
+						</div>						
+						<div class="ordermsg msg" >
+							<h5 >订单信息</h5>
+							<table width="755px" border="1"  cellpadding="0" cellspacing="0" >
+								<tr>
+									<td width="20%" class="tip">订单号：</td>
+									<td width="80%">{{orderInfo.orderNo}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">下单时间：</td>
+									<td width="80%">{{orderInfo.createDate}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">支付时间：</td>
+									<td width="80%">{{orderInfo.payDate}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">支付方式：</td>
+									<td width="80%">{{payWayStr}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">交易方式：</td>
+									<td width="80%">{{tradeWayStr}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="receivingmsg msg" >
+							<h5 >收货信息</h5>
+							<table  width="755px" border="1"  cellpadding="0" cellspacing="0" >
+								<tr>
+									<td width="20%" class="tip">收货人：</td>
+									<td width="80%">{{orderInfo.consigneeName}}</td>
+								</tr>
+								<tr>
+									<td class="tip">联系电话：</td>
+									<td>{{orderInfo.mobilePhone}}</td>
+								</tr>
+								<tr>
+									<td class="tip">收货地址：</td>
+									<td>{{orderInfo.detailAddr}}</td>
+								</tr>								
+							</table>
+						</div>
+						<div class="remarkmsg msg" >
+							<h5 >订单备注</h5>
+							<table  width="755px" border="1"  cellpadding="0" cellspacing="0" >
+								<tr>
+									<td width="20%" class="tip">备注信息：</td>
+									<td width="80%">{{orderInfo.remark}}</td>
+								</tr>														
+							</table>
+						</div>
+						<div class="paymsg msg" v-if="orderInfo.payStatus ==1">
+							<h5 >付款信息</h5>
+							<table  width="755px" border="1"  cellpadding="0" cellspacing="0" >
+								<tr>
+									<td width="20%" class="tip">总商品金额</td>
+									<td width="80%">￥{{(orderInfo.goodsTotalAmount).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td class="tip">使用红包</td>
+									<td>￥{{(orderInfo.couponAmount).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td class="tip">使用余额</td>
+									<td>￥{{(orderInfo.amount).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td class="tip">使用袋鼠币</td>
+									<td>{{orderInfo.onlinePayAmount}}</td>
+								</tr>
+								<tr>
+									<td class="tip">运费金额</td>
+									<td>￥{{(orderInfo.freightFee).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td class="tip">在线支付金额</td>
+									<td>￥{{(orderInfo.payAmount).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td class="tip">用户获得积分</td>
+									<td>{{orderInfo.payInter}}</td>
+								</tr>
+							</table>							
+						</div>
+						<div class="settlementmsg msg" v-if="orderStatusStr == '已完成'">
+							<h5 >结算信息</h5>
+							<table width="755px" border="1"  cellpadding="0" cellspacing="0" >
+								<tr>
+									<td width="20%" class="tip">此订单的现金收入</td>
+									<td width="80%">￥{{(orderInfo.goodsTotalAmount + orderInfo.freightFee).toFixed(2) }}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">平台服务费</td>
+									<td width="80%">￥{{(orderInfo.platformServFee).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">订单佣金</td>
+									<td width="80%">￥{{(orderInfo.bkge).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">此订单的总收入</td>
+									<td width="80%">￥{{(orderInfo.goodsTotalAmount + orderInfo.freightFee - orderInfo.platformServFee -  orderInfo.bkge).toFixed(2)}}</td>
+								</tr>
+								<tr>
+									<td width="20%" class="tip">总积分</td>
+									<td width="80%">{{orderInfo.merchantInter}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>				
+				<lf-footer></lf-footer>
+			</div>
+				<script src="../../../js/common.js"></script>
+				<script src="../../../js/pages/business/my_orderdetails_bz.js"></script>
+		</body>
+
+</html>

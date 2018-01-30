@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.min.css" />
+		<style>
+			.el-carousel__item h3 {
+				color: #475669;
+				font-size: 18px;
+				opacity: 0.75;
+				line-height: 300px;
+				margin: 0;
+			}
+			
+			.el-carousel__item:nth-child(2n) {
+				background-color: #000018;
+			}
+			
+			.el-carousel__item:nth-child(2n+1) {
+				background-color: #000018;
+			}
+			
+			.el-card__body {
+				padding: 0px;
+			}
+			
+			
+			.container{
+				width: 800px;
+				height: 500px;
+			}
+			.item-ul{
+				position: absolute;
+				left: 0;
+				width: 100px;
+			}
+			.detail{
+				position: absolute;
+				left: 100px;
+				width: 300px;
+				height: 500px;
+				background: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<lf-header></lf-header>
+			<div class="search-content">
+				<div class="search-left">
+					<image src="../images/logo.png"></image>
+					<div class="search-left-right">
+						<a href="">礼品区</a>
+					</div>
+				</div>
+				<div class="search-right">
+					<input placeholder="请输入店铺或服务中心门牌号" name="" value="" />
+					<span class=""><i class="fa fa-search"></i></span>
+				</div>
+			</div>
+			<!--
+				第一部分开始
+            -->
+			<div class="img-frame" >
+				<div class="banner-ui" >
+					<div class="category-tab-content">
+						<ul>
+							<li class="banner-xm" v-for="category in categoryList" @mouseover="categoryLiOn(category,$event)" @mouseout="categoryLiOff">
+								<img :src="category.categoryIcon" :alt="category.structureName">
+								<a class="jy-a" href="" v-text="category.structureName"></a>
+								<a href=""></a>
+								<a href=""></a>
+								<i class="fa fa-angle-right"></i>
+								
+							</li>
+							
+						</ul>
+					</div>
+					<div class="content-con j_categoryContent">
+						<div class="pannel-con j_CategoryMenuPannel" v-show="categoryLiShow" @mouseover="categoryLiOn()">
+							<div class="pannel-0">
+								<div class="hot-word-con">
+									<div class="hot-word-line" v-for="chooseCategory in chooseCategoryList" >
+										<div class="line-title">
+											<div class="title-text" v-text="chooseCategory.structureName"></div>
+											<i class="fa fa-angle-right"></i>
+										</div>
+										<div class="line-con">
+											<a class="hot-word  highlight " href="" v-for="child in chooseCategory" v-text="child.structureName"></a>
+											<div class="seprate clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="banner-ug">
+					<div class="img">
+						<div class="sj-gg">
+							<div class="sj-pp">
+								<div class="sj-tx">
+									——— 通讯 ———
+								</div>
+								<div class="sj-tb">
+									特别推介
+								</div>
+								<div class="sj-content">
+									<img src="../images/sjtp.png" alt="">
+								</div>
+							</div>
+							<div class="sj-pp">
+								<div class="sj-tx">
+									——— 通讯 ———
+								</div>
+								<div class="sj-tb">
+									特别推介
+								</div>
+								<div class="sj-content">
+									<img src="../images/sjtp.png" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class=" " id="app">
+					<el-card class="box-card">
+						<el-carousel height="470px">
+							<el-carousel-item v-for="item in 1">
+								<div class="box-img"> <img src="../images/banner.png" style=" width:586px" alt=""></div>
+							</el-carousel-item>
+							<el-carousel-item v-for="item in 1">
+								<div class="box-img"><img src="../images/banner.png" style=" width:586px" alt=""></div>
+							</el-carousel-item>
+							<el-carousel-item v-for="item in 1">
+								<div class="box-img"><img src="../images/banner.png" alt=""></div>
+							</el-carousel-item>
+						</el-carousel>
+					</el-card>
+				</div>
+			</div>
+			<!--
+				第二部分结束
+            -->
+			<div class="gg-console">
+				<div class="gg-content">
+					<ul class="gg-span">
+						<li class="gg-img">
+							<a href="" title=""><img src="../images/ggwd.png" alt=""></a>
+						</li>
+						<li class="gg-img">
+							<a href="" title=""><img src="../images/gohh.png" alt=""></a>
+						</li>
+						<li class="gg-img">
+							<a href="" title=""><img src="../images/ggwd.png" alt=""></a>
+						</li>
+						<li class="gg-img">
+							<a href="" title=""><img src="../images/gohh.png" alt=""></a>
+						</li>
+					</ul>
+				</div>
+				<div class="gg-content cz-ch">
+					<div class="titel-zz">
+						<img src="../images/chaozhi.png" alt="">
+						<span>爆款、每日剁手！</span>
+					</div>
+					<ul class="gg-span">
+						<li class="gg-img">
+							<div class="img-div">
+								<div class="img-tv">
+									<img src="../images/dstv.png" alt="">
+								</div>
+								<div class="img-bk">
+									<div class="img-ab">
+										<img src="../images/bj.png" alt="">
+										<span>爆款</span>
+									</div>
+								</div>
+								<div class="jf-img">
+									<span class="jf-sz">240</span>
+									<span class="jf-f">积分</span>
+								</div>
+								<div class="jf-img">
+									<span class="jf-fa">已有</span>
+									<span class="jf-w">1.9万+</span>
+									<span class="jf-fa">人评价</span>
+								</div>
+								<div class="banne">
+									<a href="" title="">
+										<div class="button">
+											<i class="fa fa-rmb"></i>
+											<span> 立即兑换</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li class="gg-img">
+							<div class="img-div">
+								<div class="img-tv">
+									<img src="../images/dstv.png" alt="">
+								</div>
+								<div class="img-bk">
+									<div class="img-ab">
+										<img src="../images/bj.png" alt="">
+										<span>爆款</span>
+									</div>
+								</div>
+								<div class="jf-img">
+									<span class="jf-sz">240</span>
+									<span class="jf-f">积分</span>
+								</div>
+								<div class="jf-img">
+									<span class="jf-fa">已有</span>
+									<span class="jf-w">1.9万+</span>
+									<span class="jf-fa">人评价</span>
+								</div>
+								<div class="banne">
+									<!-- <div class="button">
+								<i class="fa fa-rmb"></i>
+								<span> 立即兑换</span>
+							</div> -->
+									<a href="" title="">
+										<div class="banne-span">
+											<span>
+									美的(Midea)BCD-516WKZM(E) 516升 66美的(MCD-516WKZM(E) 
+								</span>
+									</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="gg-img">
+							<div class="img-div">
+								<div class="img-tv">
+									<img src="../images/dstv.png" alt="">
+								</div>
+								<div class="img-bk">
+									<div class="img-ab">
+										<img src="../images/bj.png" alt="">
+										<span>爆款</span>
+									</div>
+								</div>
+								<div class="jf-img">
+									<span class="jf-sz">240</span>
+									<span class="jf-f">积分</span>
+								</div>
+								<div class="jf-img">
+									<span class="jf-fa">已有</span>
+									<span class="jf-w">1.9万+</span>
+									<span class="jf-fa">人评价</span>
+								</div>
+								<div class="banne">
+									<a href="" title="">
+										<div class="button">
+											<i class="fa fa-rmb"></i>
+											<span> 立即兑换</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li class="gg-img">
+							<div class="img-div">
+								<div class="img-tv">
+									<img src="../images/dstv.png" alt="">
+								</div>
+								<div class="img-bk">
+									<div class="img-ab">
+										<img src="../images/bj.png" alt="">
+										<span>爆款</span>
+									</div>
+								</div>
+								<div class="jf-img">
+									<span class="jf-sz">240</span>
+									<span class="jf-f">积分</span>
+								</div>
+								<div class="jf-img">
+									<span class="jf-fa">已有</span>
+									<span class="jf-w">1.9万+</span>
+									<span class="jf-fa">人评价</span>
+								</div>
+								<div class="banne">
+									<a href="" title="">
+										<div class="button">
+											<i class="fa fa-rmb"></i>
+											<span> 立即兑换</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="zb-div">
+				<div class="zb-content">
+					<div class="zb-title">
+						<div class="span">周边</div>
+
+						<div class="zb-rm ">服装</div>
+						<div class="zb-rm ">生活周边</div>
+						<div class="zb-rm ">箱包</div>
+						<div class="zb-rm active">热门</div>
+					</div>
+					<div class="zb-nr">
+						<ul class="gg-span">
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img gg-imge">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<a href="" title="">
+									<img src="../images/sjj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img">
+								<div class="gg-bg">
+									<img src="../images/bange.png" alt="">
+								</div>
+								<div class="gg-bg gg-zt">
+									<div class="gg-su"></div>
+									<div class="gg-su">
+										<div class="gg-a">
+											<a href="">浏览更多</a>
+										</div>
+										<div class="gg-a">
+											<a class="gg-rm" href=""> 热门</a>
+										</div>
+										<div class="gg-a gg-i">
+											<a href=""><i class="fa fa-arrow-circle-o-right"></i></a>
+										</div>
+									</div>
+									<div class="gg-su"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="zb-div zb-jy">
+				<div class="zb-content zb-img-i">
+					<div class="zb-title zb-border">
+						<div class="span">家用电器</div>
+					</div>
+					<div class="zb-nr zb-xx">
+						<ul class="gg-span">
+							<li class="gg-img gg-wd gg-li">
+								<div class="gg-banne" id="app2">
+									<el-card class="box-card">
+										<el-carousel height="206px">
+											<el-carousel-item v-for="item in 1">
+												<div class="box-img"> <img src="../images/npl.png" style=" width:407px" alt=""></div>
+											</el-carousel-item>
+											<el-carousel-item v-for="item in 1">
+												<div class="box-img"><img src="../images/npl.png" style=" width:407px" alt=""></div>
+											</el-carousel-item>
+											<el-carousel-item v-for="item in 1">
+												<div class="box-img"><img src="../images/npl.png" alt=""></div>
+											</el-carousel-item>
+										</el-carousel>
+									</el-card>
+								</div>
+							</li>
+							<li class="gg-img gg-wd">
+								<a href="" title="">
+									<img src="../images/zzj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img gg-wd">
+								<a href="" title="">
+									<img src="../images/zzj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img gg-sx">
+								<a href="" title="">
+									<img src="../images/bx.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img gg-imge">
+								<div class="gg-banne">
+									<a href="" title="">
+										<img src="../images/npl.png" alt="">
+									</a>
+								</div>
+
+							</li>
+							<li class="gg-img gg-wd">
+								<a href="" title="">
+									<img src="../images/zzj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img gg-wd">
+								<a href="" title="">
+									<img src="../images/zzj.png" alt="">
+								</a>
+							</li>
+							<li class="gg-img  gg-jd">
+								<div class="drmw">
+									<a href="" title="" class="fisrst">
+										大家电
+									</a>
+									<a href="" title="">
+										平板电视
+									</a>
+									<a href="" title="">
+										空调
+									</a>
+								</div>
+								<div class="drmw">
+									<a href="" title="" class="fisrst">
+										大家电
+									</a>
+									<a href="" title="">
+										平板电视
+									</a>
+									<a href="" title="">
+										空调
+									</a>
+								</div>
+								<div class="drmw">
+									<a href="" title="" class="fisrst">
+										大家电
+									</a>
+									<a href="" title="">
+										平板电视
+									</a>
+									<a href="" title="">
+										空调
+									</a>
+								</div>
+								<div class="drmw">
+									<a href="" title="" class="fisrst">
+										大家电
+									</a>
+									<a href="" title="">
+										平板电视
+									</a>
+									<a href="" title="">
+										空调
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="ls-bu">
+				<div class="ls-my">
+					<div class="ls-header">
+						<div calss="ls-rp">
+							热评产品
+						</div>
+					</div>
+					<div class="ls-content ls-contents">
+						<div clas="ls-body">
+							<div class="ls-img">
+								<img src="../images/tlp.png" alt="">
+							</div>
+							<div class="ls-nr">
+								手机好用
+							</div>
+							<div class="ls-x">
+								来自于谁的评价
+							</div>
+							<div class="ls-qw">
+								<span>全网通</span>
+								<span>|</span>
+								<span class="js">1340积分</span>
+							</div>
+						</div>
+					</div>
+					<div class="ls-content">
+						<div clas="ls-body">
+							<div class="ls-img">
+								<img src="../images/tlp.png" alt="">
+							</div>
+							<div class="ls-nr">
+								手机好用
+							</div>
+							<div class="ls-x">
+								来自于谁的评价
+							</div>
+							<div class="ls-qw">
+								<span>全网通</span>
+								<span>|</span>
+								<span class="js">1340积分</span>
+							</div>
+						</div>
+					</div>
+					<div class="ls-content ">
+						<div clas="ls-body">
+							<div class="ls-img">
+								<img src="../images/tlp.png" alt="">
+							</div>
+							<div class="ls-nr">
+								手机好用
+							</div>
+							<div class="ls-x">
+								来自于谁的评价
+							</div>
+							<div class="ls-qw">
+								<span>全网通</span>
+								<span>|</span>
+								<span class="js">1340积分</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+
+		
+	</body>
+	<script src="../js/common.js"></script>
+	<script src="../js/index.js"></script>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>账号设置</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+</head>
+
+<body>
+	<div id="app">
+		<lf-header></lf-header>
+		<div class="webbox w1000">
+			<lf-left url="contact_bz.html"></lf-left>
+		    <div class="rightbox">
+			    <div class="box h790">
+			    <ul class="switchbox">
+			      <li class="hover"><a href="#">广告管理</a></li>
+			    </ul>
+			    <div class="padding20">
+			    <div class="left"><a href="#" onClick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><input type="submit" name="button" id="button" value="+新增广告" class="btn" style="color:#666; border:1px solid #ddd; background:#fff; height:34px; margin:0px; margin-top:-5px;"/></a></div>
+			 
+			    </div>
+			    <div class="padding20" style="padding-top:0px;" v-loading="loading">
+			      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table4"> 
+			        <tr>
+			          <td width="51" align="center" bgcolor="#F6F6F6"><strong>序号</strong></td> 
+			          <td width="136" align="center" bgcolor="#F6F6F6"><strong>广告标题</strong></td> 
+			          <td width="218" align="center" bgcolor="#F6F6F6"><strong>广告图片</strong></td>
+			          <td width="245" align="center" bgcolor="#F6F6F6"><strong>链接商品名称</strong></td>
+			          <td width="120" align="center" bgcolor="#F6F6F6"><strong>排序</strong></td>
+			          <td width="70" align="center" bgcolor="#F6F6F6"><strong>操作</strong></td>
+			        </tr>
+			        <tr v-for="data in advertising">
+			          <td align="center" v-text="data.sort">01</td>
+			          <td align="center" class="table4 m_top10" v-text="data.adTitle"></td>
+			          <td align="center" class="blue"><img :src="data.adPic" width="200" /></td>
+			          <td align="left" v-text="data.goodsName"></td>
+			          <td align="center">
+			          	<a href="javascript:void(0);" @click="ggsort(data.id,3)"><img src="../../../images/list_03.jpg" width="11" height="15"  /> </a>
+			          	<a href="javascript:void(0);" @click="ggsort(data.id,1)"><img src="../../../images/list_05.jpg" width="11" height="15" /></a>
+			          	<a href="javascript:void(0);" @click="ggsort(data.id,2)"><img src="../../../images/list_07.jpg" width="11" height="15" /> </a>
+			          	<a href="javascript:void(0);" @click="ggsort(data.id,4)"><img src="../../../images/list_09.jpg" width="11" height="15" /> </a></td>
+			          <td align="center">
+			          	<a href="javascript:void(0);" @click="del(data.id)" class="blue">删除</a>
+			          	<br />
+			          	<a href="javascript:void(0);" @click="update(data)" class="blue">修改</a>
+			          </td>
+			        </tr>
+			      </table>
+			    </div>
+			    </div>
+		    </div>
+	    </div>
+	    <div id="light" class="white_content" style=" left:40%; top:30%;display: none;">
+			<div class="Popupbox" style="width:400px;">
+			<div class="tb"><div class="left">新增广告</div><a class="right" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="../../../images/Prompt2_03.png" width="24" height="24" /></a></div>
+				<div class="Password" >
+			        <ul style="padding-top:30px; padding-bottom:0px;">
+			          <li>
+			            <div class="left" style="width:20%" >广告标题：</div>
+			            <div class="right"   style="width:80%" >  
+			            	<input name="" type="text" v-model="ruleForm.adTitle"/>
+			            </div>
+			          </li>
+			          <li><div class="left"  style="width:20%" >广告图片：</div>
+			            <div class="right"  style="width:80%" >
+			            	<span>
+			            		<input @click="updatechoose" type="button" value="上传图片" class="bnt"/>
+						    	<form id="imgform" enctype="multipart/form-data">
+						    		<input id="fileId" name="file" type="file" enctype="multipart/form-data" @change="uploadImg" style="display: none;">
+						    	</form>
+			            	</span>
+			            	<span style="padding-left:5px;">建议图片尺寸1000×465像素</span>
+			            </div>
+			          </li>
+			          <li class="f_bottom10">
+			            <div class="left"  style="width:20%" >链接商品：</div>
+			            <div class="right"  style="width:80%" ><span class="txt3"><label for="select"></label>
+				            <select v-model="ruleForm.goodsId" style="position: relative;top: -12px;">
+				            	<option :value="data.id" v-for="data in goodsList" v-text="data.goodsName" selected=false ></option>
+				            </select></span></div>
+			          </li>
+			          <li>
+			            <div class="right"  style="width:80%" >
+			              <input @click="save()" type="button" value="确认保存" class="bnt-org" style=" width:100px; margin-right:10px;"/><input name="取消" type="submit" value="取消"  onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"  class="bnt" style="height:40px;width:100px;"/>
+			            </div>
+			          </li>
+			          <li>
+			        </ul>
+			    </div>
+			</div>
+	    </div>
+	    <div id="fade" class="black_overlay" style="display:none;"></div>
+	    <lf-footer></lf-footer>  
+	</div>
+	
+</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/advertising_management.js"></script>
+</html>

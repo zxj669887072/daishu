@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我关注的商城商品</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	<lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">我关注的商城商品</li>
+      </ul>
+    </div>
+     <div class="box">
+       <div class="tab_menu">
+       <div style="float:left; padding-left:20px; width:50%">所有礼品 <span class="org"><strong>{{focusShopGoods.totalCount}}</strong></span> 件</div>
+      <div class="left"><span  class="txt2"><input ref="search" placeHolder="输入商品名进行搜索" name="" type="text" value="" /></span><span><input @click="search()" name="" type="button" value="搜索" class="btn2" /></span></div>
+    
+      </div>
+      
+       
+      <div class="padding20">
+        <div class="f_bottom20">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+          <tr>
+            <td width="11%" align="center" bgcolor="#F1F2F6"><strong>商品</strong></td>
+            <td width="38%" align="left" bgcolor="#F1F2F6">&nbsp;</td>
+            <td width="27%" align="center" bgcolor="#F1F2F6">价格</td>
+            <td width="24%" align="center" bgcolor="#F1F2F6">操作</td>
+          </tr>
+          <tr v-for="shop in focusShopGoods.list">
+            <td><div class="imgbox"><a href="#"><img :src="shop.goodsUrl" /></a></div></td>
+            <td align="left"><a href="#">{{shop.spec}}</a><br />
+            <td align="center"><strong class="green">{{shop.cnvInter}}</strong> 积分</td>
+            <td align="center" class="blue"><a href="#" class="blue">取消关注</a></td>
+          </tr>
+        </table>
+        <div class="store-page text-right  buspage">
+			<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+			</el-pagination>
+		</div>
+     </div>
+      </div>
+
+   </div>
+    </div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/focus_shop_goods_ps.js"></script>
+</body>
+</html>

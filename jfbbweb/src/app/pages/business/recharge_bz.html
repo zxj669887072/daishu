@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>充值</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h610" v-if="payShow.wx">
+						<ul class="switchbox">
+							<li class="hover">余额充值</li>
+						</ul>
+						<div class="Password">
+
+							<ul style="padding-bottom:30px;">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td height="50" align="right">充值帐号：</td>
+										<td align="left"><strong><span style="background:#f33401; height:30px; line-height:30px; padding-left:15px; padding-right:15px;  float:left;border-radius:3px; color:#fff">{{account}}</span></strong></td>
+									</tr>
+									<tr>
+										<td height="60" align="right">充值金额：</td>
+										<td align="left">
+											<table border="0" align="left" cellspacing="0">
+												<tr>
+													<td width="80">
+														<div style="width:120px; float:left"><input name="" type="text" v-model="amount" style="margin:0px; padding:0px; line-height:34px; height:34px;" /></div>
+													</td>
+													<td width="24" align="center">元</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="50" align="right">充值方式：</td>
+										<td align="left">
+											<template>
+											  <el-radio class="radio" v-model="type" label="1">微信</el-radio>
+											  <el-radio class="radio" v-model="type" label="2">支付宝</el-radio>
+											</template>
+										</td>
+									</tr>
+									<tr>
+										<td height="80" align="right" style="border-bottom:none">&nbsp;</td>
+										<td align="left" style="border-bottom:none"><input type="submit" value="立即充值" class="bnt-org" @click="recharge()"/></td>
+									</tr>
+								</table>
+							</ul>
+
+						</div>
+					</div>
+					<div class="wx" style="text-align: center;" v-else>
+						
+						<div>
+							<img :src="payShow.wxurl" alt="" />
+							
+						</div>
+						<div >
+							<strong style="font-size: 18px;">微信扫一扫</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+				<lf-footer></lf-footer>
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/business/recharge_bz.js"></script>
+	</body>
+
+</html>

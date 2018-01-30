@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>评价管理</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+	<style>
+		.white_content{
+			display: block;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.5);
+		}
+		.Popupbox{
+			overflow: hidden;
+			position: absolute;
+			top: 15%;
+			left: 50%;
+			margin-left: -230px;
+		}
+		.fooder dl[data-v-65324434]{
+			text-align: left;
+		}
+		.fooder dl[data-v-65324434] dd{
+			line-height: 24px;
+		}
+		.fooder ul[data-v-65324434] {
+			width: 291px !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<lf-header></lf-header>
+		<div class="webbox w1000">
+			<lf-left></lf-left>
+			<div class="rightbox">
+				<div class="box">
+					<ul class="switchbox">
+						<li class="hover">评价管理</li>
+					</ul>
+					<div class="padding20" style="padding-top:0px;">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+							<tr>
+								<td width="20%" align="left">
+									<div class="">
+										<template>
+											<el-select v-model="star" placeholder="星级评价" @change="filterByStar">
+												<el-option v-for="item in starOptions" :label="item.label" :value="item.value">
+												</el-option>
+											</el-select>
+										</template>
+									</div>
+								</td>
+								<td width="45%" align="left">
+									<div class="">
+										<template>
+											<el-select v-model="eval" placeholder="评价" @change="filterByEvaType">
+												<el-option v-for="item in evalOptions" :label="item.label" :value="item.value">
+												</el-option>
+											</el-select>
+										</template>
+									</div>
+								</td>
+								<td width="10%" align="left">卖家</td>
+								<td width="15%" align="left">商品信息</td>
+								<td width="10%" align="left">操作</td>
+							</tr>
+							<tr v-for="assessment in assessmentList">
+								<td height="44" align="left"><img src="../../../images/Star.jpg" v-for="n in assessment.evaType" width="13" height="13" /></td>
+								<td height="44" align="left"><strong class="f14 org">
+									<template v-if="assessment.evaType > 3">好评！</template>
+									<template v-else-if="assessment.evaType > 2 && assessment.evaType < 4 ">中评！</template>
+									<template v-else-if="assessment.evaType > 0 && assessment.evaType < 3 ">差评！</template>
+								</strong>
+								<div class="m_top5">
+									<span style="color:#999;margin-right: 3px;">[{{assessment.evalDate}}]</span>{{assessment.evaContent}}
+								</div>
+								<div v-if="assessment.replyContent.length>0" class="m_top5">
+								<span style="color:#999"></span>
+								<span style="color:#999;margin-right: 3px;">[{{assessment.replyDate}}] 回复:</span>{{assessment.replyContent}}
+								</div>
+							</td>
+							<td height="44" align="center">
+								<a href="#" class="blue"  @click="goMerchantView(assessment.merchantId)"><strong>{{assessment.merchantName}}</strong></a>
+							</td>
+							<td height="44" align="left">
+								<a href="#" class="blue" @click="goGoodsView(assessment.goodsId)">{{assessment.goodsName}}</a>
+							</td>
+							<td height="44" align="center">								
+								<a href="javascript:void(0);" class="blue" @click="showModel(assessment.id)">回复</a>
+							</td>
+							<!-- <td height="44" align="center">
+								<a href="javascript:void(0);" @click="delAssessment(assessment.id)">删除</a><br />
+								<a href="javascript:void(0);" v-if="assessment.replyContent.length<1 || assessment.replyDate.length<1" class="blue" @click="showModel(assessment.id)">回复</a>
+							</td> -->
+						</tr>
+					</table>
+					<div class="page">
+						<el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+						</el-pagination>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<lf-footer></lf-footer>
+	<!-- <el-dialog title="回复" v-model="replyShow" class="reply-dialog"> -->
+	<div id="light" class="white_content" v-show="replyShow">
+		<div class="Popupbox" style="width:460px;">
+			<div class="tb">
+				<div class="left">回复</div>
+				<a href="javascript:void(0);" class="right" @click="hideModel()"><img src="../../../images/Prompt2_03.png" width="24" height="24" /></a>
+			</div>
+			<ul style="padding-top:20px; padding-bottom:20px;">
+				<table width="100%" border="0" cellspacing="5" class="table2">
+					<tr>
+						<td height="44" align="right">
+							<textarea name="input5" rows="5" class="txt" style="width:100%" v-model="receiveContent" placeholder="请输入您要回复的内容"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td height="44"><input name="input4" type="submit" class="org_btn" value="确认回复" @click="doReceive()" />&nbsp;</td>
+					</tr>
+				</table>
+				<div class="m_top20" style="text-align:center"></div>
+			</ul>
+		</div>
+		<!-- <div id="fade" class="black_overlay" v-show="isShow"></div> -->
+	</div>
+	<!-- </el-dialog> -->
+</div>
+
+<script src="../../../js/common.js"></script>
+<script src="../../../js/pages/business/assessment_bz.js"></script>
+</body>
+
+</html>

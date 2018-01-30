@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>商城搜索</title>
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/app.min.css" />
+    <link href="../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: "微软雅黑", arial, 'bitstream vera sans', sans-serif;
+            font-size: 12px;
+            line-height: 24px;
+            color: #666;
+            text-decoration: none;
+            background: #fff;
+            min-width: 1024px;
+        }
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        dd,
+        dl,
+        dt,
+        fieldset,
+        form,
+        label,
+        legend,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: 0;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            vertical-align: middle;
+            outline: none;
+            outline: none;
+            background: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+            color: #333
+        }
+
+        input[type="button"],
+        input[type="submit"],
+        input[type="reset"] {
+            -webkit-appearance: none;
+        }
+
+        ol,
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .blue,
+        .blue a {
+            color: #087cd7
+        }
+
+        .clear {
+            clear: both
+        }
+
+        a {
+            color: #333;
+            cursor: pointer
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #039de9;
+            text-decoration: underline
+        }
+
+        .red,
+        .red a {
+            color: #e60012
+        }
+
+        .c-9 {
+            color: #999
+        }
+
+        .c-7 {
+            color: #777
+        }
+
+        .green {
+            color: #2da204
+        }
+
+        .org,
+        .org a {
+            color: #ff3e03
+        }
+
+        .org2,
+        .org2 a {
+            color: #f37e01
+        }
+
+        .org3,
+        .org3 a {
+            color: #fb965e
+        }
+
+        .left {
+            float: left
+        }
+
+        .right {
+            float: right
+        }
+
+        input {
+            padding: 0px;
+        }
+
+        img {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .f24 {
+            font-size: 24px;
+        }
+
+        .f22 {
+            font-size: 22px;
+        }
+
+        .f18 {
+            font-size: 18px;
+        }
+
+        .h18 {
+            line-height: 15px
+        }
+
+        .f16 {
+            font-size: 16px;
+        }
+
+        .f14 {
+            font-size: 14px;
+        }
+
+        .w1000 {
+            margin: 0px auto;
+            text-align: left;
+        }
+
+        .txt {
+            border: 1px solid #d2d2d2;
+            font-size: 12px
+        }
+
+        .m_top20 {
+            padding-top: 10px;
+        }
+
+        .f_bottom30 {
+            padding-bottom: 30px;
+            overflow: hidden
+        }
+
+        .f_bottom20 {
+            padding-bottom: 20px;
+        }
+
+        .f_bottom10 {
+            padding-bottom: 10px;
+        }
+
+        .m_top40 {
+            padding-top: 40px;
+        }
+
+        .m_top20 {
+            padding-top: 20px;
+        }
+
+        .m_top10 {
+            padding-top: 10px;
+        }
+
+        .m_top5 {
+            padding-top: 5px;
+        }
+
+        .org_btn {
+            background: #ff4400;
+            border-radius: 5px;
+            color: #FFF;
+            height: 40px;
+            padding-left: 25px;
+            padding-right: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none
+        }
+
+        .org_btn:hover {
+            background: #dd2b0b;
+        }
+
+        a img {
+            border: none
+        }
+
+        .org2_btn {
+            border: 1px solid #f37e01;
+            background: #f37e01;
+            border-radius: 5px;
+            color: #fff;
+            height: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .org2_btn:hover {
+            background: #ff5a00;
+            color: #fff
+        }
+
+        .org3_btn {
+            border: 1px solid #f37e01;
+            background: #fff;
+            border-radius: 5px;
+            color: #f37e01;
+            height: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .org3_btn:hover {
+            background: #ff5a00;
+            color: #fff
+        }
+
+        .hui_btn {
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 5px;
+            color: #666;
+            height: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .hui_btn:hover {
+            background: #eee;
+        }
+        /*头部*/
+
+        .top {
+            height: 40px;
+            line-height: 40px;
+            background: #f37e01;
+            color: #fff;
+        }
+
+        .top a {
+            color: #fff;
+            margin-top: 3px;
+            margin-left: 5px;
+            margin-right: 3px;
+        }
+
+        .top .right {
+            text-align: right;
+            margin-right: -5px;
+        }
+
+        .head {
+            height: 45px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow: hidden
+        }
+
+        .logo {
+            float: left;
+            color: #f37e01;
+            font: normal 30px/45px "微软雅黑";
+            margin-right: 20px;
+        }
+
+        .menu {
+            float: left;
+            font: normal 16px/55px "微软雅黑";
+            width: 450px;
+        }
+
+        .menu a {
+            padding-right: 20px;
+            margin-left: 10px;
+            float: left
+        }
+
+        .search {
+            width: 300px;
+            float: right;
+            height: 43px;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .search input {
+            padding: 0px;
+            height: 100%;
+            width: 257px;
+            padding-left: 13px;
+        }
+
+        .search span {
+            height: 100%;
+            width: 41px;
+            display: inline-block;
+            font-size: 18px;
+            line-height: 41px;
+            text-align: center;
+            float: right;
+            cursor: pointer;
+            border-left: 1px solid #ccc;
+        }
+
+        .search .text {
+            border: none;
+            margin-left: 10px;
+            float: left;
+            height: 43px;
+            width: 235px;
+            border-right: 1px solid #dcdcdc
+        }
+
+        .settled_top {
+            background: #FFF;
+            border-bottom: 1px solid #d2d2d2;
+            overflow: inherit;
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .top_name {
+            font: normal 18px/60px "微软雅黑";
+            float: left
+        }
+        /*翻页*/
+
+        .page {
+            font-size: 14px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page a {
+            padding: 5px 13px 5px 13px;
+            border: 1px solid #ddd;
+            margin-left: 3px;
+            color: #666;
+        }
+
+        .page a:hover,
+        .page .hover {
+            background: #ff8b1e;
+            border: 1px solid #ff8b1e;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .page span {
+            margin-right: 3px;
+        }
+        /* 表格 */
+
+        .table {
+            border: 1px solid #eceaea;
+            border-collapse: collapse;
+            /* 边框重叠 */
+        }
+
+        .table th {
+            border-bottom: 1px solid #eceaea;
+            /* 行名称边框 */
+        }
+
+        .table td {
+            padding: 8px;
+            border-bottom: 1px solid #eceaea;
+            /* 单元格边框 */
+        }
+
+        .table table th {
+            border: none;
+            padding: 0px;
+        }
+
+        .table table td {
+            border: none;
+            padding: 0px;
+        }
+
+        .list_right .product {
+            min-height: 200px;
+        }
+
+        .class img {
+            vertical-align: middle;
+        }
+
+        .filter {
+            position: relative;
+            z-index: 4;
+            _zoom: 1;
+        }
+
+        .filter .f-line {
+            height: 36px;
+            padding: 8px 8px;
+            border-bottom: 1px solid #E7E3E7;
+            background: #F9F9F9;
+            zoom: 1
+        }
+
+        .filter .f-line.top {
+            height: 36px;
+            background: #F1F1F1
+        }
+        .screening{
+         padding: 0;
+     }
+     .filter .f-line.top a{
+      margin: 0;
+  }
+  .filter .f-title {
+    float: left;
+    line-height: 25px;
+    margin-right: 10px
+}
+
+.filter .f-sort {
+    float: left;
+    margin-right: 13px
+}
+
+.filter .f-sort .arrow,
+.filter .f-sort .arrow-bottom,
+.filter .f-sort .arrow-top {
+    float: left;
+    width: 7px;
+    overflow: hidden;
+    background: url(../../images/sprite-arrow.png) no-repeat 0 -100px
+}
+
+.filter .f-sort .arrow {
+    height: 11px;
+    margin-top: 6px
+}
+
+.filter .f-sort .arrow-top {
+    height: 4px;
+    margin-top: 6px;
+    background-position: -10px -100px
+}
+
+.filter .f-sort .arrow-bottom {
+    height: 4px;
+    margin-top: 3px;
+    background-position: -10px -110px
+}
+
+.filter .f-sort .fs-down,
+.filter .f-sort .fs-up {
+    display: inline-block;
+    width: 7px;
+    margin-left: 5px;
+    vertical-align: top;
+    *cursor: pointer
+}
+
+.filter .f-sort .fs-tit {
+    display: inline-block;
+    vertical-align: top;
+    *cursor: pointer
+}
+
+.filter .f-sort a {
+    float: left;
+    padding: 0 9px;
+    height: 23px;
+    border: 1px solid #CCC;
+    line-height: 23px;
+    margin-right: -1px;
+    background: #FFF;
+    color: #333
+}
+
+.filter .f-sort a:hover {
+    position: relative;
+    text-decoration: none;
+    border-color: #f37e01;
+    color: #f37e01
+}
+
+.filter .f-sort a:hover .fs-down .arrow {
+    background-position: 0 -140px
+}
+
+.filter .f-sort a.curr {
+    border-color: #f37e01;
+    background: #f37e01;
+    color: #FFF
+}
+
+.filter .f-sort a.curr .arrow-top {
+    background-position: -10px -120px
+}
+
+.filter .f-sort a.curr .arrow-bottom {
+    background-position: -10px -130px
+}
+
+.filter .f-sort a.curr .fs-down .arrow {
+    background-position: 0 -120px
+}
+
+.filter .f-sort a.curr .fs-down .arrow-top,
+.filter .f-sort a.curr .fs-up .arrow-bottom {
+    filter: alpha(opacity=50);
+    -moz-opacity: .5;
+    opacity: .5
+}
+
+.filter .f-sort a.curr:hover {
+    color: #fff
+}
+/*wrap_classfiy*/
+.wrap_classfiy{
+    position: relative;
+    display: inline-block;
+    z-index: 5;
+}
+.wrap_classfiy .inner_classfiy{
+    position: absolute;
+    display: block;
+    width: 350px;
+    position: absolute;
+    left: 5px;
+    top: 37px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: none;
+}
+.wrap_classfiy .inner_classfiy li {
+    float: left;
+    /* width: 80px; */
+    height: 24px;
+    overflow: hidden;
+    line-height: 24px;
+    margin-right: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrap_classfiy.active a.current_classfiy{
+    z-index: 9;
+    position: relative;
+    border-color: #f37e01;
+    border-bottom-color: #fff;
+}
+.wrap_classfiy .inner_classfiy a{
+    border:0 none;
+}
+.wrap_classfiy.active .inner_classfiy{
+    border-color: #f37e01;
+    display: inline-block;
+}
+.wrap_classfiy .inner_classfiy li a{
+    margin-left: 0;
+}
+.fa{
+    display: inline;
+}
+.current a span{
+    background: none;
+    padding-right: 0;
+}
+.product dl{
+    margin-right: 6px;
+}
+</style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <lf-header></lf-header>
+        <div class="settled_top">
+            <div class="w1000">
+                <div class="logo">
+                    <a href="/app/pages/goods.html">
+                        <img src="../../images/logo3.png" />
+                    </a>
+                </div>
+                <div class="top_name">网上商城</div>
+                <!-- <div class="  search">
+                    <input placeholder="请输入商品名称" name="" value="" v-model="searchStr">
+                    <span @click="doSearchStr()"><i class="fa fa-search"></i></span>
+                </div> -->
+                <lf-search><lf-search>
+                <!-- <div class="search2">
+                    <dl>
+                        <dt><input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" /></dt>
+                        <dd><input name="" type="button" value="" @click="doSearchStr()" class="btn" /></dd>
+                    </dl>
+                    <ul class="search_wrap" v-if="searchDataList.length>0">
+                        <li v-for="searchData in searchDataList">
+                            <a :href="'/app/pages/store/storeshop.html?houseNumber='+searchData.houseNumber+'&merchantId='+searchData.id">
+                                <img :src="searchData.logo" alt="" style="width: 50px;">
+                                <span>{{searchData.shopName}}</span>
+                                <span>{{searchData.houseNumber}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+        <div class="w1000" style="overflow:hidden">
+            <div class="current">
+                <!-- <h1>{{rootStructureName}}</h1>> -->
+                <!-- <a href="#"><span>{{strucname}}</span></a>> -->
+                <h1>{{strucname}}</h1>
+                <div class="wrap_classfiy" @mouseover="current=true;" @mouseout="current=false;" :class="{'active':current}">
+                    <a href="#" class="current_classfiy" >
+                        <span v-if="childstructureName!='undefined' ">{{childstructureName}}</span>
+                        <span v-else>全部 </span>
+                        <i class="fa" :class="{'fa-chevron-up':!current,'fa-chevron-down':current}"></i>
+                    </a>
+                    <ul class="inner_classfiy">
+                        <li v-for="classfiy in classfiyData">
+                            <a href="javascript:;" @click="searchClassfiy(classfiy.structureNo,classfiy.structureName)">{{classfiy.structureName}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <a href="#" class="class" v-if="!brand" id="brand">{{currentBandName}} <img @click="clearBrand" src="../../../images/recharge_03.jpg" alt=""></a> -->
+                <el-tag v-if="!brand" id="brand" :closable="true" :close-transition="false" @close="clearBrand">
+                    {{currentBandName}}
+                </el-tag>
+                <el-tag v-if="!price" id="price" :closable="true" :close-transition="false" @close="clearPrice">
+                    {{priceRange}}
+                </el-tag>
+                <!-- <a href="#" class="class" v-if="!price" id="price"><img  @click="clearPrice" src="../../../images/recharge_03.jpg" alt=""></a> -->
+                <a href="#" class="clear" @click="clearChoose" v-if=" !brand || !price ">清除筛选</a>
+            </div>
+            <div class="f_bottom20">
+                <table width="100%" border="1" cellspacing="0" class="table">
+                    <tr>
+                        <td colspan="2" bgcolor="#f1f1f1"><strong class="org2 f18">{{structureName}}</strong> <strong class="f14">商品筛选</strong> 　共<strong>{{totalCount}}</strong>个商品</td>
+                    </tr>
+                    <tr v-if='brand'>
+                        <td width="8%" align="right"><strong>品牌：</strong></td>
+                        <td width="92%">
+                            <ul class="list01">
+                                <a v-for="brand in brandList" href="javascript:void(0);" @click="brandSearch(brand.id,brand)"><span class="org2">{{brand.brandZh}}{{brand.brandEn !== '' ? '('+brand.brandEn+')' : ''}}</span></a>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr v-if='price'>
+                        <td align="right"><strong>价格：</strong></td>
+                        <td>
+                            <div class="list02">
+                                <ul class="left">
+                                    <a href="javascript:void(0);" @click="priceSearch('0-799')">0-799</a>
+                                    <a href="javascript:void(0);" @click="priceSearch('800-1800')">800-1800</a>
+                                    <a href="javascript:void(0);" @click="priceSearch('1800-2500')">1800-2500</a>
+                                    <a href="javascript:void(0);" @click="priceSearch('2500-3500')">2500-3500</a>
+                                    <a href="javascript:void(0);" @click="priceSearch('3500-5000')">3500-5000</a>
+                                    <a href="javascript:void(0);" @click="priceSearch('5000以上')">5000以上</a>
+                                </ul>
+                                <div class="right ">
+                                    <ul>
+                                        <li>
+                                            <input name="" type="text" class="txt" v-model="minPrice" />
+                                        </li>
+                                        <li>-</li>
+                                        <li>
+                                            <input name="" type="text" class="txt" v-model="maxPrice" />
+                                        </li>
+                                        <li>
+                                            <input type="submit" name="button" id="button" value="确定" class="btn" @click="priceSearch()" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="list_left">
+                <h1>商品精选</h1>
+                <div class="product">
+                    <dl v-for="goods in goodsList">
+                        <dt>
+                            <a href="javascript:void(0);" @click="goDetail(goods.id)"><img :src="goods.picUrl" width="224" height="224" /></a>
+                        </dt>
+                        <dd><span class="left f18 org2">￥<strong>{{goods.price}}</strong></span>
+                            <div class="right"><strong class="green f12">赠送{{parseInt(goods.jfPrice)}}</strong> 积分</div>
+                        </dd>
+                        <div class="name">
+                            <a href="javascript:void(0);" @click="goDetail(goods.id)">{{goods.goodsName}}</a>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="list_right">
+                <div class="screening">
+                    <div class="right">
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);" @click="prevPage()">
+                                    < </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="hover" @click="nextPage()">></a>
+                                </li>
+                            </ul>
+                            <span><strong class="org">{{currentPage}}</strong>/{{totalPage}}</span>
+                        </div>
+                        <div class="left" style="width:200px;">
+                           <div id="J_filter" class="filter">
+                               <div class="f-line top">
+                                   <div class="f-sort">
+                                       <a href="javascript:;" :class="{'curr': OrderByEva!=0}" @click="sortEva(1)">
+                                           <span class="fs-tit">评论数</span>
+                                           <em class="fs-down">
+                                            <i class="arrow"></i>
+                                        </em>
+                                    </a>
+                                    <a href="javascript:;" :class="{'curr': orderByPrice!=0}" @click="sortPrice(priceFlag)">
+                                       <span class="fs-tit">价格</span>
+                                       <em :class="{'fs-up':orderByPrice==0 || orderByPrice==1 ,'fs-down':orderByPrice==2}">
+                                         <i class="arrow-top"></i>
+                                         <i class="arrow-bottom"></i>
+                                     </em>
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+
+                 </div>
+             </div>
+             <div class="product_box" v-loading="productLoading">
+                <div class="product">
+                    <dl v-for="item in searchList">
+                        <dt>
+                            <a href="javascript:void(0);" @click="goDetail(item.id)"><img :src="item.picUrl" width="224" height="224" /></a>
+                        </dt>
+                        <dd><span class="left f18 org2">￥<strong>{{item.price}}</strong></span>
+                            <div class="right"><strong class="green f12">赠{{parseInt(item.jfPrice)}}</strong> 积分</div>
+                        </dd>
+                        <dd>
+                            <a href="javascript:void(0);" @click="goDetail(item.id)">【{{item.goodsTag === '1' ? '新品' : '热卖'}}】{{item.goodsName}} </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+			<template v-if="totalCount == 0">
+			<div style="text-align:center">
+			<font color="red">抱歉！没有找到相关的宝贝！别担心，我们为了推荐了商品精选。</font>
+			 </div>
+			</template>
+            <template v-if="totalCount > 0">
+                <div class="page">
+                    <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+					</el-pagination>
+                </div>
+            </template>
+			
+        </div>
+    </div>
+    <lf-footer></lf-footer>
+</div>
+</body>
+<script src="../../js/common.js"></script>
+<script src="../../js/pages/list.js"></script>
+
+</html>

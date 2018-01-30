@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" /> 
+	</head>
+	<body>
+		<div id="app">
+
+		 	<div class="bb_content" >
+		 		<div class="bb-tit">
+		 			<img src="../../../images/logo.png">
+		 			<span class="tit-sure">实体店分类</span>
+		 			<div class="sure-search">
+	 						<input type="text" name="" placeholder="请输入店铺或服务中心门牌号"> 
+		 				 <i class="fa fa-search"></i>   
+		 			</div>
+		 		</div> 
+		 	</div>
+		 	<div class="store-listcars">
+		 		<div class="bb_content">
+		 			<div class="list-car">
+						<template>
+						  <el-carousel  height="461px "  indicator-position	="none" indicator-position="outside">
+						    <el-carousel-item  >
+						     <img src="../../../images/store-cars2.png">
+						    </el-carousel-item>
+						     <el-carousel-item  >
+						     <img src="../../../images/store-cars3.png">
+						    </el-carousel-item>
+						     <el-carousel-item  >
+						     <img src="../../../images/store-cars4.png">
+						    </el-carousel-item>
+						  </el-carousel>
+						</template>
+
+					</div>
+		 		</div>
+		 	</div>
+
+		 	<div class="bb_content shlist-content">
+		 		<div class="css-border"></div>
+		 		<el-row>
+		 			<el-col :span=4>
+		 				<div class="list-left">
+			 				<div class="tit"> 分类 </div>
+			 				<div class="list-item">汽车</div>
+			 				<div class="list-item">美容</div>
+			 				<div class="list-item">金融</div>
+		 				</div>
+		 			</el-col>
+		 			<el-col :span=20>
+		 				<div class="list-right">
+		 					<div class="right-content">
+		 						<template>
+								  <el-tabs v-model="activeName"  >
+								    <el-tab-pane label="汽车" name="store-car">
+								    	
+
+								    	<div class="car-tab">
+								    		<div class="tab-tit">新能源</div>
+
+								    		<div class="car-its">
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    		</div>
+								    		<div class="car-its">
+								    			
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    		</div>	
+ 
+								    	</div>
+
+
+
+								    	<div class="car-tab">
+								    		<div class="tab-tit">新能源</div>
+
+								    		<div class="car-its">
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    		</div>
+								    		<div class="car-its">
+								    			
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    		</div>	
+ 
+								    	</div>
+
+
+
+
+
+								    	<div class="car-tab">
+								    		<div class="tab-tit">新能源</div>
+
+								    		<div class="car-its">
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    		</div>
+								    		<div class="car-its">
+								    			
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    			<div class="its">
+								    				<img src="../../../images/store-car1.png">
+								    				<div class="car-tits">
+								    					Mscecs智慧运车
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>  
+								    			<div class="its">
+								    				<img src="../../../images/store-car2.png">
+								    				<div class="car-tits">
+								    					Mscecs自动刷号
+								    				</div>
+								    				<div class="car-show">门牌号：8888444</div>
+								    			</div>
+								    		</div>	
+ 
+								    	</div>
+
+
+
+
+								    </el-tab-pane> 
+								  </el-tabs>
+								</template>
+		 					</div>
+		 				</div>
+		 			</el-col>
+		 		</el-row>
+
+
+		 	</div>
+
+		 		<div class="store-foot">
+					<el-row>
+					  <el-col :span="3"> 
+						<img class="float-left" src="../../../images/store-foot3.png"> 
+					  </el-col>
+					   <el-col :span="5"> 
+					  		<div class="foot-tit">赚取积分方式多</div>
+					  		<div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div> 
+					   </el-col>
+					  	<el-col :span="3"> 
+						<img class="float-left" src="../../../images/store-foot2.png"> 
+					  </el-col>
+					   <el-col :span="5"> 
+					  		<div class="foot-tit">赚取积分方式多</div>
+					  		<div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div> 
+					   </el-col>
+					   <el-col :span="3"> 
+						<img class="float-left" src="../../../images/store-foot1.png"> 
+					  </el-col>
+					   <el-col :span="5"> 
+					  		<div class="foot-tit">赚取积分方式多</div>
+					  		<div class="foot-info">网上购物、门店消费、分销商品、招募商家、签到...多种方式赚取积分</div> 
+					   </el-col>
+					</el-row>
+ 						 
+				</div>
+
+
+	 	</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/store/store-list.js"></script>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/app.min.css" />
+</head>
+<style>
+    .el-form-item__content{
+       margin-left: 0px !important;
+   }
+   .el-input__inner{
+       height:40px;
+       padding-left: 40px;
+   }
+   .el-form-item .el-form-item__content{
+       line-height: 0px;
+   }
+   body .page-market .content .content-layout .login-box-warp .login-box .bd .submit .J_Submit{
+       line-height: 0px !important;
+   }
+   .code .el-input__inner{
+       width: 50% !important;
+   }
+   .codeimg{
+       position: absolute;
+       top: 0;
+       left: 50%;
+       width: 50%;
+       height: 40px;
+   }
+.login {
+    float: left;
+}
+.backcolor{
+  background: #fff url('../images/login-one.png') 0 0 no-repeat;
+  height: 500px;
+  min-height: 500px;
+  min-width: 1200px;
+}
+body .page-market .content .content-layout .login-box-warp .login-box .bd .bd-sj .username-field .TPL_username_1{
+    line-height: 50px;
+}
+.fooder dl[data-v-65324434]{
+    text-align: left;
+}
+.fooder dl[data-v-65324434] dd{
+    line-height: 24px;
+}
+</style>
+<!-- <body onkeydown="keydown()"> -->
+<body >
+    <div id="app">
+        <div class="tms-page mallAct tmall-login w1190 page-market" @keyup.enter="submitForm('ruleForm2')">
+            <div class="headerli">
+                <span class="login"><a href="/app/index.html" target="_self" ><img src="../images/logo.png" alt=""></a></span>
+                <span style="clear:both;"></span>
+                <a href="/app/pages/register.html" target="_self" v-if="!user_id" class="zc-login">
+                    <span class="fa fa-edit"></span>
+                    <span class="zc-span">用户注册</span>
+                </a>
+            </div>
+            <div class="content">
+              <div class="backcolor">
+              </div>
+                <div class="content-layout">
+                    <div class="login-box-warp">
+                        <div class="login-box no-longlogin module-static">
+                            <div class="hd">
+                                <div class="login-switch" onselectstart="return false;">
+                                    <img src="../images/ewm.png" alt="">
+                                </div>
+                            </div>
+                            <div class="bd">
+                               <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                                 <div class="bd-dl">用户登录</div>
+                                 <div class="bd-sj">
+                                     <div class="field username-field">
+                                        <label for="TPL_username_1" class="TPL_username_1"> <i class="fa fa-mobile-phone phone" title="会员名"></i></label>
+                                        
+                                        <el-form-item  prop="account">
+                                         <el-input class="login-text J_UserName" type="text" placeholder="输入手机号" v-model.number="ruleForm2.account" auto-complete="off"></el-input>
+                                     </el-form-item>
+                                 </div>
+                             </div>
+                             <div class="bd-sj">
+                                 <div class="field username-field">
+                                    <label for="TPL_username_1" class="TPL_username_1"> <i class="fa fa-lock phone" title="会员名"></i></label>
+                                    
+                                    <el-form-item  prop="password">
+                                     <el-input  class="login-text J_UserName" type="password" placeholder="输入密码" v-model="ruleForm2.password" auto-complete="off"></el-input>
+                                 </el-form-item>
+                             </div>
+                         </div>
+                         <div class="bd-sj">
+                             <div class="field username-field">
+                                <label for="TPL_username_1" class="TPL_username_1"></label>
+                                <el-form-item  prop="code">
+                                 <el-input  class="login-text J_UserName code" style="border: none;" type="text" placeholder="输入验证码" v-model="ruleForm2.code" auto-complete="off"></el-input>
+                             </el-form-item>
+                             <a href="javascript:void(0);" @click="reloadCodeimg">
+                               <img :src="codeUrl" class="codeimg"/>
+                           </a>
+                       </div>
+                   </div>
+                   <div class="wj-mm" style="overflow: hidden;">
+                    <a style="float: left;" href="/app/pages/register.html" target="_self" >免费注册</a>
+                    <a href="/app/pages/validation.html" target="_self"  class="wj" href="" >忘记密码？</a>
+                </div>
+                <div class="submit"> 
+                  <!-- <el-form-item>
+                     <el-button  id="input1"  v-on:keyup.13="submitForm('ruleForm2')" class="J_Submit" type="primary" @click="submitForm('ruleForm2')" >登录</el-button>
+                 </el-form-item> -->
+                 <el-form-item>
+                  <input name="" type="button" id="input1" value="登 录" v-on:keyup.13="submitForm('ruleForm2')" class="J_Submit" @click="submitForm('ruleForm2')"/>
+                </el-form-item>
+             </div>
+                                        <!--<div class="dsf">
+                                            使用第三方账号登陆
+                                        </div>
+                                        <div class="dsf-tp">
+                                            <a href="" >
+                                                <img src="../images/wb.png" alt="">
+                                            </a>
+                                            <a href="" >
+                                                <img src="../images/zd.png" alt="">
+                                            </a>
+                                            <a href="" >
+                                                <img src="../images/zf.png" alt="">
+                                            </a>
+                                            <a href="" >
+                                                <img src="../images/qq.png" alt="">
+                                            </a>
+                                            <a href="">
+                                                <img src="../images/wx.png" alt="">
+                                            </a>
+                                        </div>-->
+                                    </el-form-item>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <lf-footer></lf-footer>
+        </div>
+    </body>
+    <script src="../js/common.js"></script>
+    <script src="../../js/login.js"></script>
+    </html>

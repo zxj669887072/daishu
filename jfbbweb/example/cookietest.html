@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>
+				userid = {{userid}}
+			</div>
+			<button @click="set">set</button>
+			<button @click="get">get</button>
+			<button @click="clear">clear</button>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		var LF = {};
+		LF.cookie = {
+			set:function(c_name,value,expiredays){
+				var exdate = new Date()
+				if(!expiredays){
+					document.cookie = c_name + "=" + escape(value)+";path=/;";
+				}else{
+					exdate.setDate(exdate.getDate() + expiredays * 1);
+					document.cookie = c_name + "=" + escape(value)+
+					 ";expires=" + exdate.toGMTString()
+				}
+				console.log("set")
+				console.log(document.cookie)
+			},
+			get:function(c_name){
+				console.log("get")
+				console.log(document.cookie)
+				if(document.cookie.length > 0) {
+					
+					var c_start = document.cookie.indexOf(c_name + "=");
+					if(c_start != -1) {
+						c_start = c_start + c_name.length + 1
+						var c_end = document.cookie.indexOf(";", c_start)
+						if(c_end == -1) c_end = document.cookie.length
+						return unescape(document.cookie.substring(c_start, c_end))
+					}
+				}
+				return "";
+			},
+			del:function(c_name){
+				var exp = new Date();
+				exp.setDate(exp.getDate() - 1);
+				var cval = this.get(c_name);
+				if(cval != null){
+					document.cookie = c_name + "=" + escape(cval)+ ";expires=" + exp.toGMTString()+";path=/;";
+				}
+			},
+			clear:function(){
+				var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+				if (keys) { 
+					for (var i = keys.length; i--;) {
+		                this.del(keys[i]);
+					}
+				} 
+			}
+		};
+		new Vue({
+			el: "#app",
+			data: {
+				userid:""
+			},
+			computed: {},
+			watch: {},
+			methods: {
+				set:function(){
+					LF.cookie.set("userId","test");
+				},
+				get:function(){
+					this.userid = LF.cookie.get("userId");
+				},
+				clear:function(){
+					LF.cookie.clear();
+				}
+			},
+			beforeMount: function() {
+				this.userid = LF.cookie.get("userId");
+			},
+			mounted: function() {}
+		});
+	</script>
+
+</html>

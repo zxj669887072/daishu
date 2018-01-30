@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>运费模板设置</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+		<style>
+			.el-input{
+				height: 36px;
+			}
+			.mui-table {
+			    min-height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+
+				<lf-left></lf-left>
+				<div class="rightbox" v-loading="loading">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">运费模板设置</li>
+						</ul>
+						<div class=" padding20 balance"><input @click="dialogFormVisible = true" type="submit" value="+新增模板" class="bnt-org" style="float:right" />
+						</div>
+						<div class="padding20" style="padding-top:0px;">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table4" v-for="data in bmList">
+								<tr>
+									<td colspan="5" bgcolor="#f3f3f3">
+										<div class="right c-9"><span v-text="'最后编辑时间：'+data.updateDate"></span>
+											<a href="#" class="blue" @click="copy(data)">复制模板</a> |
+											<a href="#" class="blue" @click="update(data)">修改</a> |
+											<a href="#" class="blue" @click="del(data.templateId)">删除</a>
+										</div><strong class="f14" v-text="data.companyName"></strong>
+									</td>
+								</tr>
+								<tr>
+									<td><strong>运送到</strong></td>
+									<td align="center"><strong v-text="data.priceType==0?'首重（kg）':'首件（个）'"></strong></td>
+									<td align="center"><strong>首费（元）</strong></td>
+									<td align="center"><strong v-text="data.priceType==0?'续重（kg）':'续件（个）'"></strong></td>
+									<td align="center"><strong>续费（元）</strong></td>
+								</tr>
+								<tr v-for="child in data.list">
+									<td>{{child.expressAreaName | area-show}}</td>
+									<td align="center" v-text="data.priceType==0?child.frontWeight:child.frontQuantity"></td>
+									<td align="center" v-text="child.frontFreight"></td>
+									<td align="center" v-text="data.priceType==0?child.frontWeight:child.frontQuantity"></td>
+									<td align="center" v-text="child.afterFreight"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+			<el-dialog title="收货地址" v-model="dialogFormVisible">
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-4">
+						物流公司
+					</div>
+					<div class="mui-table-cell mui-col-sm-8">
+						<el-select v-model="templateData.companyCode" placeholder="请选择物流公司">
+					        <el-option :label="data.companyName" :value="data.companyCode" v-for="data in kdList"></el-option>
+				      	</el-select>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-4">
+						计重方式
+					</div>
+					<div class="mui-table-cell mui-col-sm-8">
+						<el-radio-group v-model="templateData.priceType">
+					      	<el-radio label="0" :disabled="templateData.list.length>0">重量(kg)</el-radio>
+					      	<el-radio label="1" :disabled="templateData.list.length>0">件数</el-radio>
+					    </el-radio-group>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center" v-show="templateData.priceType==0">
+						首重(kg)
+					</div>
+					<div class="mui-table-cell mui-col-sm-3" v-show="templateData.priceType==0">
+						<el-input v-model="listdata.frontWeight" ></el-input>
+					</div>
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center" v-show="templateData.priceType==1">
+						首件
+					</div>
+					<div class="mui-table-cell mui-col-sm-3" v-show="templateData.priceType==1">
+						<el-input v-model="listdata.frontQuantity" ></el-input>
+					</div>
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center">
+						首费
+					</div>
+					<div class="mui-table-cell mui-col-sm-3">
+						<el-input v-model="listdata.frontFreight" ></el-input>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center" v-show="templateData.priceType==0">
+						续重(kg)
+					</div>
+					<div class="mui-table-cell mui-col-sm-3" v-show="templateData.priceType==0">
+						<el-input v-model="listdata.afterWeight" ></el-input>
+					</div>
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center" v-show="templateData.priceType==1">
+						续件
+					</div>
+					<div class="mui-table-cell mui-col-sm-3" v-show="templateData.priceType==1">
+						<el-input v-model="listdata.afterQuantity" ></el-input>
+					</div>
+					<div class="mui-table-cell mui-col-sm-3 mui-text-center">
+						续费
+					</div>
+					<div class="mui-table-cell mui-col-sm-3">
+						<el-input v-model="listdata.afterFreight" ></el-input>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-4">
+						运输地区
+					</div>
+					<div class="mui-table-cell mui-col-sm-4">
+						<el-select v-model="listdata.expressChoose" placeholder="请选择运输地区">
+					        <el-option :label="data.name" :value="data.id" v-for="data in areaList"></el-option>
+				      	</el-select>
+					</div>
+					<div class="mui-table-cell mui-col-sm-4 mui-text-center">
+						<el-button type="primary" @click="addexpress">添加</el-button>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-4">
+						地区
+					</div>
+					<div class="mui-table-cell mui-col-sm-8">
+						<el-input v-model="listdata.expressAreaName" type="textarea" ></el-input>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-4">
+						是否默认
+					</div>
+					<div class="mui-table-cell mui-col-sm-8">
+						<el-radio-group v-model="listdata.defaultFlag">
+					      	<el-radio label="0" >否</el-radio>
+					      	<el-radio label="1" >是</el-radio>
+					    </el-radio-group>
+					</div>
+				</div>
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-sm-12 mui-text-center">
+						<el-button type="primary" @click="addmbList">加入</el-button>
+					</div>
+				</div>
+				<div>
+					<el-table
+					    :data="templateData.list"
+					    border
+					    style="width: 100%">
+					    <el-table-column
+					      prop="expressAreaName"
+					      label="运送到"
+					      min-width="150">
+					    </el-table-column>
+					    <el-table-column
+					      prop="front"
+					      :label="templateData.priceType==0?'首重':'首件'"
+					      min-width="50">
+					    </el-table-column>
+					    <el-table-column
+					      prop="frontFreight"
+					      label="首费"
+					      min-width="50">
+					    </el-table-column>
+					    <el-table-column
+					      prop="after"
+					      :label="templateData.priceType==0?'续重':'续件'"
+					      min-width="50">
+					    </el-table-column>
+					    <el-table-column
+					      prop="afterFreight"
+					      label="续费"
+					      min-width="50">
+					    </el-table-column>
+					    <el-table-column
+					      fixed="right"
+					      label="操作"
+					      width="100">
+					      <template scope="scope">
+					        <el-button @click.native.prevent="deleteRow(scope.$index)" type="text" size="small">删除</el-button>
+					      </template>
+					    </el-table-column>
+					  </el-table>
+				</div>
+			  <div slot="footer" class="dialog-footer">
+			    <el-button @click="dialogFormVisible = false">取 消</el-button>
+			    <el-button type="primary" @click="submitData" :disabled="dialogloading">确 定</el-button>
+			  </div>
+			  
+			</el-dialog>
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/business/shipping_template_bz.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>图片上传例子</title>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<form id="imgform" enctype="multipart/form-data">
+				<input id="fileId" name="file" type="file" enctype="multipart/form-data" @change="uploadImg">
+			</form>
+		</div>
+	</body>
+	<script src="../js/framework/vue.js"></script>
+	<script src="../js/lib/axios.js"></script>
+	<script>
+		/**
+		 * Created by zzcx on 2017/3/17 0017.
+		 */
+
+		var vue = new Vue({
+			el: '#app',
+			data: {
+
+			},
+			methods: {
+				// 上传图片
+				uploadImg: function(e) {
+					console.log("upload");
+					var file = this.$el.querySelector('input[id="fileId"]');
+					var formNode = this.$el.querySelector('form[id="imgform"]');
+					var formData = new FormData(formNode);
+					
+					var url = "http://120.77.213.110:8281/api/integral/image/upload?tokenId=&imageType=0";
+					this.updateImg(url,formData,function(res){
+						console.log("success",res);
+					},function(res){
+						console.log("error",res);
+					});
+					return;
+					axios.post('http://120.77.213.110:8281/api/integral/image/upload?tokenId=&imageType=0', formData, {
+						headers: {
+							//							'Content-Type': 'multipart/form-data'
+						},
+					}).then(function(response) {
+						console.log(response.data);
+					}).catch(function(error) {
+						console.log(error);
+					})
+					//         var xhr=new XMLHttpRequest();
+					//         xhr.open('POST', 'http://127.0.0.1:8899/api/integral/image/upload?tokenId=&imageType=0', true);
+					//         xhr.setRequestHeader("Content-Type","multipart/form-data; boundary=----WebKitFormBoundaryRTMkmJAAdl4ISucu");
+					//         xhr.setRequestHeader("Accept","application/json, text/plain, */*");
+					//         xhr.send(formData);
+				},
+				updateImg: function(url,data,success,error,uploadProgress) {
+					var requestData = data;
+					var request = new XMLHttpRequest();
+					var loadEvent = 'onreadystatechange';
+					var xDomain = false;
+					console.log(request);
+					request.open("post".toUpperCase(), url, true);
+					request.timeout = 60*1000;
+					request.onreadystatechange = function handleLoad() {
+						if(!request || (request.readyState !== 4 && !xDomain)) {
+							return;
+						}
+						if(request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+							return;
+						}
+						var responseData = request.responseText;
+						var rs = JSON.parse(responseData);
+						if (typeof success === 'function') {
+							success(rs);
+					    }
+						request = null;
+					};
+					request.onerror = function handleError() {
+						console.log("Network Error",config)
+						var rs = {
+							code:'900',
+							errorMessage:"系统异常"
+						}
+						if (typeof error === 'function') {
+							error(rs);
+					    }
+						request = null;
+					};
+					request.ontimeout = function handleTimeout() {
+						var rs = {
+							code:'901',
+							errorMessage:"系统请求超时"
+						}
+						if (typeof error === 'function') {
+							error(rs);
+					    }
+				      	request = null;
+				    };
+				    
+//				    request.setRequestHeader("Accept", "application/json, text/plain, */*");
+				    if (typeof uploadProgress === 'function') {
+				      	request.addEventListener('progress', uploadProgress);
+				    }
+				    request.send(requestData);
+				}
+
+			},
+			/*
+			 *组件挂在完成响应
+			 */
+			mounted: function() {
+				//				this.updateImg();
+			},
+			components: {}
+		})
+	</script>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div>{{title}}</div>
+			<div>
+				<label>a 跳转方式</label>
+				<a href="test1.html" target="_blank">go test1 page</a>
+			</div>
+			<div>
+				<label>按钮</label>
+				<button @click="go('test1.html')">go test1 page</button>
+				<br />
+				<label>其他</label>
+				<div @click="go('test1.html')">go test1 page</div>
+			</div>
+			<div id="content"></div>
+		</div>
+	</body>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/test/index.js"></script>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>登陆</title>
+        <link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/app.min.css" />
+        <style>
+            .el-carousel__item h3 {
+                color: #475669;
+                font-size: 18px;
+                opacity: 0.75;
+                line-height: 300px;
+                margin: 0;
+              }
+              
+              .el-carousel__item:nth-child(2n) {
+                background-color: #99a9bf;
+              }
+              
+              .el-carousel__item:nth-child(2n+1) {
+                background-color: #d3dce6;
+              }
+        </style>
+    </head>
+    <body>
+        <div class="tms-page mallAct tmall-login w1190 page-market">
+        <div class="header-bg">
+            <div class="headerli">
+                <a herf="" title="">
+                    <span class="login"><img src="../../images/logo.png" alt=""></span>
+                    <span>密码重置</span>
+                </a>
+            </div>
+        </div>
+        <div class="content">
+                <div class="content-lc" id="app">
+                      <el-steps :space="455" :active="1">
+                      <el-step title="填写账号信息"  style="width:830px;" center></el-step>
+                      <el-step title="注册成功" style="width:80px;" center></el-step>
+                    </el-steps>
+                </div>
+                <div class="content-bq app" id = "map">
+                        <div class=""  >
+                           <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                              <el-form-item label="密码" prop="pass">
+                                <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+                              </el-form-item>
+                              <el-form-item label="确认密码" prop="checkPass">
+                                <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+                              </el-form-item>
+                              <el-form-item label="年龄" prop="age">
+                                <el-input v-model.number="ruleForm2.age"></el-input>
+                              </el-form-item>
+                              <el-form-item>
+                                <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+                                <el-button @click="resetForm('ruleForm2')">重置</el-button>
+                              </el-form-item>
+                            </el-form>
+                        </div>
+                </div>
+        </div>
+        
+        <div class="footer">
+        <div class="left">
+            <ul>
+                <li>关于我们</li>
+                <span></span>
+                <li>商家入驻</li>
+                <span></span>
+                <li>代理商合作</li>
+                <span></span>
+                <li>招商中心合作</li>
+                <span></span>
+                <li>帮助中心</li>
+            </ul>
+            <div class="copy-right">粤ICP备xxxxx号&nbsp;&nbsp;普宁市XX公司&nbsp;&nbsp;Copyyight@2014-2020&nbsp;&nbsp;xxxx版权所有</div>
+            <div style="padding-top:6px;" class="copy-right">公司地址：xxxxxxxxx&nbsp;&nbsp;电话：0755-726689</div>
+        </div>
+        <div class="right">
+            <div class="box first">
+                <div class="qr-code-content">
+                    <img src="../../images/qr_code.png" />
+                </div>
+                <div class="title-content">
+                    <div style="margin-top:9px;">快捷入口</div>
+                    <div class="ttriangle"></div>
+                    <div class="ttriangle-two"></div>
+                </div>
+            </div>
+            <div class="box second">
+                <div class="qr-code-content">
+                    <img src="../../images/qr_code.png" />
+                </div>
+                <div class="title-content">
+                    微信公众号
+                    <div class="ttriangle"></div>
+                    <div class="ttriangle-two"></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    </body>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/test/test1.js"></script>
+</html>

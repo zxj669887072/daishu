@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单管理</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<style>
+			.el-dialog__body {
+				width: 45%;
+				margin: 0 auto;    				
+			}	
+			.el-form-item.is-required .el-form-item__label:before {
+    				content: '*';
+    				color: #ff4949;
+    				margin-right: 4px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<template>
+							<el-tabs v-model="activeName" @tab-click="handleClick">
+								<el-tab-pane label="全部订单" name="operType-1" >
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-1'"></lf-list>
+								</el-tab-pane>
+								<el-tab-pane  label="现金支付" name="operType-10">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-10'"></lf-list>
+								</el-tab-pane>
+								<el-tab-pane label="线上支付" name="operType-11">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-11'"></lf-list>
+								</el-tab-pane>
+								<el-tab-pane label="待发货" name="operType-3">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-3'"></lf-list>
+								</el-tab-pane>
+								<!-- <el-tab-pane label="需要评价" name="operType-8">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-8'"></lf-list>
+								</el-tab-pane> -->
+								<el-tab-pane label="完成的订单" name="operType-5">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-5'"></lf-list>
+								</el-tab-pane>
+								<el-tab-pane label="关闭的订单" name="operType-7">
+									<lf-list :list="orderlist" v-on:increment="fulshList" v-if="activeName=='operType-7'"></lf-list>
+								</el-tab-pane>
+
+							</el-tabs>
+						</template>
+
+
+
+						<div class="store-page text-right  buspage" v-if="pager.total>0">
+							<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+							</el-pagination>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+
+
+
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/orderlist_bz.js"></script>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>个人中心首页</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<link href="../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+<style>
+
+            .sumbox2 dl.dl{padding-top: 40px;}
+            /* .fooder{border-top: none;background: #f1f2f6;}
+            .fooder dl {
+                float: left;
+                height: auto;
+                width: 160px;
+                text-align: left;
+                padding-left: 0;
+                margin-right: 0;
+            } */
+            .fooder dl dd{
+                line-height: 24px;
+            }            
+</style>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover"><a href="#">基本资料</a></li>
+      </ul>
+
+
+    </div>
+     <div class="box">
+     <div class="Order">
+     <dl>
+         <dt><a href="my_order_ps.html?orderType=1"><img src="../../../images/hom_01.png"></a></dt>
+     <dd>全部订单<strong class="org"> {{basicInformation.totalOrderNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><a href="my_order_ps.html?orderType=2"><img src="../../../images/hom_02-.png"></a></dt>
+     <dd>待付款<strong class="org"> {{basicInformation.orderToPayNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><a href="my_order_ps.html?orderType=4"><img src="../../../images/hom_03.png"></a></dt>
+     <dd>待收货<strong class="org"> {{basicInformation.orderToReceNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><a href="my_order_ps.html?orderType=5"><img src="../../../images/hom_04.png"></a></dt>
+     <dd>待评价<strong class="org"> {{basicInformation.orderToEvalNum}}</strong></dd>
+     </dl>
+     <dl>
+         <dt><a href="my_order_ps.html?orderType=6"><img src="../../../images/hom_05.png"></a></dt>
+     <dd>已完成<strong class="org"> {{basicInformation.orderToFinishNum}}</strong></dd>
+     </dl>
+     </div>
+     </div>
+     <div class="box m_top20">
+     <div class="sumbox2 padding20">
+     <dl class="dl">
+         <dt>待赠送积分</dt>
+         <dd class="f18 org"><strong :title="basicInformation.integral">{{parseInt(basicInformation.integral)}}<!-- 分 --></strong></dd>
+         </dl>
+          <dl  class="dl">
+         <dt>积分余额</dt>
+         <dd class="f18 org2"><strong :title="basicInformation.integralBal">{{parseInt(basicInformation.integralBal)}}<!-- 分 --> </strong><!-- <img src="../../../images/hom_60.png" /> -->
+        <input type="submit" name="button" @click="exchange()" id="button" value="兑换"   style="color:#666;"/></dd>
+         </dd>
+         <dd>
+         </dl>
+          <dl  class="dl">
+         <dt>袋鼠币</dt>
+         <dd class="f18 green "><strong :title="basicInformation.rooCur">{{parseInt(basicInformation.rooCur)}}<!-- 分 --></strong></dd>
+         </dl>
+
+         <dl  class="dl">
+         <dt>总获得佣金</dt>
+         <dd  class="f18"><strong :title="basicInformation.accCommission">{{parseInt(basicInformation.accCommission)}}</strong></dd>
+         </dl>
+         <dl  class="dl">
+         <dt>消费总额</dt>
+         <dd  class="f18"><strong :title="basicInformation.curConsumeAmount">{{parseInt(basicInformation.curConsumeAmount)}}</strong></dd>
+         </dl>
+         <dl>
+         <dt>现金余额</dt>
+         <dd  class="f18 org"><strong>{{basicInformation.cashBalance}}</strong></dd>
+         <dd> <a href="/app/pages/personal/recharge_ps.html"><input type="submit" name="button" id="button" value="充值"   style="color:#ff4800;"/></a>
+    <a href="/app/pages/personal/withdrawal_ps.html"><input type="submit" name="button" id="button" value="提现"  style="color:#087cd7"/></a></dd>
+         </dl>
+     </div>
+     </div>
+    </div>
+     </div>
+    </div>
+  <div>
+        <div id="light" class="white_content" style="left: 39%;display: block; "  v-if="willShow">
+              <div class="Popupbox" style="width:460px;">
+                    <div class="tb"><div class="left">兑换袋鼠币</div><a class="right" ><img src="../../../images/Prompt2_03.png" width="24" height="24" @click="close()"></a></div>
+                  <ul style="padding-top:20px; padding-bottom:20px;"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                      <td height="50" align="right">兑换数量：</td>
+                      <td align="left"><table border="0" align="left" cellspacing="0">
+                    <tbody><tr>
+                      <td><div style="width:100px; float:left"><input v-model="num" @keyup="fixed(num,wallet.integralBal)"    type="number"     style="margin:0px; padding:0px;"></div></td>
+                      <td>　可兑换积分：<strong>{{wallet.integralBal}}</strong></td>
+                    </tr>
+                  </tbody></table>
+                  </td>
+                    </tr>
+                    <tr>
+                      <td height="50" align="right">兑换比例：</td>
+                      <td align="left">1积分=1袋鼠币</td>
+                    </tr>
+                    <tr>
+                      <td align="right" style="border-bottom:none">&nbsp;</td>
+                      <td align="left" style="border-bottom:none"><input name="确认保存" type="submit" value="确定兑换" class="bnt-org" @click="sureExchange(num)"></td>
+                    </tr>
+                  </tbody></table>
+                    <div class="m_top20" style="text-align:center"></div>
+                  </ul>
+            </div>
+        </div>
+        <div id="fade" class="black_overlay" v-if="willShow"></div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/home_ps.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>订单确认</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+		<style>
+			.search2{
+	   			float: right;
+	   			margin-top: 34px;
+	   			position: relative;
+	   		}
+	   		.search2 input[type=text]{
+	   			font: 13.3333px Arial;
+	   			margin-left: -8px;
+	   			height: 28px;
+	   		}
+	   		.search2 input[type=button]{
+	   			position: absolute;
+	   			top: -1px;
+	   			right: -1px;
+	   			border-radius: 0;
+	   		}
+			#tit-sure{
+				font-size: 16px;
+				position:relative ;
+				top: -15px;
+				left: 10px;
+			}
+		</style> 
+	</head>
+	<body>
+	 	<div class="bb_content">
+	 		<div class="bb-tit">
+	 			<a href=" /app/pages/goods.html" target="_self"  style=" text-decoration:underline"><img src="../../../images/logo.png"></a>
+	 			<span class="tit-sure" id="tit-sure">确认订单信息</span>
+	 			<div class="search2 ">
+					<dl>
+						<dt><input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" /></dt>
+						<dd><input name="" type="button" value="" @click="doSearch()" class="btn" /></dl>
+					</dl>
+				</div>
+	 			<!-- <div class="sure-search">
+ 						<input type="text" name="" placeholder="请输入店铺或服务中心门牌号"> 
+	 				 <i class="fa fa-search"></i>   
+	 			</div> -->
+	 		</div>
+	 		<div class="config">
+	 			<div class="hint">
+	 				<i class="fa fa-check-circle"></i>
+	 				<div class="hint-hm  ">
+	 						<div class="fz_orange">恭喜您，下单成功</div>
+	 						<div class="a">点击 <a href="">[去付款]</a>	按钮前往在线付款界面</div>
+	 				</div>
+	 			</div>
+
+	 			 <table class="order-tab"  cellspacing="0" cellpadding="0">
+	 			 	 <tr>
+		 			 	 <td class="order-tit">订单号</td>
+		 			 	 <td class="order-content">1561564564</td>
+		 			 	 <td class="order-tit">商家名</td>
+	 			 	 	<td class="order-content">欣欣礼品店</td>
+	 			 	 	<td class="order-tit">联系电话</td>
+	 			 	 <td class="order-content">1561564564</td>
+	 			 	 </tr>
+	 			 	 <tr>
+		 			 	 <td class="order-tit">总金额</td>
+		 			 	 <td class="order-content">1561564564</td>
+		 			 	 <td class="order-tit">总积分</td>
+	 			 	 	<td class="order-content">1561564564</td>
+	 			 	 	<td class="order-tit">总商品数</td>
+	 			 	 <td class="order-content"> 2</td>
+	 			 	 </tr>
+	 			 	 <tr>
+		 			 	 <td class="order-tit">交易方式</td>
+		 			 	 <td class="order-content">1561564564</td>
+		 			 	 <td class="order-tit">付款方式</td>
+	 			 	 	<td class="order-content">现金支付</td>
+	 			 	 	<td class="order-tit">支付状态</td>
+	 			 	 	<td class="order-content state">未付款 </td>
+	 			 	 </tr>
+	 			 </table>
+
+	 			 <div class="order-info">
+	 			 	温馨提示：请保持手机畅通，以便商家联系。付款时请向商家索取积分码，或让商家帮您激活积分吗，获取本次交易商家赠送给您的积分。
+	 			 </div>
+	 			 <div class="text-align">
+	 			 	<span class="btn btn-org">确定</span>
+	 			 </div>
+	 		</div>
+	 	</div>
+	</body>
+</html>

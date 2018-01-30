@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>提现</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<style>			
+			.el-select .el-input .el-input__icon{position: relative;top:45px;left:80px;}
+			.el-input_inner{width:250px;}
+			.el-select {right: 190px;bottom: 35px;}
+		</style>
+		<script>
+			<!--
+			/*鼠标移上去切换*/
+			function settab_connet(name, cursel, n) {
+				for(i = 1; i <= n; i++) {
+					var menu = document.getElementById(name + i);
+					var con = document.getElementById("con_" + name + "_" + i);
+					menu.className = i == cursel ? "hover" : "";
+					con.style.display = i == cursel ? "block" : "none";
+				}
+			}
+			//-->
+		</script>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-head></lf-head>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box">
+						<ul class="switchbox">
+							<li class="hover">
+								<a href="#">提现</a>
+							</li>
+						</ul>
+						<el-form :rules="rules" ref="ruleForm2" :model="ruleForm2">
+							<div class="Password">
+								
+								<ul style="padding-bottom:20px">
+								      <li>
+								             <div class="left">提现金额：</div>
+								             <div class="right"><span class="txt2">
+         <el-form-item prop="amount">
+         <el-input name="" v-model="ruleForm2.amount" type="text" />
+         </el-form-item>
+         </span><span style="margin-right:20px;">元</span><strong style="float:left;">余额：</strong><strong class="org f16" style="margin-left:-140px;">{{banlanceAmount.toFixed(2)}}</strong>元</div></li>
+								      <li>
+								             <div class="left">提现卡号：</div>
+								             <div class="right">
+								                   <span class="txt2">
+         <el-form-item prop="bankAccount">
+         <el-input name="" v-model="ruleForm2.bankAccount" type="text" />
+         </el-form-item>
+         </span>
+								                   <span>
+								                          <input name="更换银行卡" type="button" value="更换银行卡" class="bnt" @click="replaceBank()">
+								                          
+								                   </span>
+	<!-- <div id="selects" v-if="willshow">
+		<span>请选择银行卡：</span>
+		<select name="选择" id="bankSelect" v-model="selected" @change="selectcard()" >			
+			<option v-for="banks in bankList" v-bind:value="banks.bankAccount">{{banks.bankAccount}}</option>
+		</select>
+		
+	</div> -->
+									             </div>
+								      </li>
+								      <li v-if="willshow">
+								      	<div class="left">请选择银行卡：</div>								      	
+							            		<span class="txt2">
+							           			<el-form-item  >
+							               			<el-select v-model="value" placeholder="请选择"  id="rechoose" @change="selectcard()">
+							                   				<el-option v-for="bank in bankList" :value="bank.bankAccount"  :label="bank.bankAccount"></el-option>
+							               			</el-select>
+							           			</el-form-item>
+							            		</span>								         
+								      </li>
+								      <li>
+								             <div class="right"><input  @click="applpWidthdraw('ruleForm2')" name="确认提交" type="button" value="申请提现" class="bnt-org"></div>
+								      </li>      
+								</ul>
+							</div>
+						</el-form>
+					</div>
+					<div class="box m_top20">
+						<ul class="switchbox">
+							<li><strong>提现记录</strong></li>
+						</ul>
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+							<tr>
+								<td align="center">申请时间</td>
+								<td align="center">申请金额</td>
+								<td align="center">状态</td>
+								<td align="center">银行卡号</td>
+								<td align="center">账户姓名</td>
+								<td align="center">打款时间</td>
+							</tr>
+							<tr v-show="!withdrawListsIsNull" v-for="list in withdrawLists">
+								<td align="center">{{list.createDate}}</td>
+								<td align="center">{{list.amount}}</td>
+								<td align="center"><strong>{{list.applyStatus}}</strong></td>
+								<td align="center">{{list.bankAccount}}</td>
+								<td align="center">{{list.accountName}}</td>
+								<td align="center">{{list.remitDate}}</td>
+							</tr>
+							<tr v-show="withdrawListsIsNull">
+								<td height="200" colspan="4" align="center">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+											<td class="c-9 f14">暂无记录</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<div class="store-page text-right  buspage" v-if="pager.total > 0">
+							<el-pagination @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+							</el-pagination>
+						</div>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/personal/withdrawal_ps.js"></script>
+	</body>
+
+</html>

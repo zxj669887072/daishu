@@ -1,0 +1,581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的账户</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+    <link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+    <style>
+    .order-dialog .el-dialog {
+        width: 850px;
+    }
+    .personal-time  input[type=text] {
+      padding: 0 15px;
+   } 
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <lf-header></lf-header>
+        <div class="webbox w1000">
+            <lf-left></lf-left>
+            <div class="rightbox">
+                <template>
+                    <el-tabs v-model="tabName" @tab-click="categoryChange">
+                        <el-tab-pane label="积分动态" name="point">
+                            <div class="box">
+                                <div class="balance">
+                                    <ul>
+                                        <div class="left">
+                                            <dl>
+                                                <dt>待赠送积分</dt>
+                                                <dd class="f18 org"><strong :title="integral">{{parseInt(integral)}}<!-- 分 --></strong></dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>积分余额
+                                                            <a href="javascript:;" class="details">
+                                                                <img src="../../../images/hom_60.png"  style="vertical-align: middle;margin-left: 5px;">
+                                                                <div class="tip">
+                                                                  <p>1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</p>                                                                 
+                                                                </div>
+                                                            </a>
+                                                </dt>
+                                                <dd class="f18 org2"><strong :title="integralBal">{{parseInt(integralBal)}}<!-- 分 --> </strong><!-- <img src="../../../images/hom_60.png"  @mousemove="showTips()" @mouseout="hideTips()"/> -->
+                                                    <!-- <div class="txt" v-show="tipsShow">1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</div> -->
+                                                    <a href="javascript:void(0);" @click="showPointExchange()">
+                                                        <input type="submit" name="button" id="button" value="兑换" class="btn" style="color:#666; " />
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="right">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="70" rowspan="2" align="left"><img src="../../../images/balance_02.jpg" width="62" height="61" /></td>
+                                                    <td>商家账户余额 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="f24 org" :title="cashBalance">{{Number(cashBalance).toFixed(2)}}</span> 元
+                                                    <p>
+                                                        <a href="recharge_bz.html">
+                                                            <input type="submit" name="button" id="button" value="充值" class="btn blue" style="color:#ff5a00" />
+                                                        </a>
+                                                        <a href="javascript:void(0);" @click="goWithdrawal('cash')">
+                                                            <input type="submit" name="button" id="button" value="提现" class="btn blue" style="color:#087cd7" />
+                                                        </a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="box m_top20">
+                                <template>
+                                    <el-tabs v-model="tabName2" @tab-click="typeChange">
+                                        <el-tab-pane label="收入记录" name="receive">
+                                            <div id="con_tow_1" class="hover">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+															<el-date-picker format="yyyy-MM"
+															    v-model="month"
+															    type="month"
+															    placeholder="选择月">
+															 </el-date-picker>
+															</span>
+                                                        <span>
+														     	<input name="" type="button" value="查询" class="btn" @click="search()"/>
+															</span>
+                                                    </div>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td width="21%" align="center">日期</td>
+                                                        <td width="34%" align="center">订单号</td>
+                                                        <td width="13%" align="center">订单金额</td>
+                                                        <td width="18%" align="center">买家</td>
+                                                        <td width="14%" align="center">获得积分<span class="c-9">（分）</span></td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="pointReceive in pointReceiveList">
+                                                            <td align="center">{{pointReceive.createDate}}</td>
+                                                            <td align="center">
+                                                                <a href="javascript:void(0);" @click="showRoderinfo(pointReceive.orderId)" class="blue">{{pointReceive.orderNo}}</a></td>
+                                                            <td align="center"><strong class="org">￥{{pointReceive.orderAmount}}</strong></td>
+                                                            <td align="center"><span class="blue"><img src="../../../images/hom_21.jpg" width="12" height="11" /> {{pointReceive.buyerName}}</span></td>
+                                                            <td align="center"><strong class="green">{{pointReceive.interNum}}</strong></td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="5" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+
+
+
+                                        <el-tab-pane label="支出记录" name="payment">
+                                            <div id="con_tow_2">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+															<el-date-picker format="yyyy-MM"
+															    v-model="month"
+															    type="month"
+															    placeholder="选择月">
+															 </el-date-picker>
+															</span>
+                                                        <span>
+														     	<input name="" type="button" value="查询" class="btn" @click="search()"/>
+															</span>
+                                                    </div>
+                                                    <ul>
+                                                        <li class="hover">兑换记录</li>
+                                                    </ul>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td align="center">日期</td>
+                                                        <td align="center">兑换袋鼠币<span class="c-9">（个）</span></td>
+                                                        <td align="center">扣除积分<span class="c-9">（分）</span></td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="pointPayment in pointPaymentList">
+                                                            <td align="center">{{pointPayment.createDate}}</td>
+                                                            <td align="center">{{pointPayment.rooCur}}</td>
+                                                            <td align="center"><strong class="green">{{pointPayment.interNum}}</strong></td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="3" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+                                        
+
+
+                                        <el-tab-pane label="积分赠送记录" name="returnment">
+                                            <div id="con_tow_3">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+                                                            <el-date-picker format="yyyy-MM"
+                                                                v-model="month"
+                                                                type="month"
+                                                                placeholder="选择月">
+                                                             </el-date-picker>
+                                                            </span>
+                                                        <span>
+                                                                <input name="" type="button" value="查询" class="btn" @click="search()"/>
+                                                            </span>
+                                                    </div>
+                                                    <ul>
+                                                        <li class="hover">积分赠送记录</li>
+                                                    </ul>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td align="center">日期</td>
+                                                        <td align="center">积分包编号</td>
+                                                        <td align="center">赠送积分<span class="c-9">（分）</span></td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="returnIntegral in returnIntegralRecordValue">
+                                                            <td align="center">{{returnIntegral.createDate}}</td>
+                                                            <td align="center">{{returnIntegral.interPackNo}}</td>
+                                                            <td align="center"><strong class="green">{{returnIntegral.interNum}}</strong></td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="3" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+
+
+                                        <el-tab-pane label="袋鼠币支出记录" name="bandicootExpend">
+                                            <div id="con_tow_4">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+                                                            <el-date-picker format="yyyy-MM"
+                                                                v-model="month"
+                                                                type="month"
+                                                                placeholder="选择月">
+                                                             </el-date-picker>
+                                                            </span>
+                                                        <span>
+                                                                <input name="" type="button" value="查询" class="btn" @click="search()"/>
+                                                            </span>
+                                                    </div>
+                                                    <ul>
+                                                        <li class="hover">袋鼠币支出记录</li>
+                                                    </ul>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td align="center">日期</td>
+                                          
+                                                        <td align="center">使用袋鼠币</td>
+														<td align="center">备注</td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="bandicootExpend in bandicootExpendRecordValue">
+                                                            <td align="center">{{bandicootExpend.createDate}}</td>
+                                                         
+                                                            <td align="center"><strong class="green">{{bandicootExpend.rooCur}}</strong></td>
+															
+                                                            <td align="center">{{bandicootExpend.remark}}</td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="3" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+
+
+
+
+                                    </el-tabs>
+                                </template>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane label="余额动态" name="balance">
+                            <div class="box">
+                                <div class="balance">
+                                    <ul>
+                                        <div class="left">
+                                            <dl>
+                                            <dt>待赠送积分</dt>
+                                                <dd class="f18 org"><strong :title="integralBal">{{parseInt(integral)}}<!-- 分 --></strong></dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>积分余额
+                                                            <a href="javascript:;" class="details">
+                                                                <img src="../../../images/hom_60.png"  style="vertical-align: middle;margin-left: 5px;">
+                                                                <div class="tip">
+                                                                  <p>1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</p>                                                                 
+                                                                </div>
+                                                            </a>
+                                                </dt>
+                                                <dd class="f18 org2"><strong :title="integral">{{parseInt(integralBal)}}<!-- 分 --> </strong><!-- <img src="../../../images/hom_60.png"  @mousemove="showTips()" @mouseout="hideTips()"/>                                                
+                                                    <div class="txt" v-show="tipsShow">1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</div> -->
+                                                    <a href="javascript:void(0);" @click="showPointExchange()">
+                                                        <input type="submit" name="button" id="button" value="兑换" class="btn" style="color:#666; " />
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="right">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="70" rowspan="2" align="left"><img src="../../../images/balance_02.jpg" width="62" height="61" /></td>
+                                                    <td>商家账户余额 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="f24 org">{{cashBalance}}</span> 元
+                                                        <p>
+                                                            <a href="recharge_bz.html">
+                                                            <input type="submit" name="button" id="button" value="充值" class="btn blue" style="color:#ff5a00" />
+                                                        </a>
+                                                        <a href="javascript:void(0);" @click="goWithdrawal('cash')">
+                                                            <input type="submit" name="button" id="button" value="提现" class="btn blue" style="color:#087cd7" />
+                                                        </a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="box m_top20">
+                                <template>
+                                    <el-tabs v-model="tabName2" @tab-click="typeChange">
+                                        <el-tab-pane label="收入记录" name="receive">
+                                            <div id="con_three_1" class="hover">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+															<el-date-picker format="yyyy-MM"
+															    v-model="month"
+															    type="month"
+															    placeholder="选择月">
+															 </el-date-picker>
+														</span>
+                                                        <span>
+													     	<input name="" type="button" value="查询" class="btn" @click="search()"/>
+														</span>
+                                                    </div>
+                                                    <div class="right">
+                                                        查询月累计金额 <span class="red"><strong>{{monthMoney}} </strong></span>元 总金额<span class="red"><strong> {{totalMoney}}</strong></span> 元 </div>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td width="41%" align="center">日期</td>
+                                                        <td width="24%" align="center">收入金额<span class="c-9">（元）</span></td>
+                                                        <td width="35%" align="center">备注</td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="balanceReceive in balanceReceiveList">
+                                                            <td align="center">{{balanceReceive.createDate}}</td>
+                                                            <td align="center"><strong class="org">￥{{balanceReceive.payAmount}}</strong></td>
+                                                            <td align="center"><strong>{{balanceReceive.remark}}</strong></td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="3" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+                                        <el-tab-pane label="支出记录" name="payment">
+                                            <div id="con_three_2">
+                                                <div class="tab_menu">
+                                                    <div class="left personal-time"><span>按月份查询:</span>
+                                                        <span>
+															<el-date-picker format="yyyy-MM"
+															    v-model="month"
+															    type="month"
+															    placeholder="选择月">
+															 </el-date-picker>
+														</span>
+                                                        <span>
+													     	<input name="" type="button" value="查询" class="btn" @click="search()"/>
+														</span>
+                                                    </div>
+                                                    <div class="right">
+                                                        查询月累计金额 <span class="red"><strong>{{monthMoney}} </strong></span>元 总金额<span class="red"><strong> {{totalMoney}}</strong></span> 元 </div>
+                                                </div>
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                                                    <tr>
+                                                        <td width="21%" align="center">日期</td>
+                                                        <td width="24%" align="center">订单号</td>
+                                                        <td width="18%" align="center">支出金额<span class="c-9">（元）</span></td>
+                                                        <td width="17%" align="center">收款方</td>
+                                                        <td width="20%" align="center">备注</td>
+                                                    </tr>
+                                                    <template v-if="totalCount > 0">
+                                                        <tr v-for="balancePayment in balancePaymentList">
+                                                            <td align="center">{{balancePayment.createDate}}</td>
+                                                            <td align="center">
+                                                                <a href="javascript:void(0);" @click="showRoderinfo(balancePayment.orderId)" class="blue">{{balancePayment.orderNo}}</a></td>
+                                                            <td align="center"><strong class="org">￥{{balancePayment.monetary}}</strong></td>
+                                                            <td align="center">{{balancePayment.receivingSide}}</td>
+                                                            <td align="center"><strong>{{balancePayment.remark}}</strong></td>
+                                                        </tr>
+                                                    </template>
+                                                    <template v-else>
+                                                        <tr>
+                                                            <td colspan="5" align="center">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+                                                                        <td class="c-9 f14">暂无记录</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </table>
+                                                <template v-if="totalCount > 0">
+                                                    <div class="page">
+                                                        <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+                                                        </el-pagination>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </el-tab-pane>
+                                    </el-tabs>
+                                </template>
+                            </div>
+                        </el-tab-pane>
+                    </el-tabs>
+                </template>
+            </div>
+        </div>
+        <lf-footer></lf-footer>
+        <div v-show="showExchange">
+            <div id="light" class="white_content" style=" left:39%;display: block;">
+                <div class="Popupbox" style="width:460px;">
+                    <div class="tb">
+                        <div class="left">兑换袋鼠币</div>
+                        <a class="right" @click="hidePointExchange()"><img src="../../../images/Prompt2_03.png" width="24" height="24" /></a>
+                    </div>
+                    <ul style="padding-top:20px; padding-bottom:20px;">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="50" align="right">兑换数量：</td>
+                                <td align="left">
+                                    <table border="0" align="left" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <div style="width:100px; float:left">
+                                                    <input name="" type="text" style="margin:0px; padding:0px;" v-model="exchangeNum" />
+                                                </div>
+                                            </td>
+                                            <td>　可兑换积分：<strong>{{integralBal}}</strong></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="50" align="right">兑换比例：</td>
+                                <td align="left">1积分=1袋鼠币</td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="border-bottom:none">&nbsp;</td>
+                                <td align="left" style="border-bottom:none">
+                                    <input name="确认保存" type="submit" value="确定兑换" class="bnt-org" @click="doExchange()" />
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="m_top20" style="text-align:center"></div>
+                    </ul>
+                </div>
+            </div>
+            <div id="fade" class="black_overlay" v-show="showExchange"></div>
+        </div>
+        <!-- 订单详细信息 弹层 -->
+        <el-dialog title="订单详细信息" v-model="dialogShow" class="order-dialog">
+            <div class="ordercon">
+                <div class="left">
+                    <div class="head">
+                        <font>订单信息</font>
+                    </div>
+                    <div class="content">
+                        <div> <span>订单号:</span>{{orderdetail.orderNo}}</div>
+                        <div> <span>收货地址:</span>{{orderdetail.detailAddr}}</div>
+                        <div> <span>收货人:</span>{{orderdetail.consigneeName}}</div>
+                        <div> <span>联系电话:</span>{{orderdetail.mobilePhone}}</div>
+                        <div> <span>运单号:</span>{{orderdetail.freightNumber}}</div>
+                        <div> <span>运费:</span>{{orderdetail.freightFee}}</div>
+                        <div> <span>物流公司:</span>{{orderdetail.logisticsName}}</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="state">
+                        <span>订单状态为：
+						<template v-if="orderdetail.orderStatus==1">已下单</template>
+						<template v-else-if="orderdetail.orderStatus==2">已发货</template>
+						<template v-else-if="orderdetail.orderStatus==3">已签收</template>
+						<template v-else-if="orderdetail.orderStatus==4">已完成</template>
+						<template v-else-if="orderdetail.orderStatus==5">已取消</template></span>
+                        <span>交易方式：<template v-if="orderdetail.tradeWay==0">送货上门</template>
+						<template v-else>到店自提</template></span>
+                        <span>支付状态：<template v-if="orderdetail.payStatus==0">未支付</template>
+						<template v-else>已支付</template></span>
+                        <span>付款方式：<template v-if="orderdetail.payWay==0">现金支付</template>
+						<template v-else>线上支付</template></span>
+                    </div>
+                    <div class="">备注：{{orderdetail.remark}}</div>
+                    <div class="">优惠金额：{{orderdetail.couponAmount}}</div>
+                    <div class="">线上支付金额(等于实付金额)：{{orderdetail.onlinePayAmount}}</div>
+                    <div class="">总金额：{{orderdetail.totalAmount}}</div>
+                    <div class="">支付积分：{{orderdetail.payInter}}</div>
+                    <div class="">实付金额(总)：{{orderdetail.payAmount}}</div>
+                    <div class="">返佣金额(总)：{{orderdetail.bkge}}</div>
+                    <div class="">商品数量：{{orderdetail.goodsQty}}</div>
+                    <div class="">下单时间：{{orderdetail.createDate}}</div>
+                    <div class="">支付时间：{{orderdetail.payDate}}</div>
+                </div>
+            </div>
+            <el-table :data="orderdetail.orderDtlList" v-if="orderdetail.orderDtlList!=null">
+                <el-table-column property="goodsName" label="商品名称" width="150"></el-table-column>
+                <el-table-column property="name" label="规格" width="200"></el-table-column>
+                <el-table-column property="price" label="单价"></el-table-column>
+                <el-table-column property="qty" label="数量"></el-table-column>
+                <el-table-column property="cnvInter" label="兑换积分"></el-table-column>
+            </el-table>
+        </el-dialog>
+    </div>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/pages/business/account_bz.js"></script>
+</body>
+
+</html>

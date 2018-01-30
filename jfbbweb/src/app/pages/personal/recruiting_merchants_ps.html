@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我招募的商家</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	<div class="leftbox">
+      <dl>
+        <dt><img src="../../../images/left_01.png"/>我的钱包</dt>
+        <dd><a href="wallet_ps.html">我的钱包</a></dd>
+        </dl>
+      <dl>
+            <dt><img src="../../../images/left_02.png"/>我的店铺</dt>
+            <dd>
+                <a href="distribution_shop_ps.html">我分销的店铺</a>
+                <a href="recruiting_merchants_ps.html">我招募的商家</a>
+                <a href="distribution_goods_ps.html">我分销的商品</a>
+      </dd>
+        </dl>
+        <dl>
+        <dt><img src="../../../images/left_03.png"/>我的订单</dt>
+        <dd><a href="shop_order_ps.html">商铺订单</a>
+          <a href="platform_goods_orders_ps.html">平台商城订单</a></dd>
+        </dl>
+        <dl>
+        <dt><img src="../../../images/left_04.png"/>评价管理</dt>
+        <dd><a href="evaluation_manage_ps.html">评价管理</a></dd>
+        </dl>
+      <dl>
+        <dt><img src="../../../images/left_05.png"/>我的关注</dt>
+        <dd><a href="focus_shop_ps.html">我关注的店铺</a>
+        <a href="focus_shop_goods2_ps.html">我关注的商铺商品</a>
+        <a href="focus_shop_goods_ps.html">我关注的商城商品</a></dd>
+        </dl>
+      <dl>
+        <dt><img src="../../../images/left_06.png"/>我的资料</dt>
+        <dd><a href="account_ps.html">账户资料</a>
+            <a href="update_pwd_ps.html">修改密码</a><a href="harvest_address_ps.html">收货地址</a>
+            <a href="validation_ps.html">我的验证</a></dd>
+        </dl>
+  </div>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">我招募的商家</li>
+      </ul>
+      <div class="padding20"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="table2">
+  <tr>
+    <td>我招募的商家有：<span class="org"><strong> 2</strong></span> 家</td>
+    <td>本月支出佣金：<span class="org"><strong>100 </strong></span>元<br /></td>
+    <td>累计支出佣金：<span class="org"><strong>1000 </strong></span>元</td>
+    </tr>
+  </table></div>
+    </div>
+     <div class="box m_top20">
+       <ul class="switchbox">
+  	  <li><strong>所有商家</strong></li>
+       </ul>
+      
+       
+      <div class="padding20"> 
+      <div class="f_bottom20">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table2">
+          <tr>
+            <td bgcolor="#F1F2F6"><strong>米诶李宇旗舰店</strong></td>
+            <td bgcolor="#F1F2F6">&nbsp;</td>
+            <td bgcolor="#F1F2F6">加入时间：2017-02-25</td>
+          </tr>
+          <tr>
+            <td><div class="imgbox"><img src="../../../images/imng_03.jpg" width="153" height="68" /></div></td>
+            <td>联系方式：18575897859<br />
+              商家地址：深圳市罗湖区南山路天然街24号<br />
+              分销数量：累计<strong class="org">34</strong>笔</td>
+            <td>本月佣金：<strong class="org">324</strong>元<br />
+              佣金累计收入：<strong class="org">334</strong>元</td>
+          </tr>
+        </table>
+        </div>
+         <div class="f_bottom20">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table2">
+          <tr>
+            <td height="34" bgcolor="#F1F2F6"><strong>米诶李宇旗舰店</strong></td>
+            <td bgcolor="#F1F2F6">&nbsp;</td>
+            <td bgcolor="#F1F2F6">加入时间：2017-02-25</td>
+          </tr>
+          <tr>
+            <td><div class="imgbox"><img src="../../../images/imng_03.jpg" width="153" height="68" /></div></td>
+            <td>联系方式：18575897859<br />
+              商家地址：深圳市罗湖区南山路天然街24号<br />
+              分销数量：累计<strong class="org">34</strong>笔</td>
+            <td>本月佣金：<strong class="org">324</strong>元<br />
+              佣金累计收入：<strong class="org">334</strong>元</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+
+   </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  <li>粤ICP备xxxxx号 普宁市XX公司 Copyyight©2014-2020 xxxx版权所有</li>
+				  <li>公司地址：xxxxxxxxxxxxxx  电话：0755-726689</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../../../images/ljjfbb_35.jpg"  /><img src="../../../images/ljjfbb_37.jpg"  /></div>
+     </div>
+</div>
+  <lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/recruiting_merchants_ps.js"></script>
+</body>
+</html>

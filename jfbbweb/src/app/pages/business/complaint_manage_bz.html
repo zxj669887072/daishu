@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>意见反馈</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box">
+						<ul class="switchbox">
+							<li class="hover">意见反馈</li>
+						</ul>
+						<div class="padding20" style="padding-top:0px;">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+								<tr>
+									<td width="21%" align="center">投诉时间</td>
+									<td width="21%" align="center">投诉用户</td>
+									<td width="41%" align="center">投诉内容</td>
+									<td width="17%" align="center">操作</td>
+								</tr>
+								<tr>
+									<td height="44" align="center">2017-03-02 12:20:30</td>
+									<td height="44" align="center"><span class="blue"><img src="../../../images/hom_21.jpg" width="12" height="11" /> e善良的星星**</span></td>
+									<td height="44" align="left"><span class="m_top5">电脑很不错，高颜值。就是显卡是1G核显加2G 960 独显有问题，但是英雄联盟侦数太低呀，8G内存也能轻松运行各种软件，就是自己激活win10和office比较麻烦，但也是个探索的过程，自己第一次分区，分了三个..</span></td>
+									<td height="44" align="center">删除<br />
+										<a href="#" class="blue" onClick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">回复</a>
+									</td>
+								</tr>
+							</table>
+							<div class="page">
+								<el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+								</el-pagination>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<lf-footer></lf-footer>
+			<div>
+				<div id="light" class="white_content" style=" left:39%" v-show="isShow">
+					<div class="Popupbox" style="width:460px;">
+						<div class="tb">
+							<div class="left">回复</div>
+							<a href="javascript:void(0);" class="right" @click="hideModel()"><img src="../../../images/Prompt2_03.png" width="24" height="24" /></a>
+						</div>
+						<ul style="padding-top:20px; padding-bottom:20px;">
+							<table width="100%" border="0" cellspacing="5" class="table2">
+								<tr>
+									<td height="44" align="right">
+										<textarea name="input5" rows="5" class="txt" style="width:100%" v-model="receiveContent" placeholder="请输入您要回复的内容"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td height="44"><input name="input4" type="submit" class="org_btn" value="确认回复" @click="doReceive()" />&nbsp;</td>
+								</tr>
+							</table>
+							<div class="m_top20" style="text-align:center"></div>
+						</ul>
+					</div>
+				</div>
+				<div id="fade" class="black_overlay" v-show="isShow"></div>
+			</div>
+		</div>
+
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/pages/business/complaint_manage_bz.js"></script>
+	</body>
+
+</html>

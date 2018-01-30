@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.item{
+				width: 100%;
+				height: 200px;
+				background: #007AFF;
+				border: 1px solid #000000;
+			}
+			.content{
+				margin-top: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="but-group">
+				<a :href="'#'+data.name" v-for="data in datas" v-text="data.name">test1</a>
+			</div>
+			<div class="content">
+				<div :id="data.name" :name="data.name" class="item" v-for="data in datas" v-text="data.name">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el: "#app",
+			data:{
+				datas:[
+					{id:1,name:"test1",value:"1"},
+					{id:2,name:"test2",value:"2"},
+					{id:3,name:"test3",value:"3"},
+					{id:4,name:"test4",value:"4"},
+				]
+			}
+		});
+	</script>
+</html>

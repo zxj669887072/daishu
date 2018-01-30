@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>修改密码</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+<style type="text/css">
+	.form .el-form-item .el-form-item__content{
+		margin-left: 0px !important;
+	}
+	.box .Password .right span{
+		line-height: 20px;
+	}
+	.bnt-org{
+		text-align: center;
+	}
+	.bnt-org span{
+		float: none;
+	}
+	.box .Password .right .bnt-org  span{
+		float: none;
+	}.right{
+				       text-align: left;
+			}
+</style>
+<body>
+<div id="app">
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    
+    <ul class="switchbox">
+      <li class="hover">修改密码</li>
+      </ul>
+    </div>
+    <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+     <div class="box">
+      <div  class="Password  h610" >
+       <ul>
+       <li>
+         <div class="right" style="width: 100%;">
+         	<span class="txt2">
+         		<el-form-item label="原密码:"  prop="oldPassword">
+					<el-input class="login-text J_UserName originalPassword" type="password" v-model="ruleForm2.oldPassword" auto-complete="off"></el-input>
+				</el-form-item>
+         		
+         	</span>
+         </div>
+       </li>
+       <li>
+		 <div class="right" style="width: 100%;">
+			<span class="txt2">
+		         <el-form-item label="新密码:"  prop="password">
+					<el-input class="login-text J_UserName originalPassword" type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
+				</el-form-item>
+		    </span>
+		</div>
+	   </li>
+       <li style="margin-bottom:20px;">
+         <div class="right" style="width: 100%;">
+			<span class="txt2">
+		         <el-form-item label="确认密码:"  prop="passwordConfirm">
+					<el-input class="login-text J_UserName originalPassword" type="password" v-model="ruleForm2.passwordConfirm" auto-complete="off"></el-input>
+				</el-form-item>
+		    </span>
+		
+           </span><span style="    margin-left: 100px;width:100%; line-height:34px;">注：修改完成之后请用新密码登录</span></div></li>
+      <li>
+	<div class="left"></div>
+	<div class="right form">
+	        <el-form-item>
+				<el-button class="J_Submit bnt-org" type="primary" @click="submitForm('ruleForm2')">保存</el-button>
+			</el-form-item>
+	</div>
+		</li>
+       </ul>
+      </div>
+
+   </div>
+   </el-form>
+    </div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/update_pwd_ps.js"></script>
+</body>
+</html>

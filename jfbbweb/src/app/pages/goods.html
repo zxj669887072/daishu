@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<title>商城首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/elementui.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" /> -->
+		<link href="../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+		<style>
+			.search2{
+			    float: right;
+			    position: relative;
+			    box-sizing: border-box;
+			}
+			.search2 input[type=text]{
+			    font: 13.3333px Arial;
+			    height: 28px;
+			}
+			.search2 input[type=button]{
+			    position: absolute;
+			    top: -1px;
+			    right: -1px;
+			    border-radius: 0;
+			}
+			.mall_img02 .rightbox{
+				float: left;
+			}
+			.org2{
+				margin-top: 15px;
+			}
+		</style>
+		<!--<style>
+			.header {
+				background-color: #f37e01;
+				width: 100%;
+				height: 42px;
+			}
+
+			.header .header-center {
+				width: 1000px;
+				height: 100%;
+				margin: 0 auto;
+			}
+
+			.header .header-center .center-left {
+				height: 100%;
+				float: left;
+				line-height: 42px;
+			}
+
+			.header .header-center .center-right {
+				width: 320px;
+				height: 100%;
+				float: right;
+				line-height: 42px;
+			}
+
+			.header .header-center .center-right a {
+				font-size: 14px;
+				height: 10px;
+				color: #fff;
+				text-decoration: none;
+				font-size: 14px;
+			}
+
+			.header .header-center .center-right .line {
+				color: #fff;
+				display: inline-block;
+				width: 1px;
+				height: 14px;
+				background-color: #fff;
+				position: relative;
+				top: 2px;
+				margin: 0 1px;
+			}
+
+			.header .header-center .center-left .five-font {
+				float: left;
+				margin-left: 8px;
+				font-size: 15px;
+				color: #fff;
+			}
+		</style>-->
+	</head>
+
+	<body style="background:#fff">
+		<div id="app">
+			<lf-header></lf-header>
+			<div class="dianpu_header">
+				<div class="w1000">
+					<div class="logo">
+						<a href="/app/pages/goods.html"><img src="../../images/logo.png"></a>
+					</div>
+					<lf-search><lf-search>
+					<!-- <div class="search2">
+								                    		<dl>
+								                        			<dt><input name="" type="text" class="text c-9" v-model="searchStr" placeholder="请输入店铺名称或门牌号" /></dt>
+								                        			<dd><input name="" type="button" value="" @click="doSearch()" class="btn" /></dl>
+								                        		</dl>
+								                    	</div> -->
+				</div>
+			</div>
+
+			<div class="mall_banner">
+				<div class="w1000">
+					<div class="mall_menu">
+						<ul>
+							<li v-for="category in categoryList">
+								<a href="javascript:void(0);" v-text="category.structureName" @click="gotoByStructureNo(category.structureNo,category.structureName,'',category.id)">充值服务</a>
+								<div class="mall_box2" v-bind:style="{top:category.top}">
+									<div class=" mall_02">
+										<dl v-for="data in category.childList">
+											<a href="#" @click="gotoByStructureNo(data.structureNo,category.structureName,data.structureName,category.id)">
+												<dt><img :src="data.categoryIcon"  /></dt>
+												<dd v-text="data.structureName"></dd>
+											</a>
+										</dl>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="full-screen-slider">
+					<div class="w1000">
+						<!--<div class="left" style="background:none; margin-top:200px; margin-left:245px">
+							<a href="#"><img src="../../images/cixo_25.png" /></a>
+						</div>
+						<div class="right" style=" margin-top:200px;">
+							<a href="#"><img src="../../images/cixo_26.png" /></a>
+						</div>-->
+					</div>
+					<ul id="slides">
+						<li :style="{background: 'url('+data.picUrl+') no-repeat center top'}" v-for="data in advertList">
+							<a :href="data.url" target="_blank"></a>
+						</li>
+					</ul>
+					<!--<ul id="pagination">
+						<li  v-for=" n in advertList.length">
+							<a href="#" v-text="n"></a>
+						</li>
+					</ul>-->
+				</div>
+
+			</div>
+
+			<div class="mallbox" v-if=" czckList.length > 0 ">
+				<div class="w1000">
+					<div class="dianpu_bt">
+						<div class="left f24">{{czckChannelName}}</div>						
+					</div>
+					<!-- <div class="dianpu_productbox">
+						<div class="dianpu_product">
+							<dl v-for="czck in czckList">
+								<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="czck.giftFlag == 1">
+								<dt><a href="javascript:void(0);"  @click="goByGoodId(czck.id)"><img :src="czck.picUrl" width="180" height="180"/></a></dt>
+								<dd style="margin-top:30px;">
+									<div class="f12">
+										<a href="javascript:void(0);"  @click="goByGoodId(czck.id)" ><span style="display: block;height: 36px;overflow: hidden;">{{czck.goodsName}}</span></a>
+									</div>
+									<div class="org2" v-text="'¥'+czck.price"></div>
+								</dd>
+							</dl>
+						</div>
+					</div> -->
+					<div class="mall_img02">
+						<div class="dianpu_productbox">
+							<div class="dianpu_product">
+								<dl v-for="(data,index) in czckList"  style="margin:0 10px 12px 0">
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<!--<div class="c-9">四天线设计，更安全稳定</div>-->
+										<div class="org2" v-text="data.price+'元'">129</div>
+									</dd>
+								</dl>
+							</div>
+							<!-- <div class="mall_ad" v-if="advertList102.length >1">
+								<img :src="advertList102[0].picUrl" width="1200" height="120" />
+							</div> -->
+						</div>
+					</div>					
+					<div class="mall_ad" v-if="advertList101.length >0">
+						<img :src="advertList101[0].picUrl" width="1200" height="120" />
+					</div>
+				</div>
+			</div>
+
+			<div class="w1000">
+				<div class="dianpu_bt m_top20" v-if="recommendGoods.length > 0">
+					<div class="left f24">{{recommendChannelName}}</div>
+				</div>
+				<!-- <div class="mall_img01">
+					<ul>
+						<li v-for="data in recommendGoods" style="text-align: center;">
+							<a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl" width="136" height="136"/></a>
+							<p v-text="data.goodsName"></p>
+							<p  style="color:#f37e01">{{data.price}}元</p>
+						</li>
+					</ul>
+				</div> -->
+				<div class="mall_img02">
+					<div class="dianpu_productbox">
+						<div class="dianpu_product">
+							<dl v-for="(data,index) in recommendGoods"  style="margin:0 10px 12px 0">
+								<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+								<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+								<dd>
+									<div class="f12">
+										<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+									</div>
+									<!--<div class="c-9">四天线设计，更安全稳定</div>-->
+									<div class="org2" v-text="data.price+'元'">129</div>
+								</dd>
+							</dl>
+						</div>
+						<div class="mall_ad" v-if="advertList102.length >0">
+							<img :src="advertList102[0].picUrl" width="1200" height="120" />
+						</div>
+					</div>
+				</div>
+				<div class="dianpu_bt m_top10" v-if="rmpdList.length > 0">
+					<div class="left f24">{{rmpdChannelName}}</div>
+					<!--<div class="right">
+						<a href="#">更多>></a>
+					</div>-->
+				</div>
+				<div class="mall_img02" v-if="rmpdList.length > 0">
+					<div class="leftbox" @click="goByGoodId(data.id)" v-if="rmpdList.length > 0"><img :src=rmURL   width="190" height="500"/></div>
+					<div class="rightbox">
+						<div class="dianpu_productbox">
+							<div class="dianpu_product">
+								<dl v-for="(data,index) in rmpdList" >
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<div class="org2" v-text="data.price+'元'"></div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="mall_ad" v-if="advertList103.length >0">
+						<img :src="advertList103[0].picUrl" width="1200" height="120" />
+					</div>
+				</div>
+
+				<div class="dianpu_bt m_top20" v-if="jxList1.length >0">
+					<div class="left f24">{{jx1ChannelName}}</div>
+					<!--<div class="right">
+						<a href="#">更多>></a>
+					</div>-->
+				</div>
+				<div class="mall_img02" >					
+					<div class="leftbox" @click="goByGoodId(data.id)" v-if="rmpdList2.length > 0"><img :src=jxURL   width="190" height="500"/></div>
+					<div class="rightbox">
+						<div class="dianpu_productbox dianpu_productbox2">
+							<div class="dianpu_product">
+								<!-- <dl v-for="data in jxList1" v-if="jxList1.length <= 10"> -->
+								<dl v-for="data in jxList1" >
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<div class="org2" v-text="data.price+'元'"></div>
+									</dd>
+								</dl>
+								<!-- <dl v-for="data in jxList1.slice(0,9)" v-if="jxList1.length > 10">
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<div class="org2" v-text="data.price+'元'"></div>
+									</dd>
+								</dl>
+								<ul v-if="jxList1.length > 10">
+									<li>
+										<div class="left">
+											<div class="f12">
+												<a href="#" v-text="jxList1[9].goodsName"></a>
+											</div>
+											<div class="org2" v-text="jxList1[9].price+'元'"></div>
+										</div>
+										<div class="right">
+											<a href="javascript:void(0);" @click="goByGoodId(jxList1[9].id)"><img :src="jxList1[9].picUrl" /></a>
+										</div>
+									</li>
+									<li style="margin-top:10px;">
+										<div class="left">
+											<div class="f12" style="font-size:16px; margin-top:30px;">
+												<a href="#">浏览更多</a>
+											</div>
+											<div class="c-9">热门</div>
+										</div>
+										<div class="right">
+											<a href="#"><img src="../../images/mall_more.jpg" style=" width:40px; height:40px; float:right; margin-top:20px; margin-right:10px;" /></a>
+										</div>
+									</li>
+								</ul> -->
+
+							</div>
+						</div>
+					</div>
+					<div class="mall_ad" v-if="advertList104.length >0">
+						<img :src="advertList104[0].picUrl" width="1200" height="120" />
+					</div>
+				</div>
+				
+				
+				<div class="dianpu_bt m_top10" v-if="rmpdList1.length > 0">
+					<div class="left f24">{{rmpd1ChannelName}}</div>
+					<!--<div class="right">
+						<a href="#">更多>></a>
+					</div>-->
+				</div>
+				<div class="mall_img02" v-if="rmpdList1.length > 0">
+					<div class="leftbox" @click="goByGoodId(data.id)" v-if="rmpdList1.length > 0"><img :src=rxURL   width="190" height="500"/></div>
+					<div class="rightbox">
+						<div class="dianpu_productbox">
+							<div class="dianpu_product">
+								<dl v-for="(data,index) in rmpdList1" >
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<div class="org2" v-text="data.price+'元'"></div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="mall_ad" v-if="advertList105.length >0">
+						<img :src="advertList105[0].picUrl" width="1200" height="120" />
+					</div>					
+				</div>
+
+				<div class="dianpu_bt m_top10" v-if="rmpdList2.length > 0">
+					<div class="left f24">{{rmpd2ChannelName}}</div>
+					<!--<div class="right">
+						<a href="#">更多>></a>
+					</div>-->
+				</div>
+				<div class="mall_img02" v-if="rmpdList2.length > 0">
+					<div class="leftbox" @click="goByGoodId(data.id)" v-if="rmpdList2.length > 0"><img :src=cxURL   width="190" height="500"/></div>
+					<div class="rightbox">
+						<div class="dianpu_productbox">
+							<div class="dianpu_product">
+								<dl v-for="(data,index) in rmpdList2" >
+									<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+									<dt><a href="javascript:void(0);" @click="goByGoodId(data.id)"><img :src="data.picUrl"/></a></dt>
+									<dd>
+										<div class="f12">
+											<a href="javascript:void(0);" @click="goByGoodId(data.id)" v-text="data.goodsName"></a>
+										</div>
+										<div class="org2" v-text="data.price+'元'"></div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="mall_ad" v-if="advertList106.length >0">
+						<img :src="advertList106[0].picUrl" width="1200" height="120" />
+					</div>
+				</div>
+
+				<div class="dianpu_bt m_top10" v-if="rpList.length > 0">
+					<div class="left f24">热评商品</div>
+				</div>
+				<div class="mall_hot">
+					<div class="mall_hot2">
+						<dl v-for="data in rpList" style="position: relative;">
+							<img class="giftFlag" src="../../images/haitao-1.png" alt="海淘" style="position: absolute;top:0;right:0;" v-if="data.giftFlag == 1">
+							<dt><a href="#" @click="goByGoodId(data.goodsId)"><img :src="data.goodsUrl"  width="230" height="240"/></a></dt>
+							<dd>
+								<div class="f12" v-text="data.eval"></div>
+								<div class="m_top20 c-7" v-text="data.evalBy"></div>
+								<div class="f12">
+									<a href="javascript:void(0);" @click="goByGoodId(data.goodsId)" v-text="data.goodsName" style="display: block;height: 36px;overflow: hidden;"></a>
+								</div>
+								<div class="org2" v-text="data.price+'元'"></div>
+								<!-- <div class="m_top10">{{data.goodsName}} <span class="c-9">| </span><span class="org2" v-text="data.price"></span>元</div> -->
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="qq"><img src="../../images/qq_34.png" width="120" height="228" border="0" usemap="#Map" />
+				<map name="Map" id="Map">
+				    <area shape="rect" @click="onlineSale()" coords="13,175,108,207" href="javascript:void(0);" />
+				    <area shape="rect" @click="closeService()" coords="103,0,121,17" href="javascript:void(0);" />
+				  </map>
+			</div> -->
+			<el-dialog title="充话费" v-model="mobileVisible" id="mobileVisible">
+				<ul class="address" id="billUl">
+					<li v-for="(item,index) in mobileItem.list">
+						<div class="bill" v-text="item.productValue" @click="clickItem(index,item.productId,item.productValue)" :class="{'billcheck':index==mobileItem.index}"></div>
+					</li>
+					<li>
+						<input name="" type="tel" placeholder="请输入手机号码" v-model="billForm.phone" :value="billForm.phone" class="txt c-9 buy-ly billinput">
+					</li>
+					<li style="text-align: center;padding-top: 20px;">
+						<a href="javaScript:void(0)" @click="buyBill()" class="btn-big" style="background-color: rgb(243, 126, 1);"> 立即购买 </a>
+					</li>
+				</ul>
+
+				</el-form>
+			</el-dialog>
+
+			<el-dialog title="充流量" v-model="flowVisible" id="flowVisible">
+				<ul class="address">
+					<li v-for="(item,index) in flowItem.list">
+						<div class="flow" v-text="item.productValue" @click="clickFlowItem(index,item.id,item.productValue)" :class="{'flowcheck':index==mobileItem.index}"></div>
+					</li>
+					<li>
+						<input name="" type="tel" placeholder="请输入手机号码" v-model="flowForm.phone" :value="flowForm.phone" class="txt c-9 buy-ly billinput">
+					</li>
+					<li style="text-align: center;padding-top: 20px;">
+						<a href="javaScript:void(0)" @click="buyFlow()" class="btn-big" style="background-color: rgb(243, 126, 1);"> 立即购买 </a>
+					</li>
+				</ul>
+
+				</el-form>
+			</el-dialog>
+
+			<el-dialog title="游戏充值" v-model="gameVisible" id="gameVisible">
+				<ul class="address">
+					<li v-for="(item,index) in gameItem.list">
+						<div class="game" v-text="item.itemName" @click="clickGameItem(index,item.itemId,item.itemName,item.advicePrice)" :class="{'billcheck':index==gameItem.index}"></div>
+					</li>
+					<li>
+						<input name="" type="text" placeholder="请输入游戏账号" v-model="gameForm.account" :value="gameForm.account" class="txt c-9 buy-ly billinput">
+					</li>
+					<li style="text-align: center;padding-top: 20px;">
+						<a href="javaScript:void(0)" @click="buyGame()" class="btn-big" style="background-color: rgb(243, 126, 1);"> 立即购买 </a>
+					</li>
+				</ul>
+
+				</el-form>
+			</el-dialog>
+
+			<el-dialog title="油卡充值" v-model="gasVisible" id="gasVisible">
+				<ul class="address">
+					<li v-for="(item,index) in gasItem.list">
+						<div class="gas" v-text="item.itemName" @click="clickGasItem(index,item.itemId,item.itemName,item.advicePrice)"  :class="{'billcheck':index==gasItem.index}"></div>
+					</li>
+					<li>
+						<input name="" type="tel" placeholder="请输入持卡人手机号" v-model="gasForm.mobileNo" :value="gasForm.mobileNo" class="txt c-9 buy-ly billinput">
+						<input name="" type="text" placeholder="请输入持卡人完整姓名" v-model="gasForm.gasCardName" :value="gasForm.gasCardName" class="txt c-9 buy-ly billinput">
+						<input name="" type="text" placeholder="请输入加油卡卡号" v-model="gasForm.gasCardNo" :value="gasForm.gasCardNo" class="txt c-9 buy-ly billinput">
+					</li>
+					<li style="text-align: center;padding-top: 20px;">
+						<a href="javaScript:void(0)" @click="buyGas()" class="btn-big" style="background-color: rgb(243, 126, 1);"> 立即购买 </a>
+					</li>
+				</ul>
+
+				</el-form>
+			</el-dialog>
+			<lf-footer></lf-footer>
+		</div>
+		<script src='//kefu.easemob.com/webim/easemob.js?tenantId=41169&hide=false&sat=false' async='async'></script>
+		<script src="../../js/common.js"></script>
+		<script src="../../js/pages/goods.js"></script>
+	</body>
+</html>

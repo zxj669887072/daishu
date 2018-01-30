@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.min.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<lf-header></lf-header>
+			<div class="search-content">
+				<div class="search-left">
+					<a href="/app/index.html" target="_self" ><image src="../../images/logo.png" width="214em" height="50em"></image></a>
+					<div class="search-left-right">
+						<a href="/app/pages/about/sjrz.html" target="_blank">商家入驻</a>
+						<a href="/app/pages/about/yyzx-about.html" target="_blank">运营中心加盟</a>
+						<a href="javascript:void(0);" target="_blank">帮助中心</a>
+					</div>
+				</div>
+				<div class="search-right">
+					<input placeholder="请输入店铺或服务中心门牌号" name="" value="" v-model="searchStr"/>
+					<span class=""><a href="javascript:void(0);" @click="doSearch()"><i class="fa fa-search"></i></a></span>
+				</div>
+			</div>
+			<div class="fsshow">
+				<div class="fsshow-banner">
+						<el-card class="fsshow-card">
+							<el-carousel height="461px">
+								<el-carousel-item v-for="advert in advertList">
+									<div class="el-card__body"> <img :src="advert.picUrl" alt="" @click="go(advert.url)"></div>
+								</el-carousel-item>
+							</el-carousel>
+						</el-card>
+				</div>
+			</div>
+			<div class="yb-ym">
+				<div class="yb-jj">
+					<div class="border">
+						<div class="img">
+							<img src="../../images/sjrz.png" alt="">
+	
+						</div>
+						<div class="span" @click="go('/app/pages/about/sjrz.html')">
+							<div>商家入驻</div>
+							<div class="xz">
+								Merchants settled
+							</div>
+						</div>
+					</div>
+					<div class="border yyzx">
+						<div class="img">
+							<img src="../../images/yyzx.png" alt="">
+	
+						</div>
+						<div class="span" @click="go('/app/pages/about/ljfxs.html')">
+							<div>了解分销</div>
+							<div class="xz">
+								Merchants settled
+							</div>
+						</div>
+					</div>
+					<div class="border jfdh">
+						<div class="img">
+							<img src="../../images/jfdh.png" alt="">
+	
+						</div>
+						<div class="span" @click="go('/app/pages/about/yyzx-about.html')">
+							<div>运营中心加盟</div>
+							<div class="xz">
+								Merchants settled
+							</div>
+						</div>
+					</div>
+					<div class="border no-right">
+						<div class="img">
+							<img src="../../images/zsjl.png" alt="">
+						</div>
+						<div class="span" @click="go('/app/pages/about/about-jf.html')">
+							<div>了解积分</div>
+							<div class="xz">
+								Merchants settled
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="yyf-content">
+				<div class="yyf-img">
+					<div class="yyf-btn"></div>
+					<a href="pages/goods.html" title="" target="_self">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/jifenduihuan.png" alt="">
+							</div>
+							<div class="title">网上商城</div>
+							<div class="content">
+								<span>积分兑换超值豪礼！</br>
+	                                                满足会员、衣、食、住、行，</br>
+	                                                生活中各类消费需求。
+	                                            </span>
+							</div>
+						</div>
+					</a>
+					<a href="pages/store/storelist.html" target="_self" title="">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/ypd.png" alt="">
+							</div>
+							<div class="title">实体店</div>
+							<div class="content">
+								<span>样品展示！</br>
+	                                                360行</br>
+	                                                行行都赚钱
+	                                            </span>
+							</div>
+						</div>
+					</a>
+					<a href="pages/about/about-jfbb.html" target="_blank" title="">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/ljwm.png" alt="">
+							</div>
+							<div class="title">了解我们</div>
+							<div class="content">
+								<span>积分兑换超值豪礼！</br>
+	                                                满足会员、衣、食、住、行，</br>
+	                                                生活中各类消费需求。
+	                                            </span>
+							</div>
+						</div>
+					</a>
+					<a href="pages/about/about-jf.html" target="_blank" title="">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/ljjf.png" alt="">
+							</div>
+							<div class="title">了解积分</div>
+							<div class="content">
+								<span>积分兑换超值豪礼！</br>
+	                                                满足会员、衣、食、住、行，</br>
+	                                                生活中各类消费需求。
+	                                            </span>
+							</div>
+						</div>
+					</a>
+					<a href="pages/about/rhzqjf.html" target="_blank" title="">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/rhzjf.png" alt="">
+							</div>
+							<div class="title">积分规则</div>
+							<div class="content">
+								<span>积分兑换超值豪礼！</br>
+	                                                满足会员、衣、食、住、行，</br>
+	                                                生活中各类消费需求。
+	                                            </span>
+							</div>
+						</div>
+					</a>
+					<a href="pages/about/ljfxs.html" target="_blank" title="">
+						<div class="yyf-tp">
+							<div class="img">
+								<img src="../../images/ljfxs.png" alt="">
+							</div>
+							<div class="title">了解分销商</div>
+							<div class="content">
+								<span>积分兑换超值豪礼！</br>
+	                                                满足会员、衣、食、住、行，</br>
+	                                                生活中各类消费需求。
+	                                            </span>
+							</div>
+						</div>
+					</a>
+	
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+	</body>
+	<script src="../js/common.js"></script>
+	<script src="../js/index.js"></script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>商家缴费</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+</head>
+<body>
+<div id="app">
+	<div class="blank-header">
+		<div class="tenants-header">
+			<a href="/app/index.html"><img src="../../../images/logo.png" /></a>
+			<span>商家入驻</span>
+		</div>
+	</div>
+	<div class="center-frame-apply" style="height:678px;">
+			<div class="apply-step-content">
+				<el-steps :space="100" :active="3"finish-status="success">
+				  <el-step title="申请账号"></el-step>
+				  <el-step title="提交资料"></el-step>
+				  <el-step title="商家缴费"></el-step>
+				  <el-step title="等待审核"></el-step>
+				  <el-step title="网店上线"></el-step>
+				</el-steps>
+			</div>
+			<div class="apply-blank-white" style="height:auto;">
+					<div class="Pay" v-if="payShow.wx">
+						<dl>
+							<dt style="font-size: 24px;"><img src="../../../images/img2_03.jpg" width="91" height="22"><input v-model="amounts" :value="amounts"/></dt>
+						</dl>
+						<ul>
+							<li class="f14 f_bottom20 c-9" style="width:100%;">选择缴费方式</li>
+							<li>
+								<el-radio class="radio" v-model="payType" label="1">支付宝</el-radio>
+								<img src="../../../images/img2_07.jpg" width="188" height="68"></li>
+							<li>
+								<el-radio class="radio" v-model="payType" label="2">微信</el-radio>
+								<img src="../../../images/img2_09.jpg" width="188" height="68">
+							</li>
+							<li class="m_top40" style="width:100%; text-align: center;">
+								<a href="javaScript:void(0);"><input name="" @click="paypay" type="button" class="org_btn" value="下一步"></a>
+							</li>
+						</ul>
+					</div>
+					<div class="wx" v-else>
+						
+						<div><img :src="payShow.wxurl" alt="" /></div>
+					</div>
+				</div>
+		</div>
+	<lf-footer></lf-footer>
+</div>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/information/merchantsPayCost.js"></script>
+</body>
+</html>   

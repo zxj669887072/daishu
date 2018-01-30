@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我关注的店铺</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<style>
+          .fooder dl[data-v-65324434] {
+            text-align: left;
+          }
+          .fooder dl[data-v-65324434] dd{
+            line-height: 24px;
+          }
+          table,tr,td {box-sizing: content-box;}  
+          .table2 .shopinfo td{padding:0 5px 5px;}        
+          .table2 .shopmsg td{padding:5px 5px 0;}        
+</style>
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+            <lf-head></lf-head>
+            <div class="webbox w1000">
+	                   <lf-left></lf-left>
+                         <div class="rightbox">
+                                      <div class="box">
+                                                   <ul class="switchbox">
+                                                                <li class="hover">我关注的店铺</li>
+                                                   </ul>
+                                      </div>
+     <!-- <div class="box">
+       <div class="tab_menu">
+       <div style="float:left; padding-left:20px; width:50%;text-align: left;">所有店铺 <span class="org"><strong>{{focusShops.totalCount}}</strong></span> 家</div>
+      <div class="left" style="float:right"><span  class="txt2"><input ref="search" name="" type="text" placeHolder="输入店铺名进行搜索" value="" /></span><span><input @click="search()" name="" type="button" value="搜索" class="btn2" /></span></div>
+    
+      </div> -->
+                                     <div class="padding20"> 
+                                                  <div class="f_bottom20">
+                                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table2">
+                                                                        	<template v-for="shop in focusShops.list">
+                                                                            <tr style="height:40px;" class="shopmsg">
+                                                                              <td width="20%" bgcolor="#F1F2F6"><a href="javascript:void(0);"  @click="goStoreShop(shop.houseNumber, shop.id)" >店铺名:<strong>{{shop.shopName}}</strong></a></td>
+                                                                              <td  width="60%"  bgcolor="#F1F2F6"><a href="javascript:void(0);"  @click="goStoreShop(shop.houseNumber, shop.id)" >门牌号:<strong class="org">{{shop.houseNumber}}</strong></a></td>
+                                                                              <td width="20%"  align="center" bgcolor="#F1F2F6">操作</td>
+                                                                            </tr>
+                                                                            <tr style="border-bottom: 1px solid #e5e5e5;height: 100px;" class="shopinfo">
+                                                                              <td><div class="imgbox" style="cursor: pointer;"><img :src="shop.logo" @click="goStoreShop(shop.houseNumber, shop.id)" width="72" height="72" /></div></td>
+                                                                              <td align="center" style="line-height: 20px">联系方式：{{shop.account}}<br />
+                                                                                商家地址：{{shop.merchantAddr}}<br/>
+                                                                                <!-- 分销数量：累计<strong class="org">{{shop.tradeQty}}</strong>笔</td> -->
+                                                                              <td align="center"><a href="#" @click="deleteStore(shop.id)" class="blue">取消关注</a></td>
+                                                                            </tr>
+                                                                            </template>
+                                                                </table>
+                                                                <div class="store-page text-right  buspage" v-if="pager.total > 0">
+                                                        			       <el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+                                                        			       </el-pagination>
+                                                    		</div>
+                                                    </div>
+                                      </div>
+
+                          </div>
+            </div>
+            <lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/focus_shop_ps.js"></script>
+</body>
+</html>

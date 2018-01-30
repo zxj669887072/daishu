@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>商铺订单</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">商铺订单</li>
+      </ul>
+      <div class="Order">
+     <dl>
+     <dt><img src="../../../images/hom_01.png"></dt>
+     <dd>全部订单<strong class="org"> {{goodsStat.totalOrderNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><img src="../../../images/hom_02.png"></dt>
+     <dd>待付款<strong class="org"> {{goodsStat.orderToPayNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><img src="../../../images/hom_03.png"></dt>
+     <dd>待收货<strong class="org"> {{goodsStat.orderToReceNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><img src="../../../images/hom_04.png"></dt>
+     <dd>待评价<strong class="org"> {{goodsStat.orderToEvalNum}}</strong></dd>
+     </dl>
+     <dl>
+     <dt><img src="../../../images/hom_05.png"></dt>
+     <dd>已完成<strong class="org"> {{goodsStat.orderToFinishNum}}</strong></dd>
+     </dl>
+     </div>
+    </div>
+     <div class="box m_top20">
+       <div class="tab_menu">
+      <div class="left"><span  class="txt2"><input name="" ref="search" type="text" placeholder="输入商品标题或订单进行搜索" value="" /></span><span><input @click="search()" name="" type="button" value="订单搜索" class="btn2" /></span><span style=" width:150px;">更多筛选条件 <img src="../../../images/ico_06.jpg" width="8" height="4" /></span></div>
+    
+      </div>
+      
+       
+      <div class="padding20"> 
+      <div class="f_bottom20">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+          <tr>
+            <td width="10%" bgcolor="#F1F2F6"><strong>商品</strong></td>
+            <td width="32%" bgcolor="#F1F2F6">&nbsp;</td>
+            <td width="14%" align="center" bgcolor="#F1F2F6">单价（元）</td>
+            <td width="15%" align="center" bgcolor="#F1F2F6">数量</td>
+            <td width="16%" align="center" bgcolor="#F1F2F6">交易状态</td>
+            <td width="13%" align="center" bgcolor="#F1F2F6">操作</td>
+          </tr>
+          <template v-for="lists in ordersList"> 
+	          <tr style="height:20px;"></tr>
+	          <tr>
+				<td style="padding:0" bgcolor="#f7f7f7">订单号：{{lists.orderNo}}</td> 
+				<td style="padding:0" bgcolor="#f7f7f7">&nbsp;</td>
+				<td style="padding:0" bgcolor="#f7f7f7">&nbsp;</td>
+				<td style="padding:0" bgcolor="#f7f7f7">&nbsp;</td> 
+				<td style="padding:0" bgcolor="#f7f7f7">&nbsp;</td>
+				<td @click="delOrder(lists.orderId)" style="padding:0;text-align: right;padding-right:20px;" bgcolor="#f7f7f7">删除</td>
+			  </tr> 
+	          <tr v-for="list in lists">
+	            <td><div class="imgbox"><a href="#"><img :src="list.picUrl" /></a></div></td>
+	            <td><a href="#">{{list.goodsName}}</a><br />
+	              <span class="c-9">{{list.spec}}</span></td>
+	            <td align="center"><strong class="org">¥{{list.price}}</strong></td>
+	            <td align="center">{{list.qty}}</td>
+	            <td align="center"><strong>已成功</strong></td>
+	          </tr>
+          </template>
+        </table>
+       </div>
+      <p>&nbsp;</p>
+      </div>
+
+   </div>
+    </div>
+</div>
+  <lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/shop_order_ps.js"></script>
+</body>
+</html>

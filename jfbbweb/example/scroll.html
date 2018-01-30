@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.left {
+				position: fixed;
+				top: 50px;
+			}
+			
+			.active {
+				background: yellowgreen;
+			}
+			.rigth{
+				
+			}
+			.content{
+				height: 400px;
+				width: 100%;
+				border: 1px solid #007AFF;
+			}
+			.bottom{
+				height: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="left">
+				<ul>
+					<li :class="{active:key == flag}"  v-for="(data,key) in list">
+						<a :id="'a-'+data.id" :href="'#c-'+data.id" target="_self">{{data.name}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="rigth">
+				<div :id="'c-'+data.id" class="content" v-for="(data,key) in list">
+					{{data.name}}
+				</div>
+			</div>
+			<div class="bottom">
+				底部
+			</div>
+		</div>
+	</body>
+	<script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				flag: 0,
+				list: [],
+				itemtops:[]
+			},
+			computed: {},
+			watch: {},
+			methods: {
+				getElementTop:function(element){
+			　　　　	var top = 0;
+					while(element){  
+				      	top += element.offsetTop;  
+				      	element = element.offsetParent;  
+					}  
+			　　　　	return top;
+			　　  },
+				getElementHeight:function(element){
+			　　　　	var h = element.clientHeight;
+			　　　　	return h;
+			　　  },
+				handleScroll:function(){
+					
+					var y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+					this.flag = this.getFlag(y);
+//					
+				},
+				getFlag:function(y){
+					var r = 0;
+					var l = this.itemtops.length;
+					var value = 0;
+					var hjs = 0;
+					//找到区间
+					for(var i = 0; i < l ; i++){
+						value = this.itemtops[i].top;
+						hjs = this.itemtops[i].height/2;
+						if(i == 0){
+							if( y >= value && y < (Number(value)+Number(hjs))){
+								r = this.itemtops[i].id;
+								break;
+							}
+						}else if(i == (l - 1)){
+							if( y >= (Number(value)-Number(hjs))){
+								r = this.itemtops[i].id;
+								break;
+							}
+						}else{
+							if( y >= (Number(value)-Number(hjs)) && y < (Number(value)+Number(hjs))){
+								r = this.itemtops[i].id;
+								break;
+							}
+						}
+					}
+					return r;
+				}
+			},
+			beforeMount: function() {},
+			mounted: function() {
+				this.list = [
+					{ id: "1", name: "测试1" },
+					{ id: "2", name: "测试2" },
+					{ id: "3", name: "测试3" },
+					{ id: "4", name: "测试4" },
+					{ id: "5", name: "测试5" },
+					{ id: "6", name: "测试6" }
+				];
+				var _this = this;
+				/*
+				 * 需要等待dom渲染完毕之后再处理，不然可能取得null
+				 */
+				Vue.nextTick(function(){
+					var cEl = _this.$el.querySelectorAll(".content");
+					cEl = [].slice.call(cEl);
+					var index = 0;
+					var obj = null;
+					/*
+					 * 获取每个节点的top值
+					 */
+					cEl.forEach(function(v){
+						var obj = new Object();
+						obj.id = index;
+						obj.top = _this.getElementTop(v);
+						obj.height = _this.getElementHeight(v);
+						_this.itemtops.push(obj);
+						index++;
+					});
+					console.log(_this.itemtops);
+					//获取滚动Y值，然后通过判定，是否需要改变flag来变更li的class
+					var y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+					_this.flag = _this.getFlag(y);
+				})
+				window.addEventListener('scroll', this.handleScroll);
+			}
+
+		});
+	</script>
+
+</html>

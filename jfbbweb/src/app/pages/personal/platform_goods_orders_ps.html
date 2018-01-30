@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>平台商城订单</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">平台商城订单</li>
+      </ul>
+      <div class="Order Order2">
+     <dl>
+     <dt><img src="../../../images/hom_01.png"></dt>
+     <dd>全部订单<strong class="org"> 33</strong></dd>
+     </dl>
+     <dl>
+       <dt><img src="../../../images/hom_03.png"></dt>
+     <dd>待提礼 <strong class="org"> 23</strong></dd>
+   </dl>
+     <dl>
+     <dt><img src="../../../images/hom_04.png"></dt>
+     <dd>待评价<strong class="org"> 33</strong></dd>
+     </dl>
+     <dl>
+     <dt><img src="../../../images/hom_05.png"></dt>
+     <dd>已完成<strong class="org"> 33</strong></dd>
+     </dl>
+     </div>
+    </div>
+     <div class="box m_top20">
+       <div class="tab_menu">
+      <div class="left"><span  class="txt2"><input name="" type="text" value="输入商品标题或订单进行搜索" /></span><span><input name="" type="button" value="订单搜索" class="btn2" /></span><span style=" width:150px;">更多筛选条件 <img src="../../../images/ico_06.jpg" width="8" height="4" /></span></div>
+    
+      </div>
+      
+       
+      <div class="padding20"> 
+      <div class="f_bottom20">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+          <tr>
+            <td width="10%" bgcolor="#F1F2F6"><strong>礼品</strong></td>
+            <td width="32%" bgcolor="#F1F2F6">&nbsp;</td>
+            <td width="14%" align="center" bgcolor="#F1F2F6">积分</td>
+            <td width="15%" align="center" bgcolor="#F1F2F6">数量</td>
+            <td width="16%" align="center" bgcolor="#F1F2F6">交易状态</td>
+            <td width="13%" align="center" bgcolor="#F1F2F6">操作</td>
+          </tr>
+          <tr>
+            <td><div class="imgbox"><a href="#"><img src="../../../images/img.jpg" /></a></div></td>
+            <td><a href="#">Apple iPad mini 2 平板电脑 7.9英寸（32G WLAN版/A7芯片</a><br />
+              <span class="c-9">白色</span></td>
+            <td align="center"><strong class="green">1838</strong></td>
+            <td align="center">1</td>
+            <td align="center"><strong>已成功</strong></td>
+            <td align="center" class="blue">删除</td>
+          </tr>
+          <tr>
+            <td><div class="imgbox"><a href="#"><img src="../../../images/img.jpg" /></a></div></td>
+            <td><a href="#">Apple iPad mini 2 平板电脑 7.9英寸（32G WLAN版/A7芯片</a><br />
+              <span class="c-9">白色</span></td>
+            <td align="center"><strong class="green">1838</strong></td>
+            <td align="center">1</td>
+            <td align="center"><strong>已成功</strong></td>
+            <td align="center"><span class="blue">删除</span></td>
+          </tr>
+        </table>
+       </div>
+      <p>&nbsp;</p>
+      </div>
+
+   </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  <li>粤ICP备xxxxx号 普宁市XX公司 Copyyight©2014-2020 xxxx版权所有</li>
+				  <li>公司地址：xxxxxxxxxxxxxx  电话：0755-726689</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../../../images/ljjfbb_35.jpg"  /><img src="../../../images/ljjfbb_37.jpg"  /></div>
+     </div>
+</div>
+</body>
+</html>

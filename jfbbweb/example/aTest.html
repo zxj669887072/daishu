@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<a href="#" @click="go">111</a>
+			<a href="##" @click="go">222</a>
+			<a href="###" @click="go">333</a>
+			<a href="javascript:void(0);" @click="go">444</a>
+			<a href="javascript:void(0)" @click="go">555</a>
+			<a href="javascript:;" @click="go">666</a>
+			<a href="javascript:" @click="go">777</a>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		function test(){
+			
+		}
+		new Vue({
+			el: '#app',
+			data: {
+				width: 10
+			},
+			methods:{
+				go:function(){
+					window.open("http://www.baidu.com", "_blank");
+				}
+			}
+		})
+		if(window.localStorage){
+			alert("true");
+		}else{
+			alert("false");
+		}
+	</script>
+</html>

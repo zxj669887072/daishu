@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script>
+		var mycookie = {
+			set: function(c_name, value, expiredays) {
+				console.log("set:" + expiredays);
+				var exdate = new Date()
+				exdate.setDate(exdate.getDate() + expiredays * 1);
+				document.cookie = c_name + "=" + escape(value) +
+					((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
+			},
+			get: function(c_name) {
+				if(document.cookie.length > 0) {
+					c_start = document.cookie.indexOf(c_name + "=")
+					if(c_start != -1) {
+						c_start = c_start + c_name.length + 1
+						c_end = document.cookie.indexOf(";", c_start)
+						if(c_end == -1) c_end = document.cookie.length
+						return unescape(document.cookie.substring(c_start, c_end))
+					}
+				}
+				return "";
+			},
+			del: function(c_name) {
+				var exp = new Date();
+				exp.setTime(exp.getTime() - 1);
+				var cval = this.get(c_name);
+				if(cval != null){
+					document.cookie = c_name + "=" + cval + ";expires=" + exp.toGMTString();
+				}
+			}
+		}
+
+		console.log("cookie test...");
+		mycookie.set("test1", "test1", 30);
+		console.log("test1:" + mycookie.get("test1"));
+		console.log("-----------------------");
+		mycookie.set("test2","test2",1);
+		mycookie.set("test3","test3",1);
+		
+		console.log("test1:"+mycookie.get("test1"));
+		console.log("test2:"+mycookie.get("test2"));
+		console.log("test3:"+mycookie.get("test3"));
+		console.log("-----------------------");
+		mycookie.del("test1");
+		mycookie.del("test2");
+		mycookie.del("test3");
+		console.log("test1:"+mycookie.get("test1"));
+		console.log("test2:"+mycookie.get("test2"));
+		console.log("test3:"+mycookie.get("test3"));
+	</script>
+
+</html>

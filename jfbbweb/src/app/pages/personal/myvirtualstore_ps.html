@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我的虚拟店铺</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box h610">
+    <ul class="switchbox">
+      <li class="hover">我的虚拟分销店铺</li>
+      </ul>
+      <div class="padding20 listbox">
+    <ul>
+        <li><div class="left">宝贝名称：</div><div class="right"><input  type="text" v-model="goodsName"/></div></li>
+        <!-- <li><div class="left">商品编码：</div><div class="right"><input  type="text" v-model="goodsNo"/></div></li> -->
+        <!--<li><div class="left">店铺中分类：</div>
+          <div class="right">
+           <span class="txt3">
+            <select v-model="shopGroupId" v-show="!isNullGroup">
+                <option value="">选择全部</option>
+                <option v-for="groupData in shopGroupDatas" v-bind:value="groupData.id">{{groupData.groupName}}</option>
+           </select>
+          </span>
+          </div>
+        </li>-->
+        <li><div class="left">价　格：</div><div class="right">
+        <span><input v-model="priceMin" type="text" /></span><span style=" width:12%">到</span><span><input v-model="priceMax" type="text" /></span>
+      
+</div></li>
+        <li><div class="left">总 销 量：</div><div class="right"> <span><input v-model="minSales" type="text" /></span><span style=" width:12%">到</span><span><input v-model="maxSales" type="text" /></span></div></li>
+        <li style="float:right"> <input name="搜索" type="button" @click="findData()" value="搜索"  class="bnt-org" ><strong><a href="#" @click="clearTerm()" class="blue">清空条件</a></strong></li>
+        
+    </ul>
+    </div>
+    <div class="listbox2">
+    <ul>
+    
+ <!--   <li><input name="" type="checkbox" value="" />
+    全选</li>
+    <li>
+    <a href="#">下架</a>
+    </li>-->
+   
+    </ul>
+
+    </div>
+    <div class="padding20" style="padding-top:0px;">
+    <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+<!--    <td width="5%">&nbsp;</td>-->
+    <td width="35%">商品名称</td>
+    <td width="10%" align="center">价格</td>
+    <td width="10%" align="center">库存<a href="#"></a></td>
+    <td width="10%" align="center">总销量<a href="#"></a></td>
+    <td width="17%" align="center">发布时间</td>
+    <td width="9%" align="center">佣金</td>
+    <td width="9%" align="center">操作</td>
+  </tr>
+  <tr v-for="goodsData in goodsList" v-show="!isNullData">
+    <!--<td><input name="input" type="checkbox" value="" /></td>-->
+    <td width="35%">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><a href="#" @click="goGoodsView(goodsData.id)">{{goodsData.goodsName}}</a><br /></td>
+      </tr>
+      </table>
+    </td>
+    <td width="10%" align="center" class="org">￥<strong>{{goodsData.price}}</strong></td>
+    <td width="10%" align="center">{{goodsData.qty}}</td>
+    <td width="10%" align="center">{{goodsData.sales}}</td>
+    <td width="17%" align="center">{{goodsData.createDate}}</td>
+    <td width="9%" align="center"><span class="org">￥<strong>{{goodsData.bkge}}</strong></span></td>
+    <td width="9%" align="center"><a href="#" @click="delData(goodsData.id)" class="blue">删除</a><br />
+    <a href="#" @click="go(goodsData.shareUrl)" class="blue" v-if="goodsData.goodsStatus==2">分享</a></td>
+  </tr>
+</table>
+<div class="page">
+    <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+    </el-pagination>
+</div>
+    </div>
+    </div>
+    </div>   
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/myvirtualstore_ps.js"></script>
+</body>
+</html>

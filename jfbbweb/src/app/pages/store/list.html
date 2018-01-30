@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>店铺中心筛选结果</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link href="../../../css/lib/last_css.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			.weixin .tc_02{ display:none;width:143px; position:absolute; z-index:80; left:-30px; top:38px;border:1px solid #e5e5e5; padding:20px 20px 10px 20px; background:#FFF;-webkit-box-shadow: 1px 2px 4px rgba(0,0,0,.1);}
+			.content{
+				min-height: 353px;
+			}
+			.content:after{
+				display: table;
+				content: ' ';
+				clear: both;
+			}
+		</style>
+	</head>
+
+	<body style="background:#f1f2f6">
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="dianpu_header">
+				<div class="w1000">
+					<div class="dianpu_logo" style="text-align:center;"><img :src="storeInfo.logo" style="width: 72px;height: 72px;"></div>
+					<div class="left">
+						<dl>
+							<dt>
+					         <div class="name"><span class="f16"><strong>{{storeInfo.shopName}}</strong></span><div class="imgbox"><img src="../../../images/dianpu_ico01.jpg"/>
+					         <div class="ico"></div>
+					         <div class="tc_01">
+					         <ul>
+					         <li class="f14">店铺信息</li>
+					         <li class="c-9">门  牌 号：<strong class="org2">{{storeInfo.houseNumber}}</strong></li>
+					         <li  class="c-9">客服电话：{{storeInfo.servePhone}}</li>
+					         <li  class="c-9">营业时间：{{storeInfo.businessTime}}</li>
+					         <li  class="c-9">店铺地址：<span class="right">{{storeInfo.address}}</span></li>
+					         </ul>
+					         <div class="m_top10">
+					         	<a href="javaScript:void(0)" @click="followStore" class="btn org">{{hasFollowStore ? '取消关注' : '关注店铺'}}</a>
+					         	<!--<a href="#"><img src="../../../images/dianpu_44.jpg" /> </a>-->
+					         </div>
+					         </div>
+					         </div>
+					        </div>
+					         <div class="f14"><span class="c-9"><strong>门牌号：</strong></span><span class="red">{{storeInfo.houseNumber}}</span></div>
+					        </dt>
+							<dd>
+								<div class=" c-9">手机逛</div>
+								<div class="weixin"><img src="../../../images/dianpu_ico02.jpg" />
+									<div class="ico"></div>
+									<div class="tc_02" style="align-items: center;">
+										<img :src="storeInfo.qrCodeUrl" style="width: 148; height: 148px;"/>
+										<span style="padding-left: 10px;">扫一扫手机逛起来</span>
+									</div>
+								</div>
+							</dd>
+						</dl>
+					</div>
+					<div class="search2" style="float:right">
+						<dl>
+							<dt><input name="" type="text" v-model="searchStr" class="text c-9" placeholder="请输入本店商品名" /></dt>
+							<dd><input name="" type="button" value="" checked="checked" class="btn" @click="doSearch"/></dl>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<div class="w1000">
+				
+					<div class="content">
+						<div class="dianpu_bt">
+							<div class="left f24">{{groupName}}</div>
+						</div>
+						<template v-if="totalCount > 0">
+							<div class="dianpu_productbox">
+								<div class="dianpu_product" v-for="goods in searchList">
+									<dl>
+										<dt><a href="javascript:void(0);" @click="goDetail(goods.id)"><img class="img-show" :src="goods.picUrl" width="136" height="136"></a></dt>
+										<dd>
+											<div class="f14">
+												<a href="javascript:void(0);" @click="goDetail(goods.id)">
+													<!-- {{goods.goodsName}} -->
+													<div style="overflow: hidden;height:40px;">{{goods.goodsName}}</div>
+													<div class="" id="goodName">{{goods.goodsName}}</div>
+												</a>
+											</div>
+											<!--<div class="c-9">炫彩来袭</div>-->
+											<div class="org2">¥{{goods.price}}</div>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</template>
+						<template v-else>
+							<tr>
+								<td colspan="5" align="center">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+											<td class="c-9 f14">暂无记录</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</template>
+						
+					<template v-if="totalCount > 0">
+						<div class="page">
+							<el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="currentPage" :page-size="pageSize" layout="prev, pager, next" :total="totalCount">
+							</el-pagination>
+						</div>
+					</template>
+					</div>
+				<lf-footer></lf-footer>
+
+			</div>
+
+		</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/store/list.js"></script>
+
+</html>

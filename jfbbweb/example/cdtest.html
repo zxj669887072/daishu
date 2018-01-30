@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+			<memuitem :items="targetList"></memuitem>
+			</ul>
+		</div>
+	</body>
+	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+	<script>
+		// 注册
+		Vue.component('memuitem', {
+		  template: '<li>'+
+		  			'<template v-for="data in items">'+
+		  				'<div>{{data.name}}</div>'+
+			  			'<ul v-if="data.child.length > 0">'+
+			  				'<memuitem :items="data.child"></memuitem>'+
+			  			'</ul>'+
+		  			'</template></li>',
+		  	props:['items']
+		})
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				"datalist": [  
+			 {
+            "id": "1",
+            "parentId": "0",
+            "name": "罗湖概况",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "10",
+            "parentId": "3",
+            "name": "经济运行",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "100",
+            "parentId": "25",
+            "name": "养老服务",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 7,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "101",
+            "parentId": "25",
+            "name": "困难帮扶",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 6,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "102",
+            "parentId": "25",
+            "name": "住房保障",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "103",
+            "parentId": "25",
+            "name": "民生微实事",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "104",
+            "parentId": "25",
+            "name": "民生投入",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "105",
+            "parentId": "25",
+            "name": "双拥工作",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "106",
+            "parentId": "25",
+            "name": "劳动就业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 10,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "107",
+            "parentId": "28",
+            "name": "总体情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "108",
+            "parentId": "28",
+            "name": "调整招考",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "11",
+            "parentId": "3",
+            "name": "创新驱动",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "12",
+            "parentId": "3",
+            "name": "消费提质",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "13",
+            "parentId": "3",
+            "name": "产业升级",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "14",
+            "parentId": "4",
+            "name": "安全生产",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "15",
+            "parentId": "4",
+            "name": "治水提质",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "16",
+            "parentId": "4",
+            "name": "查违治违",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#3effa2",
+            "rightFlag": "0"
+        },
+        {
+            "id": "17",
+            "parentId": "4",
+            "name": "城市管理",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "18",
+            "parentId": "4",
+            "name": "交通治堵",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "19",
+            "parentId": "4",
+            "name": "基层治理硬件短板",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 6,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "2",
+            "parentId": "0",
+            "name": "重点改革",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "20",
+            "parentId": "4",
+            "name": "社会组织登记管理",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 7,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "21",
+            "parentId": "4",
+            "name": "生态保护",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 8,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "22",
+            "parentId": "5",
+            "name": "基础教育",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "23",
+            "parentId": "5",
+            "name": "医疗卫生",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "24",
+            "parentId": "5",
+            "name": "文化体育",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "25",
+            "parentId": "5",
+            "name": "民生保障",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "26",
+            "parentId": "6",
+            "name": "党组织建设",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "27",
+            "parentId": "6",
+            "name": "社区党群服务中心",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "28",
+            "parentId": "6",
+            "name": "干部队伍建设",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "29",
+            "parentId": "6",
+            "name": "临聘人员队伍",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "3",
+            "parentId": "0",
+            "name": "经济发展",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "30",
+            "parentId": "7",
+            "name": "基本情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "31",
+            "parentId": "7",
+            "name": "签约交房情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "32",
+            "parentId": "7",
+            "name": "拆除测绘情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "33",
+            "parentId": "7",
+            "name": "综合执法情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "34",
+            "parentId": "7",
+            "name": "信访维稳情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "35",
+            "parentId": "8",
+            "name": "改革基本情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "36",
+            "parentId": "8",
+            "name": "项目情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#ffc000",
+            "rightFlag": "0"
+        },
+        {
+            "id": "37",
+            "parentId": "9",
+            "name": "改革前情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "38",
+            "parentId": "9",
+            "name": "改革后情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "39",
+            "parentId": "10",
+            "name": "主要经济指标",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#20a9ff",
+            "rightFlag": "0"
+        },
+        {
+            "id": "4",
+            "parentId": "0",
+            "name": "城市治理",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "40",
+            "parentId": "10",
+            "name": "一季度“开门红”工作",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "41",
+            "parentId": "10",
+            "name": "金融业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "42",
+            "parentId": "10",
+            "name": "商贸业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "43",
+            "parentId": "10",
+            "name": "商务服务业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "44",
+            "parentId": "10",
+            "name": "战略性新兴产业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 6,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "45",
+            "parentId": "10",
+            "name": "黄金珠宝业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 7,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "46",
+            "parentId": "10",
+            "name": "文化创意产业",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 8,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "47",
+            "parentId": "10",
+            "name": "政府投资",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 9,
+            "color": "#ffd84f",
+            "rightFlag": "0"
+        },
+        {
+            "id": "48",
+            "parentId": "10",
+            "name": "财政支出",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 10,
+            "color": "#ff3636",
+            "rightFlag": "0"
+        },
+        {
+            "id": "49",
+            "parentId": "10",
+            "name": "商事主体",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 11,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "5",
+            "parentId": "0",
+            "name": "民生改善",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "50",
+            "parentId": "11",
+            "name": "大梧桐新兴产业带",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#ff6565",
+            "rightFlag": "0"
+        },
+        {
+            "id": "51",
+            "parentId": "11",
+            "name": "人才引进",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "52",
+            "parentId": "11",
+            "name": "创新载体",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "53",
+            "parentId": "11",
+            "name": "产业用房",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "54",
+            "parentId": "12",
+            "name": "商业租金",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "56",
+            "parentId": "12",
+            "name": "商圈升级",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "57",
+            "parentId": "12",
+            "name": "品牌建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "58",
+            "parentId": "12",
+            "name": "电子商务",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "59",
+            "parentId": "12",
+            "name": "旅游集散地",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "6",
+            "parentId": "0",
+            "name": "党组织和干部队伍的建设",
+            "level": 0,
+            "imgUrl": "",
+            "sort": 6,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "60",
+            "parentId": "13",
+            "name": "产业扶持",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "61",
+            "parentId": "13",
+            "name": "用地出让",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "62",
+            "parentId": "13",
+            "name": "物业空间",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "63",
+            "parentId": "13",
+            "name": "招商引资",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#27e7e5",
+            "rightFlag": "0"
+        },
+        {
+            "id": "64",
+            "parentId": "13",
+            "name": "企业服务",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "65",
+            "parentId": "14",
+            "name": "基本情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "66",
+            "parentId": "14",
+            "name": "海砂房",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 8,
+            "color": "#3effea",
+            "rightFlag": "0"
+        },
+        {
+            "id": "67",
+            "parentId": "14",
+            "name": "老旧消防管网改造",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "68",
+            "parentId": "14",
+            "name": "标准化建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "69",
+            "parentId": "14",
+            "name": "消防应急站点建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 9,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "7",
+            "parentId": "2",
+            "name": "棚户区改造",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#7fceff",
+            "rightFlag": "0"
+        },
+        {
+            "id": "70",
+            "parentId": "14",
+            "name": "老旧电梯更新改造",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 6,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "71",
+            "parentId": "14",
+            "name": "隐患排查整治",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "72",
+            "parentId": "14",
+            "name": "物业管理",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 7,
+            "color": "#27e75d",
+            "rightFlag": "0"
+        },
+        {
+            "id": "73",
+            "parentId": "14",
+            "name": "老旧电气改造",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "74",
+            "parentId": "14",
+            "name": "公共安全和信访维稳",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 10,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "75",
+            "parentId": "15",
+            "name": "排水管网改造",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "76",
+            "parentId": "15",
+            "name": "河流治理",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "77",
+            "parentId": "16",
+            "name": "基本情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "78",
+            "parentId": "16",
+            "name": "工作进展",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "79",
+            "parentId": "17",
+            "name": "深度洁净",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "8",
+            "parentId": "2",
+            "name": "城市更新",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#ffc000",
+            "rightFlag": "0"
+        },
+        {
+            "id": "80",
+            "parentId": "17",
+            "name": "微片区交通和景观综合提升",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 5,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "81",
+            "parentId": "17",
+            "name": "市政保洁",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "82",
+            "parentId": "17",
+            "name": "园林绿化",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "83",
+            "parentId": "17",
+            "name": "户外广告",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "84",
+            "parentId": "18",
+            "name": "轨道交通",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "85",
+            "parentId": "18",
+            "name": "慢行系统",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 4,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "86",
+            "parentId": "18",
+            "name": "静态交通",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "87",
+            "parentId": "18",
+            "name": "路网建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "88",
+            "parentId": "21",
+            "name": "森林覆盖率",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "89",
+            "parentId": "22",
+            "name": "学校建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "9",
+            "parentId": "2",
+            "name": "公立医院改革",
+            "level": 1,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "90",
+            "parentId": "22",
+            "name": "高考中考",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 3,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "91",
+            "parentId": "22",
+            "name": "学校情况",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "92",
+            "parentId": "23",
+            "name": "三名工程",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "93",
+            "parentId": "23",
+            "name": "医疗资源",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 2,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "94",
+            "parentId": "24",
+            "name": "文化体育",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "95",
+            "parentId": "25",
+            "name": "社区建设",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 1,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "98",
+            "parentId": "25",
+            "name": "社工服务岗位",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 9,
+            "color": "#001001",
+            "rightFlag": "0"
+        },
+        {
+            "id": "99",
+            "parentId": "25",
+            "name": "防灾避险",
+            "level": 2,
+            "imgUrl": "",
+            "sort": 8,
+            "color": "#001001",
+            "rightFlag": "0"
+        }]
+		},
+		computed: {
+			/*
+			 * 重组数据，方面遍历
+			 */
+			targetList: function() {
+				var rs = [];
+				var childrs = [];
+				var mix = 0;//可以通过for循环去获取mixf,这里就不写了
+				
+				rs = this.doData(this.datalist,0);
+				console.log(JSON.stringify(rs));
+				return rs;
+			}
+		},
+		methods:{
+			doData:function(data,parentId){
+				var self = this;
+				var rs = [];
+				var temp = null;
+				console.log("dodata");
+				console.log("parentId="+parentId);
+				console.log("data："+data);
+				data.forEach(function(v,i){
+					if(parentId == v.parentId){
+						temp = new Object();
+						temp.id=v.id;
+						temp.parentId=v.parentId;
+						temp.name=v.name;
+						temp.level=v.level;
+						temp.imgUrl=v.imgUrl;
+						temp.sort=v.sort;
+						temp.color=v.color;
+						temp.rightFlag=v.rightFlag;
+						data.splice(i,1);
+						temp.child = self.doData(data,v.id)
+						rs.push(temp);
+					}
+				})
+				return rs;
+			}
+//			toggle: function() {
+//		      if(this.isFolder) {
+//		          this.open = !this.open
+//		      }
+//		　　}
+		}
+		});
+	</script>
+
+</html>

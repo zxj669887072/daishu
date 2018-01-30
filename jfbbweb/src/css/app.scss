@@ -1,0 +1,209 @@
+@import "index";
+@import "store";
+@import "shopping";
+@import "information";
+@import "login";
+*{
+    font-family: 'Microsoft YaHei';
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select: initial;
+    -webkit-user-select: initial;
+
+}
+.header{
+    background-color:#f37e01;
+    width:100%;
+    height:42px;
+    .header-center{
+        width:1200px;
+        height:100%;
+        margin:0 auto;
+        .center-left{
+            height:100%;
+            float:left;
+            line-height:42px;
+            .two-font{
+                font-size:12px;
+                color:#fff;
+                width:30px;
+                float:left;
+                height:16px;
+                border:1px solid #fff;
+                border-radius:3px;
+                margin-top: 13px;
+                line-height: 1;
+                margin-left:6px;
+                text-align: center;
+            }
+            .first-font{
+                font-size:18px;
+                color:#f9b601;
+                float:left;
+                margin-top: -1px;
+            }
+            .three-font{
+                height:15px;
+                border-left:1px solid #fff;
+                float:left;
+                margin-top:13px;
+                margin-left:13px;
+            }
+            .four-font{
+                float:left;
+                color:#fff;
+                margin-left:12px;
+            }
+            .five-font{
+                float:left;
+                margin-left:8px;
+                font-size:15px;
+                color:#fff;
+                span{
+                    color:#f9b601;
+                }
+            }
+        }
+        .center-right{
+            width:320px;
+            height:100%;
+            float:right;
+            line-height:42px;
+            a{
+                font-size:14px;
+                height:10px;
+                color:#fff;
+                text-decoration:none;
+                font-size:14px;
+                i{
+                    font-size:12px;
+                    color:#fff;
+                    margin-left:2px;
+                }
+                i.fa-shopping-cart{
+                    color:#f9b601;
+                    font-size:16px;
+                }
+                span{
+                    span{
+                        color:#f9b601;
+                    }
+                }
+            }
+            .line{
+                color:#fff;
+                display:inline-block;
+                width:1px;
+                height:14px;
+                background-color:#fff;
+                position:relative;
+                top:2px;
+                margin:0 1px;
+            }
+        }
+    }
+
+}
+[v-cloak] {
+  display: none;
+}
+
+
+#alertMsg {
+    display: none;
+    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px black;
+    padding: 10px;
+    font-size: 12px;
+    position: absolute;
+    text-align: center;
+    background: #fff;
+    z-index: 100000;
+}
+#alertMsg #alertTit {
+    text-align: left;
+    font-size: 16px;
+    padding-left: 14px;
+    color: #333;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+#alertMsg_info {
+    padding: 2px 15px;
+    line-height: 1.6em;
+    text-align: left;
+    padding-bottom: 30px;
+}
+
+#alertMsg_btn1,
+#alertMsg_btn2 {
+    display: inline-block;
+    background: #ff4400;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    float: right;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#alertMsg_btn1 cite,
+#alertMsg_btn2 cite {
+    line-height: 24px;
+    display: inline-block;
+    padding: 0 13px 0 10px;
+    font-style: normal;
+}
+
+.c-txtedit{
+    .ment{
+        ul{
+            padding: 0;
+            height: 25px;
+             li{
+                display: inline-block;
+                cursor: pointer;
+                margin: 0;
+                height: 24px;
+                padding: 0 2px;
+                line-height: 20px;
+                text-align: center;
+                position: relative;
+                cursor: pointer;
+                .upload{
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    
+                }
+            }
+        }
+       
+    }
+    .txtcontent{
+        border: 1px solid #d1d1d1;
+        border-radius: 5px;
+        height: 300px;
+        overflow-y: scroll;
+            padding: 2px 10px;
+        div{
+             line-height: 20px;
+        }
+        img{
+            max-width: 400px;
+        }
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>消息中心</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/lib/last_css.css" />
+	<style type="text/css">
+		.msg-title{
+			text-align: left;
+			font-size: 16px;
+			margin: 30px 0 10px 0;
+			font: normal 18px/20px "微软雅黑";
+		}
+		.msg-title span{
+			color: #f14400;
+			font-size: 14px;
+		}
+		.msg-content .el-tabs__header{
+			background: #f3f3f3;
+			border-bottom: 1px solid #f37e01;
+			overflow: hidden;
+			margin-bottom: 0;
+			border-top: 0 none;
+		}
+		.msg-content .el-tabs__active-bar{
+			background-color: #f37e01;
+		}
+		.msg-content .el-tabs__header .el-tabs__item.is-active{
+			color: #fff;
+			background: #f37e01;
+		}
+		.msg-content .el-tabs__item {
+			font-size: 14px;
+			color: #666666;
+		}
+		.msg-list{
+			text-align: left;
+		}
+		.msg-list li{
+			border-bottom: 1px solid #d2d2d2;
+			padding-bottom: 10px
+		}
+		.msg-list .msg-list-title{
+			color: #f37e01;
+			font-size: 14px;
+			font-weight: 300;
+			margin: 32px 0 12px 0;
+		}
+		.msg-list  li:last-child{
+			border-bottom: 0 none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<lf-header></lf-header>
+		<div class="settled_top">
+			<div class="w1000">
+				<div class="logo">
+					<a href=" /app/index.html" target="_self"> <span class="login"><img src="../../../images/logo.png" alt=""></span></a>
+				</div>
+				<div style="margin-top: 8px;" class="top_name">个人中心<img src="../../../images/Arrow_03.jpg" width="14" height="9" /></div>
+			</div>
+		</div>
+		<div class="w1000" style="padding-bottom: 30px;overflow: hidden;">
+			<template>
+				<h3 class="msg-title">消息中心 <span>共{{totalCount}}条</span></h3>
+				<el-tabs v-model="activeName" @tab-click="handleClick" class="msg-content">
+					<el-tab-pane label="平台公告" name="first">
+						<ul class="msg-list" v-loading="loading">
+							<li  v-for="list in msgList">
+								<h3 class="msg-list-title">{{list.title}}</h3>
+								<div class="msg-list-content">{{list.content}}</div>
+								<div>
+									<time class="time">{{list.createDate}}</time>
+								</div>
+							</li>
+						</ul>
+					</el-tab-pane>
+					<el-tab-pane label="个人消息" name="second">
+						<ul class="msg-list" v-loading="loading">
+							<li  v-for="list in msgList">
+								<h3 class="msg-list-title">{{list.title}}</h3>
+								<div class="msg-list-content">{{list.content}}</div>
+								<div>
+									<time class="time">{{list.createDate}}</time>
+								</div>
+							</li>
+						</ul>
+					</el-tab-pane>
+				</el-tabs>
+				<div class="page padding20" v-if="pager.total > 0">
+					<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+					</el-pagination>
+				</div>
+			</template>
+		</div>
+		<lf-footer></lf-footer>
+	</div>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/pages/message.js"></script>
+</body>
+
+</html>

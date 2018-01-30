@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>个人</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+</head>
+<style>
+body .center-frame-apply .apply-blank-white .p-formation{
+    margin-top: 15px;
+}
+.el-form-item__content{
+	margin-left: 0px !important;
+}
+	.center-frame-apply .apply-step-content{
+		width: 839px;
+	}
+</style>
+<body>
+<div id="app" v-cloak>
+	<div class="blank-header">
+		<div class="tenants-header">
+			<a href="/app/index.html"><img src="../../../images/logo.png" /></a>
+			<span>商家入驻</span>
+		</div>
+	</div>
+	
+	<div class="center-frame-apply" style="height:1943px;">
+		<div class="apply-step-content">
+			<el-steps :space="100" :active="2"finish-status="success">
+			  <el-step title="申请账号"></el-step>
+			  <el-step title="提交资料"></el-step>
+			  <el-step title="等待审核"></el-step>
+			  <el-step title="网店上线"></el-step>
+			</el-steps>
+		</div>
+		<el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+		<div class="apply-blank-white" style="height:1822px">
+			<div class="header-choose-content">
+				<p>
+					<span class="titile">请选择商家性质：</span>
+					<a href="/app/pages/information/personalAccount.html" target="_self"><span class="commercial choose-generality">个人</span></a>
+					<a href="/app/pages/information/applyForAccount.html" target="_self"><span class="personal choose-generality">个体商户</span></a>
+				</p>
+			</div>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">申请账号</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">{{account}}</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation-red left-content">推荐人</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<el-form-item prop="referrer">
+						   <el-input class="low" v-model="ruleForm2.referrer"></el-input>
+					       <span class="char-formation">（填写推荐人的手机号码）</span>
+					    </el-form-item>
+					</span>
+				</span>
+			</p>
+			
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">店面名称</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<el-form-item prop="shopName">
+						   <el-input class="low" v-model="ruleForm2.shopName"></el-input>
+							<span class="char-formation">体验店</span> 
+					</el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">网店负责人姓名</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<el-form-item prop="shopPicName" style="float: left;">
+						   <el-input class="low" v-model="ruleForm2.shopPicName"></el-input>
+							
+						</el-form-item>
+						 
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">性别</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					
+						  <el-form-item style="float: left;" prop="sex">
+						    <el-radio-group v-model="ruleForm2.sex">
+						      <el-radio label="1">男</el-radio>
+						      <el-radio label="2">女</el-radio>
+						    </el-radio-group>
+						  </el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">网站负责人电话</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<el-form-item prop="shopPicPhone" >
+						   <el-input class="low" v-model="ruleForm2.shopPicPhone"></el-input>
+							
+						</el-form-item>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">开店地址</span>
+				</span>
+				<span class="right" >
+					<span class="char-formation-red right-content">
+						<el-form-item >
+						<el-cascader
+						  :options="cascaderOptions"  v-model="selectedOptions" 
+						 @active-item-change="handleItemChange"   @change="handleChange" ></el-cascader>
+						</el-form-item>
+					</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">街道</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<el-form-item prop="street" >
+						   <el-input class="low" v-model="ruleForm2.street"></el-input>
+							
+					</el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">有无实体店</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<el-form-item style="float: left;" prop="phyFlag">
+						    <el-radio-group v-model="ruleForm2.phyFlag">
+						      <el-radio label="1">有实体店</el-radio>
+						      <el-radio label="2">有仓储</el-radio>
+						      <el-radio label="3">无实体店、无仓储</el-radio>
+						    </el-radio-group>
+						</el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">经营模式</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+						<el-form-item style="float: left;" prop="manageModel">
+						    <el-radio-group v-model="ruleForm2.manageModel">
+						      <el-radio label="1">销售行业</el-radio>
+						      <el-radio label="2">服务行业</el-radio>
+						    </el-radio-group>
+						</el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="    margin-top: 7px;">
+					<span class="char-formation left-content">经营类型</span>
+				</span>
+				<span class="right" style="width: 651px;">
+					<span class="char-formation-red right-content">
+					  	<el-form-item  prop="manageType" style="float: left;">
+						    <el-checkbox-group v-model="ruleForm2.manageType" >
+						      <el-checkbox v-for="list in manage_type" :label="list.value" name="manageType">{{list.label}}</el-checkbox>
+						   </el-checkbox-group>
+					    </el-form-item>
+					</span>
+				</span>
+			</p>
+			<div class="parting-line"></div>
+			<div class="personal-information-title">个人身份信息</div>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">申请人（店主）姓名</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<el-form-item prop="applyName" >
+						   <el-input class="low" v-model="ruleForm2.applyName"></el-input>
+							
+					</el-form-item>
+					
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span class="char-formation left-content">申请人（店主）身份证号码</span>
+				</span>
+				<span class="right">
+					<span class="char-formation-red right-content">
+					<el-form-item prop="applyIdCard" >
+						   <el-input class="middle" v-model="ruleForm2.applyIdCard"></el-input>
+					</el-form-item>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 66px;">
+					<span class="char-formation left-content">手持身份证件照</span>
+				</span>
+				<span class="right">
+					<span style="position:relative;" class="char-formation-red right-content">
+					    <input  id="file" name="file"  enctype="multipart/form-data"  style=" display: none;"	type="file" v-on:change="previewFile"><br>
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;" :src="srcA" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						<span class="char-formation">(图片最大3M)</span>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<a v-on:click="onclickButton" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 66px;">
+					<span class="char-formation left-content">身份证正面</span>
+				</span>
+				<span class="right">
+					<span style="position:relative;" class="char-formation-red right-content">
+					<input id="fileId" name="file" enctype="multipart/form-data" style=" display: none;"	type="file" v-on:change="previewFileA"><br>
+					
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;"  :src="srcB" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						<br/>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<a v-on:click="onclickButtonOne" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+			<p class="p-formation">
+				<span class="left" style="margin-top: 66px;">
+					<span class="char-formation left-content">身份证背面</span>
+				</span>
+				<span class="right">
+					<span style="position:relative;" class="char-formation-red right-content">
+						<input id="fileFace" name="file" enctype="multipart/form-data" style=" display: none;"	type="file" v-on:change="previewFileFace"><br>
+					
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;"  :src="srcC" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						<br/>
+					</span>
+				</span>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<a v-on:click="onclickButtonTwo" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" style="    margin-left: 228px;">
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span style="color:#fff;" class="char-formation left-content">xxx</span>
+				</span>
+				<span class="right">
+					 <el-form-item prop="type">
+							    <el-checkbox-group v-model="ruleForm2.type">
+							      <el-checkbox label="我已看过" name="type"></el-checkbox>
+							     <a href="/app/pages/information/knowIntegralBaby.html" target="_self" style="color:#0000FF"><span style="font-size:12px;">《<span style="color:#4aa6e6;">积分宝宝商户合作协议</span>》</span></a>
+							    </el-checkbox-group>
+							  </el-form-item>
+				</span>
+			</p>
+			<p class="p-formation">
+				<span class="left">
+					<span style="color:#fff;" class="char-formation left-content">xxx</span>
+				</span>
+				<span class="right">
+					<el-form-item>
+                                <el-button class="sub-btn" type="primary" @click="submitForm('ruleForm2')">同意谢意并提交资料</el-button>
+                    </el-form-item>
+					
+				</span>
+			</p>
+		</div>
+		</el-form>
+	</div>
+
+	<lf-footer></lf-footer>
+</div>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/information/personalAccount.js"></script>
+</body>
+</html>   

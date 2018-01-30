@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>订单对账</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<script>
+			<!--
+			/*鼠标移上去切换*/
+			function settab_connet(name, cursel, n) {
+				for(i = 1; i <= n; i++) {
+					var menu = document.getElementById(name + i);
+					var con = document.getElementById("con_" + name + "_" + i);
+					menu.className = i == cursel ? "hover" : "";
+					con.style.display = i == cursel ? "block" : "none";
+				}
+			}
+			//-->
+		</script>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+
+			<lf-header></lf-header>
+
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">订单对账</li>
+						</ul>
+						<ul class="checking">
+							<li class="txt">
+								 <el-date-picker
+							      v-model="data.start"
+							      type="daterange"
+							      placeholder="日期范围" >
+							    </el-date-picker>
+							</li>
+					 
+							<li style="width:40%; margin-right:0px;margin-left: 20px;"><span>收入金额</span>
+								<input name="" type="number" v-model="data.minAmount" class="txt3" /><span>至</span>
+								<input name="" type="number" v-model="data.maxAmount" class="txt3" /></li>
+							<li style="width:3%"><input name="查询" type="submit" @click="getgoodList" value="查询" class="bnt-org"></li>
+						</ul>
+						<div class="padding20" style="padding:40px 20px;">
+							<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">
+								<tr>
+									<td width="57" align="center" bgcolor="#F6F6F6"><strong>序号</strong></td>
+									<td width="192" align="center" bgcolor="#F6F6F6"><strong>日期</strong></td>
+									<td width="174" align="center" bgcolor="#F6F6F6"><strong>收入金额</strong></td>
+									<td width="117" align="center" bgcolor="#F6F6F6"><strong>收入积分</strong></td>
+									<td width="168" align="center" bgcolor="#F6F6F6"><strong>支出平台服务费</strong></td>
+									<td width="92" align="center" bgcolor="#F6F6F6"><strong>支出佣金</strong></td>
+								</tr>
+ 
+								<tr v-for="(item,index) in listdata">
+									<td align="center">{{index+1}}</td>
+									<td align="center" class="table4 m_top10">{{item.countDate}}</td>
+									<td align="center" class="blue">{{item.amount}}</td>
+									<td align="center" class="green"><strong>{{item.integral}}</strong></td>
+									<td align="center">￥<strong>{{item.fee}}</strong></td>
+									<td align="center">￥<strong>{{item.bkge}}</strong></td>
+								</tr>
+								 
+							</table>
+							<br>
+							<div class="store-page text-right" style="float: right;" v-if="pager.total>0">
+	                            <el-pagination :current-page="pager.curpage"
+	                              layout="prev, pager, next"  @current-change="handleCurrentChange"
+	                              :total="pager.total" :page-size="pager.size">
+	                            </el-pagination>
+	                        </div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+				<lf-footer></lf-footer>
+		</div>
+	
+	 
+	</body>
+
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/check_order.js"></script>
+
+</html>

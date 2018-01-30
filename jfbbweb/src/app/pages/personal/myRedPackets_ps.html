@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我的红包</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <ul class="switchbox">
+      <li id="one1" onmouseover="settab_connet('one',1,3)"  class="hover">未使用</li>
+      <li id="one2" onmouseover="settab_connet('one',2,3)" >已使用</li>
+      <li id="one3" onmouseover="settab_connet('one',3,3)" >已过期</li>
+      </ul>
+      <div class="padding20">
+             <!--可用红包-->
+             <div id="con_one_1" class="hover" >
+                   <div v-show="isNullUnused" class="f14 c-9">暂无数据</div>
+                   <div class="hongbao" v-show="!isNullUnused">                          
+                          <dl v-for="unused in dataByUnuseds">
+                                <dt>￥{{unused.money}}</dt>
+                                <dd>                                       
+                                       <span class="c-9">{{(unused.startTime).slice(0,10)}}----{{(unused.endTime).slice(0,10)}}</span>
+                                       <!-- <span class="f14 org">满<strong>{{(unused.moneyLimit)/10}}</strong>可使用</span> -->
+                                       <span class="f14 org"><strong>{{(unused.moneyLimit)*10}}</strong>折</span>
+                                       <span><input name="立即使用" @click="go('../goods.html')" type="button" value="立即使用"/></span>
+                                </dd>
+                          </dl>                          
+                    </div>
+             </div>
+             <!--已用红包-->
+             <div id="con_one_2" style="display:none">
+                   <div v-show="isNullused" class="f14 c-9">暂无数据</div>
+                   <div class="hongbao2"  v-show="!isNullused">
+                          <dl v-for="useddata in dataByUseds">
+                                <dt>￥{{useddata.money}}</dt>
+                                <dd>
+                                       <!-- <span class="c-9">{{unused.startTime}}</span>
+                                       <span class="c-9">{{unused.endTime}}</span> -->
+                                       <span class="c-9">{{(useddata.startTime).slice(0,10)}}----{{(useddata.endTime).slice(0,10)}}</span>
+                                       <!-- <span class="f14">满<strong>{{useddata.moneyLimit}}</strong>可使用</span> -->
+                                       <span class="f14 org"><strong>{{(useddata.moneyLimit)*10}}</strong>折</span>
+                                       <span><input name="已使用" type="button" value="已使用" /></span>
+                                </dd>
+                          </dl>
+                   </div>
+             </div>
+            <!--过期红包-->
+             <div id="con_one_3"   style="display:none">
+                   <div v-show="isNullBad" class="f14 c-9">暂无数据</div>                   
+                   <div class="hongbao2"  v-show="!isNullBad">
+                          <dl v-for="baddata in dataByBads">
+                                <dt>￥{{baddata.money}}</dt>
+                                <dd>
+                                       <!-- <span class="c-9">{{unused.startTime}}</span>
+                                       <span class="c-9">{{unused.endTime}}</span> -->
+                                       <span class="c-9">{{(baddata.startTime).slice(0,10)}}----{{(baddata.endTime).slice(0,10)}}</span>
+                                       <!-- <span class="f14">满<strong>{{baddata.moneyLimit}}</strong>可使用</span> -->
+                                       <span class="f14 org"><strong>{{(baddata.moneyLimit)*10}}</strong>折</span>
+                                       <span><input name="已过期" type="button" value="已过期" /></span>
+                                </dd>
+                          </dl>
+                   </div>
+             </div>
+    </div>
+    </div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/myRedPackets_ps.js"></script>
+</body>
+</html>

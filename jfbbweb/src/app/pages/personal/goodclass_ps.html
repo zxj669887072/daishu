@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品分类管理</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">
+								<a href="#">商品分类管理</a>
+							</li>
+						</ul>
+						<div class="padding20">
+							<div class="left"><input type="submit" @click="addNew"  value="+添加分类" class="btn" style="color:#666; border:1px solid #ddd; background:#fff; height:34px; margin:0px; margin-top:-5px;" /></div>
+							<div class="right"><input type="submit" @click="savaAll"  value="保存更改" class="btn_org " style="color:#fff; border:none;  height:34px; margin:0px; margin-top:-5px;" /></div>
+						</div>
+						<div class="padding20" style="padding-top:0px;">
+							<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table3" style="border-top:1px solid #eceaea;">
+								<!-- <tr>
+									<td width="4%" height="30" bgcolor="#f7f7f7">
+										<input type="checkbox" v-model="goodinfo.checkall"   @click="checkall" :value="goodinfo.checkall"/></td>
+									<td colspan="2" bgcolor="#f7f7f7"><strong>全选</strong> 
+									
+									<span class="blue" @click="deletecheckd"><a href="javaScript:void(0)">批量删除</a></span></td>
+									<td colspan="4" align="right" bgcolor="#f7f7f7">
+										<a href="#" class="blue">展开</a> |
+										<a href="#" class="blue">收起</a>
+									</td>
+								</tr> -->
+								<tr>
+									<td height="30" colspan="3"><strong>分类名称</strong></td>
+									<td height="30" align="center"><strong>移动</strong></td>
+									<!-- <td height="30"><strong>默认展开</strong></td> -->
+									<!-- <td height="30" align="center"><strong>创建时间</strong></td> -->
+									<td height="30" align="center"><strong>操作</strong></td>
+								</tr>
+								<tr v-for="(good,index) in goodlist">
+									<!-- <td height="60"><input type="checkbox" v-model="goodinfo.checkd" :value="index" /></td> -->
+									<!-- <td height="30"> </td> -->
+									<td colspan="3"><input name="input" type="text" style="margin:0px;"  v-model="good.groupName" :value="good.groupName" placeholder="例如：进口奶粉" /></td>
+									<td align="center">
+										<a href="javaScript:void(0)" @click="movestep(0,index)"><img src="../../../images/list_03.jpg" width="11" height="15" /></a>
+										<a href="javaScript:void(0)" @click="movestep(index-1,index)"><img src="../../../images/list_05.jpg" width="11" height="15" /></a>
+										<a href="javaScript:void(0)" @click="movestep(index+1,index)"><img src="../../../images/list_07.jpg" width="11" height="15" /></a>
+										<a href="javaScript:void(0)" @click="movestep(goodlist.length-1,index)"><img src="../../../images/list_09.jpg" width="11" height="15" /></a>
+									</td>
+									<!-- <td align="center">
+										<div class="common-row">
+											<div class="cell-right" style="margin-left:0px;"><span class="switch-on" id="wifi3" themecolor="#53aaf3"></span></div>
+										</div>
+									</td> -->
+									<!-- <td align="center">{{good.createate}}</td> -->
+									<td align="center">
+										<a   @click="deletegood(good.id,index)"  class="blue">删除</a> 
+										<!--| <a href="javaScript:void(0)"  @click="aa(index)" class="blue">编辑</a>-->
+									</td>
+								</tr>
+								 
+								 
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/personal/goodclass_ps.js"></script>
+
+</html>

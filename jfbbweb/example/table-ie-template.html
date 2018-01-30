@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<table class="car-cnt" cellspacing="0" v-for="(item,index) in carList">
+				<tbody>
+					<tr class="shop-tit">
+						<th class="sp-info" colspan="5">
+							<input type="checkbox" class="shops-check" :value="item.merchantId">
+							<i class="fa  fa-bank"></i>{{item.merchantName}}
+						</th>
+					</tr>
+					<tr class="shop-infos" is="my-tr" v-for="(itsp,indexshop) in item.goodsList" v-bind:itsp="itsp">
+						<th class="sp-info">
+							<div class="tit"> {{itsp.goodsName}}</div>
+						</th>
+					</tr>
+					<tr class="shop-splic">
+						<td colspan="5">
+							<div class="line"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<label>ceshi </label>
+		</div>
+	</body>
+	<script src="../js/framework/vue.js"></script>
+	<script>
+		Vue.component("my-tr", {
+			  template: '<tr>' +
+			            '<th>' +
+			            '<div v-text="itsp.goodsName"></div>' +
+			        	'</th></tr><tr class="shop-splic"><td colspan="5"><div class="line"></div></td></tr>',
+			  props: ["itsp"]
+		});
+		new Vue({
+			el: "#app",
+			data: {
+				carList: [
+					{ "merchantId": 5, "merchantName": "御膳房", "contactPhone": "", "goodsList": [{ "id": 240, "goodsName": "剃须刀", "price": 233, "jfPrice": "", "goodsTag": "1", "picUrl": "", "qty": 1, "joinDate": "", "spec": "1", "merchantId": 5, "toShopFlag": "0" }] }, 
+					{ "merchantId": 31, "merchantName": "诺克萨斯", "contactPhone": "", "goodsList": [{ "id": 31, "goodsName": "联想", "price": 1555, "jfPrice": 1500, "goodsTag": "1", "picUrl": "", "qty": 2, "joinDate": "", "spec": "1", "merchantId": 31, "toShopFlag": "1" }] }
+				]
+			},
+			computed: {},
+			watch: {},
+			methods: {},
+			beforeMount: function() {},
+			mounted: function() {}
+
+		});
+	</script>
+
+</html>

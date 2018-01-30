@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>银行账户</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<style>
+    .Password li{margin-bottom: 0;}
+    .el-form-item__error{top:40px;}
+    .el-form-item{margin-bottom: 0;}
+    .Password .right{height:63px;}
+</style>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box h790">
+    <ul class="switchbox">
+      <li id="one1" class="hover" v-if="!isChange">绑定银行账户</li>
+      <li id="one1" class="hover" v-if="isChange">解绑银行账户</li>
+      </ul>
+      <div  class="Password" >
+       <ul>
+       <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
+       <li v-show="!isRZ">
+           <div class="left" >身份证号：</div>
+           <div class="right" >
+            <span class="txt2">
+           <el-form-item  prop="idCard">
+               <el-input v-model="ruleForm2.idCard"></el-input>
+           </el-form-item>
+            </span></div>
+       </li>
+        <li v-show="isRZ">
+               <div class="left" >身份证号：</div>
+               <div class="right" >
+            <span class="txt2">
+           <el-form-item  prop="idCard">
+               <el-input v-model="idCardDesc" :disabled="isRZ"></el-input>
+           </el-form-item>
+            </span></div>
+         </li>
+       <li>
+           <div class="left" >姓名：</div>
+           <div class="right" >
+            <span class="txt2">
+           <el-form-item  prop="realName">
+               <el-input  v-model="ruleForm2.realName" :disabled="isRZ" ></el-input>
+           </el-form-item>
+            </span>
+           </div>
+       </li>
+       <li>
+           <div class="left"> 手机号：</div>
+           <div class="right" >
+           <span class="txt2">
+           <el-form-item>
+               <el-input  v-model="phone" :disabled="true" ></el-input>
+           </el-form-item>
+           </span>
+            </div>
+       </li>
+       <li v-show="isRZ">
+           <div class="left" >银行卡号：</div>
+           <div class="right" >
+            <span class="txt2">
+           <el-form-item  prop="bankAccount">
+               <el-input v-model="ruleForm2.bankAccount" :disabled="isChange" placeholder="只能绑定本人名下的银行卡" ></el-input>
+           </el-form-item>
+            </span>
+           </div>
+       </li>
+       <div v-show="!isChange">
+       <li v-show="isRZ" style="margin-bottom: -15px;">
+           <div class="left" >所属银行：</div>
+           <div class="left" id="theBank" style="margin-left:7px;">
+            <span class="txt2">
+           <el-form-item  prop="bankKey">
+               <el-select v-model="ruleForm2.bankKey">
+                   <el-option v-for="bank in bankList" :value="bank.value" :label="bank.label"></el-option>
+               </el-select>
+           </el-form-item>
+            </span>
+           </div>
+       </li>
+       <li v-show="isRZ">
+           <div class="left" >开户行：</div>
+           <div class="right" >
+            <span class="txt2">
+            <el-form-item prop="bankOpenName">
+                <el-input  v-model="ruleForm2.bankOpenName" ></el-input>
+             </el-form-item>
+            </span>
+           </div>
+        </li>
+       </div>
+        <li>
+          <div class="left" >验证码：</div>
+          <div class="right" >
+			 <span class="txt2">
+			    <el-form-item prop="securityCode">
+					<el-input type="text" v-model="ruleForm2.securityCode" auto-complete="off"></el-input>
+				</el-form-item>
+			  </span>
+                      <span>
+			    <input type="button" @click="getyzm()" :value="codeDesc"  class="bnt"/>
+			   </span>
+           </div>
+         </li>
+       <li v-show="!isRZ">
+           <div class="right">
+         <el-form-item>
+             <input  type="button" value="立即认证" @click="submitRz()"   class="bnt-org"/>
+         </el-form-item>
+           </div>
+       </li>
+        <div v-show="!isChange">
+       <li v-show="isRZ">
+            <div class="right">
+           <el-form-item>
+               <input  type="button" value="立即绑定" @click="submitBd('ruleForm2')"   class="bnt-org"/>
+            </el-form-item>
+            </div>
+        </li>
+        </div>
+         <li v-show="isChange">
+           <div class="right">
+              <input  type="button" value="立即删除" @click="delBdOk()"   class="bnt-org"/>
+           </div>
+          </li>
+      </el-form>
+       </ul>
+        <div class="padding20"  style="padding-top:0px;">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table4">
+              <tr>
+                  <td width="12%" align="center"><strong>银行名称</strong></td>
+                  <td width="11%" align="center"><strong>卡号</strong></td>
+                  <td width="11%" align="center"><strong>状态</strong></td>
+                  <td width="10%" align="center"><strong>操作</strong></td>
+              </tr>
+              <tr  v-for="bankInfo in bankInfos">
+                  <td align="center">{{bankInfo.bankName}}</td>
+                  <td align="center">{{bankInfo.bankAccount}}</td>
+                  <td align="center" v-if="bankInfo.defaultFlag=='1'">当前默认</td>
+                  <td align="center" v-if="bankInfo.defaultFlag=='1'"><a href="jacascript:;" @click="delBd(bankInfo.id,bankInfo.bankAccount)"  class="blue"  >删除</a></td>
+
+                  <td align="center" v-if="bankInfo.defaultFlag=='0'"></td>
+                  <td align="center" v-if="bankInfo.defaultFlag=='0'">
+                          <a href="#" @click="setDefalut(bankInfo.id,bankInfo.bankAccount)"  class="blue">设为默认</a>　
+                          <a href="javascript:;" @click="delBd(bankInfo.id,bankInfo.bankAccount)"  class="blue">删除</a>
+                  </td>
+              </tr>
+          </table>
+        </div>
+     </div>
+      </div>
+    </div>
+    
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/bdyhzh_ps.js"></script>
+</body>
+</html>

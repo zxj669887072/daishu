@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的订单</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+
+		<body>
+			<div id="app" v-cloak>
+				<lf-head></lf-head>
+				<div class="webbox w1000">
+					<lf-left></lf-left>
+					<div class="rightbox">
+						<div class="box">
+							<ul class="switchbox">
+								<li class="hover">我的订单</li>
+							</ul>
+						</div>
+						<div class="box">
+							<div class="Order">
+								<dl>
+									<dt><a href="#" @click="statusChoose('1')"><img src="../../../images/hom_01.png"></a></dt>
+									<dd>全部订单<strong class="org"> {{interGoodsStat.totalOrderNum}}</strong></dd>
+								</dl>
+								<dl>
+									<dt><a href="#" @click="statusChoose('2')"><img src="../../../images/hom_02.png"></a></dt>
+									<dd>待付款<strong class="org"> {{interGoodsStat.orderToPayNum}}</strong></dd>
+								</dl>
+								<dl>
+									<dt><a href="#" @click="statusChoose('4')"><img src="../../../images/hom_03.png"></a></dt>
+									<dd>待收货<strong class="org"> {{interGoodsStat.orderToReceNum}}</strong></dd>
+								</dl>
+								<dl>
+									<dt><a href="#" @click="statusChoose('5')"><img src="../../../images/hom_04.png"></a></dt>
+									<dd>待评价<strong class="org"> {{interGoodsStat.orderToEvalNum}}</strong></dd>
+								</dl>
+								<dl>
+									<dt><a href="#" @click="statusChoose('6')"><img src="../../../images/hom_05.png"></a></dt>
+									<dd>已完成<strong class="org"> {{interGoodsStat.orderToFinishNum}}</strong></dd>
+								</dl>
+							</div>
+						</div>
+
+						<div class="box m_top20">
+							<ul class="switchbox" style="height:55px;">
+								<li id="one1" @click="statusChoose('1')" :class="{ 'hover': orderStatus == '1'}" style="height:55px; line-height:60px;">全部订单</li>
+								<li id="one2" @click="statusChoose('2')" :class="{ 'hover': orderStatus == '2'}" style="height:55px;line-height:60px">待付款</li>
+								<li id="one3" @click="statusChoose('4')" :class="{ 'hover': orderStatus == '4'}" style="height:55px;line-height:60px">待收货</li>
+								<li id="one4" @click="statusChoose('5')" :class="{ 'hover': orderStatus == '5'}" style="height:55px;line-height:60px">待评价</li>
+								<li id="one4" @click="statusChoose('6')" :class="{ 'hover': orderStatus == '6'}" style="height:55px;line-height:60px">已完成</li>
+								<div class="tab_menu" style=" background:none; float:right">
+									<div class="left"><span class="txt2">
+          <!--  <input name=""  ref="search" type="text" placeholder="输入商品标题或订单进行搜索" />
+            </span><span>
+            <input @click="search()" name="" type="button" value="订单搜索" class="btn2" />
+            </span><span style=" width:100px;visibility: hidden;">更多筛选条件 <img src="../../../images/ico_06.jpg" width="8" height="4" /></span></div>-->
+								</div>
+							</ul>
+
+							<div id="con_one_1" class="hover">
+								<div style="width:100%; float:left; padding:20px; padding-bottom:10;">
+									<div class="f_bottom10" style="border-top:1px solid #ddd;">
+										<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table3">
+											<tr>
+												<td width="48%"><strong>商品</strong></td>
+												<td width="11%" align="center"><strong>数量</strong></td>
+												<td width="16%" align="center"><strong>金额(元）</strong></td>
+												<td width="12%" align="ceter"><strong>交易状态</strong></td>
+												<td width="13%" align="center"><strong>操作</strong></td>
+											</tr>
+										</table>
+									</div>
+									<div style="margin-bottom:10px; width:100%; float:left">
+										<table v-for="orders in orderLists.list" v-loading="loading" width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">
+											<tr>
+												<td colspan="5" bgcolor="#f7f7f7">
+													<div class="right">收货人：
+														<a href="javascript:void(0);" @click="delOrder(orders.orderId)" v-if=" orders.orderStatus== 5 || orders.orderStatus == 4"><img src="../../../images/shanchu.png" style="margin-top:3px; float:right; margin-left:5px" /></a>
+														<div class="Order3">
+															<span class="ico"></span>
+															<span class="blue">{{orders.consigneeName}}</span>
+															<ul>
+																<li><strong>{{orders.consigneeName}}</strong></li>
+																<li class="c-9" style="float:left;">{{orders.consigneeAddr}}</li>
+																<li  class="c-9" style="float:left;">{{orders.mobilePhone}}</li>
+															</ul>
+														</div>
+
+													</div>
+													<div style="float:left;">
+														<span class="c-9">{{orders.createDate}}</span>&nbsp;&nbsp;<span class="c-7">订单号</span> <span class="blue"><a href="javascript:void(0);" @click="goOrderdetails(orders.orderId)"><strong>{{orders.orderNo}}</strong></a>&nbsp;&nbsp;</span><a href="#" @click="goMerchant(orders.merchantId,orders.houseNumber)"><span class="org">{{orders.merchantName}}</span></a>
+													</div>
+												</td>
+											</tr>
+											<tr v-for="(order,index) in orders.orderDtls">
+												<td width="48%" height="30">
+													<table width="100%" border="0" cellspacing="0">
+														<tr>
+															<td width="21%">
+																<div style="float:left; margin-top:5px;width:80px; height:80px;">
+																	<a href="javascript:void(0);" @click.stop.prevent="goGoodsView(order.goodsId,orders.payWay)"><img style="width: 80px;height: 80px;" :src="order.picUrl" /></a>
+																</div>
+																&nbsp;</td>
+															<td width="79%" style="text-align: left;">
+																<a href="#" style="display: inline-block;margin-left: 20px;" @click.stop.prevent="goGoodsView(order.goodsId,orders.payWay)">{{order.goodsName}}<br />
+																	<span class="c-9">{{order.spec}}</span>
+																<br/>
+																<span class="c-9">单价：￥{{order.price}}</span>
+																	</a>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td width="12%" align="center">{{order.qty}}</td>
+												<!-- <td width="14%" align="center" class="org">¥<strong class="f14">{{order.price * order.qty}}</strong></td> -->
+												<td v-if="index==0" v-bind:rowspan="orders.orderDtls.length" width="14%" align="center" class="org">
+													<div>商品总额：¥<strong class="f14">{{orders.goodsTotalAmount}}</strong></div>
+													<div v-if="orders.orderStatusStr == '待付款' ">应付金额：¥<strong class="f14">{{orders.totalAmount}}</strong></div></td>
+												<td v-if="index==0" v-bind:rowspan="orders.orderDtls.length" width="13%" align="center"><span class="c-9">{{orders.orderStatusStr}}</span><br />
+													<div v-if="orders.payWay!=0">
+													<div class="Order4"  @mouseenter="clickLogistic(orders.shipperCode,orders.logisticCode)" @mouseleave="moveLogistic()" v-if="orders.orderStatus=='2'||orders.orderStatus=='3'||orders.orderStatus=='4'">
+														<span class="blue">订单跟踪</span>
+														<span class="ico2"></span>
+														<div class="personal_lc" v-if="logisticData.logisticCode">
+															<ul>{{orders.shipperName}}  运单号：{{logisticData.logisticCode}}</ul>
+															<dl v-if="logisticData.traces.length>0" v-for="(trace,index) in logisticData.traces">
+																<div v-if="index==0" class="ico" style="background:#ff7522;"></div>
+																<div v-if="index!=0" class="ico"></div>
+																<dt>{{trace.acceptStation}}</dt>
+																<dd class="c-9 em22">{{trace.acceptTime}}</dd>
+															</dl>
+														</div>
+													</div>
+													</div>
+												</td>
+												<!-- v-if="index==0" v-bind:rowspan="orders.orderDtls.length" -->
+												<td  width="13%" align="center"  style="line-height:20px;" v-if="index==0 && (orders.orderStatus==1 || orders.orderStatus==2) && (orders.payStatus=='0' || orders.payStatus=='1') " v-bind:rowspan="orders.orderDtls.length">
+												        	<div v-if="orders.payStatus=='0' && orders.orderStatus==1 && orders.payWay== '1' ">
+														<a  @click="goPayment(orders.orderId)" href="javascript:void(0);" v-if="index==0" class="org">立即付款</a>
+													</div>
+													<div  v-if="orders.orderStatus==1 && (orders.payStatus==1 || orders.payStatus==0)">
+														<a  @click="closeOrder(orders.orderId)" href="javascript:void(0);" v-if="index==0" >取消订单</a>
+													</div>
+													<!-- <div  v-if="orders.orderStatus==1 && orders.payStatus==0">
+														<a  @click="closeOrder(orders.orderId)" href="javascript:void(0);" v-if="index==0" >取消订单</a>
+													</div> -->
+													<div v-if="orders.orderStatus == '2'">
+														<input  name="input" type="button" @click="confirmGive(orders.orderId)" v-if="index==0" value="确认收货"  style="margin-top:8px; margin-bottom:5px; border:1px solid #ff6000; color:#ff6000;"/>
+													</div >
+													<div class="blue">
+														<a href="javascript:void(0);" @click="goOrderdetails(orders.orderId)">订单详情</a>
+													</div>
+														<!--<div v-if="orders.orderStatus == '3'">
+															<a href="#" class="c-9">申请售后</a><br/>
+															<a  @click="clickComment(orders.orderId,order.goodsId)" href="javascript:void(0);" v-if="order.evalFlag=='0'" class="org">评价</a>
+														</div>-->
+												</td>
+												<td width="13%" align="center"  style="line-height:20px;" v-if="orders.orderStatus == '4'">
+													<div v-if="orders.orderStatus == '4'">
+														<a  href="#" @click="openAfterForm()" class="org">申请售后</a><br/>
+														<a  @click="clickComment(orders.orderId,order.goodsId,order.orderDtlId)" v-if="order.evalFlag=='0'" href="javascript:void(0);" class="org">评价</a><br/>
+														<a href="javascript:void(0);" @click="goOrderdetails(orders.orderId)" class="blue">订单详情</a>
+													</div>
+												</td>
+											</tr>
+										</table>
+										<table v-show="orderListsIsNull" style="margin-left: 346px;" border="0" cellspacing="0" cellpadding="0">
+											<tr style="height:75px;"></tr>
+										  <tr>
+										    <td><img src="../../../images/cart_02.png" width="43" height="44" /></td>
+										    <td class="c-9 f14">暂无记录</td>
+										  </tr>
+										  <tr style="height:75px;"></tr>
+										</table>
+									</div>
+								</div>
+								<div class="page padding20" v-if="pager.total > 0">
+										<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+										</el-pagination>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<el-dialog title="评论" v-model="commentGood">
+					<el-form ref="commentForm" :model="commentForm">
+						<el-form-item label="评价星级" :label-height="formLabelHeight" :label-width="formLabelWidth">
+							<el-rate v-model="commentForm.star"></el-rate>
+						</el-form-item>
+						<el-form-item label="评价内容" :label-height="formLabelHeight" :label-width="formLabelWidth">
+							<el-input type="textarea" v-model="commentForm.commentContent" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+						<el-button @click="commentGood = false">取 消</el-button>
+						<el-button type="primary" @click="submitEvaForm(commentForm)">确 定</el-button>
+					</div>
+				</el-dialog>
+				<el-dialog title="联系售后" v-model="isAfter" >
+					<el-form ref="afterSale" :model="afterSale" >
+						<el-form-item label="热线电话" >
+							<el-input type="text" :disabled="true" v-model="afterSale.specialLine" auto-complete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="QQ" >
+							<el-input type="text" :disabled="true" v-model="afterSale.qq" auto-complete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="投诉电话" >
+							<el-input type="text" :disabled="true" v-model="afterSale.complaints" auto-complete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="公司名称" >
+							<el-input type="text" :disabled="true" v-model="afterSale.company" auto-complete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="公司地址" >
+							<el-input type="textarea" :disabled="true" v-model="afterSale.address" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+						<el-button @click="isAfter = false">关  闭</el-button>
+					</div>
+				</el-dialog>
+				<lf-footer></lf-footer>
+			</div>
+			<script src="../../../js/common.js"></script>
+			<script src="../../../js/pages/personal/my_order_ps.js"></script>
+		</body>
+
+</html>

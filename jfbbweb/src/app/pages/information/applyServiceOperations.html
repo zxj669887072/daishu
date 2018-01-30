@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<title>申请成为运营中心</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />	
+	<link href="../../css/css.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/settled.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/web.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+	.settled_list dl dd .org2_btn{
+		border: 1px solid #f37e01;
+	    background: #f37e01;
+	    border-radius: 5px;
+	    color: #fff;
+	    height: 30px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    font-size: 14px;
+	    cursor: pointer;
+    }
+    .settled_list dl .hui_btn {
+	    border: 1px solid #ddd;
+	    background: #fff;
+	    border-radius: 5px;
+	    color: #666;
+	    height: 30px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    font-size: 14px;
+	    cursor: pointer;
+	}
+	.el-form-item__content{
+		margin-left:0px !important ;
+	}
+	.el-form-item__content .el-input .el-input__inner{
+		width:280px;
+	}
+	.demo-ruleForm .settled_list li span {
+		padding-left: 0px;
+	}
+</style>
+<body>
+	<div id="app" v-cloak>
+		<div class="settled_top">
+			<div class="w1000">
+				<div class="logo">LOGO</div>
+				<div class="top_name">服务中心创建流程</div>
+			</div>
+		</div>
+		<div class="process w1000 center-frame-apply" style="height: inherit;">
+			<div class="apply-step-content">
+				<el-steps :space="100" :active="2"finish-status="success">
+				  <el-step title="申请账号"></el-step>
+				  <el-step title="提交资料"></el-step>
+				  <el-step title="等待审核"></el-step>
+				  <el-step title="缴纳合作年费"></el-step>
+				  <el-step title="服务中心上线"></el-step>
+				</el-steps>
+			</div>
+		</div>
+<div class="w1000 settledbox">
+	<el-form id="uploadForm" enctype="multipart/form-data" v-show="true" :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+<div class="settled_list">
+        <dl>
+          <dt class="f16">请选择服务中心性质</dt>
+          <dd>
+          	<a ><input name="" @click="merchantProperty=1" :class="{'org2_btn':merchantProperty==1}" type="button" class="hui_btn" value="个人" /></a>
+          　		<a ><input name="" @click="merchantProperty=2" :class="{'org2_btn':merchantProperty==2}" type="button" class="hui_btn" value="个体工商户" /></a>
+            <a ><input name="" @click="merchantProperty=3" :class="{'org2_btn':merchantProperty==3}" type="button" class="hui_btn" value="公司" /></a>
+          </dd>
+        </dl>
+        <ul>
+            <li>
+            <div class="left">申请账号</div> 
+            <div class="right"><strong class="org">{{account}}</strong></div>
+            </li>
+            <li>
+            <div class="left">服务中心地址</div>
+            <div class="right">
+            	<el-form-item>
+						<el-cascader
+						  :options="cascaderOptions"  v-model="selectedOptions" 
+						 @active-item-change="handleItemChange"   @change="handleChange" ></el-cascader>
+				</el-form-item>
+            </div>
+            </li>
+            <li>
+            <div class="left">街道</div>
+            <div class="right">
+					<el-form-item prop="street" >
+						   <el-input class="low" v-model.String="ruleForm2.street"></el-input>
+							
+					</el-form-item>
+            </div>
+            </li>
+            <li>
+            <div class="left">服务中心名称</div>
+            <div class="right">
+            	<el-form-item prop="centerName" >
+						   <el-input class="low" v-model.String="ruleForm2.centerName"></el-input>
+							
+					</el-form-item>
+           		 电商服务中心
+            </div>
+            </li>
+            <li>
+            <div class="left">负责人姓名</div>
+            <div class="right">
+            	<el-form-item prop="managerName" >
+						   <el-input class="low" v-model.String="ruleForm2.managerName"></el-input>
+					</el-form-item>　
+            </li>
+            <li>
+            <div class="left">负责人性别</div>
+            <div class="right">
+            	<el-form-item style="float: left;" prop="sex">
+						    <el-radio-group v-model="ruleForm2.sex">
+						      <el-radio label="1">男</el-radio>
+						      <el-radio label="2">女</el-radio>
+						    </el-radio-group>
+						</el-form-item>
+            </li>
+            <li>
+            <div class="left">负责人电话</div>
+            <div class="right">
+            	<el-form-item prop="managerPhone" >
+						   <el-input class="low" v-model.String="ruleForm2.managerPhone"></el-input>
+					</el-form-item>　
+            </div>
+            </li>
+            <li>
+            <div class="left">服务中心团队成员架构职务</div>
+            <div class="right" v-if="ruleForm2.memberList.length>0" v-for="item in ruleForm2.memberList">
+            	姓名:<span>{{item.memberName}}</span>
+              
+              　		职务:<span>{{item.duties}}</span>
+              <input name="input4" :values="item.vluas" type="button" @click="removeNumber" class="org3_btn" value="删除" />
+            </div>
+            <div class="right">姓名
+              <input name="input2" v-model="memberName" type="text" class="txt" :value="memberName" />
+              　职务
+              <input name="input3" v-model="duties" type="text" class="txt" :value="duties"/>
+              <a >
+              　
+              <input name="input4" type="button" @click="addNumber" class="org3_btn" value="添加" />
+              </a> </div>
+            　
+            </li>
+            <li>
+            <input  id="fileFace" name="file"  enctype="multipart/form-data"  style="display: none;"	type="file" v-on:change="previewFile"><br>
+            <div class="left" style="line-height:20px;">服务中心团队成员照片<div class="c-9" style="width:100%; float:left">（须以服务中心环境为背景）</div></div>
+            <div class="right">
+            	<a v-on:click="onclickButtonOne">
+            		<div class="imgbox">
+            			<span v-if="ruleForm2.teamPic===''">上传</span>
+            			<img style="width: 300px;height: 200px;" v-else="" :src="ruleForm2.teamPic" />
+            		</div>
+            	</a>
+            	<div class="c-9" style="width:100%; float:left">（图片最大3M）</div>
+            </div>
+            </li>
+            <li>
+            <div class="left" style="line-height:20px;">服务中环境照片<div class="c-9" style="width:100%; float:left">（至少两张环境照）</div></div>
+            <div class="right">
+										<div class="list-box">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td  >
+														<el-upload action=""  class="upload-demo"
+															 :before-upload="uploadbefore"
+															:file-list="goodinfo.mainUrllist"
+															list-type="picture" :on-preview="handlePictureCardPreview" :http-request="uploadFile" :on-remove="handleRemove">
+														 	
+														  <el-button size="small" type="primary" >点击上传</el-button>
+  															<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+														</el-upload>
+														<el-dialog v-model="dialogVisible" size="tiny">
+															<img width="100%" :src="dialogImageUrl"  alt="">	
+														</el-dialog>
+														 
+													</td>
+													 
+												</tr>
+												<tr>
+													<td><strong class="org">430*430</strong>以上的图片可以在商品详情页进行切换</td>
+												</tr>
+												<tr>
+													<td colspan="2" class="c-9"><strong>提示：</strong>1、本地上传的图片大小不能超过500k<br /> 2、本目录下您最多可以上传5张图片。
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+            </li>
+            <li>
+            <div class="left">申请人姓名</div>
+            <div class="right">
+              <el-form-item prop="applyName" >
+						   <el-input class="low" v-model.String="ruleForm2.applyName"></el-input>
+					</el-form-item>　
+            </div>
+            </li>
+            <li>
+            <div class="left">申请人身份证号码</div>
+            <div class="right">
+             <el-form-item prop="applyCardId" >
+						   <el-input class="low" v-model.String="ruleForm2.applyCardId"></el-input>
+					</el-form-item>　
+            </div>
+            </li>
+            <li>
+            <div class="left">手持身份证照片</div>
+            <div class="right f_bottom20"  style="border-bottom:1px solid #eee">
+              <div style="position:relative;    height: 92px; " class="char-formation-red right-content">
+						<input  id="fileB" name="file"  enctype="multipart/form-data"  style=" display: none;"	type="file" v-on:change="previewFileB"><br>
+						
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;" :src="ruleForm2.applyCardPic" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						
+				</div>
+				<p class="p-formation" >
+				<a v-on:click="onclickButtonB" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" >
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+            </div>
+            
+            </li>
+            <li class="f_bottom10">
+              <div class="left">身份证正面</div>
+               <div class="right f_bottom20"  style="border-bottom:1px solid #eee">
+              <div style="position:relative;    height: 92px; " class="char-formation-red right-content">
+						<input  id="fileC" name="file"  enctype="multipart/form-data"  style=" display: none;"	type="file" v-on:change="previewFileC"><br>
+						
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;" :src="ruleForm2.frontCardPic" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						
+				</div>
+				<p class="p-formation" >
+				<a v-on:click="onclickButtonC" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" >
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+            </div>
+            </li>
+            <li>
+              <div class="left">身份证背面</div>
+               <div class="right f_bottom20"  style="border-bottom:1px solid #eee">
+              <div style="position:relative;    height: 92px; " class="char-formation-red right-content">
+						<input  id="fileD" name="file"  enctype="multipart/form-data"  style=" display: none;"	type="file" v-on:change="previewFileD"><br>
+						
+						<img id="imgId" style="width:125px;height:85px;position:absolute;top:0px;" :src="ruleForm2.backCardPic" />
+						<span style="width: 38px;position:absolute;top:37px;left:158px;color:#9a6881;">示例:</span>
+						<img style="position:absolute;top:0px;left:200px;" src="../../../images/upload2.png" />
+						
+				</div>
+				<p class="p-formation" >
+				<a v-on:click="onclickButtonD" style="    background-color: #c2c2c2; border-radius: 5px;padding: 7px 20px;">点击提交</a>
+			</p>
+			<p class="p-formation" >
+				<span class="char-formation">(图片最大3M)</span>
+			</p>
+            </div>
+            </li>
+            <li></li>
+            <li>
+      
+            <div class="right">
+            	<el-form-item>
+                                <el-button class="sub-btn" type="primary" @click="submitForm('ruleForm2')">同意谢意并提交资料</el-button>
+                    </el-form-item>
+            </div>
+            </li>
+            
+    </ul>
+        
+</div>
+</el-form>
+</div>
+<lf-footer></lf-footer>
+	</div>
+</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/information/applyServiceOperations.js"></script>
+</html>

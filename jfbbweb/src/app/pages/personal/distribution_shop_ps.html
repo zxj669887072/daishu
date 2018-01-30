@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我分销的店铺</title>
+<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<lf-head></lf-head>
+<div class="webbox w1000">
+	  <lf-left></lf-left>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">我分销的店铺</li>
+      </ul>
+      <div class="padding20"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr style="font-size:14px;">
+    <td width="30%">您已分销的店铺<span class="org"><strong> {{distributonUp.totalCount}}</strong></span> 个</td>
+    <!-- </tr> -->
+  <!-- <tr> -->
+    <td width="40%">本月总佣金：<strong class="green">{{distributonUp.monthBkge}}</strong> 积分<!--<a href="我分销的店铺2.html" class="blue"> [查询]</a>--></td>
+    <td width="30%">累计总佣金：<strong class="green">{{distributonUp.accBkge}}</strong> 积分</td>
+  </tr>
+  </table></div>
+    </div>
+     <div class="box ">
+       <ul class="switchbox">
+  	  <li><strong>所有店铺</strong></li>
+       </ul>
+      <div class="padding20" v-show="isDistribution"> 
+      <div class="f_bottom20" v-for="down in distributonDown">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table2">
+          <tr>
+            <td bgcolor="#F1F2F6" width='20%'><strong>{{down.shopName}}</strong></td>
+            <td bgcolor="#F1F2F6" width='40%'>门牌号:<strong class="org">{{down.houseNumber}}</strong></td>
+            <td bgcolor="#F1F2F6" width="40%">加入时间：{{down.createDate}}</td>
+          </tr>
+          <tr>
+            <td><div class="imgbox"><img :src="down.logo" width="72" height="72" /></div></td>
+            <td>联系方式：{{down.account}}<br />
+              商家地址：{{down.merchantAddr}}<br />
+              分销数量：累计<strong class="org">{{down.distQty}}</strong>笔</td>
+            <td>本月佣金：<strong class="org">{{down.monthBkge}}</strong>元<br />
+              佣金累计收入：<strong class="org">{{down.accBkge}}</strong>元</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+       
+      <div class="padding20" v-show="isApplay"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="40"><strong>您还没有分销店铺，可以通过以下链接了解：</strong></td>
+    </tr>
+  <tr>
+    <td height="40"><a href="/app/pages/about/ljfxs.html" class="blue">了解分销商</a></td>
+  </tr>
+ <!-- <tr>
+    <td height="40"><a href="javascript:void(0)" @click="goPerson()" class="blue">如何申请成为商家的分销商</a></td>
+  </tr>-->
+  </table></div>
+
+   </div>
+    </div>
+</div>
+<lf-footer></lf-footer>
+</div>
+  <script src="../../../js/common.js"></script>
+  <script src="../../../js/pages/personal/distribution_shop_ps.js"></script>
+</body>
+</html>

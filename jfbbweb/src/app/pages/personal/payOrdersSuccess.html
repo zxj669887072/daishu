@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>支付成功</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/lib/last_css.css" />
+    <style>
+        body .top{
+            width: 100%;
+            margin-top: 0;
+        }
+        .search2 .text{
+            border: none;
+            float: left;
+            height: 32px;
+            width: 225px;
+            margin: 0px;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        .search2 dd .btn {
+            width: 64px;
+            height: 32px;
+            float: right;
+            cursor: pointer;
+            border: none;
+            border-radius: 0 ;
+        }
+    </style>
+</head>
+
+<body style="background:#fff">
+    <div id="app">
+        <lf-header></lf-header>
+        <div class="settled_top">
+            <div class="w1000">
+                <div class="logo">
+                    <a href="../goods.html"><img src="../../../images/logo.png" /></a>
+                </div>
+                <div class="top_name">支付成功</div>
+                <div class="search2" style="float:right">
+                    <dl>
+                        <dt>
+                            <input name="" type="text" class="text c-9" placeholder="请输入本店商品名"  />
+                        </dt>
+                        <dd>
+                            <input name="" type="button" value="" checked="checked" class="btn" />
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="w1000" style="min-height:345px;_height:345px;">
+        <div class="dd_box">
+            <div class="ok01">
+                <dl>
+                    <dt><img src="../../../images/ok.png" /></dt>
+                    <dd>
+                        <span class="f18 org" style="width:240px;text-align: center;">您已付款成功~</span>
+                        <span class="f16" style="padding-left:32px;">订单号：{{orderNo}} </span>
+                        <span class="f16" style="padding-left:32px;">实付款：¥ {{oredrAmount}}</span>
+                        <div class="f16">获得总积分：<strong class="red">{{totalIntegral}}</strong></div>
+                    </dd>
+                </dl>
+                <ul>
+                    <a href="./my_order_ps.html"><input name="" type="submit" class="org_btn01 left" value="查看订单" /></a>
+                    <a href="../goods.html"><input name="" type="submit" class="org_btn02 right" value="返回商城" /></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <lf-footer></lf-footer>
+    </div>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/pages/personal/payOrdersSuccess.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+    <script>
+        /*鼠标移上去切换*/
+        function settab_connet(name, cursel, n) {
+            for (i = 1; i <= n; i++) {
+                var menu = document.getElementById(name + i);
+                var con = document.getElementById("con_" + name + "_" + i);
+                menu.className = i == cursel ? "hover" : "";
+                con.style.display = i == cursel ? "block" : "none";
+            }
+        }
+    //-->
+</script>
+<style type="text/css">
+    .el-radio__input.is-checked .el-radio__inner {
+        border-color: rgb(243, 126, 1);
+        background: rgb(243, 126, 1);
+    }
+
+    input.error {
+        border: 1px solid #FF4400;
+        color: #FF4400;
+    }
+
+    div.error {
+        color: #FF4400;
+    }
+
+    .spec {
+        padding: 0 15px;
+        border: 1px solid #CCCCCC;
+        cursor: pointer;
+        position: relative;        
+    }
+
+    .spec:hover {
+        border: 1px solid #FF4400;
+    }
+
+    .spec i {
+        position: absolute;
+        display: none;
+        top: 0;
+        right: 0;
+        color: red;
+    }
+
+    .spec:hover i {
+        display: block;
+    }
+
+    .upload-demo ul {
+        padding: 0;
+    }
+
+    .el-upload-list__item-status-label {
+        display: block !important;
+    }
+
+    .el-icon-close {
+        display: none;
+        position: relative;
+        color: #FF4400 !important;
+        right: -10px;
+        top: 0px;
+    }
+
+    .el-upload-list__item:hover .el-icon-close {
+        display: block;
+    }
+
+    .Password .right .upload-demo span {
+        line-height: none;
+    }
+
+    .radio span {
+        line-height: 16px !important;
+    }
+
+    .el-upload span {
+        line-height: 16px !important;
+    }
+
+    /* div {
+        text-align: left;
+    } */
+
+    .right {
+        text-align: left;
+    }
+
+    .el-radio+.el-radio {
+        margin-left: 0px;
+    }
+
+    .Password .right span {
+        margin-right: 0px;
+        float: left;
+    }
+    .Password .right span.spec{
+        height: 30px;
+        line-height: 30px;
+        margin-right: 10px;
+
+    } 
+    .c-txtedit .txtcontent {
+        width: 600px;
+    }
+    .rightbox .Password li {
+        margin-bottom: 10px;
+    }
+    .rightbox .Password input{
+    	float: none;
+    }
+</style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <lf-header></lf-header>
+        <div class="webbox w1000">
+            <lf-left></lf-left>
+            <div class="rightbox">
+                <div class="box">
+                    <ul class="switchbox">
+                        <li class="hover">{{titleMsg}}</li>
+                    </ul>
+                    <div class="Password">
+                        <ul style="padding-top:10px;">
+                            <li>
+                                <div class="left"><span class="org">* </span>所属分类：</div>
+                                <div class="right" style="position: relative;">
+                                    <template>
+                                        <el-select v-model="goodinfo.selectvalue" placeholder="请选择" style="width:344px" :class="{'error':verifyInfo.selectvalue.data}">
+                                            <el-option v-for="(item,index) in goodlistinfo.shopgroup" :label="item.groupName" :value="item.id" :class="{'error':verifyInfo.selectvalue.data}">
+                                            </el-option>
+                                        </el-select>
+                                    </template>
+                                    <input type="button" value="添加分类" style="position: absolute;top: 0px;right: 270px;height: 40px;background: #f37e01;color: #fff;" @click="addClass">
+                                    <div class="error" v-if="verifyInfo.selectvalue.data" style="clear: both;">{{verifyInfo.selectvalue.verinfo}}</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left"><span class="org">* </span>商品名称：</div>
+                                <div class="right" id="goodsName">
+                                    <span class="txt2">
+                                     <input style="width:344px" name="" type="text" :class="{'error':verifyInfo.goodsName.data}" v-model="goodinfo.goodsName" @change="verify('goodsName',$event)" :value="goodinfo.goodsName" />
+                                     <div class="error" v-if="verifyInfo.goodsName.data">{{verifyInfo.goodsName.verinfo}}</div>
+                                 </span>
+                             </div>
+                         </li>
+                         <li>
+                            <div class="left">商品卖点：</div>
+                            <div class="right">
+                                <textarea style="width:344px;height:80px;padding: 10px 15px;" name="" v-model="goodinfo.goodsBuyPoint" :value="goodinfo.goodsBuyPoint" rows="4" ></textarea>
+                                <div class="error" v-if="goodinfo.goodsBuyPoint.length>200">商品描述不能超过200个字符</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left"><span class="org">* </span>商品价格：</div>
+                            <div class="right"><span class="txt2" style="width:30%">
+                              <input style="width:344px" v-model="goodinfo.price" :class="{'error':verifyInfo.price.data}" @change="verify('price',$event)" :value="goodinfo.price" type="number" />
+                          </span><span class="c-9" style="margin-right:160px;"></span>
+                          <br>
+                          <div class="error" v-if="verifyInfo.price.data">{{verifyInfo.price.verinfo}}</div>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="left">商品佣金：</div>
+                    <div class="right"><span class="txt2" style="width:30%">
+                       <input  style="width:344px" :class="{'error':verifyInfo.bkgeSize.data}" v-model="goodinfo.rbkge" :value="goodinfo.rbkge" type="number" /></span><span class="c-9"></span>
+                       <br>
+                       <div class="error" v-if="verifyInfo.bkgeSize.data">{{verifyInfo.bkgeSize.verinfo}}</div>
+                   </div>
+               </li>
+               <li>
+                <div class="left"><span class="org">* </span>商品库存：</div>
+                <div class="right"><span class="txt2" style="width:30%">
+                   <input style="width:344px" :class="{'error':verifyInfo.qty.data}" @change="verify('qty',$event)" v-model="goodinfo.qty" :value="goodinfo.qty" type="number" /></span>
+                   <br>
+                   <div class="error" v-if="verifyInfo.qty.data">{{verifyInfo.qty.verinfo}}</div>
+                   <div class="error" v-if="verifyInfo.qtyZero.data">{{verifyInfo.qtyZero.verinfo}}</div>
+               </div>
+           </li>
+           <li>
+            <div class="left"> 重量：</div>
+            <div class="right"><span class="txt2" style="width:30%">
+               <input   style="width:344px"  v-model="goodinfo.weight" :value="goodinfo.weight" type="number" /></span>
+               <br>
+           </div>
+       </li>
+       <li>
+        <div class="left"><span class="org">* </span>规格组合：</div>
+        <div class="right">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td ><span class="txt2" style="width: 100%;">
+                        <input style="width:344px" :class="{'error':verifyInfo.spcelist.data}" @change="verify('spcelist',$event)" v-model="goodinfo.spec" :value="goodinfo.spec" type="text" /></span></td>
+                        <td width="50%" class="c-9">
+                            <span><input name="绑定" type="submit" @click="addSpec" value="添加规格"  class="bnt-org"  style=" width:82px; font-size:14px; background:#f37e01"/></span>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="error">(支持以||分隔一次添加多个规格，单个则直接点添加)</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="error" v-if="verifyInfo.spcelist.data">{{verifyInfo.spcelist.verinfo}}</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div class="left">规格预览：</div>
+            <div class="right">
+                <div>规格组合完成将在这里显示</div>
+                <span class="spec f16" v-for="(item,index) in goodinfo.spcelist">
+                   {{item}}<i class="fa fa-remove" @click="removespec(index)"></i>
+               </span>
+           </div>
+       </li>
+       <li>
+        <div class="left">规格预览：</div>
+        <div class="right">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="58">
+                        <el-radio class="radio" v-model="goodinfo.goodsTag" label="1">新品</el-radio>
+                        <el-radio class="radio" v-model="goodinfo.goodsTag" label="2">热卖</el-radio>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </li>
+    <li>
+        <div class="left">商品图片：</div>
+        <div class="right">
+            <div class="list-box" id="list-box">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <el-upload v-loading="loading" action="" class="upload-demo" :before-upload="uploadbefore" :file-list="goodinfo.mainUrllist" list-type="picture" :on-preview="handlePictureCardPreview" :http-request="uploadFile" accept='jpg,png'  multiple :on-remove="handleRemove">
+                                <el-button size="small" type="primary">点击上传</el-button>
+                                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                            </el-upload>
+                            <el-dialog v-model="dialogVisible" size="tiny">
+                                <img width="100%" :src="dialogImageUrl" alt="">
+                            </el-dialog>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong class="org">430*430</strong>以上的图片可以在商品详情页进行切换</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="c-9"><strong>提示：</strong>1、本地上传的图片大小不能超过500k
+                            <br /> 2、本目录下您最多可以上传5张图片。
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </li>
+                            <!-- <li>
+                                <div class="left">交易方式：</div>
+                                <div class="right">
+                                    <table width="497" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <el-radio class="radio" v-model="goodinfo.toShopFlag" label="0">送货上门</el-radio>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="height:10px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <el-radio class="radio" v-model="goodinfo.toShopFlag" label="1">到店自提</el-radio>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li> -->
+                            <li>
+                                <div class="left">商品详情：</div>
+                                <div class="right" style="line-height: initial;">
+                                    <!--<textarea v-model="goodinfo.description" :value="goodinfo.description" rows="5" style=" width:96%; padding:10px;"></textarea>-->
+                                    <!-- <lf-edit :editmsg="goodinfo.description" v-on:increment="geteditinfo"></lf-edit> -->
+                                    <script id="gooInfoContainer" :v-model="goodinfo.description" name="content" type="text/plain" v-on:increment="geteditinfo">
+
+                                    </script>
+                                </div>
+                            </li>
+                            <!-- <li class="f_bottom10">
+									<div class="left">橱窗推荐：</div>
+									<div class="right">
+										<el-radio class="radio" v-model="goodinfo.winRecommFlag" label="1">推荐</el-radio>
+										<el-radio class="radio" v-model="goodinfo.winRecommFlag" label="0">不推荐</el-radio>
+
+									</div>
+								</li> -->
+                                <li>
+                                    <div class="right">
+                                        <input name="确认添加" @click="savegood" type="submit" value="确认添加" class="bnt-org" v-model="submitMsg"/>
+                                    </div>
+                                </li>
+                                <li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <el-dialog title="上传文件" v-model="uploadVisible" size="small">
+                  <el-upload
+                  drag
+                  multiple v-loading="loading" action="" class="upload-demo" :before-upload="uploadDetailbefore" :file-list="desUrlList" list-type="picture" :on-preview="handlePictureDetailPreview" :http-request="uploadDetailFile" :on-remove="handleDetailRemove" accept='jpg,png' id="uploadDscFile">
+                  <i class="el-icon-upload"></i>
+                  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                </el-upload>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="uploadVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="setImgContent">确 定</el-button>
+                </span>
+            </el-dialog>
+            <el-dialog v-model="previewVisible" size="large">
+                <img width="100%" :src="previewImageUrl" alt="">
+            </el-dialog>
+            <lf-footer></lf-footer>
+        </div>
+    </body>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/pages/business/addbusgoods.js"></script>
+
+    </html>

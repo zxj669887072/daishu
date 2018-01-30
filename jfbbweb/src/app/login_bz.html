@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="../css/lib/bz_css.css" />
+	<link rel="stylesheet" type="text/css" href="../css/lib/bz_web.css" />
+</head>
+<style>	
+	.landing .txt2 .login-text input{width:120px;height:38px;padding-left: 62px;border:1px solid rgba(0, 0, 0, 0.2);}
+	.codeimg{position: absolute;bottom:-1px;left:180px;}
+	.el-form-item__content {
+		margin-left: 0px !important;
+	}
+
+	.el-form-item .el-form-item__content {
+		line-height: 0px;
+		position: relative;
+	}
+	.J_Submit{position: relative;z-index: 2;}
+	body .page-market .content .content-layout .login-box-warp .login-box .bd .submit .J_Submit {
+		line-height: 0px !important;
+	}
+	.el-form-item__error {
+		color: #ff4949;
+		font-size: 12px;
+		line-height: 1;
+		padding-top: 4px;
+		position: absolute;
+		top: 120%;
+		left: 0;
+	}
+	.landing .txt1 input, .landing .txt2 input{
+		padding-left: 24px;
+	}
+	.el-message {
+		width: 150px;
+		height: 40px;
+		position: absolute;
+		top: 10%;
+		left: 49%;
+		background-color: #fff;
+	}
+	.el-message__group p{
+		position: relative;
+		bottom: 40px;
+		left: 50px;
+	}
+	.fooder dl[data-v-65324434] {
+                text-align: left;width: 160px;padding-left: 0;margin-right: 0;height: auto;
+              }
+</style>
+
+<body>
+	<div id="app">
+		<div class="head">
+			<div class="w1000">
+				<div class="logo"><a href="/app/pages/goods.html" target="_self"  style=" text-decoration:underline"><img src="../images/logo.png" /></a></div>
+				<div class="top_name">商家登陆</div>
+				<div class="right f14" style="line-height:45px;">还不是袋鼠集市加盟商家 ？ 赶快点击
+					<a href="/app/pages/information/applyForAccount.html" target="_self" class="org" style=" text-decoration:underline">注册</a>！</div>
+
+				</div>
+			</div>
+
+			<div class="landing_box">
+				<!-- <div class="WeChat">
+					<img src="../images/jifen.png" width="130" height="177" border="0" usemap="#Map" />
+					<img class="close" src="../images/Prompt2_03.png" alt="" @click="closeService()" style="position:absolute;top:0;right:0;">
+					<map name="Map" id="Map">
+						<area shape="rect" coords="65,148,113,164" href="#" />						
+					</map>
+					<p style="font-size: 18px;font-family: bold;color: #000;text-align: center;">积分管家</p>
+				</div> -->
+				<div class="w1000">
+					<div class="landing" style="height:300px">
+						<h1>商家后台登录</h1>
+						<el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+							<div class="txt1">
+								<el-form-item  prop="account">
+									<el-input name="" type="text" placeholder="请输入手机号" class="c-9" v-model="ruleForm2.account" auto-complete="off"></el-input>
+								</el-form-item>
+							</div>
+							<div style="margin-top: 20px;"></div>
+							<div class="txt2">
+								<el-form-item  prop="password">
+									<el-input name="" type="password" placeholder="请输入登录密码" class="c-9" v-model="ruleForm2.password" auto-complete="off" ></el-input>
+								</el-form-item>
+							</div>
+							<div class="txt2" style="padding-left: 0;position: relative;margin:  12px 0 0 2px">
+								<label for="TPL_username_1" class="TPL_username_1"></label>
+                                						<el-form-item  prop="code" style="width:120px;">
+                                 							<el-input  class="login-text J_UserName code" style="border: none;width:182px;" type="text" placeholder="输入验证码" v-model="ruleForm2.code" auto-complete="off"></el-input>
+                             						</el-form-item>
+                             						<a href="javascript:void(0);" @click="reloadCodeimg">
+                               							<img :src="codeUrl" class="codeimg"/>
+                           						</a>
+							</div>
+							<div class="" style="margin-top: 20px;">
+								<div class="left">
+									<a href="/app/pages/information/applyForAccount.html" target="_self" >免费注册</a>
+								</div>
+								<div class="right">
+									<a href="/app/pages/validation_bz.html" target="_self">忘记密码?</a>
+								</div>
+							</div>
+							<div class="btn">
+								<el-form-item>
+									<input name="" type="button" id="submitBtn" value="登 录" v-on:keyup.13="submitForm('ruleForm2')" class="J_Submit" @click="submitForm('ruleForm2')"/>
+								</el-form-item>
+							</div>
+						</el-form-item>
+						<div style="height:50px;background:#f0f2f0;width:342px;position: relative;bottom:22px;right:20px;z-index: 0;border-radius:0 0 5px 5px"></div>
+					</div>
+				</div>
+
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../js/login_bz.js"></script>
+
+	</html>

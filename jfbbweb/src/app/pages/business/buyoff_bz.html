@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+	</head>
+	<style>
+		
+		.imgbox{
+			border:none;
+			width: 75px;
+		}
+		input{
+			font-size: 12px;
+			padding: 0 0 0 10px !important;
+		}
+		.check{
+			cursor: pointer;
+		}
+		input[type="submit"]{
+			padding-left: 0px !important;
+			width: 65px;
+		}
+		.el-message-box {
+		    text-align: left;
+		    display: inline-block;
+		    vertical-align: middle;
+		    background-color: #fff;
+		    width: 420px;
+		    border-radius: 3px;
+		    font-size: 16px;
+		    overflow: hidden;
+		    -webkit-backface-visibility: hidden;
+		    backface-visibility: hidden
+		}
+
+.el-message-box__wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center
+}
+
+.el-message-box__wrapper:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle
+}
+
+.el-message-box__header {
+    position: relative;
+    padding: 20px 20px 0
+}
+
+.el-message-box__content {
+    padding: 30px 20px;
+    color: #48576a;
+    font-size: 14px;
+    position: relative
+}
+
+.el-message-box__close {
+    display: inline-block;
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    color: #999;
+    cursor: pointer;
+    line-height: 20px;
+    text-align: center
+}
+
+.el-message-box__close:hover {
+    color: #20a0ff
+}
+
+.el-message-box__input {
+    padding-top: 15px
+}
+
+.el-message-box__input input.invalid,.el-message-box__input input.invalid:focus {
+    border-color: #ff4949
+}
+
+.el-message-box__errormsg {
+    color: #ff4949;
+    font-size: 12px;
+    min-height: 18px;
+    margin-top: 2px
+}
+
+.el-message-box__title {
+    padding-left: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+    height: 18px;
+    color: #333
+}
+
+.el-message-box__message {
+    margin: 0
+}
+
+.el-message-box__message p {
+    margin: 0;
+    line-height: 1.4
+}
+
+.el-message-box__btns {
+    padding: 10px 20px 15px;
+    text-align: right
+}
+
+.el-message-box__btns button:nth-child(2) {
+    margin-left: 10px
+}
+
+.el-message-box__btns-reverse {
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse
+}
+
+.el-message-box__status {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 36px!important
+}
+
+.el-message-box__status.el-icon-circle-check {
+    color: #13ce66
+}
+
+.el-message-box__status.el-icon-information {
+    color: #50bfff
+}
+
+.el-message-box__status.el-icon-warning {
+    color: #f7ba2a
+}
+
+.el-message-box__status.el-icon-circle-cross {
+    color: #ff4949
+}
+		.fooder dl[data-v-65324434]{
+			text-align: left;
+		}
+		.fooder dl[data-v-65324434] dd{
+			line-height: 24px;
+		}
+		.fooder ul[data-v-65324434] {
+			width: 291px !important;
+		}
+		.table td{padding: 10px 5px;}
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">
+								<a href="#">商品列表</a>
+							</li>
+						</ul>
+						<div class="padding20 listbox">
+							<ul>
+								<li>
+									<div class="left">宝贝名称：</div>
+									<div class="right"><input name="" type="text" v-model="goodinfo.goodsName" /></div>
+								</li>
+								<li>
+									<div class="left">商品分组：</div>
+									<div class="right">
+										<span class="txt3">
+											<select name="select" v-model="goodinfo.shopGroupId" >
+								             <option value="">请选择</option>
+								             <template v-for="(item,index) in groupList">
+								             <option :value="item.id">{{item.groupName}}</option>	
+								             </template>
+								             
+								           </select>
+										</span>
+									</div>
+								</li>
+								<li>
+									<div class="left">价　格：</div>
+									<div class="right">
+										<span><input name="" type="number" v-model="goodinfo.priceMin" /></span><span style=" width:12%">到</span><span>
+											<input name="" type="number" v-model="goodinfo.priceMax"/></span>
+									</div>
+								</li>
+								<li>
+									<div class="left">商品状态：</div>
+									<div class="right">
+										<el-select v-model="goodinfo.goodsStatus" placeholder="请选择">
+											<el-option label="请选择" value=""></el-option>
+									        <el-option :label="data.label" :value="data.value" v-for="data in goodsStatusList"></el-option>
+								      	</el-select>
+									</div>
+								</li>
+								<li style="float: right;">
+									<input name="搜索" type="submit" @click="getgoodList" value="搜索" class="bnt-org">
+									<strong><a href="javaScript:void(0)" @click="clearsearch" class="blue">清空条件</a></strong>
+								</li>
+							</ul>
+						</div>
+						<el-card class="box-card"
+							v-loading="load.goodload"
+							element-loading-text="拼命加载中" >
+						
+						<div class="listbox2" style="height:57px">
+							<ul>
+								<div class="right"> 共有商品<strong class="org">{{pager.total}}</strong>件
+									<a href="addbusgoods.html?m=4" class="blue">添加商品>></a>
+								</div>
+								<li><input name="" type="checkbox" class="check" @click="checkall" v-model="checkd.checkall"  /> 全选
+								</li>
+								<li>
+									<a href="javaScript:void(0);" @click="changeall(1)">删除</a>
+									<a href="javaScript:void(0);" @click="changeall(2)">上架</a>
+									<a href="javaScript:void(0);" @click="changeall(3)">下架</a>
+									<!--<a href="javaScript:void(0);" @click="changeall(4)">橱窗推荐</a>
+									<a href="javaScript:void(0);" @click="changeall(5)">取消推荐</a>-->
+								</li>
+
+							</ul>
+
+						</div>
+						<div class="padding20" style="padding-top:0px;">
+							<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table">
+								<tr>
+									<td width="2%">&nbsp;</td>
+									<td width="10%">&nbsp;</td>
+									<td width="35%">商品名称</td>
+									<td width="10%" align="center">价格<br>(佣金)</td>
+									<td width="10%" align="center">库存
+									</td>
+									<td width="8%" align="center">总销量
+									</td>
+									<td width="8%" align="center">商品状态</td>
+									<!--<td width="10%" align="center">橱窗推荐</td>-->
+									<td width="12%" align="center">发布时间</td>
+									<td width="5%" align="center">操作</td>
+								</tr>
+								
+								
+								
+								<tr v-for="(item,index) in goodlist">
+									<td>
+									    <template v-if="item.goodsStatus == '1'">
+									    	<input name="input"  class="check" type="checkbox" :value="item.id" data-status="1" v-model="checkd.data" @click="clickInput(1,$event)"/>
+									    </template>
+										<template v-else-if="item.goodsStatus == '2'"><input name="input"  class="check" type="checkbox" :value="item.id" v-model="checkd.data" data-status="2"  @click="clickInput(2,$event)"/></template>
+										<template v-else-if="item.goodsStatus == '3'"><input name="input"  class="check" data-status="3" type="checkbox" :value="item.id" v-model="checkd.data" @click="clickInput(3,$event)"/></template>
+										<template v-else-if="item.goodsStatus == '4'"></template>
+									
+									</td>
+									<td style="width: 100px;">
+										<div class="imgbox">
+											<a href="javaScript:void(0)" @click="gotoGoodsDtl('/app/pages/store/storedetails.html',item.id)"><img style="width: 45px;height: 45px;" :src="item.picUrl" /></a>
+										</div>
+									</td>
+									<td>
+										<a href="javaScript:void(0)" @click="gotoGoodsDtl('/app/pages/store/storedetails.html',item.id)">{{item.goodsName}}</a><br />
+										<span class="c-9">{{item.spec}}</span>
+									</td>
+
+									<td align="center" class="org">￥<strong>{{item.price}}</strong><br>({{item.bkge==''?0:item.bkge}})</td>
+									<td align="center">{{item.qty}}</td>
+									<td align="center">{{item.sales}}</td>
+									<td align="center">
+										<template v-if="item.goodsStatus == '1'">未发布</template>
+										<template v-else-if="item.goodsStatus == '2'">已上架</template>
+										<template v-else-if="item.goodsStatus == '3'">已下架</template>
+										<template v-else-if="item.goodsStatus == '4'">图片处理中</template>
+									</td>
+									<!--<td align="center">{{item.winRecommFlag == "1" ? "是" : "否"}}</td>-->
+									<td align="center">{{item.createDate}}</td>
+									<td align="center">
+										<a href="javaScript:void(0)" @click="goto('/app/pages/business/addbusgoods.html',item.id)" class="blue">编辑</a><br />
+										<a href="javaScript:void(0)"  @click="changegood(item.id,1)" class="blue">删除</a>
+									</td>
+								</tr>
+								 
+							</table>
+							<br>
+							<div class="store-page text-right  buspage" v-if="pager.total>0" style="float: right;">
+								<el-pagination  @current-change="handleCurrentChange" :current-page="pager.curpage" layout="prev, pager, next" :total="pager.total" :page-size="pager.size">
+								</el-pagination>
+							</div>
+						</div>
+						</el-card>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/buyoff_bz.js"></script>
+</html>

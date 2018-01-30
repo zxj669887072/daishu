@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>营业资质</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/elementui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/app.min.css" />
+		<link href="../../../css/amui.css" rel="stylesheet" type="text/css" />
+		<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<lf-header></lf-header>
+			<div class="webbox w1000">
+				<lf-left url="bis_qualification.html"></lf-left>
+				<div class="rightbox">
+					<div class="box h790">
+						<ul class="switchbox">
+							<li class="hover">营业资质</li>
+						</ul>
+						<div class="license">
+							<dl>
+								<dt><img :src="bizLicUrl"/></dt>
+								
+								
+								<dd v-for="(item,index) in handIdCardUrlList"><img :src="item" /></dd>
+								<dd v-for="(item,index) in idCardUrlList"><img :src="item" /></dd>
+								<!--<dd v-if="idCardUrls!=''"><img :src="idCardUrls" /></dd>-->
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+			<lf-footer></lf-footer>
+		</div>
+	</body>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/pages/business/bis_qualification_bz.js"></script>
+</html>

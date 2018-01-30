@@ -1,0 +1,89 @@
+
+/*了解积分宝宝*/
+.banner_about{ background:url(../images/banner_about.jpg) no-repeat center;height:540px;overflow:hidden; margin-bottom:30px}
+.webbox{ background:url(../images/web_left.jpg) left repeat-y #FFF; overflow:hidden; border:1px solid #dcdcdc; border-radius:3px; margin-top:30px; margin-bottom:30px; min-height:500px; }
+
+.title{ color:#f14400;margin-bottom:15px;font: normal 30px/40px "微软雅黑"; }
+.title .left{ border-left:3px solid #039de9; padding-left:7px;margin-left:10px; margin-top:8px;}
+.title .right{ margin-right:10px; line-height:34px;}
+.content{ width:100%;}
+.rightbox{ width:750px; float:right; margin-right:30px; margin-top:40px; margin-bottom:30px;}
+
+.nav-box{
+	background:url(../images/web_left.jpg) left repeat-y #FFF; overflow:hidden; border:1px solid #dcdcdc; border-radius:5px; min-height:500px;
+	position: relative;
+}
+.nav-box .text{ line-height:28px}
+.nav-ul{
+	position: absolute;
+	top: 0px;
+	left: 0;
+}
+.nav-ul li{
+	width: 191px;
+	padding: 30px 0;
+	text-align: center;
+	font-size: 18px;
+	color: #999999;
+	font-family: Helvetica,STHeiti,"Microsoft YaHei",Verdana,Arial,Tahoma,sans-serif;
+	background-image: url(../images/step-level.png);
+	background-position: right -52px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	transition: color .15s ease-in 0s;
+}
+.nav-ul li.current{
+	background-position: right 30px;
+	color:#f14400;
+}
+.ab01{height:600px;}
+.ab02{
+	height:270px;
+
+}
+.ab03{
+	height: 320px;
+
+}
+.ab04{
+	height:340px;
+
+}
+.ab05{
+	height: 340px;
+
+}
+
+/*了解积分宝宝*/
+.banner_about{ background:url(../images/banner_about.jpg) no-repeat center;height:540px;overflow:hidden; margin-bottom:30px}
+.webbox{ background:url(../images/web_left.jpg) left repeat-y #FFF; overflow:hidden; border:1px solid #dcdcdc; border-radius:3px; margin-top:30px; margin-bottom:30px; min-height:500px; }
+
+.title{ color:#f14400;margin-bottom:15px;font: normal 30px/40px "微软雅黑"; }
+.title .left{ border-left:3px solid #039de9; padding-left:7px;margin-left:10px; margin-top:8px;}
+.title .right{ margin-right:10px; line-height:34px;}
+.content{ width:100%;}
+.rightbox{ width:750px; float:right; margin-right:30px; margin-top:40px; margin-bottom:30px;}
+
+
+/*如何赚积分*/
+.banner_how{ background:url(../images/banner_how.jpg) no-repeat center;height:540px;overflow:hidden; margin-bottom:30px}
+
+
+/*了解分销商*/
+/*了解分销商*/
+.banner_distributor{ background:url(../images/banner_distributor.jpg) no-repeat center;height:612px;overflow:hidden;}
+.banner_distributor_fooder{ background:url(../images/distribution_06.jpg) center top; height:416px; overflow:hidden}
+.banner_distributor_fooder dl{ width:356px; height:135px;  margin:0 auto; margin-top:220px}
+.banner_distributor_fooder dt{ width:85%; height:65px; margin-left:5px; }
+.banner_distributor_fooder dd{width:41%;  margin-left:5px; height:48px; margin-right:5px;float:left; margin-top:20px}
+
+/*商家入驻*/
+.banner_settled{ background:url(../images/banner_settled.jpg) no-repeat center;height:612px;overflow:hidden;}
+.banner_settled a{ width:240px; height:70px;   margin-top:335px; margin-left:508px; float:left}
+
+/*服务运营中心加盟介绍*/
+.banner_join{ background:url(../images/banner_join.jpg) no-repeat center;height:612px;overflow:hidden;}
+.banner_join a{ width:310px; height:70px;   margin-top:297px; margin-left:484px; float:left;}
+
+.box2{ border:1px solid #dcdcdc;border-radius:10px;background:white}
+
