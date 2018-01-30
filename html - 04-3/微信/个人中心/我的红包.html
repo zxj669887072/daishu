@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>我的红包</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+<div class="webbox">
+<div class="switchbox2">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,3)"  class="hover"><span>未使用</span></li>
+<li id="one2" onMouseOver="settab_connet('one',2,3)" ><span>已使用</span></li>
+<li id="one3" onMouseOver="settab_connet('one',3,3)" ><span>已过期</span></li>
+</ul>
+</div>
+
+</div>
+
+<div id="con_one_1" class="hover" >
+<div class="hongbao pad2em">
+      <dl>
+      <dt>￥100</dt>
+      <dd>
+        <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22 org">满<strong>999</strong>可使用</span>
+      <span><input name="立即使用" type="submit" value="立即使用"/></span></dd>
+      </dl>
+       <dl>
+      <dt>￥50</dt>
+      <dd><span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22 org">满<strong>999</strong>可使用</span>
+      <span><input name="立即使用" type="submit" value="立即使用"/></span></dd>
+      </dl>
+       <dl>
+      <dt>￥10</dt>
+      <dd><span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22 org">满<strong>999</strong>可使用</span>
+      <span><input name="立即使用" type="submit" value="立即使用"/></span></dd>
+      </dl>
+
+      </div></div>
+<div id="con_one_2"  style="display:none"><div class="hongbao2 pad2em">
+      <dl>
+      <dt>￥100</dt>
+      <dd>
+        <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22">满<strong>999</strong>可使用</span>
+      <span><input name="已使用" type="submit" value="已使用"/></span></dd>
+      </dl>
+       <dl>
+      <dt>￥50</dt>
+      <dd><span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22">满<strong>999</strong>可使用</span>
+       <span><input name="已使用" type="submit" value="已使用"/></span></dd>
+      </dl>
+       
+      </div></div>
+<div id="con_one_3" style="display:none" ><div class="hongbao2 pad2em">
+      <dl>
+      <dt>￥100</dt>
+      <dd>
+        <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="c-9 em18">2017-02-03 00:00</span>
+       <span class="em22">满<strong>999</strong>可使用</span>
+      <span><input name="已过期" type="submit" value="已过期"/></span></dd>
+      </dl>
+       
+      </div></div>
+  
+
+</body>
+</html>

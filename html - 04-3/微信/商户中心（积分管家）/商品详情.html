@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>商品详情</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.jslides.js"></script>
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+ <div class="switchbox">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,2)"  class="hover"><span>商品详情</span></li>
+<li id="one2" onMouseOver="settab_connet('one',2,2)" ><span>商品素材</span></li>
+</ul>
+</div>
+<div  id="con_one_1" class="hover">
+<div class="banner">
+<div id="full-screen-slider" style=" height:51rem">
+	<ul id="slides" style=" height:53rem">
+		<li style="background:url('../images/pro_03.png') no-repeat center top"><a href="#"></a></li>
+		<li style="background:url('../images/pro_02.png') no-repeat center top"><a href="#"></a></li>
+        <li style="background:url('../images/pro_03.png') no-repeat center top"><a href="#"></a></li>
+	</ul>
+</div></div>
+
+<div class="webbox f-2rem">
+<div class="pro_name pad2em">
+<div class="neme f-2rem em28">隆缘裳2017春装新款女装时尚气质翻领长袖收腰显瘦刺绣连衣裙1753</div>
+<div  class="em32 f-2rem">￥2980<span class="c-9"> /</span><span class="em28 org">赚</span> <span class="em40 org">44.70</span></div>
+<div class="c-9 f-1rem"><span class="left">在售人数 56789</span><span class="right">库存 505</span></div>
+</div>
+</div>
+
+
+
+<div class="webbox">
+ <div class="switchbox2">
+ <ul>
+<li class="hover">商品详情</li>
+</ul>
+</div>
+<img src="../images/pro.jpg" width="640" height="1220">
+ 
+
+</div>
+</div>
+<div id="con_one_2" style="display:none">
+<div class="Customer_menu">
+<ul>
+<li id="two1" onMouseOver="settab_connet('two',1,2)"  class="hover">官方精选<span><img src="images/ico_03.png"></span></li>
+<li id="two2" onMouseOver="settab_connet('two',2,2)" >我的素材<span></span></li>
+</ul>
+</div>
+<div id="con_two_1" class="hover" ><div class="webbox pro_sc">
+<ul>
+<li style="line-height:4rem"><span class="org_bnt">用户文案</span><span class="em28">没事就吃姑娘</span></li>
+<li>很好吃的东西哦！很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦</li>
+<li><img src="../images/pro_img_03.jpg"><img src="../images/pro_img_05.jpg"></li>
+</ul>
+<a href="#">
+<dl>
+<dt><img src="../images/sc01.jpg"></dt>
+<dd>分享</dd>
+</dl>
+</a>
+<a href="#">
+<dl>
+<dt><img src="../images/sx02.jpg"></dt>
+<dd>复制文案</dd>
+</dl>
+</a>
+<a href="#">
+<dl>
+<dt><img src="../images/sx02.jpg"></dt>
+<dd>保存图片</dd>
+</dl>
+</a>
+</div>
+<div class="webbox mtop-2rem pro_sc">
+<ul>
+<li style="line-height:4rem"><span class="org_bnt">用户文案</span><span class="em28">没事就吃姑娘</span></li>
+<li>很好吃的东西哦！很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦</li>
+</ul>
+<a href="#">
+<dl>
+<dt><img src="../images/sc01.jpg"></dt>
+<dd>分享</dd>
+</dl>
+</a>
+<a href="#">
+<dl>
+<dt><img src="../images/sx02.jpg"></dt>
+<dd>复制文案</dd>
+</dl>
+</a>
+</div>
+<div class="pad2em c-9"  style="text-align:center">没有更多了</div>
+</div>
+<div id="con_two_2" style="display:none">
+<div class="pro_sc02">
+<dl>
+<dt><a href="文案编辑.html"><img src="../images/sc04.png"></a></dt>
+<dd class="c-9 em28">您还没有上传关于这个商品的文案,</dd>
+<dd class="c-9 em28">点击右上角编写按钮，发布自己的文案吧！</dd>
+<dd class="c-9 em18" style="line-height:3rem">请不要上传与商品不符，带任何二微码及商品链接的文案！</dd>
+</dl>
+</div>
+</div>
+
+
+</div>
+
+</body>
+</html>

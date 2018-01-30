@@ -1,0 +1,121 @@
+
+/*了解w我们*/
+.banner_about{ background:url(../images/banner_about.jpg) no-repeat center;height:540px;overflow:hidden; margin-bottom:30px}
+.webbox{ background:url(../images/web_left.jpg) left repeat-y #FFF; overflow:hidden; border:1px solid #dcdcdc; border-radius:3px; margin-top:30px; margin-bottom:30px; min-height:500px; }
+
+.title{ color:#f14400;margin-bottom:15px;font: normal 30px/40px "微软雅黑"; }
+.title .left{ border-left:3px solid #039de9; padding-left:7px;margin-left:10px; margin-top:8px;}
+.title .right{ margin-right:10px; line-height:34px;}
+.content{ width:100%;}
+.rightbox{ width:750px; float:right; margin-right:30px; margin-top:40px; margin-bottom:30px;}
+
+
+.nav-box{
+	background:url(../images/web_left.jpg) left repeat-y #FFF; overflow:hidden; border:1px solid #dcdcdc; border-radius:5px; min-height:500px; 
+	position: relative;
+}
+.nav-box .text{ line-height:28px}
+.nav-ul{
+	position: absolute;
+	top: 0px;
+	left: 0;
+}
+.nav-ul li{
+	width: 191px;
+	padding: 30px 0;
+	text-align: center;
+	font-size: 18px;
+	color: #999999;
+	font-family: Helvetica,STHeiti,"Microsoft YaHei",Verdana,Arial,Tahoma,sans-serif;
+	background-image: url(../images/step-level.png);
+	background-position: right -52px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	transition: color .15s ease-in 0s;
+}
+.nav-ul li.current{
+	background-position: right 30px;
+	color:#f14400;
+}
+.ab01{height:600px;}
+.ab02{
+	height:270px;
+
+}
+.ab03{
+	height: 320px;
+
+}
+.ab04{
+	height:340px;
+
+}
+.ab05{
+	height: 340px;
+
+}
+
+/*了解积分*/
+.banner_understand{ background:url(../images/banner_understand.jpg) no-repeat center;height:612px;overflow:hidden;}
+.understand_box{ background:#f7d505; overflow:hidden;}
+.understand_box .box{ text-align:center; padding-top:50px; padding-bottom:50px; text-align: center; overflow:hidden; margin-bottom:30px; background:#FFF;border-radius:30px;}
+.understand_box img{ margin-bottom:50px;}
+
+/*如何赚积分*/
+.banner_how{ background:url(../images/banner_how.jpg) no-repeat center;height:540px;overflow:hidden; margin-bottom:30px}
+
+
+/*了解分销商*/
+.banner_distributor{ background:url(../images/banner_distributor.jpg) no-repeat center;height:612px;overflow:hidden;}
+
+/*商家入驻*/
+.banner_settled{ background:url(../images/banner_settled.jpg) no-repeat center;height:612px;overflow:hidden;}
+.banner_settled a{ width:240px; height:70px;   margin-top:335px; margin-left:508px; float:left}
+
+/*服务运营中心加盟介绍*/
+.banner_join{ background:url(../images/banner_join.jpg) no-repeat center;height:612px;overflow:hidden;}
+.banner_join a{ width:310px; height:70px;   margin-top:297px; margin-left:484px; float:left;}
+
+/*商户登陆*/
+.landing_box{ background:url(../images/landing.jpg) center top #eee; height:449px; position:relative}
+.landing{ width:302px; height:270px; background:url(../images/landing_05.png) no-repeat; float:right; margin-top:74px; padding:10px 20px 20px 20px;}
+.landing h1{ font:normal 16px/40px "微软雅黑"}
+.landing .txt1,.landing .txt2{ padding-left:35px; height:44px; }
+.landing .txt1 input,.landing .txt2 input{ height:44px; background:none; line-height:44px; }
+.landing .txt1{margin-top:8px;}
+.landing .txt2{margin-top:18px;}
+.landing .m_top10{ padding-left:5px; line-height:30px;}
+.landing .btn{padding-left:5px; padding-top:10px; overflow: hidden; width:99%;  padding-right:5px}
+.landing .btn input{ height:42px; font-size:16px; color:#fff; background:#ff4400; width:100%; float:left;border-radius:3px;}
+.landing .btn input:hover{ cursor:pointer; background:#ed500b}
+.WeChat{ position:fixed; right:10px; top:30%}
+
+/*商家注册*/
+.settledbox{ background:#FFF; overflow:hidden; padding:50px; min-height:600px; margin-top:24px;}
+.settledbox .title02{ background:url(../images/register_02.jpg) repeat-x bottom; height:30px; line-height:29x; margin-bottom:10px;}
+.settledbox .title02 .left{ height:30px; background:url(../images/register_01.jpg) bottom repeat-x; padding-left:5px; padding-right:5px; font-size:18px; color:#333}
+.settledbox  .process{ margin-bottom:40px;}
+
+.settled_list{ padding-bottom:40px;}
+.settled_list .btn{ background:#fff; padding-left:12px; margin-right:5px; padding-right:12px; margin-left:10px; height:32px; border:1px solid #f37e01; color:#f37e01; cursor:pointer; line-height:32px;}
+.settled_list ul{ overflow:hidden}
+.settled_list li{ overflow:hidden ; margin-top:30px; line-height:32px;}
+.settled_list li .left{ width:15%; text-align:right; float:left}
+.settled_list li .right{ width:83%; float:right}
+.settled_list li .txt{ height:30px;}
+.settled_list li span{ padding-left:10px;}
+.settled_list li .imgbox{border:1px dashed #d2d2d2; width:316px; height:190px; text-align:center; text-align:center;font:normal 24px/190px "微软雅黑"; color:#999; float:left;}
+
+.settled_list  select{ border:1px solid #ddd; margin-right:10px; padding:7px;}
+
+.settled_list .list{ width:630px;}
+.settled_list .list li{ margin-top:0; width:16.6%; float:left}
+.settled_list .list li input{ margin:0;margin-right:4PX;border:1px solid #ddd; padding:0px;}
+.settled_list .m_top10{border-bottom:1px solid #ddd; float:left;padding-bottom:30px; width:630px;}
+.settled_list .red{ width:100%; float:left; margin-top:20px;}
+
+.settled_list dl{ float:right}
+.settled_list dt { line-height:40px;}
+.settled_list dt input{ float:right; text-align:right; margin-top:14px; margin-left:5px; border:1px solid #ddd;}
+.settled_list dt span{ float:right}
+.settled_list dd{ width:100%; float:left; text-align:right}

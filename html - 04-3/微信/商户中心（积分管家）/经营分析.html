@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>经营分析</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+<div class="switchbox2">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,3)"  class="hover">今天</li>
+<li id="one2" onMouseOver="settab_connet('one',2,3)">近7天</li>
+<li id="one3" onMouseOver="settab_connet('one',3,3)">近30天</li>
+<li onClick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'">自定义</li>
+</ul>
+</div>
+<div>
+  <div id="light1" class="white_content" style=" position:static">
+  <div class="webbox mtop-2rem">
+<ul class="store_list"><li><div class="left">选择日期</div><input name="" type="text"  class="txt" style="width:66%" ><a href="#"><div class="right c-9" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'">请选择<img src="../images/arrow_big.png"></div></a></li></ul>
+</div>
+</div>
+</div>
+<div  id="con_one_1" class="hover">
+<div class="webbox mtop-2rem">
+<div class="pad2em"><img src="images/jyfx_03.jpg" > </div>
+</div>
+</div>
+<div  id="con_one_2" style="display:none">
+<div class="webbox mtop-2rem">
+<div class="pad2em c-9" style="text-align:center">暂无内容</div>
+</div>
+</div>
+<div  id="con_one_3" style="display:none">
+<div class="webbox mtop-2rem">
+<div class="pad2em"><img src="images/jyfx_03.jpg" > </div>
+</div>
+</div>
+
+</body>
+</html>

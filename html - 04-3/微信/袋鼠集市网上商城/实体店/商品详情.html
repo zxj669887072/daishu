@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>隆缘裳旗舰店</title>
+<link href="../../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../../css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.jslides.js"></script>
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+ <div class="switchbox">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,2)"  class="hover"><span>商品详情</span></li>
+<li id="one2" onMouseOver="settab_connet('one',2,2)" ><span>商品素材</span></li>
+</ul>
+</div>
+<div id="con_one_1" class="hover" >
+<div class="banner">
+<div id="full-screen-slider" style=" height:51rem">
+	<ul id="slides" style=" height:53rem">
+		<li style="background:url('../../images/pro_03.png') no-repeat center top"><a href="#"></a></li>
+		<li style="background:url('../../images/pro_02.png') no-repeat center top"><a href="#"></a></li>
+        <li style="background:url('../../images/pro_03.png') no-repeat center top"><a href="#"></a></li>
+	</ul>
+</div></div>
+
+<div class="webbox f-2rem">
+<div class="pro_name pad2em">
+<div class="neme f-2rem em28">隆缘裳2017春装新款女装时尚气质翻领长袖收腰显瘦刺绣连衣裙1753</div>
+<div  class="em32 f-2rem">￥2980<span class="c-9"> /</span><span class="em28 org">赚</span> <span class="em40 org">44.70</span></div>
+<div class="c-9 f-1rem"><span class="left">在售人数 56789</span><span class="right">库存 505</span></div>
+</div>
+</div>
+
+<div class="pro_fooder">
+<ul>
+<li onClick="document.getElementById('light3').style.display='block';document.getElementById('fade3').style.display='block'"><div class="car_ico"><img src="../../images/f_02.png"><span class="ico">0</span></div></li>
+<li style="background:url(../../images/pr_03.jpg) left no-repeat" onClick="document.getElementById('light2').style.display='block';document.getElementById('fade2').style.display='block'">买</li>
+<li class="pro_btn" onClick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'">卖</li>
+</ul>
+
+</div>
+
+
+
+ <div class="switchbox2">
+ <ul>
+<li id="tow1" onMouseOver="settab_connet('tow',1,2)"  class="hover">商品详情</li>
+<li id="tow2" onMouseOver="settab_connet('tow',2,2)" >购买须知</li>
+</ul>
+</div>
+<div class="webbox"  style="padding-bottom:8rem"><div id="con_tow_1" class="hover" ><img src="../../images/pro.jpg" width="640" height="1220"></div>
+<div id="con_tow_2" style="display:none"><div class="pad2em">购买须知购买须知购买须知购买须知购买须知购买须知购买须知购买须知购买须知购买须知购买须知</div></div></div>
+</div>
+
+<div>
+  <div id="light1" class="white_content" style=" position:fixed; bottom:0">
+  <div class="pro_box">
+  <span class="ico" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><img src="../../images/pro0_03.jpg"></span>
+ <div class="pro_01">
+ <ul>
+ <li class="org em40 f-2rem">赚44.70</li>
+ <li class="c-9">只要你的好友通过你的链接购买此商品,</br>你就能赚到至少<span class=" em28  org">赚44.70</span>元利润哦~</li>
+ </ul>
+ <dl>
+ <a href="#">
+ <dt><img src="../../images/pro01_01.jpg" ></dt>
+ <dd class="c-9">分享商品</dd>
+ </a>
+ </dl>
+  <dl>
+   <a href="#">
+ <dt><img src="../../images/pro01_02.jpg" ></dt>
+ <dd class="c-9">商品链接</dd>
+ </a>
+ </dl>
+  <dl>
+ <dt><img src="../../images/pro01_03.jpg" ></dt>
+ <dd class="c-9">二维码</dd>
+ </dl>
+ </div>
+  </div>
+  
+  
+</div>
+  <div id="fade1" class="black_overlay" style="display:none;"></div>
+</div>
+
+
+
+<div>
+  <div id="light2" class="white_content"  style=" position:fixed; bottom:0">
+  <div class="pro_box" style="padding:0">
+   <span class="ico" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade2').style.display='none'" style="top:2rem"><img src="../../images/pro0_03.jpg"></span>
+ <div class="pro_02">
+ <dl>
+ <dt><img src="../../images/img_04.jpg"></dt>
+ <dd>
+ <div class="org em32">￥1390.00 </div>
+ <div class=" em24">库存77</div>
+ <div class="c-9">已选择灰色外壳</div>
+ </dd>
+ </dl>
+ <ul>
+ <li class="em22 c-6">型号</li>
+ <li><a href="#" class="hover">灰色外壳</a><a href="#">白色外壳</a></li>
+ <li class="em22 c-6 mtop-2rem">数量</li>
+ <li><span style="color:#ccc">－</span><span><input name="" type="text" value="1"></span><span>＋</span></li>
+ </ul>
+ <div class="pro_02_btn">
+ <span class="left"><a href="#">加入购物车</a></span>
+ <span class="right"><a href="绑定帐号.html">立即购买</a></span>
+ </div>
+ </div>
+  </div>
+</div>
+  <div id="fade2" class="black_overlay" style="display:none;"></div>
+</div>
+
+<div>
+  <div id="light3" class="white_content"  style=" position:fixed; bottom:0">
+  <div class="pro_box">
+  <span class="ico" onclick = "document.getElementById('light3').style.display='none';document.getElementById('fade3').style.display='none'"><img src="../../images/pro0_03.jpg"></span>
+ <div class="pro_03">
+<ul>您还不是袋鼠集市的</br>分销商不能获得佣金。</br>请先购买一次商品即可</br>成为袋鼠集市分销商</ul>
+</div>
+ </div>
+</div>
+  <div id="fade3" class="black_overlay" style="display:none;"></div>
+</div>
+
+
+
+
+
+<div id="con_one_2" style="display:none">
+<div class="webbox mtop-2rem pro_sc">
+<ul>
+<li style="line-height:4rem"><span class="org_bnt">用户文案</span><span class="em28">没事就吃姑娘</span></li>
+<li>很好吃的东西哦！很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦很好吃的东西哦</li>
+<li><img src="../../images/pro_img_03.jpg"><img src="../../images/pro_img_05.jpg"></li>
+</ul>
+<a href="#">
+<dl>
+<dt><img src="../../images/sc01.jpg"></dt>
+<dd>分享</dd>
+</dl>
+</a>
+<a href="#">
+<dl>
+<dt><img src="../../images/sx02.jpg"></dt>
+<dd>复制文案</dd>
+</dl>
+</a>
+</div>
+<div class="mtop-2rem c-9"  style="text-align:center">没有更多了</div>
+</div>
+
+
+
+</body>
+</html>

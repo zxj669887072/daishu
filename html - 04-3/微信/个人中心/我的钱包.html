@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>我的钱包</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+<div class="integral">
+ <div class="switchbox">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,2)"  class="hover">我的积分</li>
+<li id="one2" onMouseOver="settab_connet('one',2,2)" >钱包余额</li>
+</ul>
+</div>
+</div>
+<div  id="con_one_1" class="hover">
+<div class="integral_banner">
+<dl>
+<dt class="em40">0</dt>
+<dd  class="em28">积分</dd>
+</dl>
+<dl>
+<dt class="em40">550</dt>
+<dd class="em28">待赠送</dd>
+</dl>
+<div class="btn org em28"><a href="#"><span><img src="images/integral_06.png"></span>去购物</a></div>
+</div>
+<div class="webbox">
+<div class="pad2em integral_list2">
+<ul>
+<li class="em32">
+  <div class="right"><a href="我的积分-积分兑换.html"><input name="" type="submit" value="积分兑换" class=" org_bnt3" ></a></div><img src="images/integral2_03.png" >如何花积分？</li>
+</ul>
+</div>
+</div>
+
+<div class="pad2em em28 c-6">积分动态</div>
+<div class="webbox">
+<ul class="integral_list">
+<li><a href="我的积分-收入记录.html">收入记录<img src="../images/arrow_big.png"></a></li>
+<li><a href="我的积分-支出记录.html">支出记录<img src="../images/arrow_big.png"></a></li>
+<li><a href="我的积分-赠送积分明细.html">赠送积分明细  <img src="../images/arrow_big.png"></a></li>
+</ul>
+</div>
+</div>
+
+<div id="con_one_2" style="display:none">
+<div class="integral_banner">
+<dl style=" width:100%">
+<dt class="em40">550.00</dt>
+<dd class="em28">元</dd>
+</dl>
+<div class="btn org em28"><a href="钱包余额-充值.html"><span style=" margin-top:1rem"><img src="images/integral_03.png"></span>余额充值</a></div>
+</div>
+
+<div class="webbox mtop-2rem">
+<ul class="integral_list">
+<li><a href="钱包余额-收入记录.html">收入记录<img src="../images/arrow_big.png"></a></li>
+<li><a href="钱包余额-支出记录.html">支出记录<img src="../images/arrow_big.png"></a></li>
+<li><a href="钱包余额-佣金收入.html">佣金收入<img src="../images/arrow_big.png"></a></li>
+</ul>
+</div>
+<div class="webbox mtop-2rem">
+<ul class="integral_list">
+<li><a href="钱包余额-提现.html">提现<img src="../images/arrow_big.png"></a></li>
+</ul>
+</div>
+</div>
+
+</body>
+</html>

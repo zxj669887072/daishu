@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>分类商品列表</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body style="background:#fff">
+<div class="emporium_top">
+<div class="left"><a href="商品分类.html"><img src="../images/dianpu_03.jpg" style=" margin-top:1.5rem"></a></div>
+<div class="name em32">潮流男装</div>
+<div class="right"><a href="#"><img src="../images/fenlei_01.jpg"></a></div>
+</div>
+<div class="switchbox2">
+<div class="ico" onClick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="../images/fenlei_02.jpg"></div>
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,5)"  class="hover"><span>全部</span></li>
+<li id="one2" onMouseOver="settab_connet('one',2,5)" ><span>大衣</span></li>
+<li id="one3" onMouseOver="settab_connet('one',3,5)" ><span>羽绒服</span></li>
+<li id="one4" onMouseOver="settab_connet('one',4,5)" ><span>休闲裤</span></li>
+<li id="one5" onMouseOver="settab_connet('one',5,5)" ><span>牛仔裤</span></li>
+</ul>
+</div>
+<div id="con_one_1" class="hover" >
+<div class="emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img01.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img02.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img03.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img01.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+</div>
+</div>
+<div id="con_one_2" style="display:none">
+<div class="emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img01.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+</div>
+</div>
+<div id="con_one_3" style="display:none">
+<div class="emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img03.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+</div>
+</div>
+<div id="con_one_4" style="display:none">
+<div class="emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img01.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+</div>
+</div>
+<div id="con_one_5" style="display:none">
+<div class="emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/fenlei_img03.jpg"></a></dt>
+<dd>
+<div class="em24"><a href="商品详情.html">美特斯邦威短袖T恤男士2017夏装新款字母印花纯棉圆领舒适衣服</a></div>
+<div class=" mtop-1rem"><span class="em28" style="margin-right:2rem">￥265.00 </span><span class="org em24"  style="margin-right:0.5rem">赚</span><span class="org em28"><strong>9.00</strong></span></div>
+<div class=" mtop-1rem c-9"><span class="left em28">库存545</span><span class="right"><a href="#"><img src="../images/sc01.jpg"></a><a href="#"><img src="../images/sc03.jpg"></a><a href="#"><img src="../images/sc02.jpg"></a></span></div>
+</dd>
+</dl>
+</div>
+</div>
+<div>
+  <div id="light1" class="white_content" style=" position:fixed; top:14.8rem">
+  <div class="local_listbox">
+ <ul>
+ <li><div class="left"><img src="../images/fenlei_02.jpg">默认排序</div>
+
+   <div class="right" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><img src="../images/fenlei_06.jpg"></div></li>
+   <li><a href="#"><div class="left c-9"><img src="../images/fenlei_03.jpg">利润由高到低</div></a></li>
+   <li><a href="#"><div class="left c-9"><img src="../images/fenlei_04.jpg">价格由高到低</div></a></li>
+   <li><a href="#"><div class="left c-9"><img src="../images/fenlei_05.jpg">利润由低到高</div></a></li>
+ </ul>
+  </div>
+  
+  
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>收货地址</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="head">
+    <div class="w1000">
+    	<div class="logo left"><img src="../images/logo.png" /></div>
+        <div class="name left">
+        <h1>个人中心</h1>
+        <h2><a href="../商家中心/home.html">我要开店</a></h2>
+        </div>
+        <ul class="menu left">
+        <li><a href="home.html">首页</a></li>
+        <li><a href="#">账户设置 <img src="../images/arrow_lower.png" width="10" height="5" /></a><ul><a href="账户资料.html">账户资料</a>
+            <a href="修改密码.html">修改密码</strong></a><a href="收货地址.html">收货地址</a></ul></li>
+        <li><a href="#">消息<div class="ico">1</div></a></li>
+        </ul>
+        <div class="shopping right f14"><a href="#">我的购物车<span class="ico">2</span></a></div>
+        <dl class="right" style="width:18%">
+       <dt><img src="../images/img02.png" /></dt>
+       <dd style="width:50%;line-height:20px; height:20px; margin-top:12px;" class="f16"><strong>凌丽丽</strong></strong></dd>
+       <dd  style="width:50%; line-height:20px;">会员等级:<strong>普通</strong></dd>
+       </dl>
+    </div>
+</div>
+<div class="webbox w1000">
+	<div class="leftbox">
+    	<dl>
+        <dt><img src="../images/left_01.png"/>我的钱包</dt>
+         <dd><a href="我的钱包.html">我的钱包</a></dd>
+        <dd><a href="我的红包.html">我的红包</a></dd><dd><a href="绑定银行账户.html">绑定银行账户</a></dd>
+        </dl>
+<dl>
+            <dt><img src="../images/left_02.png"/>我的店铺</dt>
+               <dd>
+                <a href="我分销的店铺.html">我分销的店铺</a>
+                <a href="我招募的分销商.html">我招募的分销商</a>
+                <a href="我分销的商品.html">我分销的商品</a> <a href="我的虚拟分销店铺.html">我的虚拟店铺</a>
+      </dd>
+        </dl>
+        <dl>
+      <dt><img src="../images/left_03.png"/>我的订单</dt>
+      <dd><a href="我的订单.html" >我的订单</a></dd>
+    </dl>
+        <dl>
+        <dt><img src="../images/left_04.png"/>评价管理</dt>
+        <dd><a href="评价管理.html">评价管理</a></dd>
+        </dl>
+       <dl>
+        <dt><img src="../images/left_05.png"/>我的关注</dt>
+        <dd><a href="我关注的店铺.html">我关注的店铺</a></dd>
+<dd><a href="我关注的商品.html">我关注的商品</a></dd>
+        </dl>
+  </div>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover">收货地址</li>
+      </ul>
+    </div>
+     <div class="box">
+     <div class="padding20" style="padding-bottom:0px;">
+     <div class="hot">手机号码、电话号码选填一项，其余均必填项</div>
+     </div>
+     <div class="padding20">
+     <ul class="switchbox">
+      <li style="padding-left:0px; margin:0px;">新增收货地址</li>
+      </ul>
+     </div>
+      <div  class="Password" >
+      
+       <ul style="padding:20px;">
+       <li style="margin-bottom:20px;">
+         <div class="left"> <span class="org">*</span> 所在地区：</div><div class="right">
+           <span class="txt3" style="height:40px; width:60%"><label for="select"></label>
+           <select name="select" id="select" class="c-9">
+             <option>请选择省市区</option>
+           </select></span>
+         </div></li>
+       <li style="margin-bottom:20px;">
+         <div class="left"><span class="org">*</span> 详细地址：</div><div class="right"><span class="txt2" style="width:60%">
+           <textarea name="" rows="4" style="padding:5px;" class="c-9">可以不用重复填写省市区，大于5个字，少于120个字</textarea>
+         </span></div></li>
+       <li>
+         <div class="left"><span class="org">*</span> 收货人姓名：</div><div class="right"><span class="txt2">
+             <input name="input2" type="text"/>
+           </span></div></li>
+            <li>
+         <div class="left"><span class="org"></span>手机号码：</div><div class="right"><span class="txt2">
+             <input name="input2" type="text" value="手机号码、电话号码至少填一项" class="c-9"/>
+           </span></div></li>
+            <li>
+         <div class="left">电话号码：</div><div class="right">
+         <span class="txt2" style="width:100%">
+           <table width="60%" border="0" cellspacing="0" cellpadding="0">
+             <tr>
+               <td>
+                 <input name="input2" type="text" value="区号" class="c-9"/>
+              </td>
+               <td width="20" align="center"> - </td>
+               <td>
+                 <input name="input2" type="text" value="电话号码"  class="c-9"/>
+               </td>
+               <td width="20" align="center"> - </td>
+               <td><input name="input2" type="text" value="分机"  class="c-9"/></td>
+             </tr>
+           </table>
+           </span>
+         </div></li>
+         <li><div class="left"></div><div class="right"><span><input name="" type="checkbox" value="" style="margin-top:13px; margin-right:5px;"/>保存为默认地址</span></div></li>  
+       <li><div class="left"></div><div class="right"><span><input name="确认保存" type="submit" value="确认保存"  class="bnt-org"/></span></div></li>
+       </ul>
+      </div>
+      <div class="padding20"  style="padding-bottom:0px;">
+      <div class="left"><strong>已经保存1个收货地址，还可以添加19个。</strong></div>
+      </div>
+<div class="padding20">
+<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class=" table">
+  <tr>
+    <td width="10%" bgcolor="#f2f2f2">收货人</td>
+    <td width="31%" bgcolor="#f2f2f2">所在地区</td>
+    <td width="25%" bgcolor="#f2f2f2">详细地址</td>
+    <td width="17%" align="center" bgcolor="#f2f2f2">电话/手机</td>
+    <td width="13%" align="center"  bgcolor="#f2f2f2">操作</td>
+    </tr>
+  <tr>
+    <td>陈丽丽</td>
+    <td>广东省深圳市南山区白石洲街道</td>
+    <td>白金假日</td>
+    <td align="center">13254768792</td>
+    <td align="center"><a href="#" class="blue">修改</a> | <a href="#" class="blue">删除</a></td>
+    </tr>
+</table>
+
+</div>
+   </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  
+				   <li>公司地址：深圳市南山区高新南四道创维半导体设计大厦西座603-604</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../images/ljjfbb_35.png"  /><img src="../images/ljjfbb_37.png"  /></div>
+     </div>
+</div>
+</body>
+</html>

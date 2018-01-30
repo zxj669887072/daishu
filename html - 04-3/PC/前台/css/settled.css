@@ -1,0 +1,57 @@
+/* 入驻开店*/
+.settled_top{ background:#FFF; border-bottom:1px solid #d2d2d2; overflow:hidden; padding-top:20px; padding-bottom:10px;}
+.top_name{font:normal 18px/60px "微软雅黑";  float:left }
+
+.process{ margin-top:30px; margin-bottom:30px; overflow:hidden}
+.process dl{ float:left; text-align:center;}
+.process dt{ margin-bottom:5px;}
+.process dd{ font:normal 14px/20px "微软雅黑"; color:#999}
+.process .hover{ color:#444}
+
+.settledbox{ background:#FFF; overflow:hidden; border:1px solid #dcdcdc; min-height:600px; margin-top:24px;}
+
+.settled_list{ padding:50px; overflow:hidden}
+.settled_list dl{ border-bottom:1px solid #eee; padding-bottom:15px; overflow:hidden}
+.settled_list ul{ overflow:hidden}
+.settled_list li{ overflow:hidden ; margin-top:15px; line-height:32px;}
+.settled_list li .left,.settled_list dt{ width:20%; text-align:right; float:left}
+.settled_list li .right,.settled_list dd{ width:79%; float:right}
+.settled_list li .txt{ height:30px;}
+.settled_list li span{ padding-left:10px;}
+.settled_list li .tip{ background:#fafafa; border:1px solid #EFEFEF; padding:10px; overflow:hidden}
+.settled_list li .imgbox{border:1px dashed #d2d2d2; width:220px; height:150px; text-align:center; text-align:center;font:normal 24px/150px "微软雅黑"; color:#999; float:left; margin-right:15px;}
+.settled_title{ border-bottom:1px dashed #ddd; border-top:1px dashed #ddd; height:40px; line-height:40px; margin-top:15px; margin-bottom:10px; overflow:hidden}
+.settled_title .left{ padding-left:20px;font:normal 16px/40px "微软雅黑";}
+.Pay{padding:70px; overflow:hidden}
+.Pay dl{border-bottom:1px solid #eee; text-align:center; padding-bottom:20px}
+.Pay dt{}
+.Pay dd{font:normal 44px/50px "微软雅黑"; }
+.Pay ul{ padding-left:160px; padding-top:40px; overflow:hidden}
+.Pay ul img{border:1px solid #dcdcdc; border-radius:3px; padding:2px;}
+.Pay ul .left{ margin-top:30px; margin-right:10px;}
+.Pay ul li{ margin-right:30px; float:left}
+
+.ok{padding:100px; overflow:hidden; text-align:center}
+.ok dl{ margin-bottom:40px;}
+.ok dd{ margin-top:10px;}
+.ok .hui_btn{ background:#f4f4f4; border:#d2d2d2 1px solid; padding-left:40px; padding-right:40px; height:40px;}
+
+/*彈窗*/	
+	
+.black_overlay {
+	z-index:10;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+*html .black_overlay {
+	position: absolute;
+left: expression(documentElement.scrollLeft + documentElement.clientWidth - this.offsetWidth);
+top: expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight);
+}
+.white_content { position: relative;
+width:100%;
+	display: none;
+}
+.down{ position:absolute; width:60px; text-align:right; background:#FFF; height:30px; line-height:30px; top:-45px; right:0px;}

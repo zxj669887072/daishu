@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的会员</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="head">
+    <div class="w1000">
+    	<div class="logo left"><img src="../images/logo.png" /></div>
+        <div class="name left">
+        <h1>个人中心</h1>
+        <h2><a href="../商家中心/home.html">我要开店</a></h2>
+        </div>
+        <ul class="menu left">
+        <li><a href="home.html">首页</a></li>
+        <li><a href="#">账户设置 <img src="../images/arrow_lower.png" width="10" height="5" /></a><ul><a href="账户资料.html">账户资料</a>
+            <a href="修改密码.html">修改密码</strong></a><a href="收货地址.html">收货地址</a></ul></li>
+        <li><a href="#">消息<div class="ico">1</div></a></li>
+        </ul>
+        <div class="shopping right f14"><a href="#">我的购物车<span class="ico">2</span></a></div>
+        <dl class="right" style="width:18%">
+       <dt><img src="../images/img02.png" /></dt>
+       <dd style="width:50%;line-height:20px; height:20px; margin-top:12px;" class="f16"><strong>凌丽丽</strong></strong></dd>
+       <dd  style="width:50%; line-height:20px;">会员等级:<strong>普通</strong></dd>
+       </dl>
+    </div>
+</div>
+<div class="webbox w1000">
+	<div class="leftbox">
+    	<dl>
+        <dt><img src="../images/left_01.png"/>我的钱包</dt>
+         <dd><a href="我的钱包.html">我的钱包</a></dd>
+        <dd><a href="我的红包.html">我的红包</a></dd><dd><a href="绑定银行账户.html">绑定银行账户</a></dd>
+        </dl>
+<dl>
+            <dt><img src="../images/left_02.png"/>我的店铺</dt>
+               <dd>
+                <a href="我分销的店铺.html">我分销的店铺</a>
+                <a href="我招募的分销商.html">我招募的分销商</a>
+                <a href="我分销的商品.html">我分销的商品</a> <a href="我的虚拟分销店铺.html">我的虚拟店铺</a>
+      </dd>
+        </dl>
+        <dl>
+      <dt><img src="../images/left_03.png"/>我的订单</dt>
+      <dd><a href="我的订单.html" >我的订单</a></dd>
+    </dl>
+        <dl>
+        <dt><img src="../images/left_04.png"/>评价管理</dt>
+        <dd><a href="评价管理.html">评价管理</a></dd>
+        </dl>
+       <dl>
+        <dt><img src="../images/left_05.png"/>我的关注</dt>
+        <dd><a href="我关注的店铺.html">我关注的店铺</a></dd>
+<dd><a href="我关注的商品.html">我关注的商品</a></dd>
+        </dl>
+      
+  </div>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li class="hover"><a href="#">会员信息</a></li>
+    </ul>
+      <div class="information padding20">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td width="17%" height="60" align="right" class="f16">我的会员等级</td>
+    <td width="27%" class="f18"><strong class="org">铜钻</strong></td>
+    <td width="27%" class="f18">&nbsp;</td>
+    <td width="29%" class="f18">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="60" align="right" bgcolor="#f1f2f6" class="f16">享受待遇</td>
+    <td bgcolor="#f1f2f6" class="f18">平台商城全场<span class="org"><strong>9.5</strong></span>折</td>
+    <td bgcolor="#f1f2f6" class="f18">&nbsp;</td>
+    <td bgcolor="#f1f2f6" class="f18">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="60" align="right" class="f16">当前消费金额</td>
+    <td class="f18"><strong class="org">10000</strong>元</td>
+    <td class="f18">分销商品金额：<span class="org"><strong>200</strong></span>元</td>
+    <td class="f18">积分：<span class="green"><strong>500</strong></span>分</td>
+  </tr>
+  <tr>
+    <td height="60" align="right" bgcolor="#f1f2f6" class="f16">升级消费金额</td>
+    <td colspan="3" bgcolor="#f1f2f6" class="f18"><strong class="org">30000</strong>元<span class="f14"> 　或　分销商品金额达到80000元　或　积分达到30000积分</span></td>
+    </tr>
+</table>
+
+      </div>
+    </div>
+      <div class="box m_top20">
+      <ul class="switchbox">
+      <li class="hover"><a href="#">会员等级</a></li>
+    </ul>
+    <div class="padding20"><table width="100%" border="0" cellspacing="0" class="table4">
+  <tr>
+    <td align="center" bgcolor="#F8F8F8"><strong>用户等级&nbsp;</strong></td>
+    <td align="center" bgcolor="#F8F8F8"><strong>享受待遇</strong></td>
+    <td bgcolor="#F8F8F8"><strong>达到条件（满足任意一项即可）<br />
+    </strong></td>
+  </tr>
+  <tr>
+    <td align="center" class="f14">铜钻</td>
+    <td align="center" class="f14">积分商城全场<span class="org"><strong>9.5</strong></span>折<br /></td>
+    <td>1、袋鼠集市消费10000元<br />
+      2、分销商品金额达到50000元<br />
+      3、积分达到10000积分<br />
+      4、用人民币1000元购买<br />
+      5、成为分销主管<br /></td>
+  </tr>
+  <tr>
+    <td align="center" class="f14">银钻</td>
+    <td align="center" class="f14">积分商城全场<span class="org"><strong>9</strong></span>折</td>
+    <td>1、袋鼠集市消费30000元<br />
+2、分销商品金额达到80000元<br />
+3、积分达到30000积分<br />
+4、用人民币3000元购买<br /></td>
+  </tr>
+  <tr>
+    <td align="center" class="f14">金钻</td>
+    <td align="center" class="f14">积分商城全场<span class="org"><strong>8</strong></span>折</td>
+    <td>1、袋鼠集市消费60000元<br />
+      2、分销商品金额达到120000元<br />
+      3、积分达到50000积分<br />
+      4、用人民币5000元购买<br /></td>
+  </tr>
+</table>
+
+    </div>
+      </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  
+				   <li>公司地址：深圳市南山区高新南四道创维半导体设计大厦西座603-604</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../images/ljjfbb_35.png"  /><img src="../images/ljjfbb_37.png"  /></div>
+     </div>
+</div>
+</body>
+</html>

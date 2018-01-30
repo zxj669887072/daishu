@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>订单管理</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+<div class="webbox personal">
+<div class="pad2em">
+<div class="personal_search"><a href="#"><img src="../个人中心/images/s_03.png"></a>
+  <input name="" type="text" value="订单号/门牌号/店名" style="color:#888"></div>
+</div>
+<div class="switchbox2">
+ <ul>
+<li id="one1" onMouseOver="settab_connet('one',1,5)" ><span>全部</span></li>
+<li id="one2" onMouseOver="settab_connet('one',2,5)"  class="hover"><span>待收款</span></li>
+<li id="one3" onMouseOver="settab_connet('one',3,5)" ><span>待送货</span></li>
+<li id="one4" onMouseOver="settab_connet('one',4,5)" ><span>待收货</span></li>
+<li id="one5" onMouseOver="settab_connet('one',5,5)" ><span>待评价</span></li>
+</ul>
+</div>
+</div>
+<div class="personal">
+<div id="con_one_1"  style="display:none" >
+<div class="webbox car_list  mtop-2rem">
+  <div class="title"><div style="float:left">订单号：<span class="blue"><a href="订单详情.html">12467921432354346</a></span></div><span class="right org"><a href="#">待收款</a></span></div>
+<dl>
+<dt><a href="#"><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="name em28" style="padding-right:0"><a href="#">隆缘裳2017春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9 mtop-1rem" style="text-align:left">粉红色</div>
+<div class="mtop-1rem">
+<span class="left c-9">×1</span>
+<div class="right org em32">￥<strong>199.00</strong></div>
+</div>
+</dd>
+</dl>
+<div class="personal2">
+<dl>
+<dt>共计1件　合计<strong class="org">￥199.00</strong>　赠送<strong class="green">500</strong>积分</dt>
+<dd><span class="left c-9" style="padding-left:2rem; font-size:2rem; line-height:5rem; float:left">下单时间：2017-07-01</span><input name="" type="submit" value="取消订单" class=" btn" ><input name="" type="submit" value="确认收款" class=" btn_org" >
+</dd>
+</dl>
+</div>
+</div>
+<div class="webbox car_list  mtop-2rem">
+  <div class="title"><div style="float:left">订单号：<span class="blue"><a href="订单详情.html">12467921432354346</a></span></div><span class="right org"><a href="#">待收款</a></span></div>
+<dl>
+<dt><a href="#"><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="name em28" style="padding-right:0"><a href="#">隆缘裳2017春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9 mtop-1rem" style="text-align:left">粉红色</div>
+<div class="mtop-1rem">
+<span class="left c-9">×1</span>
+<div class="right org em32">￥<strong>199.00</strong></div>
+</div>
+</dd>
+</dl>
+<div class="personal2">
+<dl>
+<dt>共计1件　合计<strong class="org">￥199.00</strong>　赠送<strong class="green">500</strong>积分</dt>
+<dd><span class="left c-9" style="padding-left:2rem; font-size:2rem; line-height:5rem; float:left">下单时间：2017-07-01</span><input name="" type="submit" value="取消订单" class=" btn" ><input name="" type="submit" value="确认发货" class=" btn_org" >
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="con_one_2"  class="hover" >
+<div class="webbox car_list  mtop-2rem">
+  <div class="title"><div style="float:left">订单号：<span class="blue"><a href="订单详情.html">12467921432354346</a></span></div><span class="right org"><a href="#">待收款</a></span></div>
+<dl>
+<dt><a href="商品详情.html"><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="name em28" style="padding-right:0"><a href="商品详情.html">隆缘裳2017春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9 mtop-1rem" style="text-align:left">粉红色</div>
+<div class="mtop-1rem">
+<span class="left c-9">×1</span>
+<div class="right org em32">￥<strong>199.00</strong></div>
+</div>
+</dd>
+</dl>
+<div class="personal2">
+<dl>
+<dt>共计1件　合计<strong class="org">￥199.00</strong>　赠送<strong class="green">500</strong>积分</dt>
+<dd><span class="left c-9" style="padding-left:2rem; font-size:2rem; line-height:5rem; float:left">下单时间：2017-07-01</span><input name="" type="submit" value="取消订单" class=" btn" ><input name="" type="submit" value="确认收款" class=" btn_org" >
+</dd>
+</dl>
+</div>
+</div>
+<div class="pad2em c-9" style=" text-align:center">没有更多了</div>
+</div>
+<div id="con_one_3"  style="display:none">
+<div class="webbox car_list  mtop-2rem">
+  <div class="title"><div style="float:left">订单号：<span class="blue"><a href="订单详情.html">12467921432354346</a></span></div><span class="right org"><a href="#">待收款</a></span></div>
+<dl>
+<dt><a href="#"><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="name em28" style="padding-right:0"><a href="#">隆缘裳2017春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9 mtop-1rem" style="text-align:left">粉红色</div>
+<div class="mtop-1rem">
+<span class="left c-9">×1</span>
+<div class="right org em32">￥<strong>199.00</strong></div>
+</div>
+</dd>
+</dl>
+<div class="personal2">
+<dl>
+<dt>共计1件　合计<strong class="org">￥199.00</strong>　赠送<strong class="green">500</strong>积分</dt>
+<dd><span class="left c-9" style="padding-left:2rem; font-size:2rem; line-height:5rem; float:left">下单时间：2017-07-01</span><input name="" type="submit" value="取消订单" class=" btn" ><input name="" type="submit" value="确认发货" class=" btn_org" >
+</dd>
+</dl>
+</div>
+</div>
+<div class="pad2em c-9" style=" text-align:center">没有更多了</div>
+</div>
+<div id="con_one_4"  style="display:none" ><div class="car"><img src="../images/cart_02.png">暂无订单</div></div>
+<div id="con_one_5"  style="display:none" ><div class="car"><img src="../images/cart_02.png">暂无订单</div></div>
+</div>
+  
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的订单</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="head">
+  <div class="w1000">
+    <div class="logo left"><img src="../images/logo.png" /></div>
+    <div class="name left">
+      <h1>个人中心</h1>
+      <h2><a href="../商家中心/home.html">我要开店</a></h2>
+    </div>
+    <ul class="menu left">
+      <li><a href="home.html">首页</a></li>
+      <li><a href="#">账户设置 <img src="../images/arrow_lower.png" width="10" height="5" /></a>
+        <ul>
+          <a href="账户资料.html">账户资料</a> <a href="修改密码.html">修改密码</strong></a><a href="收货地址.html">收货地址</a>
+        </ul>
+      </li>
+      <li><a href="#">消息
+        <div class="ico">1</div>
+        </a></li>
+    </ul>
+    <div class="shopping right f14"><a href="#">我的购物车<span class="ico">2</span></a></div>
+    <dl class="right" style="width:18%">
+      <dt><img src="../images/img02.png" /></dt>
+      <dd style="width:50%;line-height:20px; height:20px; margin-top:12px;" class="f16"><strong>凌丽丽</strong></strong></dd>
+      <dd  style="width:50%; line-height:20px;">会员等级:<strong>普通</strong></dd>
+    </dl>
+  </div>
+</div>
+<div class="w1000">
+  <div class="leftbox">
+    <dl>
+      <dt><img src="../images/left_01.png"/>我的钱包</dt>
+      <dd><a href="我的钱包.html">我的钱包</a></dd>
+      <dd><a href="我的红包.html">我的红包</a></dd>
+      <dd><a href="绑定银行账户.html">绑定银行账户</a></dd>
+    </dl>
+    <dl>
+      <dt><img src="../images/left_02.png"/>我的店铺</dt>
+      <dd> <a href="我分销的店铺.html">我分销的店铺</a> <a href="我招募的分销商.html">我招募的分销商</a> <a href="我分销的商品.html">我分销的商品</a> <a href="我的虚拟分销店铺.html">我的虚拟店铺</a> </dd>
+    </dl>
+    <dl>
+      <dt><img src="../images/left_03.png"/>我的订单</dt>
+      <dd><a href="我的订单.html" ><strong class="org">我的订单</strong></a></dd>
+    </dl>
+    <dl>
+      <dt><img src="../images/left_04.png"/>评价管理</dt>
+      <dd><a href="评价管理.html">评价管理</a></dd>
+    </dl>
+    <dl>
+      <dt><img src="../images/left_05.png"/>我的关注</dt>
+      <dd><a href="我关注的店铺.html">我关注的店铺</a></dd>
+      <dd><a href="我关注的商品.html">我关注的商品</a></dd>
+    </dl>
+  </div>
+  <div class="rightbox">
+    <div class="box">
+      <ul class="switchbox">
+        <li class="hover">我的订单</li>
+      </ul>
+    </div>
+      <div class="box">
+        <div class="Order">
+          <dl>
+            <dt><img src="../images/hom_01.png"></dt>
+            <dd>全部订单<strong class="org"> 33</strong></dd>
+          </dl>
+          <dl>
+            <dt><img src="../images/hom_02.png"></dt>
+            <dd>待付款<strong class="org"> 30</strong></dd>
+          </dl>
+          <dl>
+            <dt><img src="../images/hom_03.png"></dt>
+            <dd>待收货<strong class="org"> 23</strong></dd>
+          </dl>
+          <dl>
+            <dt><img src="../images/hom_04.png"></dt>
+            <dd>待评价<strong class="org"> 33</strong></dd>
+          </dl>
+          <dl>
+            <dt><img src="../images/hom_05.png"></dt>
+            <dd>已完成<strong class="org"> 33</strong></dd>
+          </dl>
+        </div>
+      </div>
+      
+    <div class="box m_top20">
+      <ul class="switchbox" style="height:55px;">
+        <li id="one1" onmouseover="settab_connet('one',1,4)" class="hover" style="height:55px; line-height:60px;">全部订单</li>
+        <li id="one2" onmouseover="settab_connet('one',2,4)" style="height:55px;line-height:60px">待付款</li>
+         <li id="one3" onmouseover="settab_connet('one',3,4)" style="height:55px;line-height:60px">待收货</li>
+        <li id="one4" onmouseover="settab_connet('one',4,4)" style="height:55px;line-height:60px">待评价</li>
+        <div class="tab_menu" style=" background:none; float:right">
+          <div class="left"><span  class="txt2">
+            <input name="" type="text" value="输入商品标题或订单进行搜索" />
+            </span><span>
+            <input name="" type="button" value="订单搜索" class="btn2" />
+            </span><span style=" width:100px;">更多筛选条件 <img src="../images/ico_06.jpg" width="8" height="4" /></span></div>
+        </div>
+      </ul>
+      
+        <div id="con_one_1" class="hover"><div style="width:100%; float:left; padding:20px; padding-bottom:10;">
+          <div class="f_bottom10" style="border-top:1px solid #ddd;">
+            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table3">
+              <tr>
+                <td width="48%"><strong>商品</strong></td>
+                <td width="11%" align="center"><strong>数量</strong></td>
+                <td width="16%" align="center"><strong>总额(元）</strong></td>
+                <td width="12%" align="center"><strong>交易状态</strong></td>
+                <td width="13%" align="center"><strong>操作</strong></td>
+              </tr>
+            </table>
+          </div>
+          <div style="margin-bottom:10px; width:100%; float:left">
+            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">
+              <tr>
+                <td colspan="5" bgcolor="#f7f7f7"><div class="right">收货人：
+                <a href="#"><img src="../images/shanchu.png" style="margin-top:3px; float:right; margin-left:5px"  /></a>
+                    <div class="Order3">
+                       <span class="ico"></span>
+                    <span class="blue">哈哈哈哈哈哈</span>
+                      <ul>
+                     
+                        <li><strong>哈哈哈</strong></li>
+                        <li class="c-9">广东深圳市宝安区西乡大道圣淘沙骏园1栋a单元306</li>
+                        <li  class="c-9">150****5203</li>
+                        
+                      </ul>
+                    </div>
+                   
+                    </div>
+                  <span class="c-9">2017-03-01  17:30:20</span>　<span class="c-7">订单号</span> <span class="blue"><strong>1243657687</strong>　</span><span class="org">袋鼠集市自营</span></td>
+              </tr>
+              <tr>
+                <td width="48%" height="30"><table width="100%" border="0" cellspacing="0">
+                  <tr>
+                    <td width="21%"><div class="imgbox"><a href="#"><img src="../images/img.jpg" /></a></div>
+                      &nbsp;</td>
+                    <td width="79%" valign="top"><a href="#">Apple iPad mini 2 平板电脑 7.9英寸（32G WLAN版/A7芯片<br />
+                      <span class="c-9">白色</span></a></td>
+                  </tr>
+                </table></td>
+                <td width="12%" align="center">1</td>
+                <td width="14%" align="center" class="org">¥<strong class="f14">1838.00</strong><br />
+                  <span class="c-9">在线支付</span></td>
+                <td width="13%" align="center"><span class="c-9">已成功</span><br />
+                  <a href="#">订单详情</a><br /></td>
+                <td width="13%" align="center" style="line-height:20px;"><a href="#" class="c-9">申请售后</a><br />
+                  <a href="#" class="blue">评价晒单</a><br />
+                  <a href="#" class="org">立即购买</a></td>
+              </tr>
+            </table>
+          </div>
+          <div  style="margin-bottom:10px; width:100%; float:left">
+            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">
+              <tr>
+                <td colspan="5" bgcolor="#f7f7f7"><div class="right">收货人：
+                <a href="#"><img src="../images/shanchu.png" style="margin-top:3px; float:right; margin-left:5px"  /></a>
+                    <div class="Order3">
+                       <span class="ico"></span>
+                    <span class="blue">哈哈哈哈哈哈</span>
+                      <ul>
+                     
+                        <li><strong>哈哈哈</strong></li>
+                        <li class="c-9">广东深圳市宝安区西乡大道圣淘沙骏园1栋a单元306</li>
+                        <li  class="c-9">150****5203</li>
+                        
+                      </ul>
+                    </div>
+                   
+                    </div>
+                  <span class="c-9">2017-03-01  17:30:20</span>　<span class="c-7">订单号</span> <span class="blue"><strong>1243657687</strong>　</span><span class="org">袋鼠集市自营</span></td>
+              </tr>
+              <tr>
+                <td width="48%" height="30"><table width="100%" border="0" cellspacing="0">
+                  <tr>
+                    <td width="21%"><div class="imgbox"><a href="#"><img src="../images/img.jpg" /></a></div>
+                      &nbsp;</td>
+                    <td width="79%" valign="top"><a href="#">Apple iPad mini 2 平板电脑 7.9英寸（32G WLAN版/A7芯片<br />
+                      <span class="c-9">白色</span></a></td>
+                  </tr>
+                </table></td>
+                <td width="12%" align="center">1</td>
+                <td width="14%" align="center" class="org">¥<strong class="f14">1838.00</strong></td>
+                <td width="13%" align="center"><span class="c-9">已成功</span><br />
+                  <div class="Order4">
+                  <span class="blue">订单跟踪</span>
+                     <span class="ico2"></span>
+                    <div class="personal_lc">
+                     <ul>普通快递  运单号：32154132136</ul>
+<dl>
+<div class="ico" style="background:#ff7522;"></div>
+<dt>感谢您在本商城购物，欢迎再次光临！</dt>
+<dd class="c-9 em22">2017-04-05 30:30:30</dd>
+</dl>
+<dl>
+<div class="ico"></div>
+<dt class="c-6">您的订单已发出,联系电话<span class="blue">18576985697</span>,请耐心等待</dt>
+<dd class="c-9 em22">2017-04-05 30:30:30</dd>
+</dl>
+
+<dl>
+<div class="ico"></div>
+<dt class="c-6">您的订单已到达【深圳站】验货完成，正在分配配送员</dt>
+<dd class="c-9 em22">2017-04-05 30:30:30</dd>
+</dl>
+<dl>
+<div class="ico"></div>
+<dt class="c-6">您的订单已到达【深圳站分拨中心】发货完成，准备送往【南山区分拨中心】</dt>
+<dd class="c-9 em22">2017-04-05 30:30:30</dd>
+</dl>
+<dl>
+  <a href="#" class=" c-9">查看更多</a>
+</dl>
+
+</div>
+                     
+                  </div>
+                  <a href="#">订单详情</a><br /></td>
+                <td width="13%" align="center" style="line-height:20px;"><input name="input" type="button" value="确认收货"  style="margin-top:8px; margin-bottom:5px; border:1px solid #ff6000; color:#ff6000;"/>
+                  <br />
+                  <a href="#" class="c-9">取消订单</a></td>
+              </tr>
+            </table>
+          </div>
+          <div  style="margin-bottom:10px; width:100%; float:left">
+            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="table4">
+              <tr>
+                <td colspan="5" bgcolor="#f7f7f7"><div class="right">收货人：
+                <a href="#"><img src="../images/shanchu.png" style="margin-top:3px; float:right; margin-left:5px"  /></a>
+                    <div class="Order3">
+                       <span class="ico"></span>
+                    <span class="blue">哈哈哈哈哈哈</span>
+                      <ul>
+                     
+                        <li><strong>哈哈哈</strong></li>
+                        <li class="c-9">广东深圳市宝安区西乡大道圣淘沙骏园1栋a单元306</li>
+                        <li  class="c-9">150****5203</li>
+                        
+                      </ul>
+                    </div>
+                   
+                    </div>
+                  <span class="c-9">2017-03-01  17:30:20</span>　<span class="c-7">订单号</span> <span class="blue"><strong>1243657687</strong>　</span><span class="org">袋鼠集市自营</span></td>
+              </tr>
+              <tr>
+                <td width="48%" height="30"><table width="100%" border="0" cellspacing="0">
+                    <tr>
+                      <td width="21%"><div class="imgbox"><a href="#"><img src="../images/img.jpg" /></a></div>
+                        &nbsp;</td>
+                      <td width="79%" valign="top"><a href="#">Apple iPad mini 2 平板电脑 7.9英寸（32G WLAN版/A7芯片<br />
+                        <span class="c-9">白色</span> </a></td>
+                    </tr>
+                  </table></td>
+                <td width="12%" align="center">1</td>
+                <td width="14%" align="center" class="org">¥<strong class="f14">1838.00</strong></td>
+                <td width="13%" align="center"><span class="c-9">已成功</span><br />
+                  <a href="#">订单详情</a><br /></td>
+                <td width="13%" align="center" style="line-height:20px;"><input name="input" type="button" value="确认收货"  style="margin-top:8px; margin-bottom:5px; border:1px solid #ff6000; color:#ff6000;"/>
+                  <br />
+                  <a href="#" class="c-9">取消订单</a></td>
+              </tr>
+            </table>
+          </div>
+          <div class="page padding20"><ul><li><a href="#">上一页</a><a href="#" class="hover">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">下一页</a></li></ul></div>
+        </div></div>
+      <div id="con_one_2" style="display:none; text-align:center" class="  padding20"><table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无订单</td>
+  </tr>
+  </table></div>
+      <div id="con_one_3" style="display:none;text-align:center"  class="  padding20"><table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无订单</td>
+  </tr>
+  </table></div>
+        <div id="con_one_4" style="display:none;text-align:center"  class="  padding20"><table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无订单</td>
+  </tr>
+  </table></div>
+    
+    </div>
+    
+      
+
+    
+  </div>
+</div>
+<div class="fooder" style="width:100%; float:left">
+  <div class="w1000">
+    <div class="left">
+      <ul>
+        <li>
+          <div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div>
+        </li>
+        <li>公司地址：深圳市南山区高新南四道创维半导体设计大厦西座603-604</li>
+      </ul>
+    </div>
+    <div class="right"><img src="../images/ljjfbb_35.png"  /><img src="../images/ljjfbb_37.png"  /></div>
+  </div>
+</div>
+</body>
+</html>

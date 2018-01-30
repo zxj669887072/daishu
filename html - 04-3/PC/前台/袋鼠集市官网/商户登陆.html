@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>商户登陆</title>
+<link href="../css/web.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="head">
+<div class="w1000">
+   		 <div class="logo"><img src="../images/logo.png"  /></div>
+         <div class="top_name">商家登陆</div>
+         <div class="right f14" style="line-height:45px;">还不是袋鼠集市加盟商家 ？ 赶快点击 <a href="商户注册.html" class="org" style=" text-decoration:underline">注册</a>！</div>
+  
+   </div>
+</div>
+
+<div class="landing_box">
+<div class="WeChat"><img src="../images/landing_08.png" width="130" height="177" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="65,148,113,164" href="#" />
+  </map>
+</div>
+<div class="w1000">
+<div class="landing">
+<h1>商家后台登录</h1>
+<div class="txt1"><input name="" type="text" value="请输入手机号"  class="c-9"/></div>
+<div class="txt2"><input name="" type="text" value="请输入登录密码"  class="c-9"/></div>
+<div class="m_top10"><div class="left"><a href="#">免费注册</a></div><div class="right"><a href="#">忘记密码?</a></div></div>
+<div class="btn"><input name="" type="submit" value="登 录" /></div>
+</div>
+</div>
+
+</div>
+
+<div class="fooder" style="margin-top:0">
+	 <div class="w1000">
+     <div class="left"><img src="../images/ljjfbb_37.png"/><img src="../images/ljjfbb_35.png" /></div>
+     <dl>
+     <dt>关于我们</dt>
+     <dd><a href="#">公司介绍</a></dd>
+     <dd><a href="了解我们.html">袋鼠集市</a></dd> 
+     </dl>
+     <dl>
+     <dt>合作推广</dt>
+     <dd><a href="商家入驻.html">商家入驻</a></dd>
+     <dd><a href="#">省运营中心招商</a></dd>
+     <dd><a href="#">县市运营中心招商</a></dd>
+     </dl>
+     <dl>
+     <dt>使用帮助</dt>
+     <dd><a href="#">帮助中心</a></dd>
+     </dl>
+     <ul>
+                  <li><strong>公司名称：</strong><div class="right">深圳蓝山集势网络科技有限公司</div> </li>
+                  <li><strong>总部地址：</strong><div class="right">深圳市南山区科技园高新南四道
+   创维半导体设计大厦西座603-604</div>  </li>
+           <li><strong>总部座机：</strong><div class="right">0755-86961282</div></li> 
+ <li><strong>联系手机：</strong><div class="right">15989363272 </div>
+	   </ul>
+     </div>
+</div>
+
+
+<script>
+		$(function(){
+			var $w = $(window), $d = $(document);
+			var $wh = $w.height(), $dh = $d.height();
+
+			$w.scroll(function(){
+				flyIconPosition();
+				flyIcon();
+			});
+
+			$w.resize(function() {
+				flyIconPosition();
+				flyIcon();
+			});
+
+			function flyIconPosition(){
+				var abT = $(".ab02").offset().top;
+				var abL = $(".ab02").offset().left;
+				var nav = $(".nav-ul");
+				var $wSt = $w.scrollTop();
+
+				if( $wSt > Math.ceil(abT - 40) ){
+					nav.css({
+						position: 'fixed',
+						top: 40,
+						left: abL
+					});
+				}else{
+					nav.css({
+						position: 'fixed',
+						top: Math.ceil(abT - $wSt+40),
+						left: abL
+					});
+				}
+			}
+
+			function flyIcon(){
+				var items = $(".nav-box .content");
+				var icon  = $(".nav-ul li");
+				var $dT = $d.scrollTop();
+
+				items.each(function(){
+					var floor = $(this);
+					var floorHeight = floor.outerHeight(); 
+					var floorTop = floor.offset().top;
+					var iNow = floor.index();
+					if($dT > floorTop - 120){
+						icon.removeClass('current');
+						icon.eq( iNow ).addClass('current');
+					}else{
+						return false;
+					}
+				});
+			}
+
+			$(".nav-ul li").click(function(){
+				var cont = $(".nav-box .content");
+				var index = $(this).index();
+				var cSt   = cont.eq( index ).offset().top;
+				$w.scrollTop( cSt );
+			});
+		});
+	</script>
+
+
+</body></html>

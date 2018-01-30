@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>我关注的加盟商铺商品</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/room.css" rel="stylesheet" type="text/css">
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="home_cio"><a href="home.html"><img src="../images/home.png"></a></div>
+<div class="webbox personal">
+<div class="pad2em">
+<div class="personal_search"><a href="#"><img src="images/s_03.png"></a>
+  <input name="" type="text" value="输入商品名进行搜索" style="color:#888"></div>
+</div>
+<div class="pad2em"  style="padding-top:0">所有商品 <span class="org"><strong>20</strong></span> 件</div>
+</div>
+
+
+
+
+
+
+ <div class="webbox  mtop-2rem">
+<div class="list emporium_list">
+<dl>
+<dt><a href="商品详情.html"><img src="../images/emporium_img03.png"></a><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="em24" style="height:3rem"><a href="商品详情.html">隆缘裳7春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9">凯越服饰旗舰店</div>
+<div class="left org em32">￥<strong>199.00</strong></div>
+<div class="personal_bnt right"><input name="" type="submit" value="取消关注" class=" btn_org" style="margin-left:0; height:4.4rem"></div>
+</dd>
+</dl>
+<dl>
+<dt><a href="商品详情.html"><img src="../images/emporium_img01.png"></a><img src="../images/img_01.jpg"></a></dt>
+<dd>
+<div class="em24" style="height:3rem"><a href="商品详情.html">隆缘裳7春装新款女装尚气质翻领长袖收腰</a></div>
+<div class="c-9">凯越服饰旗舰店</div>
+<div class="left org em32">￥<strong>199.00</strong></div>
+<div class="personal_bnt right"><input name="" type="submit" value="取消关注" class=" btn_org" style="margin-left:0; height:4.4rem"></div>
+</dd>
+</dl>
+</div>
+
+</div>
+<div class="pad2em c-9" style="text-align:center">没有更多商品了</div> 
+</body>
+</html>

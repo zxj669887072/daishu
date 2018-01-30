@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的钱包</title>
+<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script>
+<!--
+/*鼠标移上去切换*/
+function settab_connet(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div class="head">
+    <div class="w1000">
+    	<div class="logo left"><img src="../images/logo.png" /></div>
+        <div class="name left">
+        <h1>个人中心</h1>
+        <h2><a href="../商家中心/home.html">我要开店</a></h2>
+        </div>
+        <ul class="menu left">
+        <li><a href="home.html">首页</a></li>
+        <li><a href="#">账户设置 <img src="../images/arrow_lower.png" width="10" height="5" /></a><ul><a href="账户资料.html">账户资料</a>
+            <a href="修改密码.html">修改密码</strong></a><a href="收货地址.html">收货地址</a></ul></li>
+        <li><a href="#">消息<div class="ico">1</div></a></li>
+        </ul>
+        <div class="shopping right f14"><a href="#">我的购物车<span class="ico">2</span></a></div>
+        <dl class="right" style="width:18%">
+       <dt><img src="../images/img02.png" /></dt>
+       <dd style="width:50%;line-height:20px; height:20px; margin-top:12px;" class="f16"><strong>凌丽丽</strong></strong></dd>
+       <dd  style="width:50%; line-height:20px;">会员等级:<strong>普通</strong></dd>
+       </dl>
+    </div>
+</div>
+<div class="webbox w1000">
+	<div class="leftbox">
+    	<dl>
+        <dt><img src="../images/left_01.png"/>我的钱包</dt>
+        <dd><a href="我的钱包.html"><strong class="org">我的钱包</strong></a></dd><dd><a href="我的红包.html">我的红包</a></dd><dd><a href="绑定银行账户.html">绑定银行账户</a></dd>
+        </dl>
+<dl>
+            <dt><img src="../images/left_02.png"/>我的店铺</dt>
+               <dd>
+                <a href="我分销的店铺.html">我分销的店铺</a>
+                <a href="我招募的分销商.html">我招募的分销商</a>
+                <a href="我分销的商品.html">我分销的商品</a> <a href="我的虚拟分销店铺.html">我的虚拟店铺</a>
+      </dd>
+        </dl>
+        <dl>
+      <dt><img src="../images/left_03.png"/>我的订单</dt>
+      <dd><a href="我的订单.html" >我的订单</a></dd>
+    </dl>
+        <dl>
+        <dt><img src="../images/left_04.png"/>评价管理</dt>
+        <dd><a href="评价管理.html">评价管理</a></dd>
+        </dl>
+       <dl>
+        <dt><img src="../images/left_05.png"/>我的关注</dt>
+        <dd><a href="我关注的店铺.html">我关注的店铺</a></dd>
+<dd><a href="我关注的商品.html">我关注的商品</a></dd>
+        </dl>
+      
+  </div>
+    <div class="rightbox">
+    <div class="box">
+    <ul class="switchbox">
+      <li id="one1" onmouseover="settab_connet('one',1,4)"  class="hover">积分动态记录</li>
+      <li id="one2" onmouseover="settab_connet('one',2,4)" >余额动态记录</li>
+      <li id="one3" onmouseover="settab_connet('one',3,4)" >支付密码</li>
+      <li id="one4" onmouseover="settab_connet('one',4,4)" >袋鼠币动态记录</li>
+      </ul>
+      </div>
+      <div id="con_one_1" class="hover" >
+      <div class="sumbox padding20  box">
+     <div class="left">
+         <dl>
+         <dt>积分</dt>
+         <dd class="f18 org"><strong>500分</strong></dd>
+         </dl>
+          <dl>
+         <dt>待赠送积分</dt>
+         <dd class="f18 org2"><strong>1000分 </strong><a href="积分赠送明细.html"><img src="../images/hom_60.png" /></a></dd>
+         </dl>
+          <dl style=" padding-left:6%; width:33.3%">
+         <dt style="text-align:left">袋鼠币</dt>
+         <dd class="f18"><div class="green">100分<div class="txt">1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</div></div><input type="submit" name="button" id="button" value="兑换"  class="btn" style="color:#666; " onClick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"/></dd>
+         </dl>
+     </div>
+     <ul class="right">
+     <li>现金余额 <img src="../images/ico_03.png" width="15" height="15" /></li>
+     <li><span class="f22">0.00</span>元
+    <a href="充值.html"><input type="submit" name="button" id="button" value="充值"  class="btn" style="color:#ff4800;"/></a>
+    <a href="提现.html"><input type="submit" name="button" id="button" value="提现" class="btn blue" style="color:#087cd7"/></a>
+
+     </li>
+     </ul>
+     </div>
+     <div class="box m_top20">
+    <ul class="switchbox">
+  	  <li><strong  class="f16">积分动态</strong></li>
+      <li id="tow1" onmouseover="settab_connet('tow',1,2)" class="hover">收入记录</li>
+      <li id="tow2" onmouseover="settab_connet('tow',2,2)">支出记录</li>
+      </ul>
+      
+       <div id="con_tow_1" class="hover">
+       <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      <ul>
+      <li  class="hover">购物积分记录</li>
+      
+     
+      </ul>
+      </div>
+      
+            
+
+       <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">订单号 | 名称</td>
+    <td align="center">门牌号 | 商家</td>
+    <td align="center">获得待赠送积分<span class="c-9">（分）</span></td>
+  </tr>
+  <tr>
+    <td  colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无收入积分记录</td>
+  </tr>
+  </table>
+</td>
+    </tr>
+</table>
+
+
+       
+       </div>
+       <div id="con_tow_2" style="display:none">
+       <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      <ul>
+      <li class="hover">兑换记录</li>
+      </ul>
+      </div>
+      <div ><table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">兑换袋鼠币<span class="c-9">（个）</span></td>
+    <td align="center">扣除积分<span class="c-9">（分）</span></td>
+  </tr>
+  <tr>
+    <td  colspan="3" align="center"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无兑换记录</td>
+  </tr>
+</table>
+</td>
+    </tr>
+</table></div>
+      
+       </div>
+
+     </div>
+     </div>
+       <div id="con_one_2" style="display:none">
+       
+       <div class="sumbox padding20  box">
+     <div class="left">
+         <dl>
+         <dt>积分</dt>
+         <dd class="f18 org"><strong>500分</strong></dd>
+         </dl>
+          <dl>
+         <dt>待赠送积分</dt>
+         <dd class="f18 org2"><strong>1000分 </strong><img src="../images/hom_60.png" /></dd>
+         </dl>
+          <dl style=" padding-left:6%; width:33.3%">
+         <dt style="text-align:left">袋鼠币</dt>
+         <dd class="f18"><div class="green">100分<div class="txt">1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</div></div><input type="submit" name="button" id="button" value="兑换"  class="btn" style="color:#666;　 " onClick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"/></dd>
+         </dl>
+     </div>
+     <ul class="right">
+     <li>现金余额 <img src="../images/ico_03.png" width="15" height="15" /></li>
+     <li><span class="f22">0.00</span>元
+    <a href="充值.html"><input type="submit" name="button" id="button" value="充值"  class="btn" style="color:#ff4800;"/></a>
+    <a href="提现.html"><input type="submit" name="button" id="button" value="提现" class="btn blue" style="color:#087cd7"/></a>
+
+     </li>
+     </ul>
+     </div>
+       
+       <div class="box m_top20">
+    <ul class="switchbox">
+  	  <li><strong  class="f16">余额动态</strong></li>
+      <li id="five1" onmouseover="settab_connet('five',1,3)" class="hover">收入记录</li>
+      <li id="five2" onmouseover="settab_connet('five',2,3)">支出记录</li>
+       <li id="five3" onmouseover="settab_connet('five',3,3)">佣金收入</li>
+      </ul>
+      
+  <div id="con_five_1" class="hover">
+    <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      <div class="right">
+      查询月累计金额 <span class="red"><strong>0 </strong></span>元 总金额<span class="red"><strong> 0</strong></span> 元 </div>
+      </div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">充值类型</td>
+    <td align="center">充值金额（元）</td>
+    </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center"><strong>充值</strong></td>
+    <td align="center"><strong class="org">￥300.00</strong></td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center"><strong>退款</strong></td>
+    <td align="center"><strong class=" green">￥300.00</strong></td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center"><strong>充值</strong></td>
+    <td align="center"><strong class="org">￥300.00</strong></td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center"><strong>退款</strong></td>
+    <td align="center"><strong class=" green">￥300.00</strong></td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center"><strong>充值</strong></td>
+    <td align="center"><strong class="org">￥300.00</strong></td>
+    </tr>
+</table>
+    </div>
+    <div id="con_five_2" style="display:none">
+    <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      <div class="right">
+      查询月累计金额 <span class="red"><strong>0 </strong></span>元 总金额<span class="red"><strong> 0</strong></span> 元 </div>
+      </div>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">订单号 | 名称</td>
+    <td align="center">消费金额（元）</td>
+    <td align="center">操作人</td>
+    </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥200.00</strong></td>
+    <td align="center">李玉峰</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥200.00</strong></td>
+    <td align="center">李玉峰</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥200.00</strong></td>
+    <td align="center">李玉峰</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥200.00</strong></td>
+    <td align="center">李玉峰</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥200.00</strong></td>
+    <td align="center">李玉峰</td>
+    </tr>
+</table>
+    </div>
+    
+    <div id="con_five_3" style="display:none">
+    <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      <div class="right">
+      查询月累计金额 <span class="red"><strong>0 </strong></span>元 总金额<span class="red"><strong> 0</strong></span> 元 </div>
+      </div>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">商家</td>
+    <td align="center">订单号 | 名称</td>
+    <td align="center">订单金额<span class="c-9"></span></td>
+    <td align="center">佣金收入<span class="c-9">（元）</span></td>
+    <td align="center">分销人</td>
+    </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">xxxxxxxxxxxxx</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥1000.00</strong></td>
+    <td align="center"><strong class="org2">￥200.00</strong></td>
+    <td align="center">本人</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">xxxxxxxxxxxxx</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥1300.00</strong></td>
+    <td align="center"><strong class="org2">￥200.00</strong></td>
+    <td align="center">丽萍</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">xxxxxxxxxxxxx</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥1000.00</strong></td>
+    <td align="center"><strong class="org2">￥200.00</strong></td>
+    <td align="center">刘洋</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">xxxxxxxxxxxxx</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥1000.00</strong></td>
+    <td align="center"><strong class="org2">￥200.00</strong></td>
+    <td align="center">三娃</td>
+  </tr>
+  <tr>
+    <td align="center">2017-02-28 20:30:30</td>
+    <td align="center">xxxxxxxxxxxxx</td>
+    <td align="center">1487852214511</td>
+    <td align="center"><strong class="org">￥1200.00</strong></td>
+    <td align="center"><strong class="org2">￥200.00</strong></td>
+    <td align="center">刘丽</td>
+    </tr>
+</table>
+    </div>
+  </div>
+       </div>
+       <div id="con_one_3" class="Password box h610"  style="display:none">
+       <ul>
+        <li><div class="left">输入旧密码：</div><div class="right"><span class="txt2"><input name="" type="text" value="请输入旧密码" class=" c-9" /></span></div></li>
+       <li><div class="left">设置新支付密码：</div><div class="right"><span class="txt2"><input name="" type="text" /></span><span>支付密码为6位纯数字</span></div></li>
+       <li><div class="left">再次确认密码：</div><div class="right"><span class="txt2"><input name="" type="text" /></span></div></li>
+       <li><div class="left">手机号：</div><div class="right"><span class="txt2"><input name="" type="text" /></span><span><input name="发送验证码" type="button" value="发送验证码"  class="bnt"/></span></div></li>
+       <li  class="f_bottom10"><div class="left">验证码：</div><div class="right"><span class="txt2"><input name="" type="text" /></span></div></li>
+       <li><div class="left"></div><div class="right"><span><input name="确认保存" type="submit" value="确认保存"  class="bnt-org"/></span></div></li>
+       </ul>
+       
+</div>
+    <div id="con_one_4" style="display:none" >
+      <div class="sumbox padding20  box">
+     <div class="left">
+         <dl>
+         <dt>积分</dt>
+         <dd class="f18 org"><strong>500分</strong></dd>
+         </dl>
+          <dl>
+         <dt>待赠送积分</dt>
+         <dd class="f18 org2"><strong>1000分 </strong><img src="../images/hom_60.png" /></dd>
+         </dl>
+          <dl style=" padding-left:6%; width:33.3%">
+         <dt style="text-align:left">袋鼠币</dt>
+         <dd class="f18"><div class="green">100分<div class="txt">1积分兑换1袋鼠币,袋鼠币可用于商城购物,1袋鼠币=1元消费额度</div></div><input type="submit" name="button" id="button" value="兑换"  class="btn" style="color:#666;  " onClick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"></dd>
+         </dl>
+     </div>
+     <ul class="right">
+     <li>现金余额 <img src="../images/ico_03.png" width="15" height="15" /></li>
+     <li><span class="f22">0.00</span>元
+    <a href="充值.html"><input type="submit" name="button" id="button" value="充值"  class="btn" style="color:#ff4800;"/></a>
+    <a href="提现.html"><input type="submit" name="button" id="button" value="提现" class="btn blue" style="color:#087cd7"/></a>
+
+     </li>
+     </ul>
+     </div>
+     <div class="box m_top20">
+    <ul class="switchbox">
+  	  <li><strong  class="f16">袋鼠币动态</strong></li>
+      <li id="six1" onmouseover="settab_connet('six',1,2)" class="hover">收入记录</li>
+      <li id="six2" onmouseover="settab_connet('six',2,2)">支出记录</li>
+      </ul>
+      
+       <div id="con_six_1" class="hover">
+       <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      </div>
+      
+   <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">类型</td>
+    <td align="center">获得袋鼠币<span class="c-9">（个）</span></td>
+  </tr>
+  <tr>
+    <td  align="center">2017-02-28 20:30:30</td>
+    <td  align="center"><strong>兑换</strong></td>
+    <td  align="center"><strong class="org">10</strong></td>
+    </tr>
+  <tr>
+    <td  align="center">2017-02-28 20:30:30</td>
+    <td  align="center"><strong>退货</strong></td>
+    <td  align="center"><strong class="org">80</strong></td>
+  </tr>
+  <tr>
+    <td  align="center">2017-02-28 20:30:30</td>
+    <td  align="center"><strong>兑换</strong></td>
+    <td  align="center"<strong class="org">80</strong></td>
+  </tr>
+</table>
+       
+       </div>
+       <div id="con_six_2" style="display:none">
+       <div class="tab_menu">
+      <div class="left"><span>按月份查询:</span><span  class="txt"><select name="">
+        <option>2017-02</option>
+        <option>2017-01</option>
+        <option>2016-12</option>
+      </select></span><span><input name="" type="button" value="查询" class="btn" /></span></div>
+      </div>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+  <tr>
+    <td align="center">日期</td>
+    <td align="center">订单号 | 名称</td>
+    <td align="center">门牌号 | 商家</td>
+    <td align="center">使用袋鼠币<span class="c-9">（个）</span></td>
+  </tr>
+  <tr>
+    <td  colspan="4" align="center"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../images/cart_02.png" width="43" height="44" /></td>
+    <td class="c-9 f14">暂无兑换记录</td>
+  </tr>
+</table>
+</td>
+    </tr>
+</table>
+      
+       </div>
+
+     </div>
+     </div>
+    </div>
+</div>
+<div class="fooder">
+	 <div class="w1000">
+<div class="left">
+         		 <ul>
+                  <li><div class="f14"><a href="#">关于我们</a>| <a href="#">商家入驻</a>|<a href="#">代理商合作</a>|<a href="#">招商中心合作</a>|<a href="#">帮助中心</a></div></li>
+                  
+				   <li>公司地址：深圳市南山区高新南四道创维半导体设计大厦西座603-604</li>
+          		 </ul>
+          </div>
+          <div class="right"><img src="../images/ljjfbb_35.png"  /><img src="../images/ljjfbb_37.png"  /></div>
+     </div>
+</div>
+<div>
+  <div id="light" class="white_content" style=" left:39%">
+<div class="Popupbox" style="width:460px;">
+<div class="tb"><div class="left">兑换袋鼠币</div><a class="right" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="../images/Prompt2_03.png" width="24" height="24" /></a></div>
+<ul style="padding-top:20px; padding-bottom:20px;"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="50" align="right">兑换数量：</td>
+    <td align="left"><table border="0" align="left" cellspacing="0">
+  <tr>
+    <td><div  style="width:100px; float:left"><input name="" type="text"  style="margin:0px; padding:0px;" /></div></td>
+    <td>　可兑换积分：<strong>200</strong></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td height="50" align="right" >兑换比例：</td>
+    <td align="left">1积分=1袋鼠币</td>
+  </tr>
+  <tr>
+    <td align="right" style="border-bottom:none">&nbsp;</td>
+    <td align="left" style="border-bottom:none"><input name="确认保存" type="submit" value="确定兑换"  class="bnt-org"/></td>
+  </tr>
+</table>
+  <div class="m_top20" style="text-align:center"></div>
+</ul>
+</div>
+  </div>
+  <div id="fade" class="black_overlay" style="display:none;"></div>
+</div>
+</body>
+</html>
